@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "ES6笔记（三）函数",
     "headline" : "ES6笔记（三）函数",
-    "description" : "\x3ch3 id=\x22heading\x22\x3e函数参数的默认值\x3c\/h3\x3e\n\x3cp\x3e以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [\/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [\/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。\x3c\/p\x3e\n\x3ch3 id=\x22reset\x22\x3ereset参数\x3c\/h3\x3e\n\x3cp\x3e[crayon] function say(a,b,\x26hellip;items){ \/\/ dosomething\x26hellip; } [\/crayon] 当我们不知道参数个数时，可以用展开运算符\x26hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。\x3c\/p\x3e",
+    "description" : "函数参数的默认值 以前es5的做法是这样的：\nfunction log(x) { x = x || 10; console.log(x) } 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值\nfunction log(x=10) { console.log(x) } 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。\nreset参数 function say(a,b,...items){ \/\/ dosomething...  } 当我们不知道参数个数时，可以用展开运算符\x26hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。\n箭头函数 ES6 允许使用“箭头”（=\x26gt;）定义函数。如下：\nvar a = (v) =\x26gt; v; 两点注意：\n 函数参数没有或者只有一个时可以省略括号，返回值只有一个时也可以省略； （ 箭头函数没有自己的this，他的this指的是上下文的this,也就是说我们再也不用that = this或者self=this这样的形式了。当然箭头函数也要看场合使用，比如不要在object和原型里面定义箭头函数,因为这时候的this是指向window的。  尾调用优化 尾调用就是在函数的内部最后调用函数需要注意下面的都不算：\n\/\/ 情况一 function f(x){ let y = g(x); return y; } \/\/ 情况二 function f(x){ return g(x) \x2b 1; } \/\/ 情况三 function f(x){ g(x); } 尾调用优化的原理： 当我们调用一个函数a时，在内存中会形成一个call frame（调用帧），里面记录着a的变量信息，如果在函数a里面再调用函数B,同样会形成一个call frame位于a的调用帧上方，如此嵌套调用，多个call frame就会形成call stack(调用栈)，所谓优化就是在a的调用帧之上b的调用帧如果用不到a里面的信息的话，a的调用帧就会舍弃掉。 注意：ES6中的尾调用优化只在use strict下生效，看下面例子：",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2018-04-02 11:31:08 \x2b0000 UTC",
     "dateModified" : "2018-04-02 11:31:08 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2018\/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0\/",
-    "wordCount" : "112",
+    "wordCount" : "101",
     "keywords" : [ "es6", "陈晓拉尼"]
 }
 </script>
@@ -151,13 +151,39 @@
           
 
           <h3 id="heading">函数参数的默认值</h3>
-<p>以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。</p>
+<p>以前es5的做法是这样的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>) { <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>) } 
+</code></pre></div><p>这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>) { <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>) } 
+</code></pre></div><p>这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。</p>
 <h3 id="reset">reset参数</h3>
-<p>[crayon] function say(a,b,&hellip;items){ // dosomething&hellip; } [/crayon] 当我们不知道参数个数时，可以用展开运算符&hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">say</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,...<span style="color:#a6e22e">items</span>){ 
+    <span style="color:#75715e">// dosomething...
+</span><span style="color:#75715e"></span>     } 
+</code></pre></div><p>当我们不知道参数个数时，可以用展开运算符&hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。</p>
 <h3 id="heading1">箭头函数</h3>
-<p>ES6 允许使用“箭头”（=&gt;）定义函数。如下： [crayon] var a = (v) =&gt; v; [/crayon] 两点注意： （1）函数参数没有或者只有一个时可以省略括号，返回值只有一个时也可以省略； （2）箭头函数没有自己的this，他的this指的是上下文的this,也就是说我们再也不用that = this或者self=this这样的形式了。当然箭头函数也要看场合使用，比如不要在object和原型里面定义箭头函数,因为这时候的this是指向window的。</p>
+<p>ES6 允许使用“箭头”（=&gt;）定义函数。如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">v</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">v</span>; 
+</code></pre></div><p>两点注意：</p>
+<ol>
+<li>函数参数没有或者只有一个时可以省略括号，返回值只有一个时也可以省略； （</li>
+<li>箭头函数没有自己的this，他的this指的是上下文的this,也就是说我们再也不用that = this或者self=this这样的形式了。当然箭头函数也要看场合使用，比如不要在object和原型里面定义箭头函数,因为这时候的this是指向window的。</li>
+</ol>
 <h3 id="heading2">尾调用优化</h3>
-<p>尾调用就是在函数的内部最后调用函数需要注意下面的都不算： [crayon] // 情况一 function f(x){ let y = g(x); return y; } // 情况二 function f(x){ return g(x) + 1; } // 情况三 function f(x){ g(x); } [/crayon] 尾调用优化的原理： 当我们调用一个函数a时，在内存中会形成一个call frame（调用帧），里面记录着a的变量信息，如果在函数a里面再调用函数B,同样会形成一个call frame位于a的调用帧上方，如此嵌套调用，多个call frame就会形成call stack(调用栈)，所谓优化就是在a的调用帧之上b的调用帧如果用不到a里面的信息的话，a的调用帧就会舍弃掉。 注意：ES6中的尾调用优化只在use strict下生效，看下面例子： [crayon] function factorial(n, total = 1) { if (n === 1) return total; return factorial(n - 1, n * total); } factorial(5) // 120 [/crayon]</p>
+<p>尾调用就是在函数的内部最后调用函数需要注意下面的都不算：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 情况一 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">x</span>){ <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g</span>(<span style="color:#a6e22e">x</span>); <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">y</span>; } 
+<span style="color:#75715e">// 情况二 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">x</span>){ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">g</span>(<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; } 
+<span style="color:#75715e">// 情况三 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">x</span>){ <span style="color:#a6e22e">g</span>(<span style="color:#a6e22e">x</span>); } 
+</code></pre></div><p>尾调用优化的原理： 当我们调用一个函数a时，在内存中会形成一个call frame（调用帧），里面记录着a的变量信息，如果在函数a里面再调用函数B,同样会形成一个call frame位于a的调用帧上方，如此嵌套调用，多个call frame就会形成call stack(调用栈)，所谓优化就是在a的调用帧之上b的调用帧如果用不到a里面的信息的话，a的调用帧就会舍弃掉。 注意：ES6中的尾调用优化只在use strict下生效，看下面例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">factorial</span>(<span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) { 
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">total</span>; 
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">factorial</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">total</span>); 
+    } 
+<span style="color:#a6e22e">factorial</span>(<span style="color:#ae81ff">5</span>) <span style="color:#75715e">// 120 
+</span></code></pre></div>
     </div>
 
     <div class="post-copyright">

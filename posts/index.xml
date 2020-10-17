@@ -319,9 +319,21 @@ import * as constants from &amp;#39;.</description>
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</guid>
       <description>&lt;h3 id=&#34;heading&#34;&gt;对象的语法的扩展&lt;/h3&gt;
 &lt;h4 id=&#34;1&#34;&gt;(1)对象的属性或属性值可以直接传入变量&lt;/h4&gt;
-&lt;p&gt;[crayon] let id = 12; let value = 22; let obj = {id:value} [/crayon]&lt;/p&gt;
-&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
-&lt;p&gt;[crayon] //es5 let obj = { handle:function(){ //dosomething } } //es6 let obj = { handle(){ //dosomething } } [/crayon]&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;:&lt;span style=&#34;color:#66d9ef&#34;&gt;value&lt;/span&gt;} 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//es5 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { 
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;handle&lt;/span&gt;:&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){ 
+        &lt;span style=&#34;color:#75715e&#34;&gt;//dosomething 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        } 
+    } 
+&lt;span style=&#34;color:#75715e&#34;&gt;//es6 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+     &lt;span style=&#34;color:#a6e22e&#34;&gt;handle&lt;/span&gt;(){ 
+        &lt;span style=&#34;color:#75715e&#34;&gt;//dosomething 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        } 
+    } 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -330,10 +342,14 @@ import * as constants from &amp;#39;.</description>
       <pubDate>Mon, 02 Apr 2018 11:31:08 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;函数参数的默认值&lt;/h3&gt;
-&lt;p&gt;以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。&lt;/p&gt;
-&lt;h3 id=&#34;reset&#34;&gt;reset参数&lt;/h3&gt;
-&lt;p&gt;[crayon] function say(a,b,&amp;hellip;items){ // dosomething&amp;hellip; } [/crayon] 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。&lt;/p&gt;</description>
+      <description>函数参数的默认值 以前es5的做法是这样的：
+function log(x) { x = x || 10; console.log(x) } 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值
+function log(x=10) { console.log(x) } 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。
+reset参数 function say(a,b,...items){ // dosomething...  } 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。
+箭头函数 ES6 允许使用“箭头”（=&amp;gt;）定义函数。如下：
+var a = (v) =&amp;gt; v; 两点注意：
+ 函数参数没有或者只有一个时可以省略括号，返回值只有一个时也可以省略； （ 箭头函数没有自己的this，他的this指的是上下文的this,也就是说我们再也不用that = this或者self=this这样的形式了。当然箭头函数也要看场合使用，比如不要在object和原型里面定义箭头函数,因为这时候的this是指向window的。  尾调用优化 尾调用就是在函数的内部最后调用函数需要注意下面的都不算：
+// 情况一 function f(x){ let y = g(x); return y; } // 情况二 function f(x){ return g(x) + 1; } // 情况三 function f(x){ g(x); } 尾调用优化的原理： 当我们调用一个函数a时，在内存中会形成一个call frame（调用帧），里面记录着a的变量信息，如果在函数a里面再调用函数B,同样会形成一个call frame位于a的调用帧上方，如此嵌套调用，多个call frame就会形成call stack(调用栈)，所谓优化就是在a的调用帧之上b的调用帧如果用不到a里面的信息的话，a的调用帧就会舍弃掉。 注意：ES6中的尾调用优化只在use strict下生效，看下面例子：</description>
     </item>
     
     <item>
@@ -342,15 +358,13 @@ import * as constants from &amp;#39;.</description>
       <pubDate>Fri, 30 Mar 2018 14:46:41 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>&lt;p&gt;字符串&lt;/p&gt;
-&lt;h3 id=&#34;heading&#34;&gt;字符串模板&lt;/h3&gt;
-&lt;p&gt;字符串模板用``来表示，示例如下: [crayon] let template = `&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;${变量1}&lt;/li&gt;
-&lt;li&gt;$(变量2)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};&lt;/p&gt;
-&lt;h3 id=&#34;heading1&#34;&gt;标签模板&lt;/h3&gt;</description>
+      <description>字符串
+字符串模板 字符串模板用``来表示，示例如下:
+let template = `${变量1}` 可以看到字符串模板主要有两个特点
+ 字符串换行不再需要+来拼接，里面的空格换行都会保留； 字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};  标签模板 标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下：
+//先定义这个函数  function tag (arr, ...arg){ //...表示不确定参数个数  console.log(arr); console.log(...arg); } // 准备一个变量  let world = 20; let sayHi= 66; // 函数调用  tag(hello, ${ world },${sayHi}) 从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。
+关于字符串编码  我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的； 不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了； 在js里字符的表示形式是这样的\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下：  codePointAt(index) //传入索引值，返回其对于位置的码点  String.fromCodePoint() //传入码点，返回对应字符串  at(index) //返回给定位置的字符  normalize() //顾名思义格式化，了解即可 关于字符串的一些方法 有个印象就好，废话不多说上API:
+includes(str, index)//如果在字符串中检测到指定文本，返回true，否则false。  startsWith(str, index)//如果在字符串起始部分检测到指定文本，返回true，否则返回false。  endsWith(str, index)//如果在字符串的结束部分检测到指定文本，返回true，否则返回false。  str.</description>
     </item>
     
     <item>
@@ -359,9 +373,12 @@ import * as constants from &amp;#39;.</description>
       <pubDate>Fri, 30 Mar 2018 10:28:22 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;前言&lt;/h3&gt;
-&lt;p&gt;在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。&lt;/p&gt;
-&lt;p&gt;新的声明方式&lt;/p&gt;</description>
+      <description>前言 在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。
+新的声明方式
+let 在ES6中又出现了两种声明方式分别是let，和const，在此之前js的作用域只有全局作用域和函数包裹的作用域，而let的出现让js有了块级作用域，一个经典案例一看就明白：
+for(let i = 0;i&amp;lt; 4;i++){ console.log(i) } console.log(i)//这里是i is not defined 可以看出用let来声明变量，其变量的作用域只存在于这个花括号内，此时花括号就是一个块级作用域，而如果用var声明的话，在外面是可以打印出i的值的，因为它仍然处于全局作用域下，所以我们平时在写代码时完全可以用let来代替var，现在js语法越来越严谨，var早晚会out的。还有要注意的是let不能重复声明变量以及不存在变量提升。
+const const用来定义一些不可改变的变量，比如我用到的在node端引入一些包依赖用const
+const express = require(&amp;#39;express&amp;#39;); const app = express(); 总之你不想他被改变就用const，而且他和let一样会形成块级作用域，不能重复声明，不存在变量提升。</description>
     </item>
     
     <item>
@@ -394,10 +411,7 @@ https://github.com/mywebc/VUE-Chat</description>
       <pubDate>Sat, 10 Feb 2018 15:12:02 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</guid>
-      <description>打包注意点
-（1）在man.js中注释掉mode:history,这个只有在开启服务器下才有效； （2）在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;
-运行截图
-Github:https://github.com/mywebc/todoLIst</description>
+      <description>打包注意点  在man.js中注释掉mode:history,这个只有在开启服务器下才有效； 在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;;  Github https://github.com/mywebc/todoLIst</description>
     </item>
     
     <item>
@@ -476,19 +490,13 @@ Github:https://github.com/mywebc/todoLIst</description>
       <pubDate>Thu, 02 Nov 2017 23:23:44 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;h4 id=&#34;1&#34;&gt;1.介绍&lt;/h4&gt;
-&lt;p&gt;mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
-mongo下载地址：&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;https://www.mongodb.com/download-center?jmp=nav#community&lt;/a&gt;&lt;/a&gt;
-mongoAPI文档：&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;https://docs.mongodb.org/manual/&lt;/a&gt;&lt;/a&gt;
+      <description>介绍 mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：
+所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
+mongo下载地址：https://www.mongodb.com/download-center?jmp=nav#community
+mongoAPI文档：https://docs.mongodb.org/manual/
 下载安装好后，添加mongo环境变量，在命令行里输入mongod &amp;ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，
-另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
-其它基础命令：
-show dbs:查看所有数据库
-db:查看当前数据库
-use student:切换到student数据库，如果没有则创建
-db.student.drop();删除student集合
-db.dropDatabase();删除当前所在数据库
-db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏&lt;/p&gt;</description>
+另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。 其它基础命令：
+ show dbs:查看所有数据库 db:查看当前数据库 use student:切换到student数据库，如果没有则创建 db.student.drop();删除student集合 db.dropDatabase();删除当前所在数据库 db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏  插入  db.student.insert({&amp;ldquo;name&amp;rdquo;:&amp;ldquo;小明&amp;rdquo;}); 可以在外面写好json文件，使用命令导入： mongoimport &amp;ndash;db test &amp;ndash;collection restaurants &amp;ndash;drop &amp;ndash;file primer-dataset.json   -db test 想往哪个数据库里面导入 &amp;ndash;collection restaurants 想往哪个集合中导入 &amp;ndash;drop 是否把集合清空 &amp;ndash;file primer-dataset.json 哪个文件  查找  db.restaurants.find()   精确匹配： db.student.find({&amp;ldquo;score.shuxue&amp;rdquo;:70}); 多个条件： db.student.find({&amp;ldquo;score.shuxue&amp;rdquo;:70 , &amp;ldquo;age&amp;rdquo;:12}) 大于条件： db.student.find({&amp;ldquo;score.yuwen&amp;rdquo;:{$gt:50}}); 或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{&amp;ldquo;age&amp;rdquo;:9},{&amp;ldquo;age&amp;rdquo;:11}]}); 查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { &amp;ldquo;borough&amp;rdquo;: 1, &amp;ldquo;address.zipcode&amp;rdquo;: 1 } )  修改  先要找到再修改，使用$set db.</description>
     </item>
     
     <item>
@@ -497,11 +505,9 @@ db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏&lt;/p
       <pubDate>Thu, 26 Oct 2017 01:58:05 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</guid>
-      <description>&lt;p&gt;模块化是一种开发模式，模块化的开发有利于后期维护，提高效率，模块化的规范在服务器端是CommonJs，比如nodejs采用的就是这个，在浏览器端有AMD规范（比如RequireJs采用的），CMD规范（SeaJS采用的）。 SeaJS我看了一点，但是我又忘得差不多了o(╥﹏╥)o，我知道错了，所以我来做笔记了。 在SeaJs中它是用define定义模块的： [javascript] define(function(require,exports,module) { var a=1; exports.text=a; //或者module.exports={text:a}; }) [/javascript] 三个参数： require：用来加载模块的; exports：module 的别名，只能通过点语法加属性； module:是一个对象，里面有exports这个属性； 所以exports=module.exports;我们在使用中用exports或者module.exports暴露接口都可以。 具体的基本使用是这样的：
-（1）引入sea.js库；
-（2）用define定义模块，在里面向外面暴露接口；
-（3）也是在define中，用require加载定义的模块；
-（4）启动模块系统，seajs.use(),引入入口模块； 有点跑题了，本篇主要是书写nodejs中的require的方法的，nodejs中的模块的定义比seajs简单点，不需要define，一个js文件就是一个模块，同样用exports暴露接口，require加载模块。 下面我们自己重写requie函数： [javascript] //使用严格模式 &amp;lsquo;use strict&amp;rsquo; function myrequire(id) { //引入node内部模块fs和path const fs = require(&amp;lsquo;fs&amp;rsquo;); const path = require(&amp;lsquo;path&amp;rsquo;); //包含自身的完整路径 const filename = path.join(__dirname, id); // pathto/module1.js //不包含自身的路径 const dirname = path.dirname(filename); // pathto //为防止node把他丢到事件队列里，这里需要同步读取 let code = fs.readFileSync(filename, &amp;lsquo;utf8&amp;rsquo;); // 定义一个数据容器，用容器去装模块导出的成员 let module = { id: filename, exports: {} }; let exports = module.exports; // module.exports code =&lt;code&gt; (function(myrequire, module, exports, \_\_dirname, \_\_filename) { ${code} })(myrequire, module, exports, dirname, filename);&lt;/code&gt;; //转换成js代码 eval(code); return module.exports; } [/javascript] 再拓展解释一下上面的代码：&lt;/p&gt;</description>
+      <description>模块化是一种开发模式，模块化的开发有利于后期维护，提高效率，模块化的规范在服务器端是CommonJs，比如nodejs采用的就是这个，在浏览器端有AMD规范（比如RequireJs采用的），CMD规范（SeaJS采用的）。 SeaJS我看了一点，但是我又忘得差不多了o(╥﹏╥)o，我知道错了，所以我来做笔记了。 在SeaJs中它是用define定义模块的：
+define(function(require,exports,module) { var a=1; exports.text=a; //或者  module.exports={text:a}; }) 三个参数： require：用来加载模块的; exports：module 的别名，只能通过点语法加属性； module:是一个对象，里面有exports这个属性； 所以exports=module.exports; 我们在使用中用exports或者module.exports暴露接口都可以。 具体的基本使用是这样的：
+ 引入sea.js库； 用define定义模块，在里面向外面暴露接口； 也是在define中，用require加载定义的模块； 启动模块系统，seajs.use(),引入入口模块； 有点跑题了，本篇主要是书写nodejs中的require的方法的，nodejs中的模块的定义比seajs简单点，不需要define，一个js文件就是一个模块，同样用exports暴露接口，require加载模块。 下面我们自己重写requie函数：  //使用严格模式 &amp;#39;use strict&amp;#39;  function myrequire(id) { //引入node内部模块fs和path  const fs = require(&amp;#39;fs&amp;#39;); const path = require(&amp;#39;path&amp;#39;); //包含自身的完整路径  const filename = path.join(__dirname, id); // pathto/module1.js  //不包含自身的路径  const dirname = path.dirname(filename); // pathto  //为防止node把他丢到事件队列里，这里需要同步读取  let code = fs.readFileSync(filename, &amp;#39;utf8&amp;#39;); // 定义一个数据容器，用容器去装模块导出的成员  let module = { id: filename, exports: {} }; let exports = module.</description>
     </item>
     
     <item>
@@ -510,26 +516,8 @@ db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏&lt;/p
       <pubDate>Wed, 11 Oct 2017 13:28:08 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</guid>
-      <description>&lt;p&gt;对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。
-1.插入与删除
-push：末尾插入；
-pop:末尾删除；
-shift:开头删除；
-unshift:开头添加；
-2.map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：
-[code] var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val+3; }); [/code]
-3.reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如： [code] var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre+curr; },0); [/code] 4filter（过滤器） [code] var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val&amp;lt;6; }); [/code]
-5.sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列 [code] var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); [/code]
-6reverse 方法来翻转数组，无参数。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>ES6中的新特性</title>
-      <link>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</link>
-      <pubDate>Sun, 01 Oct 2017 17:17:02 +0000</pubDate>
-      
-      <guid>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
-      <description>&lt;p&gt;ES6中的常用新特性。转载自&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6_new_features.html&#34;&gt;&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6&#34;&gt;http://www.cnblogs.com/Wayou/p/es6&lt;/a&gt;_new_features.html&lt;/a&gt; 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;http://es6.ruanyifeng.com/#README&lt;/a&gt;&lt;/a&gt; &lt;strong&gt;1.箭头操作符&lt;/strong&gt; 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=&amp;gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=&amp;gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; //传统写法 array.forEach(function(v, i, a) { console.log(v); }); //ES6 array.forEach(v = &amp;gt; console.log(v)); [/code] &lt;strong&gt;2.类的支持&lt;/strong&gt; ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] //类的定义 class Animal { //ES6中新型构造器 constructor(name) { this.name = name; } //实例方法 sayName() { console.log(&amp;lsquo;My name is &amp;lsquo;+this.name); } } //类的继承 class Programmer extends Animal { constructor(name) { //直接调用父类构造器进行初始化 super(name); } program() { console.log(&amp;ldquo;I&#39;m coding&amp;hellip;&amp;quot;); } } //测试我们的类 var animal=new Animal(&amp;lsquo;dummy&amp;rsquo;), wayou=new Programmer(&amp;lsquo;wayou&amp;rsquo;); animal.sayName();//输出 ‘My name is dummy’ wayou.sayName();//输出 ‘My name is wayou’ wayou.program();//输出 ‘I&#39;m coding&amp;hellip;’ [/code]&lt;/p&gt;</description>
+      <description>对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。
+ 插入与删除   push：末尾插入； pop:末尾删除； shift:开头删除； unshift:开头添加；  map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：  var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val+3; }); reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如：  var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre+curr; },0); filter（过滤器）  var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val&amp;lt;6; }); sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列  var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); reverse 方法来翻转数组，无参数。 比如：  var array = [1,2,3,4,5,6,7]; var newArray = []; newArray = array.</description>
     </item>
     
     <item>
@@ -539,8 +527,7 @@ unshift:开头添加；
       
       <guid>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</guid>
       <description>我们可以看到这个游戏由背景蓝天，土地，小鸟，管道四部分组成，在开始游戏我们必须保证全部加载完所有图片资源，这里书写一个函数传进所有图片资源，再通过回调函数的方式返回加载好的图片资源
- // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } } （1）绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下
-// 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.height=this.img.height; Sky.len++; this.</description>
+ // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } }  绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下  // 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.</description>
     </item>
     
     <item>
@@ -551,25 +538,30 @@ unshift:开头添加；
       <guid>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;canvas 是 HTML5 提供的一个用于展示绘图效果的标签.
-canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：
-（1）使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.
-（2）默认 canvas 的宽高为 300 和 150.
-（3）不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.
-（4）如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.
-（5）canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.
-（6）canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
-基本使用方法：
-（1）获得 canvas 对象.
-（2）调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.
-(3）该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.
-（4）使用 CanvasRenderingContext2D 对象提供的方法进行绘图.
-（5）基本绘图命令
-a)设置开始绘图的位置: context.moveTo( x, y ).
-b)设置直线到的位置: context.lineTo( x, y ).
-c)描边绘制: context.stroke().
-d)填充绘制: context.fill().
-e)闭合路径: context.closePath().&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.&lt;/li&gt;
+&lt;li&gt;默认 canvas 的宽高为 300 和 150.&lt;/li&gt;
+&lt;li&gt;不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.&lt;/li&gt;
+&lt;li&gt;如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.&lt;/li&gt;
+&lt;li&gt;canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.&lt;/li&gt;
+&lt;li&gt;canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
+基本使用方法：&lt;/li&gt;
+&lt;li&gt;获得 canvas 对象.&lt;/li&gt;
+&lt;li&gt;调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.&lt;/li&gt;
+&lt;li&gt;该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.&lt;/li&gt;
+&lt;li&gt;使用 CanvasRenderingContext2D 对象提供的方法进行绘图.&lt;/li&gt;
+&lt;li&gt;基本绘图命令
+&lt;ul&gt;
+&lt;li&gt;设置开始绘图的位置: context.moveTo( x, y ).&lt;/li&gt;
+&lt;li&gt;设置直线到的位置: context.lineTo( x, y ).&lt;/li&gt;
+&lt;li&gt;描边绘制: context.stroke().&lt;/li&gt;
+&lt;li&gt;填充绘制: context.fill().&lt;/li&gt;
+&lt;li&gt;闭合路径: context.closePath().&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     
     <item>
@@ -578,8 +570,9 @@ e)闭合路径: context.closePath().&lt;/p&gt;
       <pubDate>Sun, 17 Sep 2017 12:04:35 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</guid>
-      <description> 动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
-  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述 a、animation-name设置动画序列名称； b、animation-duration动画持续时间； c、animation-delay动画延时时间； d、animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； e、animation-play-state动画播放状态，running、paused; f、animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； g、animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； h、animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； i、steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后； 比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。 总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：  </description>
+      <description>动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
+  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述   animation-name设置动画序列名称； animation-duration动画持续时间； animation-delay动画延时时间； animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； animation-play-state动画播放状态，running、paused; animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后；  比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。
+总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：</description>
     </item>
     
     <item>
@@ -588,21 +581,13 @@ e)闭合路径: context.closePath().&lt;/p&gt;
       <pubDate>Thu, 14 Sep 2017 16:47:50 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</guid>
-      <description>&lt;p&gt;一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
-&lt;strong&gt;一、如何成为弹性盒子（flexbox）?&lt;/strong&gt;
-我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）：  在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>理解Websocket原理</title>
-      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Mon, 04 Sep 2017 08:31:52 +0000</pubDate>
-      
-      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</guid>
-      <description>一、websocket与http WebSocket是HTML5出的东西（协议），也就是说HTTP协议没有变化，或者说没关系，但HTTP是不支持持久连接的（长连接，循环连接的不算） 首先HTTP有 1.1 和 1.0 之说，也就是所谓的 keep-alive ，把多个HTTP请求合并为一个，但是 Websocket 其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充可以通过这样一张图理解 有交集，但是并不是全部。 另外html5是指的一系列新的API，或者说新规范，新技术。Http协议本身只有1.0和1.1，而且跟Html本身没有直接关系。。通俗来说，你可以用HTTP协议传输非Html数据，就是这样=。= 再简单来说，层级不一样。
-二、Websocket是什么样的协议，具体有什么优点 首先，Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。简单的举个例子吧，用目前应用比较广泛的PHP生命周期来解释。 HTTP的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0 中，这次HTTP请求就结束了。 在HTTP1.1中进行了改进，使得有一个keep-alive，也就是说，在一个HTTP连接中，可以发送多个Request，接收多个Response。但是请记住 Request = Response ， 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。 教练，你BB了这么多，跟Websocket有什么关系呢？_(:з」∠)_好吧，我正准备说Websocket呢。
-首先Websocket是基于HTTP协议的，或者说借用了同的服务所需要的协议。简单理解：今晚我要服务A，别搞错啦~ 最后， Sec-WebSocket-Version 是告诉服务器所使用的 Websocket Draft（协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水： 服务员，我要的是13岁的噢→_→ 然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
- HTTP/1.1 101 Switching Protocols Upgrade: websocket Connection: Upgrade Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk= Sec-WebSocket-Protocol: chat 这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~ Upgrade: websocket Connection: Upgrade 依然是固定的，告诉客户端即将升级的是 Websocket 协议，而不是mozillasocket，lurnarsocket或者shitsocket。 然后， Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key 。 服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。 后面的， Sec-WebSocket-Protocol 则是表示最终使用的协议。 至此，HTTP已经完成它所有工作了，接下来就是完全按照Websocket协议进行了。具体的协议就不在这阐HTTP的协议来完成一部分握手。 首先我们来看个典型的 Websocket 握手（借用Wikipedia的。。）</description>
+      <description>一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
+ 一、如何成为弹性盒子（flexbox）?
+我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）： 在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。
+二关于flex在父容器中应用的属性
+ flex-direction：row（默认）||row-reverse||column||column-reverse;规定弹性子元素在主轴或侧轴的起始方向。 看如下代码，  &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;one&amp;#34;&amp;gt;one&amp;lt;div&amp;gt; &amp;lt;div class=&amp;#34;two&amp;#34;&amp;gt;two&amp;lt;div&amp;gt; &amp;lt;div class=&amp;#34;three&amp;#34;&amp;gt;three&amp;lt;div&amp;gt; &amp;lt;div&amp;gt; 效果图如下： 然后我们给父容器添加四个属性， 说明： 第一个就是设display：flex后它的默认效果相当于flex-direction：row，
+第二个是row-reverse，第三个是column，第四个是column-reverse
+flex-wrap：nowrap||wrap||wrap-reverse; 这是个换行属性，规定如果一条轴线上放不下子元素，是否换行，换到上面还是下面。 现在我一行放四个，四个div的宽度已经超过了父容器的宽度，看看这个属性怎么用的如图： 说明：第一个是nowrap不换行，第二个是wrap换行，第三个也是换行，区别是原来是第一行到第二行，现在是第二行到第一行，记住reverse就是反向的意思。 flex-flow: || ; 这个属性可以将前面两个合并起来写，默认就是row nowrap justify-content: flex-start || flex-end || center || space-between || space-around; 规定了子元素在主轴的对齐方式 话不多说看图吧：说明：从第一张到到最后一张属性：flex-start（默认）、flex-end、center、space-between、space-around，第四个和第五个区别就是，第四个把多余的空间部分平均分配但不包括收尾项，第五个包括收尾项。 align-items:flex-start||flex-end||center||baseline||stretch; 有主轴的对齐方式也有侧轴的对齐方式啦。 直接上图演示： 说明：前面三张图不用解释了吧，第四张呢css-tricks上是这样解释的baseline: items are aligned such as their baselines align; 翻译过来就是项目对齐正如他们的基线对齐，我想应该就是以他们里的文字为基准对齐，第五个在不设置高度的情况下(也是默认情况下)生效，strench即拉伸,子元素高度撑满父容器。 align-content:flex-start||flex-end||center||space-between||space-around||stretch; 如果是多轴线，对所有元素规定对齐方式，是单轴线的话不起作用。 看图：说明：属性与图都是是一一对应的，这里的属性前面都讲过，看看图就明白了。  三、关于flex在字元素中应用的属性</description>
     </item>
     
     <item>
@@ -631,16 +616,6 @@ $_SESSON[&amp;#39;name&amp;#39;]=&amp;#39;lili&amp;#39; //赋值 $Name=$_SESSION
     </item>
     
     <item>
-      <title>php生成制作验证码</title>
-      <link>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</link>
-      <pubDate>Tue, 29 Aug 2017 12:48:51 +0000</pubDate>
-      
-      <guid>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</guid>
-      <description>&lt;p&gt;PHP生成制作验证码 1.0　　首先先看代码&lt;/p&gt;
-&lt;p&gt;好，现在结合以上代码，来分析分析以上用到的几个函数： ①　　imagecreatetruecolor(); imagecreatetruecolor — 新建一个真彩色图像（感觉哇，那么长，其实仔细一看挺好记的 image/create/true/color，什么是真彩色图像？往下看） 1 resource imagecreatetruecolor ( int $width , int $height ) imagecreatetruecolor() 和 imagecreate()两个函数都能创建画布 1 resource imagecreate ( int $x_size , int $y_size ) imagecreatetruecolor()建立的是一幅大小为 x和 y的黑色图像(默认为黑色[即便叫法就是真彩色图像])，如想改变背景颜色则需要用填充颜色函数 imagefill($img,0,0,$color); imagecreate 新建一个空白图像资源，用imagecolorAllocate()添加背景色 上面两个函数只不过是一个功能的两种方法 ②　　imagecolorallocate(); imagecolorallocate — 为一幅图像分配颜色 1 int imagecolorallocate ( resource $image , int $red , int $green , int $blue ) 颜色分别用 红 绿 蓝三色组合，这些参数是 0 到 255 的整数或者十六进制的 0x00 到 0xFF。 ③　　mt_rand(); mt_rand — 生成更好的随机数 1 int mt_rand ( int $min , int $max ) $min 可选的、返回的最小值（默认：0）　　$max 可选的、返回的最大值（默认：mt_getrandmax()） 这里就是用来让他随机生成背景颜色，0-255随便取值。所以页面没刷新一次画布背景颜色就不一样。 效果图：2.0　　开始往里面做干扰线，干扰点。防止验证图像被秒识别&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</title>
       <link>https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</link>
       <pubDate>Fri, 25 Aug 2017 14:42:59 +0000</pubDate>
@@ -666,11 +641,18 @@ $_SESSON[&amp;#39;name&amp;#39;]=&amp;#39;lili&amp;#39; //赋值 $Name=$_SESSION
       <pubDate>Thu, 24 Aug 2017 12:13:55 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/</guid>
-      <description>ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： （1）创建XMLHTTPRequest对象 所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。
- 兼容性写法如下：
-var xmlhttp; if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari xmlhttp=new XMLHttpRequest(); } else { // code for IE6, IE5 xmlhttp=new ActiveXObject(&amp;#34;Microsoft.XMLHTTP&amp;#34;); } （2）向服务器发送请求 这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数： method：请求方式，有get和post两种； url:要请求页面的地址，相对地址或绝对地址 flag：true是异步，false是同步 注意点： （1）get和post的比较：get传输数据小且不安全，post传输数据大且安全； （2）使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：
-xmlhttp.open(&amp;#39;get&amp;#39;,&amp;#39;123.php&amp;#39;,true); xmlhttp.send(); 示例post请求：
-xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;#39;); //添加http请求头信息 xmlhttp.setRequestHeader(&amp;#34;Content-type&amp;#34;,&amp;#34;application/x-www-form-urlencoded&amp;#34;); xmlhttp.send(&amp;#34;name=lili&amp;amp;amp;age=10&amp;#34;); （3）服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。 （4）onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。 下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数； readyState属性，它有四种状态变化： 0: 请求未初始化 1: 服务器连接已建立 2: 请求已接收 3: 请求处理中 4: 请求已完成，且响应已就绪 status属性 200: &amp;ldquo;OK&amp;rdquo; 404: 未找到页面 所以当 readyState 等于 4 且状态为 200 时，表示响应已就绪： 示例：</description>
+      <description>ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤：
+ （1）创建XMLHTTPRequest对象
+所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。
+兼容性写法如下：
+var xmlhttp; if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari xmlhttp=new XMLHttpRequest(); } else { // code for IE6, IE5 xmlhttp=new ActiveXObject(&amp;#34;Microsoft.XMLHTTP&amp;#34;); } （2）向服务器发送请求
+这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数：
+method：请求方式，有get和post两种；
+url:要请求页面的地址，相对地址或绝对地址
+flag：true是异步，false是同步
+注意点：
+ get和post的比较：get传输数据小且不安全，post传输数据大且安全； 使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：  xmlhttp.open(&amp;#39;get&amp;#39;,&amp;#39;123.php&amp;#39;,true); xmlhttp.send(); 示例post请求：
+xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;#39;); //添加http请求头信息 xmlhttp.setRequestHeader(&amp;#34;Content-type&amp;#34;,&amp;#34;application/x-www-form-urlencoded&amp;#34;); xmlhttp.send(&amp;#34;name=lili&amp;amp;amp;age=10&amp;#34;); 服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。 onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。  下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数； readyState属性，它有四种状态变化：</description>
     </item>
     
     <item>
@@ -738,9 +720,12 @@ xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;
       <pubDate>Wed, 09 Aug 2017 17:55:48 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/</guid>
-      <description>&lt;p&gt;##递归
-（1）递归概念：在函数内调用函数自己，就是递归。 注意：递归要有结束条件，没有递归结束条件的递归，就是死递归。
-（2）使用递归的方法：化归思想。化归思想是将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 例子：求1-100的和 利用划归思想：var sum=foo(100); 1.求foo（100）即求foo（99）+100； 2.求foo（99），即求foo（98）+99； 3.求foo（98），即求foo（97）+98； &amp;hellip; 最后求foo（1），就是1;//这就是约束条件 最后利用递归，函数就是：&lt;/p&gt;
+      <description>&lt;h2 id=&#34;heading&#34;&gt;递归&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;递归概念：在函数内调用函数自己，就是递归。 注意：递归要有结束条件，没有递归结束条件的递归，就是死递归。&lt;/li&gt;
+&lt;li&gt;使用递归的方法：化归思想。化归思想是将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+例子：求1-100的和 利用划归思想：var sum=foo(100); 1.求foo（100）即求foo（99）+100； 2.求foo（99），即求foo（98）+99； 3.求foo（98），即求foo（97）+98； &amp;hellip; 最后求foo（1），就是1;//这就是约束条件 最后利用递归，函数就是：&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; ) {
     &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; ) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; );
@@ -754,7 +739,12 @@ xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;
       <pubDate>Mon, 07 Aug 2017 21:35:02 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;一、作用域&lt;/strong&gt; 1.作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。 在 js 中词法作用域规则: （1）函数允许访问函数外的数据. （2）整个代码结构中只有函数可以限定作用域. （3）作用域规则首先使用提升规则分析 （4）如果当前作用规则中有名字了, 就不考虑外面的名字 2.作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:&lt;/p&gt;</description>
+      <description>一、作用域
+作用域有：块级作用域和词法作用域；  块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。  在 js 中词法作用域规则:
+ 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字  作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。
+凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:
+function f1() { function f2() { } } var num = 456; function f3() { function f4() { } } 它的作用域链图就是： 绘制作用域链的步骤:
+ 看整个全局是一条链, 即顶级链, 记为 0 级链 看全局作用域中, 有什么成员声明, 就以方格的形式绘制到 0 级练上 再找函数, 只有函数可以限制作用域, 因此从函数中引入新链, 标记为 1 级链 然后在每一个 1 级链中再次往复刚才的行为 变量的访问规则 首先看变量在第几条链上, 在该链上看是否有变量的定义与赋值, 如果有直接使用 如果没有到上一级链上找( n - 1 级链 ), 如果有直接用, 停止继续查找.</description>
     </item>
     
     <item>
@@ -763,28 +753,11 @@ xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;
       <pubDate>Mon, 07 Aug 2017 15:37:44 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/</guid>
-      <description>&lt;p&gt;js中共有6种继承
-&lt;strong&gt;一、原型链&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;(){
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
-}
-&lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSuperValue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;property&lt;/span&gt;
-}
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;(){
-   &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;subPrototy&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
-}
-&lt;span style=&#34;color:#75715e&#34;&gt;//继承了SuperType
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;();
-&lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSubValue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;subProperty&lt;/span&gt;;
-}
-&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;();
-&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSuperValue&lt;/span&gt;);&lt;span style=&#34;color:#75715e&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSubValue&lt;/span&gt;);&lt;span style=&#34;color:#75715e&#34;&gt;//false
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码我们可以看到定义两个构造函数，里面有属性，原型里面有方法，我们让SubType的原型等于SuperType的实例，通过替换了SubType的默认原型对象实现继承，我们可以看到SubType的实例成功调用SuperType里的方法，之后我们又为其手动添加了一个新的方法也是可以调用的。
-注意：继承原型后使用字面量添加方法，会使继承无效，因为已经替换了原型，我们在上一篇中介绍原型时已经讲过。
-缺点：（1）继承后的原型对应的构造函数它所有的实例都会共享原型中的方法。 （2）继承的子类和父类，子类是不能向父类传参数的。&lt;/p&gt;</description>
+      <description>js中共有6种继承 一、原型链
+function SuperType(){ this.prototype=true; } SuperType.prototype.getSuperValue=function(){ return this.property } function SubType(){ this.subPrototy=false; } //继承了SuperType SubType.prototype=new SuperType(); SubType.prototype.getSubValue=function(){ return this.subProperty; } var instance = new SubType(); console,log(instance.getSuperValue);//true console.log(instance.getSubValue);//false 以上代码我们可以看到定义两个构造函数，里面有属性，原型里面有方法，我们让SubType的原型等于SuperType的实例，通过替换了SubType的默认原型对象实现继承，我们可以看到SubType的实例成功调用SuperType里的方法，之后我们又为其手动添加了一个新的方法也是可以调用的。
+注意：继承原型后使用字面量添加方法，会使继承无效，因为已经替换了原型，我们在上一篇中介绍原型时已经讲过。 缺点：（1）继承后的原型对应的构造函数它所有的实例都会共享原型中的方法。 （2）继承的子类和父类，子类是不能向父类传参数的。
+二、借用构造函数
+function SuperType (){ this.colors=[&amp;#39;red&amp;#39;,&amp;#39;blue&amp;#39;]; } function SubType(){ //用call或者apply将调用对象换成SuperType实现对SuperType函数的继承 //this指向当前对象  SuperType.call(this); } var o=new SubType(); o.colors.push(&amp;#39;black&amp;#39;); console.log(o);//red,blue,black var o1=new SubType(); console.log(o1)//red,blue  //利用call()或apply()在子类函数中调用父类函数实现继承，我们可以看到SubType的实例并不共享属性；而且子类也是可以向父类传参的  function SuperType (name){ this.name=name; } function SubType(){ SuperType.call(this，&amp;#39;lili&amp;#39;); this.age=12; } var o=new SubType(); console.</description>
     </item>
     
     <item>
@@ -793,13 +766,15 @@ xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;
       <pubDate>Sun, 06 Aug 2017 18:36:39 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;一、什么是面向对象？与面向过程又有什么关系？&lt;/strong&gt;
-（1）面向对象是一种思维方式，解决的重点放在对象上；
-（2）面向过程也是一种思维方式，解决的重点放在详细的步骤上； 举个例子：如何去超市买东西？
-（a）从面向对象的角度出发，我们只需要一辆车，还有自己就好了；
-（b）从面向过程的角度出发，我们要先拿钱，打开门，开车，进超市； 一句话概括它们之间的关系就是：面向对象是面向过程的封装。
-&lt;strong&gt;二、js中的对象&lt;/strong&gt;
-js中键值对的集合就是对象。&lt;/p&gt;</description>
+      <description>一、什么是面向对象？与面向过程又有什么关系？
+ 面向对象是一种思维方式，解决的重点放在对象上； 面向过程也是一种思维方式，解决的重点放在详细的步骤上； 举个例子：如何去超市买东西？  从面向对象的角度出发，我们只需要一辆车，还有自己就好了； 从面向过程的角度出发，我们要先拿钱，打开门，开车，进超市； 一句话概括它们之间的关系就是：面向对象是面向过程的封装。    二、js中的对象
+js中键值对的集合就是对象。
+三、创建对象的几种方法
+ 使用字面量创建对象  var 0={name:&amp;#39;lili&amp;#39;,age:&amp;#39;12&amp;#39;}; 这种方法会造成代码冗余，资源浪费；
+使用内置构造函数创建对象  var o =new Object(); o.name=&amp;#39;lili&amp;#39;; o.age=&amp;#39;12&amp;#39;; 创建的代码是空对象，需要为其手动添加对象属性；
+工厂模式  function createObj(age,name){ var o=new Object(); o.age=age; o.name=name; o.sayHi=function(){ alert(&amp;#39;你好&amp;#39;)； }； return o; } var o1=new createObj(){&amp;#39;12&amp;#39;,&amp;#39;lili&amp;#39;}; 每次调用时都会为这个函数在内存中开辟空间，浪费资源。
+自定义构造函数，注意函数名要大写  function MyObj(name,age){ this.name=name; this.age=age; this.sayHi=function(){ console.log(&amp;#39;hi&amp;#39;); }; } var myobj=new MyObj(&amp;#39;lili&amp;#39;,&amp;#39;12&amp;#39;); this指的是new出来的对象（即调用者）,和工厂模式差不多，每次调用的时候都会为里面的函数开辟新的内存地址，但是函数的代码功能却是相同的，造成内存资源浪费。
+自定义构造函数模式原型模式组合 所以我们需要引入原型概念，将构造函数里的属性和方法分开，将方法放到原型里实现共享。 原型概念：在构造函数创建出来的时候，系统会默认的帮构造函数创建并关联一个神秘的对象，这个对象就是原型，原型默认的是一个空的对象。 原型中的属性和方法，都可以被使用该构造函数创建出来的对象使用。给原型添加属性和方法可以使用构造函数的prototype属性，所以第四种方法可以这样修改：  function MyObj(name,age){ this.</description>
     </item>
     
     <item>
@@ -808,13 +783,12 @@ js中键值对的集合就是对象。&lt;/p&gt;</description>
       <pubDate>Sun, 06 Aug 2017 16:50:11 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;一、js的组成&lt;/strong&gt;
-（1）ECMAScript：js的核心，规范了js的语法；
-（2）DOM：文档对象模型，提供了操作DOM元素的API；
-（3）BOM：浏览器对象模型，对浏览器对象API的操作；
-&lt;strong&gt;二、js的数据类型&lt;/strong&gt;
-（1）简单数据类型（也称基本数据类型）：Undefined,Null,Boolean,String,Number;
-（2）复杂数据类型：Object，本质由一组无序的名值对组成；&lt;/p&gt;</description>
+      <description>一、js的组成
+ ECMAScript：js的核心，规范了js的语法； DOM：文档对象模型，提供了操作DOM元素的API； BOM：浏览器对象模型，对浏览器对象API的操作；  二、js的数据类型
+ 简单数据类型（也称基本数据类型）：Undefined,Null,Boolean,String,Number; 复杂数据类型：Object，本质由一组无序的名值对组成；  三、js中的部分关键字
+ in：判断属性是否存在于对象中，for in遍历对象的键； typeOf:判断对象的类型，返回是String类型； delete：  删除对象的属性; 删除未使用var声明的变量; 返回值为boolean 表示是否删除成功; 注意：删除的属性如果不存在，返回true; 删除的如果是原型中的属性，返回true 但是删除不成功;   ==和=== (a)==：判断值是否相等； (b)===：判断数据类型和值是否相等； ||和&amp;amp;&amp;amp;；  四、js中的值类型和引用类型
+ 值类型（又叫基本类型）：存储的是数据本身的值，有数值、布尔值、null、 undefined; 值类型赋值：将数据赋值一份给新的变量，两份变量单独存在，互不影响； 引用类型：存储的是数据的地址，而其中的数据会在内存中单独存储； 引用类型赋值：会将存储数据的地址赋值一份，两个地址指向同一个变量，因此， 通过其中一个地址修改变量时，另一个地址指向的变量也会改变；  五、js中的异常处理
+ 基本格式：  try{ //可能出现异常的代码 } catch(e){ //e就是出现异常的异常信息 //出现异常后的处理代码 } finally{ //不管有没有出现异常，都会执行的代码 //一般用来释放资源 } 如何手动抛出异常： throw 任何东西， catch中会抓到该东西</description>
     </item>
     
     <item>
@@ -834,11 +808,13 @@ js中键值对的集合就是对象。&lt;/p&gt;</description>
       <pubDate>Tue, 01 Aug 2017 20:30:14 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</guid>
-      <description>&lt;p&gt;老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 1、offset家族( 5个属性) （1）offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width+padding+border; offsetHeight=height+padding+border；
-（2）offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 （3）offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width/height/top/left的比较；
-a).offset家族只可以只读，而style系列可以读写；
-b).offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;
-c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。&lt;/p&gt;</description>
+      <description>老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。
+offset家族( 5个属性)  offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width+padding+border; offsetHeight=height+padding+border； offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width/height/top/left的比较；    offset家族只可以只读，而style系列可以读写；
+  offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;
+  offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。
+  scroll家族（4个属性）   scrollWidth和scrollHeight：检测内容的宽高； 注意：如果内容超出盒子，显示内容的高度，如果不超出盒子，IE567可以显示实际内 容宽高，IE8+火狐+谷歌显示盒子大小。
+  scrollTop和scrollLeft（有兼容性问题）：网页被浏览器遮住的头部和左边的部 分；
+  处理兼容性问题： - 未声明 DTD（谷歌只认识他）（火狐IE9+认识他） document.body.scrollTop/scrollLeft - 已经声明DTD（IE678只认识他）(火狐IE9+认识他) document.documentElement.scrollTop/scrollLeft - 火狐/谷歌/ie9+以上支持的(不管DTD) window.pageYOffest/pageXOffest 兼容性写法： var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop||0; 封装scroll方法 function Scroll() { return { &amp;ldquo;left&amp;rdquo;: window.</description>
     </item>
     
     <item>
@@ -858,11 +834,8 @@ c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值
       <pubDate>Wed, 26 Jul 2017 19:26:32 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/pc%E7%AB%AFjd%E9%A6%96%E9%A1%B5/</guid>
-      <description>&lt;p&gt;在做的过程中，遇到自己忘了的，或者要注意的，都记下来了；
-1.精灵图的定位的中心坐标是左上角；
-2.去掉点击input后的边框：input：focus{outline：none}；
-3.输入框和搜索框有间隙不对齐：可以给vertical-algin:middle,margin给负值；
-4.小三角可以用css3中的transparent来做，比如下拉： .arrow{ width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-top:20px solid #0066cc; } 也可以在父盒子里放一个菱形，让菱形偏移，父盒子截断； 5.顶栏中每个标签都有个小竖线，要用专门的li来放；&lt;/p&gt;</description>
+      <description>在做的过程中，遇到自己忘了的，或者要注意的，都记下来了；
+ 精灵图的定位的中心坐标是左上角； 去掉点击input后的边框：input：focus{outline：none}； 输入框和搜索框有间隙不对齐：可以给vertical-algin:middle,margin给负值； 小三角可以用css3中的transparent来做，比如下拉： .arrow{ width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-top:20px solid #0066cc; } 也可以在父盒子里放一个菱形，让菱形偏移，父盒子截断； 顶栏中每个标签都有个小竖线，要用专门的li来放； z-index注意只对定位元素有效,正负数设置层叠关系； a标签一内嵌全乱了; 移动transfom,过渡效果transition; scrollTop兼容性写法： var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop; 计时器效果 小时 var h=Math.floor(totalTime/3600); 分钟 var m=Math.floor(totalTime%3600/60); 秒 var s=totalTime%60; 在放li中时因为是两位，注意一个math.floor(h/10)，一个h%10； 网站的小图标在网站的后面加favicon.ico即可获得， link rel=&amp;quot;shortcut icon&amp;rdquo; href=&amp;rdquo; favicon.ico&amp;quot;的形式添加 梳理一下轮播图的思路：   如果有三张图，因为用到过渡效果，复制最后一个放在第一个前，第一个放在最后一个图后； 自动换图版：用transform移动一个图片宽度长度，用transition添加过渡效果，到第四张时，在过渡结束事件中将索引值改为1，并且为索引值添加对应类； 点击下方索引跳动版：添加onmouseover事件，为下标绑定一个自定义索引值用this.index形式，然后将这个新索引值给原来的图片的索引值； 左右点击版：右击index++，加上transform移动，transition过渡，左击一样；（在过渡结束事件中添加index&amp;lt;1的情况） 鼠标在图片上或按钮上都要清除计时器，离开在启动计时器。  </description>
     </item>
     
     <item>
@@ -890,9 +863,12 @@ c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值
       <pubDate>Thu, 20 Jul 2017 18:31:20 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</guid>
-      <description>LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、运算、函数等，更方便CSS的编写和维护。 LESSCSS可以在多种语言、环境中使用，包括浏览器端、桌面客户端、服务端。
-  在sublime中安装less插件（插件只是影响高亮效果）  （1）ctrl+shift+p&amp;gt;install Package&amp;gt;less&amp;gt;回车即可自动安装，开始我会出现下面这种提示：there is no package available,这时候只要去https://packagecontrol.io/installation#st2,下载 Package Control.sublime-package并且放到Sublime text安装目录下的Packages里面，重启即可。 （2）第二种安装方法是去网上下载好插件，然后放到sublime的插件文件夹里再重启即可；
-去官网下好koala后安装，设置里选择简体中文，然后测试koala工具； 在同一个文件夹下建立两个文件：index.css和index.less文件，然后拖到koala里 然后在sublime中打开文件，在查看中打开两个窗口，左边是less，右边是css，less写好后Ctrl+s就会自动编译成css文件，如图说明编译成功； less的语法 http://www.1024i.com/demo/less/index.html   最近又看到node js 了，一般来说是这样编译的，先安装node.js,之后再全局安装less，那么lessc就是编译less文件的意思 再sublime中我们要装LESS、lessc、Less2Css三个插件，这样sublime会调用lessc去帮我们编译，在webstorm下一般他会智能提示你的。正常来讲，这种编译方式也是很少用得到的，如通less文件很多，我们不可能一边写，一边编译，所以我们可以引入一个less.js的文件，让js帮我们去解析即可（注意在引入less时，link的rel标签要改成stylesheet/less）。</description>
+      <description> LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、运算、函数等，更方便CSS的编写和维护。 LESSCSS可以在多种语言、环境中使用，包括浏览器端、桌面客户端、服务端。
+  在sublime中安装less插件（插件只是影响高亮效果）    ctrl+shift+p&amp;gt;install Package&amp;gt;less&amp;gt;回车即可自动安装，开始我会出现下面这种提示：there is no package available,这时候只要去https://packagecontrol.io/installation#st2,下载 Package Control.sublime-package并且放到Sublime text安装目录下的Packages里面，重启即可。 （2）第二种安装方法是去网上下载好插件，然后放到sublime的插件文件夹里再重启即可；
+  去官网下好koala后安装，设置里选择简体中文，然后测试koala工具； 在同一个文件夹下建立两个文件：index.css和index.less文件，然后拖到koala里 然后在sublime中打开文件，在查看中打开两个窗口，左边是less，右边是css，less写好后Ctrl+s就会自动编译成css文件，如图说明编译成功；
+  less的语法 http://www.1024i.com/demo/less/index.html
+  最近又看到node js 了，一般来说是这样编译的，先安装node.js,之后再全局安装less，那么lessc就是编译less文件的意思 再sublime中我们要装LESS、lessc、Less2Css三个插件，这样sublime会调用lessc去帮我们编译，在webstorm下一般他会智能提示你的。正常来讲，这种编译方式也是很少用得到的，如通less文件很多，我们不可能一边写，一边编译，所以我们可以引入一个less.js的文件，让js帮我们去解析即可（注意在引入less时，link的rel标签要改成stylesheet/less）。
+  </description>
     </item>
     
     <item>
@@ -930,13 +906,9 @@ c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值
       <pubDate>Mon, 17 Jul 2017 14:36:06 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</guid>
-      <description>&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：
-伪元素：
-在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;</description>
+      <description>  伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类： 伪元素： 在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。
+  清除浮动有clearfix和clear，还有重构后的clearfix，
+   clear不用了就是在容器内在所有标签后再加一个空的标签用clear：both；清除浮动，这样在浮动很多的页面中就会空很多的空标签； （ clearfix是在父容器的下方放一个空的div，用clear:both;来清除浮动 .clearfix::after { content: &#39;.&#39;;//内容为.或空 display: block;//设为块级标签 clear: both;//清除浮动 visibility: hidden;//不可见 height: 0;//高度为0 font-size: 0;//字体大小为0 } （ 上面两种都是利用clear上方不能有浮动元素的规则来清除浮动的；重构后的clearfix是使父容器成为BFC（Block Formatting Context）， BFC特性之一就是可以包含浮动元素， 能形成BFC的有以下四种情形：  float值不为none，可以是left，right或both overflow为hidden或auto或scroll display为inline-block或table-cell或table-caption position为absolute或fixed 所以下面两种方法都可以： （zoom：1是为了兼容ie6） .clearfix { zoom: 1; display: table; width: 100%; } `.floatfix{ *zoom:1; } .floatfix:after{ content:&amp;quot;&amp;quot;; display:table; clear:both; }`    </description>
     </item>
     
     <item>

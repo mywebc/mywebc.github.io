@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "mongo数据库增删改查方法总结",
     "headline" : "mongo数据库增删改查方法总结",
-    "description" : "\x3ch4 id=\x221\x22\x3e1.介绍\x3c\/h4\x3e\n\x3cp\x3emongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。\nmongo下载地址：\x3ca href=\x22https:\/\/www.mongodb.com\/download-center?jmp=nav#community\x22\x3e\x3ca href=\x22https:\/\/www.mongodb.com\/download-center?jmp=nav#community\x22\x3ehttps:\/\/www.mongodb.com\/download-center?jmp=nav#community\x3c\/a\x3e\x3c\/a\x3e\nmongoAPI文档：\x3ca href=\x22https:\/\/docs.mongodb.org\/manual\/\x22\x3e\x3ca href=\x22https:\/\/docs.mongodb.org\/manual\/\x22\x3ehttps:\/\/docs.mongodb.org\/manual\/\x3c\/a\x3e\x3c\/a\x3e\n下载安装好后，添加mongo环境变量，在命令行里输入mongod \x26ndash;dbpath f:\\mongo,开启数据库，路径为f:\\mongo，\n另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。\n其它基础命令：\nshow dbs:查看所有数据库\ndb:查看当前数据库\nuse student:切换到student数据库，如果没有则创建\ndb.student.drop();删除student集合\ndb.dropDatabase();删除当前所在数据库\ndb.getCollectionNames();获取当前数据库下的所有文档 cls:清屏\x3c\/p\x3e",
+    "description" : "介绍 mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：\n所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。\nmongo下载地址：https:\/\/www.mongodb.com\/download-center?jmp=nav#community\nmongoAPI文档：https:\/\/docs.mongodb.org\/manual\/\n下载安装好后，添加mongo环境变量，在命令行里输入mongod \x26ndash;dbpath f:\\mongo,开启数据库，路径为f:\\mongo，\n另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。 其它基础命令：\n show dbs:查看所有数据库 db:查看当前数据库 use student:切换到student数据库，如果没有则创建 db.student.drop();删除student集合 db.dropDatabase();删除当前所在数据库 db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏  插入  db.student.insert({\x26ldquo;name\x26rdquo;:\x26ldquo;小明\x26rdquo;}); 可以在外面写好json文件，使用命令导入： mongoimport \x26ndash;db test \x26ndash;collection restaurants \x26ndash;drop \x26ndash;file primer-dataset.json   -db test 想往哪个数据库里面导入 \x26ndash;collection restaurants 想往哪个集合中导入 \x26ndash;drop 是否把集合清空 \x26ndash;file primer-dataset.json 哪个文件  查找  db.restaurants.find()   精确匹配： db.student.find({\x26ldquo;score.shuxue\x26rdquo;:70}); 多个条件： db.student.find({\x26ldquo;score.shuxue\x26rdquo;:70 , \x26ldquo;age\x26rdquo;:12}) 大于条件： db.student.find({\x26ldquo;score.yuwen\x26rdquo;:{$gt:50}}); 或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{\x26ldquo;age\x26rdquo;:9},{\x26ldquo;age\x26rdquo;:11}]}); 查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { \x26ldquo;borough\x26rdquo;: 1, \x26ldquo;address.zipcode\x26rdquo;: 1 } )  修改  先要找到再修改，使用$set db.",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -150,41 +150,61 @@
           
           
 
-          <h4 id="1">1.介绍</h4>
-<p>mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
-mongo下载地址：<a href="https://www.mongodb.com/download-center?jmp=nav#community"><a href="https://www.mongodb.com/download-center?jmp=nav#community">https://www.mongodb.com/download-center?jmp=nav#community</a></a>
-mongoAPI文档：<a href="https://docs.mongodb.org/manual/"><a href="https://docs.mongodb.org/manual/">https://docs.mongodb.org/manual/</a></a>
-下载安装好后，添加mongo环境变量，在命令行里输入mongod &ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，
-另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
-其它基础命令：
-show dbs:查看所有数据库
-db:查看当前数据库
-use student:切换到student数据库，如果没有则创建
-db.student.drop();删除student集合
-db.dropDatabase();删除当前所在数据库
-db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏</p>
-<h4 id="2">2.插入</h4>
-<p>db.student.insert({&ldquo;name&rdquo;:&ldquo;小明&rdquo;});
-可以在外面写好json文件，使用命令导入：
-mongoimport &ndash;db test &ndash;collection restaurants &ndash;drop &ndash;file primer-dataset.json -db test 想往哪个数据库里面导入
-&ndash;collection restaurants 想往哪个集合中导入
-&ndash;drop 是否把集合清空
-&ndash;file primer-dataset.json 哪个文件</p>
-<h4 id="3">3.查找</h4>
-<p>db.restaurants.find()
-精确匹配： db.student.find({&ldquo;score.shuxue&rdquo;:70});
-多个条件： db.student.find({&ldquo;score.shuxue&rdquo;:70 , &ldquo;age&rdquo;:12})
-大于条件： db.student.find({&ldquo;score.yuwen&rdquo;:{$gt:50}});
-或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{&ldquo;age&rdquo;:9},{&ldquo;age&rdquo;:11}]});
-查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { &ldquo;borough&rdquo;: 1, &ldquo;address.zipcode&rdquo;: 1 } )</p>
-<h4 id="4">4.修改</h4>
-<p>先要找到再修改，使用$set db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{$set:{&ldquo;age&rdquo;:16}});
-查找数学成绩是70，把年龄更改为33岁： db.student.update({&ldquo;score.shuxue&rdquo;:70},{$set:{&ldquo;age&rdquo;:33}});
-更改所有匹配项目：添加multi: true： db.student.update({&ldquo;sex&rdquo;:&ldquo;男&rdquo;},{$set:{&ldquo;age&rdquo;:33}},{multi: true});
-完整替换，不出现$set关键字了： db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{&ldquo;name&rdquo;:&ldquo;大明&rdquo;,&ldquo;age&rdquo;:16});</p>
-<h4 id="5">5.删除</h4>
-<p>db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Manhattan&rdquo; } ) 只删除一个：
-db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Queens&rdquo; }, { justOne: true } )</p>
+          <h3 id="heading">介绍</h3>
+<p>mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：<br>
+所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。</p>
+<p>mongo下载地址：<a href="https://www.mongodb.com/download-center?jmp=nav#community"><a href="https://www.mongodb.com/download-center?jmp=nav#community">https://www.mongodb.com/download-center?jmp=nav#community</a></a></p>
+<p>mongoAPI文档：<a href="https://docs.mongodb.org/manual/"><a href="https://docs.mongodb.org/manual/">https://docs.mongodb.org/manual/</a></a></p>
+<p>下载安装好后，添加mongo环境变量，在命令行里输入mongod &ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，</p>
+<p>另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
+其它基础命令：</p>
+<ul>
+<li>show dbs:查看所有数据库</li>
+<li>db:查看当前数据库</li>
+<li>use student:切换到student数据库，如果没有则创建</li>
+<li>db.student.drop();删除student集合</li>
+<li>db.dropDatabase();删除当前所在数据库</li>
+<li>db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏</li>
+</ul>
+<h3 id="heading1">插入</h3>
+<ul>
+<li>db.student.insert({&ldquo;name&rdquo;:&ldquo;小明&rdquo;});</li>
+<li>可以在外面写好json文件，使用命令导入：
+mongoimport &ndash;db test &ndash;collection restaurants &ndash;drop &ndash;file primer-dataset.json</li>
+</ul>
+<ol>
+<li>-db test 想往哪个数据库里面导入</li>
+<li>&ndash;collection restaurants 想往哪个集合中导入</li>
+<li>&ndash;drop 是否把集合清空</li>
+<li>&ndash;file primer-dataset.json 哪个文件</li>
+</ol>
+<h3 id="heading2">查找</h3>
+<ul>
+<li>db.restaurants.find()</li>
+</ul>
+<ol>
+<li>精确匹配： db.student.find({&ldquo;score.shuxue&rdquo;:70});</li>
+<li>多个条件： db.student.find({&ldquo;score.shuxue&rdquo;:70 , &ldquo;age&rdquo;:12})</li>
+<li>大于条件： db.student.find({&ldquo;score.yuwen&rdquo;:{$gt:50}});</li>
+<li>或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{&ldquo;age&rdquo;:9},{&ldquo;age&rdquo;:11}]});</li>
+<li>查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { &ldquo;borough&rdquo;: 1, &ldquo;address.zipcode&rdquo;: 1 } )</li>
+</ol>
+<h3 id="heading3">修改</h3>
+<ul>
+<li>先要找到再修改，使用$set db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{$set:{&ldquo;age&rdquo;:16}});</li>
+<li>查找数学成绩是70，把年龄更改为33岁： db.student.update({&ldquo;score.shuxue&rdquo;:70},{$set:{&ldquo;age&rdquo;:33}});</li>
+<li>更改所有匹配项目：添加multi: true： db.student.update({&ldquo;sex&rdquo;:&ldquo;男&rdquo;},{$set:{&ldquo;age&rdquo;:33}},{multi: true});</li>
+<li>完整替换，不出现$set关键字了： db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{&ldquo;name&rdquo;:&ldquo;大明&rdquo;,&ldquo;age&rdquo;:16});</li>
+</ul>
+<h3 id="heading4">删除</h3>
+<ul>
+<li>db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Manhattan&rdquo; } )</li>
+</ul>
+<p>只删除一个：</p>
+<ul>
+<li>db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Queens&rdquo; }, { justOne: true } )</li>
+</ul>
+
     </div>
 
     <div class="post-copyright">

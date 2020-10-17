@@ -37,19 +37,13 @@
       <pubDate>Thu, 02 Nov 2017 23:23:44 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;h4 id=&#34;1&#34;&gt;1.介绍&lt;/h4&gt;
-&lt;p&gt;mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
-mongo下载地址：&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;https://www.mongodb.com/download-center?jmp=nav#community&lt;/a&gt;&lt;/a&gt;
-mongoAPI文档：&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;https://docs.mongodb.org/manual/&lt;/a&gt;&lt;/a&gt;
+      <description>介绍 mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：
+所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
+mongo下载地址：https://www.mongodb.com/download-center?jmp=nav#community
+mongoAPI文档：https://docs.mongodb.org/manual/
 下载安装好后，添加mongo环境变量，在命令行里输入mongod &amp;ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，
-另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
-其它基础命令：
-show dbs:查看所有数据库
-db:查看当前数据库
-use student:切换到student数据库，如果没有则创建
-db.student.drop();删除student集合
-db.dropDatabase();删除当前所在数据库
-db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏&lt;/p&gt;</description>
+另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。 其它基础命令：
+ show dbs:查看所有数据库 db:查看当前数据库 use student:切换到student数据库，如果没有则创建 db.student.drop();删除student集合 db.dropDatabase();删除当前所在数据库 db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏  插入  db.student.insert({&amp;ldquo;name&amp;rdquo;:&amp;ldquo;小明&amp;rdquo;}); 可以在外面写好json文件，使用命令导入： mongoimport &amp;ndash;db test &amp;ndash;collection restaurants &amp;ndash;drop &amp;ndash;file primer-dataset.json   -db test 想往哪个数据库里面导入 &amp;ndash;collection restaurants 想往哪个集合中导入 &amp;ndash;drop 是否把集合清空 &amp;ndash;file primer-dataset.json 哪个文件  查找  db.restaurants.find()   精确匹配： db.student.find({&amp;ldquo;score.shuxue&amp;rdquo;:70}); 多个条件： db.student.find({&amp;ldquo;score.shuxue&amp;rdquo;:70 , &amp;ldquo;age&amp;rdquo;:12}) 大于条件： db.student.find({&amp;ldquo;score.yuwen&amp;rdquo;:{$gt:50}}); 或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{&amp;ldquo;age&amp;rdquo;:9},{&amp;ldquo;age&amp;rdquo;:11}]}); 查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { &amp;ldquo;borough&amp;rdquo;: 1, &amp;ldquo;address.zipcode&amp;rdquo;: 1 } )  修改  先要找到再修改，使用$set db.</description>
     </item>
     
   </channel>

@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "ES6笔记（二）字符串和正则表达式",
     "headline" : "ES6笔记（二）字符串和正则表达式",
-    "description" : "\x3cp\x3e字符串\x3c\/p\x3e\n\x3ch3 id=\x22heading\x22\x3e字符串模板\x3c\/h3\x3e\n\x3cp\x3e字符串模板用``来表示，示例如下: [crayon] let template = `\x3c\/p\x3e\n\x3cul\x3e\n\x3cli\x3e${变量1}\x3c\/li\x3e\n\x3cli\x3e$(变量2)\x3c\/li\x3e\n\x3c\/ul\x3e\n\x3cp\x3e` [\/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要\x2b来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1\x2b1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};\x3c\/p\x3e\n\x3ch3 id=\x22heading1\x22\x3e标签模板\x3c\/h3\x3e",
+    "description" : "字符串\n字符串模板 字符串模板用``来表示，示例如下:\nlet template = `${变量1}` 可以看到字符串模板主要有两个特点\n 字符串换行不再需要\x2b来拼接，里面的空格换行都会保留； 字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1\x2b1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};  标签模板 标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下：\n\/\/先定义这个函数  function tag (arr, ...arg){ \/\/...表示不确定参数个数  console.log(arr); console.log(...arg); } \/\/ 准备一个变量  let world = 20; let sayHi= 66; \/\/ 函数调用  tag(hello, ${ world },${sayHi}) 从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。\n关于字符串编码  我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的； 不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了； 在js里字符的表示形式是这样的\\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下：  codePointAt(index) \/\/传入索引值，返回其对于位置的码点  String.fromCodePoint() \/\/传入码点，返回对应字符串  at(index) \/\/返回给定位置的字符  normalize() \/\/顾名思义格式化，了解即可 关于字符串的一些方法 有个印象就好，废话不多说上API:\nincludes(str, index)\/\/如果在字符串中检测到指定文本，返回true，否则false。  startsWith(str, index)\/\/如果在字符串起始部分检测到指定文本，返回true，否则返回false。  endsWith(str, index)\/\/如果在字符串的结束部分检测到指定文本，返回true，否则返回false。  str.",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2018-03-30 14:46:41 \x2b0000 UTC",
     "dateModified" : "2018-03-30 14:46:41 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2018\/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F\/",
-    "wordCount" : "74",
+    "wordCount" : "60",
     "keywords" : [ "es6", "陈晓拉尼"]
 }
 </script>
@@ -152,20 +152,50 @@
 
           <p>字符串</p>
 <h3 id="heading">字符串模板</h3>
-<p>字符串模板用``来表示，示例如下: [crayon] let template = `</p>
-<ul>
-<li>${变量1}</li>
-<li>$(变量2)</li>
-</ul>
-<p>` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};</p>
+<p>字符串模板用``来表示，示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">量</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>可以看到字符串模板主要有两个特点</p>
+<ol>
+<li>字符串换行不再需要+来拼接，里面的空格换行都会保留；</li>
+<li>字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};</li>
+</ol>
 <h3 id="heading1">标签模板</h3>
-<p>标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下： [crayon] //先定义这个函数 function tag (arr, &hellip;arg){//&hellip;表示不确定参数个数 console.log(arr); console.log(&hellip;arg); } // 准备一个变量 let world = 20; let sayHi= 66; // 函数调用 tag `hello ${ world },${sayHi}` // 打印结果 // 第一个参数打印出来是一个数组[&lsquo;hello&rsquo;,',',''] // 第二个参数打印出来是20 66 [/crayon] 从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。</p>
+<p>标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#75715e">//先定义这个函数 
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">tag</span> (<span style="color:#a6e22e">arr</span>, ...<span style="color:#a6e22e">arg</span>){
+    <span style="color:#75715e">//...表示不确定参数个数 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>); 
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(...<span style="color:#a6e22e">arg</span>); 
+} 
+    <span style="color:#75715e">// 准备一个变量 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">world</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>; 
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sayHi</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">66</span>; 
+    <span style="color:#75715e">// 函数调用 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tag</span>(<span style="color:#a6e22e">hello</span>, <span style="color:#a6e22e">$</span>{ <span style="color:#a6e22e">world</span> },<span style="color:#a6e22e">$</span>{<span style="color:#a6e22e">sayHi</span>})
+</code></pre></div><p>从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。</p>
 <h3 id="heading2">关于字符串编码</h3>
-<p>（1）我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的； （2）不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了； （3）在js里字符的表示形式是这样的\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下： [crayon] codePointAt(index)//传入索引值，返回其对于位置的码点 String.fromCodePoint()//传入码点，返回对应字符串 at(index)//返回给定位置的字符 normalize()//顾名思义格式化，了解即可 [/crayon]</p>
-<h3 id="heading3">关于字符串的一些方法</h3>
-<p>有个印象就好，废话不多说上API: [crayon] includes(str, index)//如果在字符串中检测到指定文本，返回true，否则false。 startsWith(str, index)//如果在字符串起始部分检测到指定文本，返回true，否则返回false。 endsWith(str, index)//如果在字符串的结束部分检测到指定文本，返回true，否则返回false。 str.repeat(n)//表示将字符串str重复n次 [/crayon]</p>
-<p>正则表达式</p>
+<ol>
+<li>我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的；</li>
+<li>不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了；</li>
+<li>在js里字符的表示形式是这样的\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#a6e22e">codePointAt</span>(<span style="color:#a6e22e">index</span>)
+ <span style="color:#75715e">//传入索引值，返回其对于位置的码点 
+</span><span style="color:#75715e"></span> String.<span style="color:#a6e22e">fromCodePoint</span>()
+ <span style="color:#75715e">//传入码点，返回对应字符串 
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">at</span>(<span style="color:#a6e22e">index</span>)
+ <span style="color:#75715e">//返回给定位置的字符 
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">normalize</span>()
+ <span style="color:#75715e">//顾名思义格式化，了解即可
+</span></code></pre></div><h3 id="heading3">关于字符串的一些方法</h3>
+<p>有个印象就好，废话不多说上API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">index</span>)<span style="color:#75715e">//如果在字符串中检测到指定文本，返回true，否则false。 
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">startsWith</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">index</span>)<span style="color:#75715e">//如果在字符串起始部分检测到指定文本，返回true，否则返回false。 
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">endsWith</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">index</span>)<span style="color:#75715e">//如果在字符串的结束部分检测到指定文本，返回true，否则返回false。 
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">repeat</span>(<span style="color:#a6e22e">n</span>)<span style="color:#75715e">//表示将字符串str重复n次
+</span></code></pre></div><p>正则表达式</p>
 <p>正则表达式主要增加了几个修饰符，几个属性，先不看，就是这么任性，因为看了也白看，而且现在用的也不多。以后有机会有精力再看吧。</p>
+
     </div>
 
     <div class="post-copyright">

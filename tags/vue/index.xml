@@ -41,10 +41,7 @@ https://github.com/mywebc/VUE-Chat</description>
       <pubDate>Sat, 10 Feb 2018 15:12:02 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</guid>
-      <description>打包注意点
-（1）在man.js中注释掉mode:history,这个只有在开启服务器下才有效； （2）在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;
-运行截图
-Github:https://github.com/mywebc/todoLIst</description>
+      <description>打包注意点  在man.js中注释掉mode:history,这个只有在开启服务器下才有效； 在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;;  Github https://github.com/mywebc/todoLIst</description>
     </item>
     
     <item>

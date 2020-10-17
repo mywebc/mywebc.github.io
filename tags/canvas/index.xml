@@ -18,8 +18,7 @@
       
       <guid>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</guid>
       <description>我们可以看到这个游戏由背景蓝天，土地，小鸟，管道四部分组成，在开始游戏我们必须保证全部加载完所有图片资源，这里书写一个函数传进所有图片资源，再通过回调函数的方式返回加载好的图片资源
- // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } } （1）绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下
-// 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.height=this.img.height; Sky.len++; this.</description>
+ // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } }  绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下  // 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.</description>
     </item>
     
     <item>
@@ -30,25 +29,30 @@
       <guid>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;canvas 是 HTML5 提供的一个用于展示绘图效果的标签.
-canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：
-（1）使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.
-（2）默认 canvas 的宽高为 300 和 150.
-（3）不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.
-（4）如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.
-（5）canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.
-（6）canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
-基本使用方法：
-（1）获得 canvas 对象.
-（2）调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.
-(3）该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.
-（4）使用 CanvasRenderingContext2D 对象提供的方法进行绘图.
-（5）基本绘图命令
-a)设置开始绘图的位置: context.moveTo( x, y ).
-b)设置直线到的位置: context.lineTo( x, y ).
-c)描边绘制: context.stroke().
-d)填充绘制: context.fill().
-e)闭合路径: context.closePath().&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.&lt;/li&gt;
+&lt;li&gt;默认 canvas 的宽高为 300 和 150.&lt;/li&gt;
+&lt;li&gt;不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.&lt;/li&gt;
+&lt;li&gt;如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.&lt;/li&gt;
+&lt;li&gt;canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.&lt;/li&gt;
+&lt;li&gt;canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
+基本使用方法：&lt;/li&gt;
+&lt;li&gt;获得 canvas 对象.&lt;/li&gt;
+&lt;li&gt;调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.&lt;/li&gt;
+&lt;li&gt;该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.&lt;/li&gt;
+&lt;li&gt;使用 CanvasRenderingContext2D 对象提供的方法进行绘图.&lt;/li&gt;
+&lt;li&gt;基本绘图命令
+&lt;ul&gt;
+&lt;li&gt;设置开始绘图的位置: context.moveTo( x, y ).&lt;/li&gt;
+&lt;li&gt;设置直线到的位置: context.lineTo( x, y ).&lt;/li&gt;
+&lt;li&gt;描边绘制: context.stroke().&lt;/li&gt;
+&lt;li&gt;填充绘制: context.fill().&lt;/li&gt;
+&lt;li&gt;闭合路径: context.closePath().&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     
   </channel>

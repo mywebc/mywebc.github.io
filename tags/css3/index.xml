@@ -17,8 +17,9 @@
       <pubDate>Sun, 17 Sep 2017 12:04:35 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</guid>
-      <description> 动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
-  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述 a、animation-name设置动画序列名称； b、animation-duration动画持续时间； c、animation-delay动画延时时间； d、animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； e、animation-play-state动画播放状态，running、paused; f、animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； g、animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； h、animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； i、steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后； 比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。 总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：  </description>
+      <description>动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
+  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述   animation-name设置动画序列名称； animation-duration动画持续时间； animation-delay动画延时时间； animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； animation-play-state动画播放状态，running、paused; animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后；  比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。
+总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：</description>
     </item>
     
     <item>
@@ -27,9 +28,13 @@
       <pubDate>Thu, 14 Sep 2017 16:47:50 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</guid>
-      <description>&lt;p&gt;一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
-&lt;strong&gt;一、如何成为弹性盒子（flexbox）?&lt;/strong&gt;
-我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）：  在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。&lt;/p&gt;</description>
+      <description>一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
+ 一、如何成为弹性盒子（flexbox）?
+我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）： 在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。
+二关于flex在父容器中应用的属性
+ flex-direction：row（默认）||row-reverse||column||column-reverse;规定弹性子元素在主轴或侧轴的起始方向。 看如下代码，  &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;one&amp;#34;&amp;gt;one&amp;lt;div&amp;gt; &amp;lt;div class=&amp;#34;two&amp;#34;&amp;gt;two&amp;lt;div&amp;gt; &amp;lt;div class=&amp;#34;three&amp;#34;&amp;gt;three&amp;lt;div&amp;gt; &amp;lt;div&amp;gt; 效果图如下： 然后我们给父容器添加四个属性， 说明： 第一个就是设display：flex后它的默认效果相当于flex-direction：row，
+第二个是row-reverse，第三个是column，第四个是column-reverse
+flex-wrap：nowrap||wrap||wrap-reverse; 这是个换行属性，规定如果一条轴线上放不下子元素，是否换行，换到上面还是下面。 现在我一行放四个，四个div的宽度已经超过了父容器的宽度，看看这个属性怎么用的如图： 说明：第一个是nowrap不换行，第二个是wrap换行，第三个也是换行，区别是原来是第一行到第二行，现在是第二行到第一行，记住reverse就是反向的意思。 flex-flow: || ; 这个属性可以将前面两个合并起来写，默认就是row nowrap justify-content: flex-start || flex-end || center || space-between || space-around; 规定了子元素在主轴的对齐方式 话不多说看图吧：说明：从第一张到到最后一张属性：flex-start（默认）、flex-end、center、space-between、space-around，第四个和第五个区别就是，第四个把多余的空间部分平均分配但不包括收尾项，第五个包括收尾项。 align-items:flex-start||flex-end||center||baseline||stretch; 有主轴的对齐方式也有侧轴的对齐方式啦。 直接上图演示： 说明：前面三张图不用解释了吧，第四张呢css-tricks上是这样解释的baseline: items are aligned such as their baselines align; 翻译过来就是项目对齐正如他们的基线对齐，我想应该就是以他们里的文字为基准对齐，第五个在不设置高度的情况下(也是默认情况下)生效，strench即拉伸,子元素高度撑满父容器。 align-content:flex-start||flex-end||center||space-between||space-around||stretch; 如果是多轴线，对所有元素规定对齐方式，是单轴线的话不起作用。 看图：说明：属性与图都是是一一对应的，这里的属性前面都讲过，看看图就明白了。  三、关于flex在字元素中应用的属性</description>
     </item>
     
   </channel>

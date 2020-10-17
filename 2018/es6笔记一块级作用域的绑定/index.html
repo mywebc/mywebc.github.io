@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "ES6笔记（一）块级作用域的绑定",
     "headline" : "ES6笔记（一）块级作用域的绑定",
-    "description" : "\x3ch3 id=\x22heading\x22\x3e前言\x3c\/h3\x3e\n\x3cp\x3e在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。\x3c\/p\x3e\n\x3cp\x3e新的声明方式\x3c\/p\x3e",
+    "description" : "前言 在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。\n新的声明方式\nlet 在ES6中又出现了两种声明方式分别是let，和const，在此之前js的作用域只有全局作用域和函数包裹的作用域，而let的出现让js有了块级作用域，一个经典案例一看就明白：\nfor(let i = 0;i\x26lt; 4;i\x2b\x2b){ console.log(i) } console.log(i)\/\/这里是i is not defined 可以看出用let来声明变量，其变量的作用域只存在于这个花括号内，此时花括号就是一个块级作用域，而如果用var声明的话，在外面是可以打印出i的值的，因为它仍然处于全局作用域下，所以我们平时在写代码时完全可以用let来代替var，现在js语法越来越严谨，var早晚会out的。还有要注意的是let不能重复声明变量以及不存在变量提升。\nconst const用来定义一些不可改变的变量，比如我用到的在node端引入一些包依赖用const\nconst express = require(\x26#39;express\x26#39;); const app = express(); 总之你不想他被改变就用const，而且他和let一样会形成块级作用域，不能重复声明，不存在变量提升。",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2018-03-30 10:28:22 \x2b0000 UTC",
     "dateModified" : "2018-03-30 10:28:22 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2018\/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A\/",
-    "wordCount" : "32",
+    "wordCount" : "28",
     "keywords" : [ "es6", "陈晓拉尼"]
 }
 </script>
@@ -154,9 +154,17 @@
 <p>在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。</p>
 <p>新的声明方式</p>
 <h4 id="let">let</h4>
-<p>在ES6中又出现了两种声明方式分别是let，和const，在此之前js的作用域只有全局作用域和函数包裹的作用域，而let的出现让js有了块级作用域，一个经典案例一看就明白： [crayon] for(let i = 0;i&lt; 4;i++){ console.log(i) } console.log(i)//这里是i is not defined [/crayon] 可以看出用let来声明变量，其变量的作用域只存在于这个花括号内，此时花括号就是一个块级作用域，而如果用var声明的话，在外面是可以打印出i的值的，因为它仍然处于全局作用域下，所以我们平时在写代码时完全可以用let来代替var，现在js语法越来越严谨，var早晚会out的。还有要注意的是let不能重复声明变量以及不存在变量提升。</p>
+<p>在ES6中又出现了两种声明方式分别是let，和const，在此之前js的作用域只有全局作用域和函数包裹的作用域，而let的出现让js有了块级作用域，一个经典案例一看就明白：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){ 
+     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>) 
+    } 
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>)<span style="color:#75715e">//这里是i is not defined 
+</span></code></pre></div><p>可以看出用let来声明变量，其变量的作用域只存在于这个花括号内，此时花括号就是一个块级作用域，而如果用var声明的话，在外面是可以打印出i的值的，因为它仍然处于全局作用域下，所以我们平时在写代码时完全可以用let来代替var，现在js语法越来越严谨，var早晚会out的。还有要注意的是let不能重复声明变量以及不存在变量提升。</p>
 <h4 id="const">const</h4>
-<p>const用来定义一些不可改变的变量，比如我用到的在node端引入一些包依赖用const [crayon] const express = require(&lsquo;express&rsquo;); const app = express(); [/crayon] 总之你不想他被改变就用const，而且他和let一样会形成块级作用域，不能重复声明，不存在变量提升。</p>
+<p>const用来定义一些不可改变的变量，比如我用到的在node端引入一些包依赖用const</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>); <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>(); 
+</code></pre></div><p>总之你不想他被改变就用const，而且他和let一样会形成块级作用域，不能重复声明，不存在变量提升。</p>
+
     </div>
 
     <div class="post-copyright">

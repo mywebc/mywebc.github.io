@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "伪类和伪元素、clearfix、clear",
     "headline" : "伪类和伪元素、clearfix、clear",
-    "description" : "\x3cblockquote\x3e\n\x3col\x3e\n\x3cli\x3e伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：\n伪元素：\n在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。\x3c\/li\x3e\n\x3c\/ol\x3e\n\x3c\/blockquote\x3e",
+    "description" : "  伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类： 伪元素： 在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。\n  清除浮动有clearfix和clear，还有重构后的clearfix，\n   clear不用了就是在容器内在所有标签后再加一个空的标签用clear：both；清除浮动，这样在浮动很多的页面中就会空很多的空标签； （ clearfix是在父容器的下方放一个空的div，用clear:both;来清除浮动 .clearfix::after { content: \x27.\x27;\/\/内容为.或空 display: block;\/\/设为块级标签 clear: both;\/\/清除浮动 visibility: hidden;\/\/不可见 height: 0;\/\/高度为0 font-size: 0;\/\/字体大小为0 } （ 上面两种都是利用clear上方不能有浮动元素的规则来清除浮动的；重构后的clearfix是使父容器成为BFC（Block Formatting Context）， BFC特性之一就是可以包含浮动元素， 能形成BFC的有以下四种情形：  float值不为none，可以是left，right或both overflow为hidden或auto或scroll display为inline-block或table-cell或table-caption position为absolute或fixed 所以下面两种方法都可以： （zoom：1是为了兼容ie6） .clearfix { zoom: 1; display: table; width: 100%; } `.floatfix{ *zoom:1; } .floatfix:after{ content:\x26quot;\x26quot;; display:table; clear:both; }`    ",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2017-07-17 14:36:06 \x2b0000 UTC",
     "dateModified" : "2017-07-17 14:36:06 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2017\/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear\/",
-    "wordCount" : "54",
+    "wordCount" : "53",
     "keywords" : [ "html", "陈晓拉尼"]
 }
 </script>
@@ -150,26 +150,32 @@
           
           
 
-          <blockquote>
-<ol>
-<li>伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：
+          <ol>
+<li>
+<p>伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：
 伪元素：
-在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。</li>
+在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。</p>
+</li>
+<li>
+<p>清除浮动有clearfix和clear，还有重构后的clearfix，</p>
+</li>
 </ol>
-</blockquote>
-<ol start="2">
-<li>清除浮动有clearfix和clear，还有重构后的clearfix， （
-1）clear不用了就是在容器内在所有标签后再加一个空的标签用clear：both；清除浮动，这样在浮动很多的页面中就会空很多的空标签； （
-2）clearfix是在父容器的下方放一个空的div，用clear:both;来清除浮动 <code>.clearfix::after { content: '.';//内容为.或空 display: block;//设为块级标签 clear: both;//清除浮动 visibility: hidden;//不可见 height: 0;//高度为0 font-size: 0;//字体大小为0 }</code> （
-3）上面两种都是利用clear上方不能有浮动元素的规则来清除浮动的；重构后的clearfix是使父容器成为BFC（Block Formatting Context），
+<ul>
+<li>clear不用了就是在容器内在所有标签后再加一个空的标签用clear：both；清除浮动，这样在浮动很多的页面中就会空很多的空标签； （</li>
+<li>clearfix是在父容器的下方放一个空的div，用clear:both;来清除浮动 <code>.clearfix::after { content: '.';//内容为.或空 display: block;//设为块级标签 clear: both;//清除浮动 visibility: hidden;//不可见 height: 0;//高度为0 font-size: 0;//字体大小为0 }</code> （</li>
+<li>上面两种都是利用clear上方不能有浮动元素的规则来清除浮动的；重构后的clearfix是使父容器成为BFC（Block Formatting Context），
 BFC特性之一就是可以包含浮动元素，
 能形成BFC的有以下四种情形：
-(1）float值不为none，可以是left，right或both
-（2）overflow为hidden或auto或scroll
-（3）display为inline-block或table-cell或table-caption
-（4）position为absolute或fixed 所以下面两种方法都可以：
+<ol>
+<li>float值不为none，可以是left，right或both</li>
+<li>overflow为hidden或auto或scroll</li>
+<li>display为inline-block或table-cell或table-caption</li>
+<li>position为absolute或fixed 所以下面两种方法都可以：
 （zoom：1是为了兼容ie6） <code>.clearfix { zoom: 1; display: table; width: 100%; } `</code>.floatfix{ *zoom:1; } .floatfix:after{ content:&quot;&quot;; display:table; clear:both; }`</li>
 </ol>
+</li>
+</ul>
+
     </div>
 
     <div class="post-copyright">

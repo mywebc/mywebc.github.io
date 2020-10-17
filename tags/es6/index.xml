@@ -19,9 +19,21 @@
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</guid>
       <description>&lt;h3 id=&#34;heading&#34;&gt;对象的语法的扩展&lt;/h3&gt;
 &lt;h4 id=&#34;1&#34;&gt;(1)对象的属性或属性值可以直接传入变量&lt;/h4&gt;
-&lt;p&gt;[crayon] let id = 12; let value = 22; let obj = {id:value} [/crayon]&lt;/p&gt;
-&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
-&lt;p&gt;[crayon] //es5 let obj = { handle:function(){ //dosomething } } //es6 let obj = { handle(){ //dosomething } } [/crayon]&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;:&lt;span style=&#34;color:#66d9ef&#34;&gt;value&lt;/span&gt;} 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//es5 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { 
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;handle&lt;/span&gt;:&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){ 
+        &lt;span style=&#34;color:#75715e&#34;&gt;//dosomething 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        } 
+    } 
+&lt;span style=&#34;color:#75715e&#34;&gt;//es6 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+     &lt;span style=&#34;color:#a6e22e&#34;&gt;handle&lt;/span&gt;(){ 
+        &lt;span style=&#34;color:#75715e&#34;&gt;//dosomething 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        } 
+    } 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -30,10 +42,14 @@
       <pubDate>Mon, 02 Apr 2018 11:31:08 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;函数参数的默认值&lt;/h3&gt;
-&lt;p&gt;以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。&lt;/p&gt;
-&lt;h3 id=&#34;reset&#34;&gt;reset参数&lt;/h3&gt;
-&lt;p&gt;[crayon] function say(a,b,&amp;hellip;items){ // dosomething&amp;hellip; } [/crayon] 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。&lt;/p&gt;</description>
+      <description>函数参数的默认值 以前es5的做法是这样的：
+function log(x) { x = x || 10; console.log(x) } 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值
+function log(x=10) { console.log(x) } 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。
+reset参数 function say(a,b,...items){ // dosomething...  } 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。
+箭头函数 ES6 允许使用“箭头”（=&amp;gt;）定义函数。如下：
+var a = (v) =&amp;gt; v; 两点注意：
+ 函数参数没有或者只有一个时可以省略括号，返回值只有一个时也可以省略； （ 箭头函数没有自己的this，他的this指的是上下文的this,也就是说我们再也不用that = this或者self=this这样的形式了。当然箭头函数也要看场合使用，比如不要在object和原型里面定义箭头函数,因为这时候的this是指向window的。  尾调用优化 尾调用就是在函数的内部最后调用函数需要注意下面的都不算：
+// 情况一 function f(x){ let y = g(x); return y; } // 情况二 function f(x){ return g(x) + 1; } // 情况三 function f(x){ g(x); } 尾调用优化的原理： 当我们调用一个函数a时，在内存中会形成一个call frame（调用帧），里面记录着a的变量信息，如果在函数a里面再调用函数B,同样会形成一个call frame位于a的调用帧上方，如此嵌套调用，多个call frame就会形成call stack(调用栈)，所谓优化就是在a的调用帧之上b的调用帧如果用不到a里面的信息的话，a的调用帧就会舍弃掉。 注意：ES6中的尾调用优化只在use strict下生效，看下面例子：</description>
     </item>
     
     <item>
@@ -42,15 +58,13 @@
       <pubDate>Fri, 30 Mar 2018 14:46:41 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>&lt;p&gt;字符串&lt;/p&gt;
-&lt;h3 id=&#34;heading&#34;&gt;字符串模板&lt;/h3&gt;
-&lt;p&gt;字符串模板用``来表示，示例如下: [crayon] let template = `&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;${变量1}&lt;/li&gt;
-&lt;li&gt;$(变量2)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};&lt;/p&gt;
-&lt;h3 id=&#34;heading1&#34;&gt;标签模板&lt;/h3&gt;</description>
+      <description>字符串
+字符串模板 字符串模板用``来表示，示例如下:
+let template = `${变量1}` 可以看到字符串模板主要有两个特点
+ 字符串换行不再需要+来拼接，里面的空格换行都会保留； 字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};  标签模板 标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下：
+//先定义这个函数  function tag (arr, ...arg){ //...表示不确定参数个数  console.log(arr); console.log(...arg); } // 准备一个变量  let world = 20; let sayHi= 66; // 函数调用  tag(hello, ${ world },${sayHi}) 从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。
+关于字符串编码  我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的； 不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了； 在js里字符的表示形式是这样的\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下：  codePointAt(index) //传入索引值，返回其对于位置的码点  String.fromCodePoint() //传入码点，返回对应字符串  at(index) //返回给定位置的字符  normalize() //顾名思义格式化，了解即可 关于字符串的一些方法 有个印象就好，废话不多说上API:
+includes(str, index)//如果在字符串中检测到指定文本，返回true，否则false。  startsWith(str, index)//如果在字符串起始部分检测到指定文本，返回true，否则返回false。  endsWith(str, index)//如果在字符串的结束部分检测到指定文本，返回true，否则返回false。  str.</description>
     </item>
     
     <item>
@@ -59,18 +73,12 @@
       <pubDate>Fri, 30 Mar 2018 10:28:22 +0000</pubDate>
       
       <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;前言&lt;/h3&gt;
-&lt;p&gt;在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。&lt;/p&gt;
-&lt;p&gt;新的声明方式&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>ES6中的新特性</title>
-      <link>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</link>
-      <pubDate>Sun, 01 Oct 2017 17:17:02 +0000</pubDate>
-      
-      <guid>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
-      <description>&lt;p&gt;ES6中的常用新特性。转载自&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6_new_features.html&#34;&gt;&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6&#34;&gt;http://www.cnblogs.com/Wayou/p/es6&lt;/a&gt;_new_features.html&lt;/a&gt; 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;http://es6.ruanyifeng.com/#README&lt;/a&gt;&lt;/a&gt; &lt;strong&gt;1.箭头操作符&lt;/strong&gt; 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=&amp;gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=&amp;gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; //传统写法 array.forEach(function(v, i, a) { console.log(v); }); //ES6 array.forEach(v = &amp;gt; console.log(v)); [/code] &lt;strong&gt;2.类的支持&lt;/strong&gt; ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] //类的定义 class Animal { //ES6中新型构造器 constructor(name) { this.name = name; } //实例方法 sayName() { console.log(&amp;lsquo;My name is &amp;lsquo;+this.name); } } //类的继承 class Programmer extends Animal { constructor(name) { //直接调用父类构造器进行初始化 super(name); } program() { console.log(&amp;ldquo;I&#39;m coding&amp;hellip;&amp;quot;); } } //测试我们的类 var animal=new Animal(&amp;lsquo;dummy&amp;rsquo;), wayou=new Programmer(&amp;lsquo;wayou&amp;rsquo;); animal.sayName();//输出 ‘My name is dummy’ wayou.sayName();//输出 ‘My name is wayou’ wayou.program();//输出 ‘I&#39;m coding&amp;hellip;’ [/code]&lt;/p&gt;</description>
+      <description>前言 在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。
+新的声明方式
+let 在ES6中又出现了两种声明方式分别是let，和const，在此之前js的作用域只有全局作用域和函数包裹的作用域，而let的出现让js有了块级作用域，一个经典案例一看就明白：
+for(let i = 0;i&amp;lt; 4;i++){ console.log(i) } console.log(i)//这里是i is not defined 可以看出用let来声明变量，其变量的作用域只存在于这个花括号内，此时花括号就是一个块级作用域，而如果用var声明的话，在外面是可以打印出i的值的，因为它仍然处于全局作用域下，所以我们平时在写代码时完全可以用let来代替var，现在js语法越来越严谨，var早晚会out的。还有要注意的是let不能重复声明变量以及不存在变量提升。
+const const用来定义一些不可改变的变量，比如我用到的在node端引入一些包依赖用const
+const express = require(&amp;#39;express&amp;#39;); const app = express(); 总之你不想他被改变就用const，而且他和let一样会形成块级作用域，不能重复声明，不存在变量提升。</description>
     </item>
     
   </channel>

@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "js中的作用域及变量提升",
     "headline" : "js中的作用域及变量提升",
-    "description" : "\x3cp\x3e\x3cstrong\x3e一、作用域\x3c\/strong\x3e 1.作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。 在 js 中词法作用域规则: （1）函数允许访问函数外的数据. （2）整个代码结构中只有函数可以限定作用域. （3）作用域规则首先使用提升规则分析 （4）如果当前作用规则中有名字了, 就不考虑外面的名字 2.作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:\x3c\/p\x3e",
+    "description" : "一、作用域\n作用域有：块级作用域和词法作用域；  块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。  在 js 中词法作用域规则:\n 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字  作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。\n凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:\nfunction f1() { function f2() { } } var num = 456; function f3() { function f4() { } } 它的作用域链图就是： 绘制作用域链的步骤:\n 看整个全局是一条链, 即顶级链, 记为 0 级链 看全局作用域中, 有什么成员声明, 就以方格的形式绘制到 0 级练上 再找函数, 只有函数可以限制作用域, 因此从函数中引入新链, 标记为 1 级链 然后在每一个 1 级链中再次往复刚才的行为 变量的访问规则 首先看变量在第几条链上, 在该链上看是否有变量的定义与赋值, 如果有直接使用 如果没有到上一级链上找( n - 1 级链 ), 如果有直接用, 停止继续查找.",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2017-08-07 21:35:02 \x2b0000 UTC",
     "dateModified" : "2017-08-07 21:35:02 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2017\/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87\/",
-    "wordCount" : "230",
+    "wordCount" : "235",
     "keywords" : [ "js", "陈晓拉尼"]
 }
 </script>
@@ -150,7 +150,23 @@
           
           
 
-          <p><strong>一、作用域</strong> 1.作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。 在 js 中词法作用域规则: （1）函数允许访问函数外的数据. （2）整个代码结构中只有函数可以限定作用域. （3）作用域规则首先使用提升规则分析 （4）如果当前作用规则中有名字了, 就不考虑外面的名字 2.作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:</p>
+          <p><strong>一、作用域</strong></p>
+<h3 id="heading">作用域有：块级作用域和词法作用域；</h3>
+<ol>
+<li>块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的;</li>
+<li>词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围.
+代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。</li>
+</ol>
+<p>在 js 中词法作用域规则:</p>
+<ol>
+<li>函数允许访问函数外的数据.</li>
+<li>整个代码结构中只有函数可以限定作用域.</li>
+<li>作用域规则首先使用提升规则分析</li>
+<li>如果当前作用规则中有名字了, 就不考虑外面的名字</li>
+</ol>
+<h3 id="heading1">作用域链</h3>
+<p>概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。</p>
+<p>凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f1</span>() {
     <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f2</span>() {
     }
@@ -161,92 +177,95 @@
     <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f4</span>() {    
     }
 }
-</code></pre></div><p>它的作用域链图就是： 绘制作用域链的步骤:
-（1）看整个全局是一条链, 即顶级链, 记为 0 级链
-（2）看全局作用域中, 有什么成员声明, 就以方格的形式绘制到 0 级练上
-（3）再找函数, 只有函数可以限制作用域, 因此从函数中引入新链, 标记为 1 级链
-（4）然后在每一个 1 级链中再次往复刚才的行为 变量的访问规则
-（1）首先看变量在第几条链上, 在该链上看是否有变量的定义与赋值, 如果有直接使用
-（2）如果没有到上一级链上找( n - 1 级链 ), 如果有直接用, 停止继续查找.
-（3）如果还没有再次往上刚找&hellip; 直到全局链( 0 级 ), 还没有就是 is not defined
-（4）注意,同级的链不可混合查找 二、变量提升 1.js代码的执行分为两个步骤：
-（1）预解析 JavaScript代码在预解析阶段，会对以var声明的变量名，和function开头的语句块，进行提升操作
-（2）然后再执行 第一个阶段就是变量提升的过程，解释器会先找到var已经声明的变量和function开头的语句，并把他们提升到代码开头，然后再执行。 例子1：</p>
-<pre><code>func();
-function func(){
-     alert(&quot;Funciton has been called&quot;);
+</code></pre></div><p>它的作用域链图就是： 绘制作用域链的步骤:</p>
+<ul>
+<li>看整个全局是一条链, 即顶级链, 记为 0 级链</li>
+<li>看全局作用域中, 有什么成员声明, 就以方格的形式绘制到 0 级练上</li>
+<li>再找函数, 只有函数可以限制作用域, 因此从函数中引入新链, 标记为 1 级链</li>
+<li>然后在每一个 1 级链中再次往复刚才的行为 变量的访问规则</li>
+<li>首先看变量在第几条链上, 在该链上看是否有变量的定义与赋值, 如果有直接使用</li>
+<li>如果没有到上一级链上找( n - 1 级链 ), 如果有直接用, 停止继续查找.</li>
+<li>如果还没有再次往上刚找&hellip; 直到全局链( 0 级 ), 还没有就是 is not defined</li>
+<li>注意,同级的链不可混合查找 二、变量提升 1.js代码的执行分为两个步骤：</li>
+<li>预解析 JavaScript代码在预解析阶段，会对以var声明的变量名，和function开头的语句块，进行提升操作</li>
+<li>然后再执行 第一个阶段就是变量提升的过程，解释器会先找到var已经声明的变量和function开头的语句，并把他们提升到代码开头，然后再执行。 例子1：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">func</span>();
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>(){
+     <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Funciton has been called&#34;</span>);
 }
 
-提升后：
-
-function func(){
-     alert(&quot;Funciton has been called&quot;);
+<span style="color:#75715e">// 提升后：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>(){
+     <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Funciton has been called&#34;</span>);
 }
-func();
-</code></pre><p>例子2：</p>
-<pre><code>alert(a);
-var a = 1;
+<span style="color:#a6e22e">func</span>();
+</code></pre></div><p>例子2：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">a</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
-提升后：
+<span style="color:#a6e22e">提升后</span><span style="color:#960050;background-color:#1e0010">：</span>
 
-var a; //这里是声明
-alert(a);//变量声明之后并未有初始化和赋值操作，所以这里是 undefined
-a = 1;
-</code></pre><p>2.复杂点的情况 （1）函数同名：后面的会覆盖前面的 比如：</p>
-<pre><code>func1();
-function func1(){
-     console.log('This is func1');
-}
-
-func1();
-function func1(){
-     console.log('This is last func1');
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>; <span style="color:#75715e">//这里是声明
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">a</span>);<span style="color:#75715e">//变量声明之后并未有初始化和赋值操作，所以这里是 undefined
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</code></pre></div><p>2.复杂点的情况 （1）函数同名：后面的会覆盖前面的 比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">func1</span>();
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>(){
+     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;This is func1&#39;</span>);
 }
 
-提升后：
-
-function func1(){
-     console.log('This is func1');
+<span style="color:#a6e22e">func1</span>();
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>(){
+     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;This is last func1&#39;</span>);
 }
 
-function func1(){
-     console.log('This is last func1');
+<span style="color:#75715e">// 提升后：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>(){
+     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;This is func1&#39;</span>);
 }
 
-func1();
-func1();
-</code></pre><p>提升后，因为后面会覆盖前面的，所以结果都为：This is last func1。 (2)变量和函数名同名 当出现变量声明和函数同名的时候，只会对函数声明进行提升，变量会被忽略。 比如：</p>
-<pre><code>alert(foo);
-function foo(){}
-var foo = 2;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>(){
+     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;This is last func1&#39;</span>);
+}
 
-提升后：
+<span style="color:#a6e22e">func1</span>();
+<span style="color:#a6e22e">func1</span>();
+</code></pre></div><p>提升后，因为后面会覆盖前面的，所以结果都为：This is last func1。 (2)变量和函数名同名 当出现变量声明和函数同名的时候，只会对函数声明进行提升，变量会被忽略。 比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">foo</span>);
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(){}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foo</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
 
-function foo(){};
-alert(foo);
-foo = 2;
-</code></pre><p>（3）声明提升并不是将所有的声明都提升到window对象下面，提升原则是提升到变量运行的环境(作用域)中去。 比如：</p>
-<pre><code>function showMsg()
+<span style="color:#75715e">// 提升后：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(){};
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">foo</span>);
+<span style="color:#a6e22e">foo</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</code></pre></div><p>（3）声明提升并不是将所有的声明都提升到window对象下面，提升原则是提升到变量运行的环境(作用域)中去。 比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showMsg</span>()
 {
-    var msg = 'This is message';
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This is message&#39;</span>;
 }
-alert(msg); // msg未定义
-
-提升后：
-
-function showMsg()
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">msg</span>); <span style="color:#75715e">// msg未定义
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 提升后：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showMsg</span>()
 {
-    var msg;
-    msg = 'This is message';
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">msg</span>;
+    <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This is message&#39;</span>;
 }
-alert(msg); // msg未定义
-</code></pre><p>（4）提升是分段的，其实就分script标签的。两个script标签之间是分开的。 （5）函数表达式不提升 比如：</p>
-<pre><code>function showMsg()
-func();
-var func = function(){
-    alert(&quot;我被提升了&quot;);
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">msg</span>); <span style="color:#75715e">// msg未定义
+</span></code></pre></div><p>（4）提升是分段的，其实就分script标签的。两个script标签之间是分开的。 （5）函数表达式不提升 比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showMsg</span>()
+<span style="color:#a6e22e">func</span>();
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">func</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;我被提升了&#34;</span>);
 };
-</code></pre><p>这里会报错：func is not a function；</p>
+</code></pre></div><p>这里会报错：func is not a function；</p>
+
     </div>
 
     <div class="post-copyright">

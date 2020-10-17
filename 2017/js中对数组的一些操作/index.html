@@ -9,7 +9,7 @@
   
   
   
-  <link rel="prev" href="https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" />
+  <link rel="prev" href="https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/" />
   <link rel="next" href="https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/" />
   <link rel="canonical" href="https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "js中对数组的一些操作",
     "headline" : "js中对数组的一些操作",
-    "description" : "\x3cp\x3e对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。\n1.插入与删除\npush：末尾插入；\npop:末尾删除；\nshift:开头删除；\nunshift:开头添加；\n2.map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：\n[code] var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val\x2b3; }); [\/code]\n3.reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如： [code] var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre\x2bcurr; },0); [\/code] 4filter（过滤器） [code] var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val\x26lt;6; }); [\/code]\n5.sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列 [code] var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); [\/code]\n6reverse 方法来翻转数组，无参数。\x3c\/p\x3e",
+    "description" : "对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。\n 插入与删除   push：末尾插入； pop:末尾删除； shift:开头删除； unshift:开头添加；  map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：  var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val\x2b3; }); reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如：  var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre\x2bcurr; },0); filter（过滤器）  var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val\x26lt;6; }); sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列  var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); reverse 方法来翻转数组，无参数。 比如：  var array = [1,2,3,4,5,6,7]; var newArray = []; newArray = array.",
     "inLanguage" : "zh-Hans",
     "author" : "陈晓拉尼",
     "creator" : "陈晓拉尼",
@@ -57,7 +57,7 @@
     "datePublished": "2017-10-11 13:28:08 \x2b0000 UTC",
     "dateModified" : "2017-10-11 13:28:08 \x2b0000 UTC",
     "url" : "https:\/\/chenxiaolani.com\/2017\/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C\/",
-    "wordCount" : "125",
+    "wordCount" : "111",
     "keywords" : [ "js", "陈晓拉尼"]
 }
 </script>
@@ -150,20 +150,56 @@
           
           
 
-          <p>对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。
-1.插入与删除
-push：末尾插入；
-pop:末尾删除；
-shift:开头删除；
-unshift:开头添加；
-2.map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：
-[code] var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val+3; }); [/code]
-3.reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如： [code] var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre+curr; },0); [/code] 4filter（过滤器） [code] var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val&lt;6; }); [/code]
-5.sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列 [code] var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); [/code]
-6reverse 方法来翻转数组，无参数。</p>
-<p>比如： [code] var array = [1,2,3,4,5,6,7]; var newArray = []; newArray = array.reverse(); [/code] 7.concat,将两个数组内容合并到一个数组中去。 比如：用concat 把 otherArray 拼接在 oldArray 的后面： [code] newArray = oldArray.concat(otherArray); [/code]
-8.split将指定字符串分割成数组 split（“”）单个字符分割 split（“ ”）以空格分割 他还有第二个可选参数，规定返回多少个数组。
-9.join，将数组转化成字符串，并且可以指定连接符 [code] var joinMe = [&ldquo;Split&rdquo;,&ldquo;me&rdquo;,&ldquo;into&rdquo;,&ldquo;an&rdquo;,&ldquo;array&rdquo;]; var joinedString = &lsquo;'; joinedString = joinMe.join(&rsquo; &lsquo;); [/code]</p>
+          <p>对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。</p>
+<ol>
+<li>插入与删除</li>
+</ol>
+<ul>
+<li>push：末尾插入；</li>
+<li>pop:末尾删除；</li>
+<li>shift:开头删除；</li>
+<li>unshift:开头添加；</li>
+</ul>
+<ol start="2">
+<li>map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldArray</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]; 
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oldArray</span>.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">val</span>){ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">val</span><span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>; }); 
+</code></pre></div><ol start="3">
+<li>reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>]; 
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">singleVal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; 
+<span style="color:#a6e22e">singleVal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">reduce</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">pre</span>,<span style="color:#a6e22e">curr</span>){ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">pre</span><span style="color:#f92672">+</span><span style="color:#a6e22e">curr</span>; },<span style="color:#ae81ff">0</span>); 
+</code></pre></div><ol start="4">
+<li>filter（过滤器）</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldArray</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">10</span>]; 
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oldArray</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">val</span>){ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">val</span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">6</span>; }); 
+</code></pre></div><ol start="5">
+<li>sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">2</span>]; 
+<span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">sort</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>; }); 
+</code></pre></div><ol start="6">
+<li>reverse 方法来翻转数组，无参数。
+比如：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>]; 
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newArray</span> <span style="color:#f92672">=</span> []; 
+ <span style="color:#a6e22e">newArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">reverse</span>(); 
+</code></pre></div><ol start="7">
+<li>concat,将两个数组内容合并到一个数组中去。 比如：用concat 把 otherArray 拼接在 oldArray 的后面：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">newArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oldArray</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">otherArray</span>); 
+</code></pre></div><ol start="8">
+<li>split将指定字符串分割成数组 split（“”）单个字符分割 split（“ ”）以空格分割 他还有第二个可选参数，规定返回多少个数组。</li>
+<li>join，将数组转化成字符串，并且可以指定连接符</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">joinMe</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Split&#34;</span>,<span style="color:#e6db74">&#34;me&#34;</span>,<span style="color:#e6db74">&#34;into&#34;</span>,<span style="color:#e6db74">&#34;an&#34;</span>,<span style="color:#e6db74">&#34;array&#34;</span>]; 
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">joinedString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>; 
+ <span style="color:#a6e22e">joinedString</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">joinMe</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39; &#39;</span>); 
+</code></pre></div>
     </div>
 
     <div class="post-copyright">
@@ -201,7 +237,7 @@ unshift:开头添加；
 
     <div class="post-nav">
         
-        <a href="https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" class="prev" rel="prev" title="ES6中的新特性"><i class="iconfont icon-left"></i>&nbsp;ES6中的新特性</a>
+        <a href="https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/" class="prev" rel="prev" title="canvas小案例：fly birds"><i class="iconfont icon-left"></i>&nbsp;canvas小案例：fly birds</a>
          
         
         <a href="https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/" class="next" rel="next" title="nodejs中书写自己的require方法">nodejs中书写自己的require方法&nbsp;<i class="iconfont icon-right"></i></a>
