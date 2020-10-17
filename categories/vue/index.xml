@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/vue/</link>
+    <description>Recent content in vue on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 28 Jun 2018 23:41:46 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vue中使用elementUI，表格的单选全选</title>
+      <link>https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/</link>
+      <pubDate>Thu, 28 Jun 2018 23:41:46 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/</guid>
+      <description>&lt;p&gt;在vue中使用elementUI中时表格，如何拿到单选或者多选（全选）的值？先记下一笔。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue/node搭建简易博客</title>
+      <link>https://chenxiaolani.com/2018/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Thu, 22 Feb 2018 20:04:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;服务器&lt;/h2&gt;
+&lt;p&gt;阿里云学生豪华套餐（centos系统）&lt;/p&gt;
+&lt;h2 id=&#34;heading1&#34;&gt;前端&lt;/h2&gt;
+&lt;p&gt;vue-cli vue脚手架 vue-router 路由控制 vue-axios 发送请求 element-ui 饿了么图库 marked和highlight.js markdown语法 stylus css预处理 moment.js 一个时间格式库 lodash JavaScript工具库&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue/node聊天室</title>
+      <link>https://chenxiaolani.com/2018/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</link>
+      <pubDate>Tue, 20 Feb 2018 17:28:48 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</guid>
+      <description>介绍
+主要用到socket.io,前端用vue，后端用express转接消息
+GitHub
+https://github.com/mywebc/VUE-Chat</description>
+    </item>
+    
+    <item>
+      <title>iview-cli搭建，一个简单的todoList</title>
+      <link>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</link>
+      <pubDate>Sat, 10 Feb 2018 15:12:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</guid>
+      <description>打包注意点
+（1）在man.js中注释掉mode:history,这个只有在开启服务器下才有效； （2）在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;
+运行截图
+Github:https://github.com/mywebc/todoLIst</description>
+    </item>
+    
+    <item>
+      <title>慕课网项目：炸鸡音乐播放器</title>
+      <link>https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</link>
+      <pubDate>Mon, 11 Dec 2017 21:19:23 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
+      <description> 慕课网上的vue项目，跟着做了20几天了， 因为提供不了node服务，歌单和歌词暂时请求不了，
+  Github：https://github.com/mywebc/vuejs-music-player  </description>
+    </item>
+    
+  </channel>
+</rss>

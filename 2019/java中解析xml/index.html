@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/" />
+  <link rel="next" href="https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           java中解析XML | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="java中解析XML | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "java中解析XML",
+    "headline" : "java中解析XML",
+    "description" : "xml文件一般有三种用途，1. 可以用来保存数据，2. 可以用来做配置文件，3. 数据传输载体，本篇文章主要记载java中如何解析XML文件。\n XML解析方式 XML文件的定义以及标签的用法就不多说了，XML文件的约束主要有两种（DTD和Schema），现在最常见的XML的解析方式主要有两种，一个是DOM， 一个是SAX;两者区别如下\n DOM方法是将XML文件读取到内存中去生成树状结构（对象），这样的话如果文件过大就可能会出现内存溢出； SAX（simple api for xml）方法则是事件驱动模式，读取一行解析一行；   针对这两种解析方式，市场上出现了很多的解决方案比如dom4j,jaxp,jdom等\n Dom4j使用  首先需要用到Dom4j的jar包；  try { \/\/1. 创建sax读取对象  SAXReader reader = new SAXReader(); \/\/jdbc -- classloader  \/\/2. 指定解析的xml源  Document document = reader.read(new File(\x26#34;src\/xml\/stus.xml\x26#34;)); \/\/3. 得到元素、  \/\/得到根元素  Element rootElement= document.getRootElement(); \/\/获取根元素下面的子元素 age  \/\/rootElement.element(\x26#34;age\x26#34;)  \/\/System.out.println(rootElement.element(\x26#34;stu\x26#34;).element(\x26#34;age\x26#34;).getText());  \/\/获取根元素下面的所有子元素 。 stu元素  List\x26lt;Element\x26gt; elements = rootElement.elements(); \/\/遍历所有的stu元素  for (Element element : elements) { \/\/获取stu元素下面的name元素  String name = element.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-07-24 13:57:59 \x2b0000 UTC",
+    "dateModified" : "2019-07-24 13:57:59 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2019\/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml\/",
+    "wordCount" : "101",
+    "keywords" : [ "Java", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">java中解析XML</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-07-24 itemprop="datePublished">July 24, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/java/"> Java </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>xml文件一般有三种用途，1. 可以用来保存数据，2. 可以用来做配置文件，3. 数据传输载体，本篇文章主要记载java中如何解析XML文件。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="xml">XML解析方式</h2>
+<p>XML文件的定义以及标签的用法就不多说了，XML文件的约束主要有两种（DTD和Schema），现在最常见的XML的解析方式主要有两种，一个是<strong>DOM</strong>， 一个是<strong>SAX</strong>;两者区别如下</p>
+<ul>
+<li>DOM方法是将XML文件读取到内存中去生成树状结构（对象），这样的话如果文件过大就可能会出现内存溢出；</li>
+<li>SAX（simple api for xml）方法则是事件驱动模式，读取一行解析一行；</li>
+</ul>
+<blockquote>
+<p>针对这两种解析方式，市场上出现了很多的解决方案比如dom4j,jaxp,jdom等</p>
+</blockquote>
+<h2 id="dom4j">Dom4j使用</h2>
+<ul>
+<li>首先需要用到Dom4j的jar包；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//1. 创建sax读取对象
+</span><span style="color:#75715e"></span>        SAXReader reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SAXReader<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">//jdbc -- classloader
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2. 指定解析的xml源
+</span><span style="color:#75715e"></span>        Document  document  <span style="color:#f92672">=</span> reader<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;src/xml/stus.xml&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        
+        <span style="color:#75715e">//3. 得到元素、
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//得到根元素
+</span><span style="color:#75715e"></span>        Element rootElement<span style="color:#f92672">=</span> document<span style="color:#f92672">.</span><span style="color:#a6e22e">getRootElement</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        
+        <span style="color:#75715e">//获取根元素下面的子元素 age
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//rootElement.element(&#34;age&#34;) 
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//System.out.println(rootElement.element(&#34;stu&#34;).element(&#34;age&#34;).getText());
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//获取根元素下面的所有子元素 。 stu元素
+</span><span style="color:#75715e"></span>        List<span style="color:#f92672">&lt;</span>Element<span style="color:#f92672">&gt;</span> elements <span style="color:#f92672">=</span> rootElement<span style="color:#f92672">.</span><span style="color:#a6e22e">elements</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//遍历所有的stu元素
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Element element <span style="color:#f92672">:</span> elements<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//获取stu元素下面的name元素
+</span><span style="color:#75715e"></span>            String name <span style="color:#f92672">=</span> element<span style="color:#f92672">.</span><span style="color:#a6e22e">element</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            String age <span style="color:#f92672">=</span> element<span style="color:#f92672">.</span><span style="color:#a6e22e">element</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            String address <span style="color:#f92672">=</span> element<span style="color:#f92672">.</span><span style="color:#a6e22e">element</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;address&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name=&#34;</span><span style="color:#f92672">+</span>name<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;==age+&#34;</span><span style="color:#f92672">+</span>age<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;==address=&#34;</span><span style="color:#f92672">+</span>address<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>如果XML层级过深，我们可以使用Dom4j中的Xpath,xpath其实是xml的路径语言，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素,当然我们还是需要添加jar包；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">        Element nameElement <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Element<span style="color:#f92672">)</span> rootElement<span style="color:#f92672">.</span><span style="color:#a6e22e">selectSingleNode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;//name&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>nameElement<span style="color:#f92672">.</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;----------------&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">//获取文档里面的所有name元素 
+</span><span style="color:#75715e"></span>        List<span style="color:#f92672">&lt;</span>Element<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> rootElement<span style="color:#f92672">.</span><span style="color:#a6e22e">selectNodes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;//name&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Element element <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>element<span style="color:#f92672">.</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/java/">
+                    #Java</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/" class="prev" rel="prev" title="使用JDBC对Mysql数据库的CRUD操作"><i class="iconfont icon-left"></i>&nbsp;使用JDBC对Mysql数据库的CRUD操作</a>
+         
+        
+        <a href="https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/" class="next" rel="next" title="React Hooks实践">React Hooks实践&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

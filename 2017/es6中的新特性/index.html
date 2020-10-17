@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ES6中的新特性 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="ES6中的新特性 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "ES6中的新特性",
+    "headline" : "ES6中的新特性",
+    "description" : "\x3cp\x3eES6中的常用新特性。转载自\x3ca href=\x22http:\/\/www.cnblogs.com\/Wayou\/p\/es6_new_features.html\x22\x3e\x3ca href=\x22http:\/\/www.cnblogs.com\/Wayou\/p\/es6\x22\x3ehttp:\/\/www.cnblogs.com\/Wayou\/p\/es6\x3c\/a\x3e_new_features.html\x3c\/a\x3e 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：\x3ca href=\x22http:\/\/es6.ruanyifeng.com\/#README\x22\x3e\x3ca href=\x22http:\/\/es6.ruanyifeng.com\/#README\x22\x3ehttp:\/\/es6.ruanyifeng.com\/#README\x3c\/a\x3e\x3c\/a\x3e \x3cstrong\x3e1.箭头操作符\x3c\/strong\x3e 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=\x26gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=\x26gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; \/\/传统写法 array.forEach(function(v, i, a) { console.log(v); }); \/\/ES6 array.forEach(v = \x26gt; console.log(v)); [\/code] \x3cstrong\x3e2.类的支持\x3c\/strong\x3e ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] \/\/类的定义 class Animal { \/\/ES6中新型构造器 constructor(name) { this.name = name; } \/\/实例方法 sayName() { console.log(\x26lsquo;My name is \x26lsquo;\x2bthis.name); } } \/\/类的继承 class Programmer extends Animal { constructor(name) { \/\/直接调用父类构造器进行初始化 super(name); } program() { console.log(\x26ldquo;I\x27m coding\x26hellip;\x26quot;); } } \/\/测试我们的类 var animal=new Animal(\x26lsquo;dummy\x26rsquo;), wayou=new Programmer(\x26lsquo;wayou\x26rsquo;); animal.sayName();\/\/输出 ‘My name is dummy’ wayou.sayName();\/\/输出 ‘My name is wayou’ wayou.program();\/\/输出 ‘I\x27m coding\x26hellip;’ [\/code]\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-10-01 17:17:02 \x2b0000 UTC",
+    "dateModified" : "2017-10-01 17:17:02 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7\/",
+    "wordCount" : "620",
+    "keywords" : [ "es6", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ES6中的新特性</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-10-01 itemprop="datePublished">October 1, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>ES6中的常用新特性。转载自<a href="http://www.cnblogs.com/Wayou/p/es6_new_features.html"><a href="http://www.cnblogs.com/Wayou/p/es6">http://www.cnblogs.com/Wayou/p/es6</a>_new_features.html</a> 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：<a href="http://es6.ruanyifeng.com/#README"><a href="http://es6.ruanyifeng.com/#README">http://es6.ruanyifeng.com/#README</a></a> <strong>1.箭头操作符</strong> 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=&gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=&gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; //传统写法 array.forEach(function(v, i, a) { console.log(v); }); //ES6 array.forEach(v = &gt; console.log(v)); [/code] <strong>2.类的支持</strong> ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] //类的定义 class Animal { //ES6中新型构造器 constructor(name) { this.name = name; } //实例方法 sayName() { console.log(&lsquo;My name is &lsquo;+this.name); } } //类的继承 class Programmer extends Animal { constructor(name) { //直接调用父类构造器进行初始化 super(name); } program() { console.log(&ldquo;I'm coding&hellip;&quot;); } } //测试我们的类 var animal=new Animal(&lsquo;dummy&rsquo;), wayou=new Programmer(&lsquo;wayou&rsquo;); animal.sayName();//输出 ‘My name is dummy’ wayou.sayName();//输出 ‘My name is wayou’ wayou.program();//输出 ‘I'm coding&hellip;’ [/code]</p>
+<p><strong>3.增强的对象字面量</strong> 对象字面量被增强了，写法更加简洁与灵活，同时在定义对象的时候能够做的事情更多了。具体表现在： 可以在对象字面量里面定义原型 定义方法可以不用function关键字 直接调用父类方法 这样一来，对象字面量与前面提到的类概念更加吻合，在编写面向对象的JavaScript时更加轻松方便了。 [code] //通过对象字面量创建对象 var human = { breathe() { console.log(&lsquo;breathing&hellip;'); } }; var worker = { __proto__: human, //设置此对象的原型为human,相当于继承human company: &lsquo;freelancer&rsquo;, work() { console.log(&lsquo;working&hellip;'); } }; human.breathe();//输出 ‘breathing&hellip;’ //调用继承来的breathe方法 worker.breathe();//输出 ‘breathing&hellip;’ [/code] <strong>4.字符串模板</strong> 字符串模板相对简单易懂些。ES6中允许使用反引号 <code> 来创建字符串，此种方法创建的字符串里面可以包含由美元符号加花括号包裹的变量${vraible}。如果你使用过像C#等后端强类型语言的话，对此功能应该不会陌生。 \[code\] //产生一个随机数 var num=Math.random(); //将这个数字输出到console console.log(\</code>your num is ${num}`); [/code] <strong>5.解构</strong> 自动解析数组或对象中的值。比如若一个函数要返回多个值，常规的做法是返回一个对象，将每个值做为这个对象的属性返回。但在ES6中，利用解构这一特性，可以直接返回一个数组，然后数组中的值会自动被解析到对应接收该值的变量中。 [code] var [x,y]=getVal(),//函数返回值的解构 [name,,age]=[&lsquo;wayou&rsquo;,&lsquo;male&rsquo;,&lsquo;secrect&rsquo;];//数组解构 function getVal() { return [ 1, 2 ]; } console.log(&lsquo;x:&lsquo;+x+&rsquo;, y:&lsquo;+y);//输出：x:1, y:2 console.log(&lsquo;name:&lsquo;+name+&rsquo;, age:&lsquo;+age);//输出： name:wayou, age:secrect [/code] <strong>6.参数默认值，不定参数，拓展参数</strong> 默认参数值 现在可以在定义函数的时候指定参数的默认值了，而不用像以前那样通过逻辑或操作符来达到目的了。 [code] function sayHello(name){ //传统的指定默认参数的方式 var name=name||'dude&rsquo;; console.log(&lsquo;Hello &lsquo;+name); } //运用ES6的默认参数 function sayHello2(name='dude&rsquo;){ console.log(`Hello ${name}`); } sayHello();//输出：Hello dude sayHello(&lsquo;Wayou&rsquo;);//输出：Hello Wayou sayHello2();//输出：Hello dude sayHello2(&lsquo;Wayou&rsquo;);//输出：Hello Wayou [/code] 不定参数 不定参数是在函数中使用命名参数同时接收不定数量的未命名参数。这只是一种语法糖，在以前的JavaScript代码中我们可以通过arguments变量来达到这一目的。不定参数的格式是三个句点后跟代表所有不定参数的变量名。比如下面这个例子中，…x代表了所有传入add函数的参数。 [code] //将所有参数相加的函数 function add(&hellip;x){ return x.reduce((m,n)=&gt;m+n); } //传递任意个数的参数 console.log(add(1,2,3));//输出：6 console.log(add(1,2,3,4,5));//输出：15 [/code] 拓展参数 拓展参数则是另一种形式的语法糖，它允许传递数组或者类数组直接做为函数的参数而不用通过apply。 [code] var people=[&lsquo;Wayou&rsquo;,&lsquo;John&rsquo;,&lsquo;Sherlock&rsquo;]; //sayHello函数本来接收三个单独的参数人妖，人二和人三 function sayHello(people1,people2,people3){ console.log(`Hello ${people1},${people2},${people3}`); } //但是我们将一个数组以拓展参数的形式传递，它能很好地映射到每个单独的参数 sayHello(&hellip;people);//输出：Hello Wayou,John,Sherlock //而在以前，如果需要传递数组当参数，我们需要使用函数的apply方法 sayHello.apply(null,people);//输出：Hello Wayou,John,Sherlock [/code] <strong>7.let与const 关键字</strong> 可以把let看成var，只是它定义的变量被限定在了特定范围内才能使用，而离开这个范围则无效。const则很直观，用来定义常量，即无法被更改值的变量。 [code] for (let i=0;i&lt;2;i++)console.log(i);//输出: 0,1 console.log(i);//输出：undefined,严格模式下会报错 [/code] 8.for of 值遍历 我们都知道for in 循环用于遍历数组，类数组或对象，ES6中新引入的for of循环功能相似，不同的是每次循环它提供的不是序号而是值。 [code] var someArray = [ &ldquo;a&rdquo;, &ldquo;b&rdquo;, &ldquo;c&rdquo; ]; for (v of someArray) { console.log(v);//输出 a,b,c } [/code] <strong>8.iterator, generator</strong> 这一部分的内容有点生涩，详情可以参见这里。以下是些基本概念。 iterator:它是这么一个对象，拥有一个next方法，这个方法返回一个对象{done,value}，这个对象包含两个属性，一个布尔类型的done和包含任意值的value iterable: 这是这么一个对象，拥有一个obj[@@iterator]方法，这个方法返回一个iterator generator: 它是一种特殊的iterator。反的next方法可以接收一个参数并且返回值取决与它的构造函数（generator function）。generator同时拥有一个throw方法 generator 函数: 即generator的构造函数。此函数内可以使用yield关键字。在yield出现的地方可以通过generator的next或throw方法向外界传递值。generator 函数是通过function<em>来声明的 yield 关键字：它可以暂停函数的执行，随后可以再进进入函数继续执行 <strong>9.模块</strong> 在ES6标准中，JavaScript原生支持module了。这种将JS代码分割成不同功能的小块进行模块化的概念是在一些三方规范中流行起来的，比如CommonJS和AMD模式。 将不同功能的代码分别写在不同文件中，各模块只需导出公共接口部分，然后通过模块的导入的方式可以在其他地方使用。下面的例子来自tutsplus: [code] // point.js module &ldquo;point&rdquo; { export class Point { constructor (x, y) { public x = x; public y = y; } } } // myapp.js //声明引用的模块 module point from &ldquo;/point.js&rdquo;; //这里可以看出，尽管声明了引用的模块，还是可以通过指定需要的部分进行导入 import Point from &ldquo;point&rdquo;; var origin = new Point(0, 0); console.log(origin); [/code] <strong>10.Map，Set 和 WeakMap，WeakSet</strong> 这些是新加的集合类型，提供了更加方便的获取属性值的方法，不用像以前一样用hasOwnProperty来检查某个属性是属于原型链上的呢还是当前对象的。同时，在进行属性值添加与获取时有专门的get，set 方法。 下方代码来自es6feature [code] // Sets var s = new Set(); s.add(&ldquo;hello&rdquo;).add(&ldquo;goodbye&rdquo;).add(&ldquo;hello&rdquo;); s.size === 2; s.has(&ldquo;hello&rdquo;) === true; // Maps var m = new Map(); m.set(&ldquo;hello&rdquo;, 42); m.set(s, 34); m.get(s) == 34; [/code] 有时候我们会把对象作为一个对象的键用来存放属性值，普通集合类型比如简单对象会阻止垃圾回收器对这些作为属性键存在的对象的回收，有造成内存泄漏的危险。而WeakMap,WeakSet则更加安全些，这些作为属性键的对象如果没有别的变量在引用它们，则会被回收释放掉，具体还看下面的例子 [code] // Weak Maps var wm = new WeakMap(); wm.set(s, { extra: 42 }); wm.size === undefined // Weak Sets var ws = new WeakSet(); ws.add({ data: 42 });//因为添加到ws的这个临时对象没有其他变量引用它，所以ws不会保存它的值，也就是说这次添加其实没有意思 [/code] <strong>11.Proxies</strong> Proxy可以监听对象身上发生了什么事情，并在这些事情发生后执行一些相应的操作。一下子让我们对一个对象有了很强的追踪能力，同时在数据绑定方面也很有用处。 以下例子借用自这里。 [code] //定义被侦听的目标对象 var engineer = { name: &lsquo;Joe Sixpack&rsquo;, salary: 50 }; //定义处理程序 var interceptor = { set: function (receiver, property, value) { console.log(property, &lsquo;is changed to&rsquo;, value); receiver[property] = value; } }; //创建代理以进行侦听 engineer = Proxy(engineer, interceptor); //做一些改动来触发代理 engineer.salary = 60;//控制台输出：salary is changed to 60 [/code] <strong>12.Symbols</strong> 我们知道对象其实是键值对的集合，而键通常来说是字符串。而现在除了字符串外，我们还可以用symbol这种值来做为对象的键。Symbol是一种基本类型，像数字，字符串还有布尔一样，它不是一个对象。Symbol 通过调用symbol函数产生，它接收一个可选的名字参数，该函数返回的symbol是唯一的。之后就可以用这个返回值做为对象的键了。Symbol还可以用来创建私有属性，外部无法直接访问由symbol做为键的属性值。 [code] (function() { // 创建symbol var key = Symbol(&ldquo;key&rdquo;); function MyClass(privateData) { this[key] = privateData; } MyClass.prototype = { doStuff: function() { &hellip; this[key] &hellip; } }; })(); var c = new MyClass(&ldquo;hello&rdquo;) c[&ldquo;key&rdquo;] === undefined//无法访问该属性，因为是私有的 [/code] <strong>13.Math，Number，String，Object 的新API</strong> 对Math,Number,String还有Object等添加了许多新的API。下面代码同样来自es6features，对这些新API进行了简单展示。 [code] Number.EPSILON Number.isInteger(Infinity) // false Number.isNaN(&ldquo;NaN&rdquo;) // false Math.acosh(3) // 1.762747174039086 Math.hypot(3, 4) // 5 Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2 &ldquo;abcde&rdquo;.contains(&ldquo;cd&rdquo;) // true &ldquo;abc&rdquo;.repeat(3) // &ldquo;abcabcabc&rdquo; Array.from(document.querySelectorAll('</em>')) // Returns a real Array Array.of(1, 2, 3) // Similar to new Array(&hellip;), but without special one-arg behavior [0, 0, 0].fill(7, 1) // [0,7,7] [1,2,3].findIndex(x =&gt; x == 2) // 1 [&ldquo;a&rdquo;, &ldquo;b&rdquo;, &ldquo;c&rdquo;].entries() // iterator [0, &ldquo;a&rdquo;], [1,&ldquo;b&rdquo;], [2,&ldquo;c&rdquo;] [&ldquo;a&rdquo;, &ldquo;b&rdquo;, &ldquo;c&rdquo;].keys() // iterator 0, 1, 2 [&ldquo;a&rdquo;, &ldquo;b&rdquo;, &ldquo;c&rdquo;].values() // iterator &ldquo;a&rdquo;, &ldquo;b&rdquo;, &ldquo;c&rdquo; Object.assign(Point, { origin: new Point(0,0) }) [/code] <strong>14.Promises</strong> Promises是处理异步操作的一种模式，之前在很多三方库中有实现，比如jQuery的deferred 对象。当你发起一个异步请求，并绑定了.when(), .done()等事件处理程序时，其实就是在应用promise模式。 [code] //创建promise var promise = new Promise(function(resolve, reject) { // 进行一些异步或耗时操作 if ( /*如果成功 */ ) { resolve(&ldquo;Stuff worked!&quot;); } else { reject(Error(&ldquo;It broke&rdquo;)); } }); //绑定处理程序 promise.then(function(result) { //promise成功的话会执行这里 console.log(result); // &ldquo;Stuff worked!&rdquo; }, function(err) { //promise失败会执行这里 console.log(err); // Error: &ldquo;It broke&rdquo; }); [/code]</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/es6/">
+                    #es6</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/" class="prev" rel="prev" title="canvas小案例：fly birds"><i class="iconfont icon-left"></i>&nbsp;canvas小案例：fly birds</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" class="next" rel="next" title="js中对数组的一些操作">js中对数组的一些操作&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

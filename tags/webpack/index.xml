@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webpack on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/webpack/</link>
+    <description>Recent content in webpack on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 08 Dec 2019 17:20:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>webpack配置app和pc多入口</title>
+      <link>https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</link>
+      <pubDate>Sun, 08 Dec 2019 17:20:24 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</guid>
+      <description>需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。
+  原先页面为index.html,后面增加pcJs.html  更改路径 在paths.js里
+{ // 增加pc的html  pcIndexJs: resolveModule(resolveApp, &amp;#39;src/pc/index&amp;#39;), } 增加entry 在webpack.config.js下
+entry: { index: [ isEnvDevelopment &amp;amp;&amp;amp; require.resolve(&amp;#34;react-dev-utils/webpackHotDevClient&amp;#34;), paths.appIndexJs ].filter(Boolean), pcJs: [ isEnvDevelopment &amp;amp;&amp;amp; require.resolve(&amp;#34;react-dev-utils/webpackHotDevClient&amp;#34;), paths.pcIndexJs ].filter(Boolean) }, 动态生成文件名 在webpack.config.js下
+output: { filename: isEnvProduction ? &amp;#34;static/js/[name].[contenthash:8].js&amp;#34; : isEnvDevelopment &amp;amp;&amp;amp; &amp;#34;static/js/[name].bundle.js&amp;#34;, // TODO: remove this when upgrading to webpack 5  futureEmitAssets: true, // There are also additional JS chunk files if you use code splitting.</description>
+    </item>
+    
+    <item>
+      <title>从头开始配置webpack4</title>
+      <link>https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</link>
+      <pubDate>Sun, 09 Sep 2018 23:25:12 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</guid>
+      <description>最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在 webapck4中也开始朝着这个方向发展，比如默认的入口为src,默认的打包输出为dist,新增了mode属性，有利于拆分生产环境和开发环境，默认为production，并且默认压缩js，还有一些其他的插件也不再适用，在此也没必要了解，最近就从头梳理了一下webpack4.
+  本片文章主要参考自董沅鑫的个人博客https://godbmw.com
+ 环境 首先我们要全局安装webpack-cli和webpack,然后也要在项目中安装webpack和webpack-cli,这样我们才能使用。
+编译ES6 编译es6,我们需要以下loaders
+ babel-loader babel转换器 babel-core babel转换时所调用的api(听名字就知道它是babel的核心) babel-preset-env 语法转换规则 babel-plugin-transform-runtime和Babel-runtime polyfill按需引入 babel-polyfill polyfill全局引入 注意：在babel7中所有前缀都变为@babel/,注意版本的统一  新建webpack.config.js:
+const path = require(&amp;#34;path&amp;#34;) // 使用babel编译ES6 module.exports = { entry: { app: &amp;#34;./index.js&amp;#34; // 以对象形式写推荐  }, output: { filename: &amp;#34;bundle.js&amp;#34;, // resolve解析为一个绝对路径  path: path.resolve(__dirname, &amp;#34;dist&amp;#34;) }, module: { rules: [ { test: /\.js$/, // 正则匹配以js结尾的文件  use: { loader: &amp;#34;babel-loader&amp;#34; // option: { // babel-loader的具体配置信息写在根目录下的.</description>
+    </item>
+    
+  </channel>
+</rss>

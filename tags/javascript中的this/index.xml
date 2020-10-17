@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript中的this on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/javascript%E4%B8%AD%E7%9A%84this/</link>
+    <description>Recent content in JavaScript中的this on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 16 Oct 2018 22:09:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/javascript%E4%B8%AD%E7%9A%84this/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>总结一下JavaScript中的this</title>
+      <link>https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</link>
+      <pubDate>Tue, 16 Oct 2018 22:09:25 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</guid>
+      <description>有的时候我们总是被JavaScript中的this搞得晕头转向，因为它的不确定性，也被经常拿来当作考题，我们也经常听到网上最认同的说法：“谁调用this,this就指向谁”，那么this到底是什么呢，最近就this总结了一下。
+  本篇文章主要参考《你不知道的JavaScript》（上）
+  话说草稿老早就写了，好像忘发了。
+ 为什么要使用this？ 我们先要知道一个前提，在JavaScript中 万物皆对象，而函数在对象中又是 一等公民，对象与对象之间通过 原型联系，那对象和函数之间如何联系呢，答案就是 this
+首先如果没有this会是什么情况？ // 只要切换上下文对象，就可以复用此函数，不用针对每个对象写一遍函数 function sayName(context){ console.log(context.name) } var me = { name: &amp;#39;kyle&amp;#39; } var you = { name: &amp;#39;frank&amp;#39; } // 如果没有this，我们只能显示的传入对象 sayName(me) // 函数的上下文为对象的情况 var obj = { name: &amp;#39;frank&amp;#39; sayName: function(context) { console.log(context.name) } } // 如果没有this，我们只能显示的传入对象 obj.sayName(obj) 我们看到如果没有this，要想函数与对象产生关联，只能手动传入这个对象，那JavaScript的创始者想Java有个this，不如JavaScript也搞个this吧，干脆我就默认帮忙隐式传递这个对象得了！于是就发明了this这个关键字！ 所以结论是this关键字能够隐式的传递对象，当然了也提供了call,apply函数允许我们手动显式传递，上面的情况就可以这样写了。
+var obj = { name: &amp;#39;frank&amp;#39; sayName: function() { console.log(this.name) } } // 隐式传递了obj,等同于obj.</description>
+    </item>
+    
+  </channel>
+</rss>

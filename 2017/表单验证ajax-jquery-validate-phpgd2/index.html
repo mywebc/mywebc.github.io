@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           表单验证（ajax&#43;jQuery Validate&#43;PHPgd2） | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2） | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "表单验证（ajax\x2bjQuery Validate\x2bPHPgd2）",
+    "headline" : "表单验证（ajax\x2bjQuery Validate\x2bPHPgd2）",
+    "description" : "一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复\n 一、浏览器端的验证我们可以用jQuery Validate这个插件  首先引入插件：  \x26lt;script src=\x26#39;libs\/jquery-1.11.1.min.js\x26#39;\x26gt;\x26lt;\/script\x26gt;\/ \/\/jquery插件 \x26lt;script src=\x26#39;libs\/jquery.validate.min.js\x26#39;\x26gt;\x26lt;\/script\x26gt; \/\/jQuery validate插件 \x26lt;script src=\x26#39;libs\/messages_zh.min.js\x26#39;\x26gt;\x26lt;\/script\x26gt; \/\/中文提示信息插件 具体使用看如下例子：   js部分  $(function(){ \/\/指定要验证的表单  $(\x26#39;#myform\x26#39;).validate({ \/\/这里是验证通过要书写回调函数  submitHandler:function(form){ \/\/提交表单方式之一  form.submit(); } \/\/这里定义规则  rules:{ username:{ requried:true, minlength:2 } } \/\/这里写提示信息，如果不写，就会使用默认  messages:{ username:{ required:\x26#34;请输入用户名！\x26#34;, minlength:\x26#34;长度不少于2位！\x26#34; } } }) }) 更多的其他的指令规则：规则 描述   required:true 必须输入的字段。 remote:\x26ldquo;check.php\x26rdquo; 使用 ajax 方法调用 check.php 验证输入值。 email:true 必须输入正确格式的电子邮件。 url:true 必须输入正确格式的网址。 date:true 必须输入正确格式的日期。日期校验 ie6 出错，慎用。 dateISO:true 必须输入正确格式的日期（ISO），例如：2009-06-23，1998\/01\/22。只验证格式，不验证有效性。 number:true 必须输入合法的数字（负数，小数）。 digits:true 必须输入整数。 creditcard: 必须输入合法的信用卡号。 equalTo:\x26quot;#field\x26rdquo; 输入值必须和 #field 相同。 accept: 输入拥有合法后缀名的字符串（上传文件的后缀）。 maxlength:5 输入长度最多是 5 的字符串（汉字算一个字符）。 minlength:10 输入长度最小是 10 的字符串（汉字算一个字符）。 rangelength:[5,10] 输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。 range:[5,10] 输入值必须介于 5 和 10 之间。 max:5 输入值不能大于 5。 min:10 输入值不能小于 10。  小提示：可以使用label.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-25 14:42:59 \x2b0000 UTC",
+    "dateModified" : "2017-08-25 14:42:59 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2\/",
+    "wordCount" : "232",
+    "keywords" : [ "jquery", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-25 itemprop="datePublished">August 25, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="jquery-validate">一、浏览器端的验证我们可以用jQuery Validate这个插件</h2>
+<ol>
+<li>首先引入插件：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;libs/jquery-1.11.1.min.js&#39;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">/script&gt;/</span>
+<span style="color:#75715e">//jquery插件 
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;libs/jquery.validate.min.js&#39;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<span style="color:#75715e">//jQuery validate插件 
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;libs/messages_zh.min.js&#39;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<span style="color:#75715e">//中文提示信息插件
+</span></code></pre></div><ol start="2">
+<li>具体使用看如下例子：</li>
+</ol>
+<ul>
+<li>js部分</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">function</span>(){ 
+   <span style="color:#75715e">//指定要验证的表单 
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#myform&#39;</span>).<span style="color:#a6e22e">validate</span>({ 
+     <span style="color:#75715e">//这里是验证通过要书写回调函数 
+</span><span style="color:#75715e"></span>     <span style="color:#a6e22e">submitHandler</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">form</span>){
+        <span style="color:#75715e">//提交表单方式之一 
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">submit</span>(); 
+      } 
+      <span style="color:#75715e">//这里定义规则 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span>{ <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span>{ <span style="color:#a6e22e">requried</span><span style="color:#f92672">:</span><span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">minlength</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span> } } 
+      <span style="color:#75715e">//这里写提示信息，如果不写，就会使用默认 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">messages</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span>{ 
+          <span style="color:#a6e22e">required</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;请输入用户名！&#34;</span>, <span style="color:#a6e22e">minlength</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;长度不少于2位！&#34;</span> } } 
+      }) 
+    }) 
+</code></pre></div><ol start="3">
+<li>更多的其他的指令规则：规则 描述</li>
+</ol>
+<ul>
+<li>required:true 必须输入的字段。</li>
+<li>remote:&ldquo;check.php&rdquo; 使用 ajax 方法调用 check.php 验证输入值。</li>
+<li>email:true 必须输入正确格式的电子邮件。</li>
+<li>url:true 必须输入正确格式的网址。</li>
+<li>date:true 必须输入正确格式的日期。日期校验 ie6 出错，慎用。</li>
+<li>dateISO:true 必须输入正确格式的日期（ISO），例如：2009-06-23，1998/01/22。只验证格式，不验证有效性。</li>
+<li>number:true 必须输入合法的数字（负数，小数）。</li>
+<li>digits:true 必须输入整数。</li>
+<li>creditcard: 必须输入合法的信用卡号。</li>
+<li>equalTo:&quot;#field&rdquo; 输入值必须和 #field 相同。</li>
+<li>accept: 输入拥有合法后缀名的字符串（上传文件的后缀）。</li>
+<li>maxlength:5 输入长度最多是 5 的字符串（汉字算一个字符）。</li>
+<li>minlength:10 输入长度最小是 10 的字符串（汉字算一个字符）。</li>
+<li>rangelength:[5,10] 输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。</li>
+<li>range:[5,10] 输入值必须介于 5 和 10 之间。</li>
+<li>max:5 输入值不能大于 5。</li>
+<li>min:10 输入值不能小于 10。</li>
+</ul>
+<ol start="4">
+<li>小提示：可以使用label.error自定义错误信息提示样式;</li>
+</ol>
+<h2 id="-phpgdapiphpgd2-">二、关于验证码 要用到PHPgd库里面提供的一些api,使用前注意开启PHPgd2 具体示例：</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#75715e">// 创建画布 
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$img</span><span style="color:#f92672">=</span><span style="color:#a6e22e">imagecreate</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">35</span>); 
+  <span style="color:#75715e">// 给画布分配背景颜色，mt_rand()就是返回随机整数 
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$bgcolor</span><span style="color:#f92672">=</span><span style="color:#a6e22e">imagecolorallocate</span>(<span style="color:#a6e22e">$img</span>, <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>)); 
+  <span style="color:#75715e">// 添加干扰线，用for循环，随机画三条 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">$i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">$i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; <span style="color:#a6e22e">$i</span><span style="color:#f92672">++</span>) { 
+    <span style="color:#75715e">// 为干扰线添加随机颜色 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$linecolor</span><span style="color:#f92672">=</span><span style="color:#a6e22e">imagecolorallocate</span>(<span style="color:#a6e22e">$img</span>,<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>)); 
+    <span style="color:#75715e">// 开始画干扰线 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">imageline</span>(<span style="color:#a6e22e">$img</span>,<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">35</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">35</span>),<span style="color:#a6e22e">$linecolor</span>); } 
+    <span style="color:#75715e">// 添加干扰点,for循环，随机添加25个点 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">$i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">$i</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">25</span> ; <span style="color:#a6e22e">$i</span><span style="color:#f92672">++</span>) { 
+      <span style="color:#75715e">//为点添加随机颜色 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">$diancolor</span><span style="color:#f92672">=</span><span style="color:#a6e22e">imagecolorallocate</span>(<span style="color:#a6e22e">$img</span>,<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>)); 
+      <span style="color:#75715e">// 开始画点 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">imagesetpixel</span>(<span style="color:#a6e22e">$img</span>,<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>),<span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">35</span>),<span style="color:#a6e22e">$diancolor</span>); 
+      } 
+    <span style="color:#75715e">// 准备一个字符串 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$rand_str</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;qwertyuiopasdfghjklzxcvbnm1234567890&#39;</span>; 
+    <span style="color:#75715e">// 准备一个空数组 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$str_arr</span><span style="color:#f92672">=</span><span style="color:#a6e22e">array</span>(); 
+    <span style="color:#75715e">// 循环四次返回4个随机字母或数字 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">$i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">$i</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">4</span> ; <span style="color:#a6e22e">$i</span><span style="color:#f92672">++</span>) { 
+      <span style="color:#75715e">// 随机取从0到字符串长度的下标 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">$pos</span><span style="color:#f92672">=</span><span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">strlen</span>(<span style="color:#a6e22e">$rand_str</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>); 
+      <span style="color:#75715e">// 一一放到数组里 
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">$str_arr</span>[]<span style="color:#f92672">=</span><span style="color:#a6e22e">$rand_str</span>[<span style="color:#a6e22e">$pos</span>];
+    } 
+    <span style="color:#75715e">// 开启sesson,把这四个数据放进session里 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">session_start</span>(); <span style="color:#a6e22e">$_SESSION</span>[<span style="color:#e6db74">&#39;info&#39;</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">$str_arr</span>; 
+    <span style="color:#75715e">// 准备绘制，可以用imagestring(不支持中文)或者imagettftext(支持中文但需要下载字体) 
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//用imagesttftext绘制 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$x_start</span><span style="color:#f92672">=</span><span style="color:#ae81ff">100</span><span style="color:#f92672">/</span><span style="color:#ae81ff">5</span>; 
+    <span style="color:#75715e">// foreach用于遍历输出数组，不知道循环次数 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">foreach</span> (<span style="color:#a6e22e">$str_arr</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">$key</span>) { <span style="color:#a6e22e">$fontcolor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">imagecolorallocate</span>(<span style="color:#a6e22e">$img</span>, <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>), <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>)); <span style="color:#a6e22e">imagettftext</span>(<span style="color:#a6e22e">$img</span>, <span style="color:#ae81ff">20</span>, <span style="color:#a6e22e">mt_rand</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">15</span>), <span style="color:#a6e22e">$x_start</span>, <span style="color:#ae81ff">50</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">$fontcolor</span>, <span style="color:#e6db74">&#34;C:/Windows/Fonts/Verdana.TTF&#34;</span>, <span style="color:#a6e22e">$key</span>); <span style="color:#a6e22e">$x_start</span> <span style="color:#f92672">+=</span><span style="color:#ae81ff">20</span>;
+    <span style="color:#75715e">//遍历后单个字符沿X轴 
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">+</span><span style="color:#ae81ff">20</span> 
+    } 
+    <span style="color:#75715e">// 填充 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">imagefill</span>(<span style="color:#a6e22e">$img</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">$imgcolor</span>); <span style="color:#a6e22e">ob_clean</span>(); 
+    <span style="color:#75715e">// 输出图像格式 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">header</span>(<span style="color:#e6db74">&#39;content-type:image/jpeg&#39;</span>); 
+    <span style="color:#75715e">// 输出图像 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">imagejpeg</span>(<span style="color:#a6e22e">$img</span>); 
+    <span style="color:#75715e">// 摧毁图像 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">imagedestroy</span>(<span style="color:#a6e22e">$img</span>); 
+</code></pre></div><ol>
+<li>我们在HTML中创建一个img,src属性指向这个PHP页面即可显示出来，如：src=data.php  点击图片刷新属性：</li>
+<li>验证验证码是否正确，利用ajax传送到后端，后端如下判断：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  <span style="color:#75715e">&lt;?php</span> <span style="color:#a6e22e">header</span>(<span style="color:#e6db74">&#39;content-type:text/html;charset= utf-8&#39;</span>); 
+  <span style="color:#75715e">// 接受验证码 
+</span><span style="color:#75715e"></span>  $yzm<span style="color:#f92672">=</span>$_POST[<span style="color:#e6db74">&#39;num&#39;</span>]; <span style="color:#a6e22e">session_start</span>(); 
+  <span style="color:#75715e">// 把数组里的数据都取出来 
+</span><span style="color:#75715e"></span>  $data<span style="color:#f92672">=</span><span style="color:#a6e22e">implode</span>(<span style="color:#e6db74">&#39;&#39;</span>,$_SESSION[<span style="color:#e6db74">&#39;info&#39;</span>]); 
+  <span style="color:#66d9ef">if</span>($yzm<span style="color:#f92672">==</span>$data){ <span style="color:#66d9ef">echo</span><span style="color:#e6db74">&#39;1&#39;</span>; } <span style="color:#75715e">?&gt;</span> 
+</code></pre></div><p>注意：我也不知道为什么，一开始老是验证不了，最后是需要再单独建一个PHP，再在里面写上验证代码就好了。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/jquery/">
+                    #jquery</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" class="prev" rel="prev" title="angular  js 获取天气预报"><i class="iconfont icon-left"></i>&nbsp;angular  js 获取天气预报</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/" class="next" rel="next" title="php生成制作验证码">php生成制作验证码&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

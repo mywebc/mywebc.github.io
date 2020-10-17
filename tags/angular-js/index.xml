@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>angular js on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/angular-js/</link>
+    <description>Recent content in angular js on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 24 Aug 2017 15:31:40 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/angular-js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>angular  js 获取天气预报</title>
+      <link>https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/</link>
+      <pubDate>Thu, 24 Aug 2017 15:31:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/</guid>
+      <description>首先了解一下跨域：跨域就是从一个网站去请求另一个网站中的内容。 要想实现跨域，现在主流的做法是用jsonp。
+ 一、jsonp的原理 我们发现HTML标签是可以请求外网的内容的，  比如img的src设置为外网的图片地址，是可以读取到的，那么我们可以新建一个script标签，设置它的src属性就是外网的地址，那么我们就能读取到外网的内容，jsonp会用到ajax方法，但是其实它跟ajax是没有关系的，jsonp是get请求。  二、去百度拿天气数据 百度车联网API，  里面百度给我们提供了一个url: http://api.map.baidu.com/telematics/v3/weather?location=北京&amp;amp;output=json&amp;amp;ak=E4805d16520de693a3fe707cdc962045 其中ak指的是开发者密钥，这个我们需要注册一下百度账号，再点击获取密钥就可以了。  三、在angular js 中有很多的内建服务，比如$http、$log、$location等等，  在我们需要用他们的时候，就要在控制器内传入他们，如下：  weather.controller(&amp;#39;WeatherController&amp;#39;,[&amp;#39;$scope&amp;#39;,&amp;#39;$http&amp;#39;,&amp;#39;$log&amp;#39;,function($scope,$http,$log){ }  这里传入三个参数，$scope,$http,$log，告诉angular js我们需要他们，angularjs 就会以参数的形式传进来供我们使用，这里的$http就是供我们向服务端发送异步请求的，而$log里提供了一系列的打印方法。 完整代码如下：  &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;weather&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body ng-app=&amp;#39;weather&amp;#39;&amp;gt; &amp;lt;div ng-controller=&amp;#39;WeatherController&amp;#39;&amp;gt; &amp;lt;button ng-click=&amp;#39;get()&amp;#39;&amp;gt;获取南京的天气&amp;lt;/button&amp;gt; &amp;lt;table&amp;gt; &amp;lt;!--视图 --&amp;gt; &amp;lt;tr ng-repeat=&amp;#34;item in weatherData&amp;#34;&amp;gt; &amp;lt;td&amp;gt;{ {item.date}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;img ng-src=&amp;#34;{ {item.dayPictureUrl}}&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;img ng-src=&amp;#34;{ {item.nightPictureUrl}}&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.temperature}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.weather}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.wind}}&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#39;libs/angular.</description>
+    </item>
+    
+    <item>
+      <title>初识angular js ,备忘录练习</title>
+      <link>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Tue, 22 Aug 2017 13:38:27 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;一个备忘录小练习，可以写入计划和删除计划。 进一步了解了一些指令的使用：&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识angular js，tab栏切换练习</title>
+      <link>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Tue, 22 Aug 2017 07:02:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/</guid>
+      <description>看到了angular js， angular js是一款MVC前端框架，以数据和逻辑作为驱动核心，有很多特性：模块化，双向数据绑定，语义化标签等，与之类似的还有VUE，REACT等框架。 MVC是一种开发模式，由模型（Model）、视图（View）、控制器（Controller）3部分构成。 基本用法：
+  首先script标签引入angular js 框架； 其次定义模板，第一个参数为模板名称，第二个参数为一个空数组,表示依赖的其他模块； 然后定义控制器，第一个参数为控制器名称，第二个参数除最后一个是函数外，其他都是字符串，表明此控制器的依赖关系， 控制器里书写逻辑数据； 最后绑定模板，绑定控制器； 具体示例代码如下：  &amp;lt;!-- 绑定模块 --&amp;gt; &amp;lt;body ng-app=&amp;#39;Tabs&amp;#39;&amp;gt; &amp;lt;!-- 绑定控制器 --&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34; ng-controller=&amp;#39;TabController&amp;#39;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;first&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;first&amp;#34;)&amp;#39;&amp;gt;tab1&amp;lt;/li&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;second&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;second&amp;#34;)&amp;#39;&amp;gt;tab2&amp;lt;/li&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;third&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;third&amp;#34;)&amp;#39;&amp;gt;tab3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;div ng-switch on=&amp;#39;type&amp;#39;&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;first&amp;#39;&amp;gt;这里是内容一哦&amp;lt;/div&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;second&amp;#39;&amp;gt;这里是内容二哦&amp;lt;/div&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;third&amp;#39;&amp;gt;这里是内容三哦&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- 引入angularjs 框架 --&amp;gt; &amp;lt;script src=&amp;#34;../libs/angular.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;scripttype=&amp;#34;text/javascript&amp;#34;&amp;gt; // 定义模板  var Tabs = angular.module(&amp;#39;Tabs&amp;#39;,[]); // 定有控制器 Tabs.controller(&amp;#39;TabController&amp;#39;,[&amp;#39;$scope&amp;#39;,function($scope){  // 这个$scope就是空的对象，指的就是Model $scope.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/" />
+  <link rel="next" href="https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           webpack配置app和pc多入口 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="webpack配置app和pc多入口 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "webpack配置app和pc多入口",
+    "headline" : "webpack配置app和pc多入口",
+    "description" : "需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。\n  原先页面为index.html,后面增加pcJs.html  更改路径 在paths.js里\n{ \/\/ 增加pc的html  pcIndexJs: resolveModule(resolveApp, \x26#39;src\/pc\/index\x26#39;), } 增加entry 在webpack.config.js下\nentry: { index: [ isEnvDevelopment \x26amp;\x26amp; require.resolve(\x26#34;react-dev-utils\/webpackHotDevClient\x26#34;), paths.appIndexJs ].filter(Boolean), pcJs: [ isEnvDevelopment \x26amp;\x26amp; require.resolve(\x26#34;react-dev-utils\/webpackHotDevClient\x26#34;), paths.pcIndexJs ].filter(Boolean) }, 动态生成文件名 在webpack.config.js下\noutput: { filename: isEnvProduction ? \x26#34;static\/js\/[name].[contenthash:8].js\x26#34; : isEnvDevelopment \x26amp;\x26amp; \x26#34;static\/js\/[name].bundle.js\x26#34;, \/\/ TODO: remove this when upgrading to webpack 5  futureEmitAssets: true, \/\/ There are also additional JS chunk files if you use code splitting.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-12-08 17:20:24 \x2b0000 UTC",
+    "dateModified" : "2019-12-08 17:20:24 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2019\/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3\/",
+    "wordCount" : "204",
+    "keywords" : [ "webpack", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">webpack配置app和pc多入口</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-12-08 itemprop="datePublished">December 8, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<ul>
+<li>原先页面为index.html,后面增加pcJs.html</li>
+</ul>
+<h2 id="heading">更改路径</h2>
+<p>在paths.js里</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+<span style="color:#75715e">// 增加pc的html
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">pcIndexJs</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">resolveModule</span>(<span style="color:#a6e22e">resolveApp</span>, <span style="color:#e6db74">&#39;src/pc/index&#39;</span>),
+}
+</code></pre></div><h2 id="entry">增加entry</h2>
+<p>在webpack.config.js下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">index</span><span style="color:#f92672">:</span> [
+        <span style="color:#a6e22e">isEnvDevelopment</span> <span style="color:#f92672">&amp;&amp;</span>
+          <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;react-dev-utils/webpackHotDevClient&#34;</span>),
+        <span style="color:#a6e22e">paths</span>.<span style="color:#a6e22e">appIndexJs</span>
+      ].<span style="color:#a6e22e">filter</span>(Boolean),
+      <span style="color:#a6e22e">pcJs</span><span style="color:#f92672">:</span> [
+        <span style="color:#a6e22e">isEnvDevelopment</span> <span style="color:#f92672">&amp;&amp;</span>
+          <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;react-dev-utils/webpackHotDevClient&#34;</span>),
+        <span style="color:#a6e22e">paths</span>.<span style="color:#a6e22e">pcIndexJs</span>
+      ].<span style="color:#a6e22e">filter</span>(Boolean)
+    },
+</code></pre></div><h2 id="heading1">动态生成文件名</h2>
+<p>在webpack.config.js下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+     <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">isEnvProduction</span>
+        <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;static/js/[name].[contenthash:8].js&#34;</span>
+        <span style="color:#f92672">:</span> <span style="color:#a6e22e">isEnvDevelopment</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;static/js/[name].bundle.js&#34;</span>,
+      <span style="color:#75715e">// TODO: remove this when upgrading to webpack 5
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">futureEmitAssets</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+      <span style="color:#75715e">// There are also additional JS chunk files if you use code splitting.
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">chunkFilename</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">isEnvProduction</span>
+        <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;english/static/js/[name].[contenthash:8].chunk.js&#34;</span>
+        <span style="color:#f92672">:</span> <span style="color:#a6e22e">isEnvDevelopment</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;static/js/[name].chunk.js&#34;</span>,
+}
+</code></pre></div><h2 id="html">动态生成对应HTML</h2>
+<p>在webpack.config.js下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>(
+        Object.<span style="color:#a6e22e">assign</span>(
+          {},
+          {
+            <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">paths</span>.<span style="color:#a6e22e">appHtml</span>,
+            <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;index&#34;</span>],
+            <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;index.html&#34;</span>
+          },
+          <span style="color:#a6e22e">isEnvProduction</span>
+            <span style="color:#f92672">?</span> {
+                <span style="color:#a6e22e">minify</span><span style="color:#f92672">:</span> {
+                  <span style="color:#a6e22e">removeComments</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">collapseWhitespace</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">removeRedundantAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">useShortDoctype</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">removeEmptyAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">removeStyleLinkTypeAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">keepClosingSlash</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">minifyJS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">minifyCSS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                  <span style="color:#a6e22e">minifyURLs</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                }
+              }
+            <span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>
+        )
+      ),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>(
+            Object.<span style="color:#a6e22e">assign</span>(
+            {},
+            {
+                <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">paths</span>.<span style="color:#a6e22e">appHtml</span>,
+                <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;pcJs&#34;</span>],
+                <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;pcJs.html&#34;</span>
+            },
+            <span style="color:#a6e22e">isEnvProduction</span>
+                <span style="color:#f92672">?</span> {
+                    <span style="color:#a6e22e">minify</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">removeComments</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">collapseWhitespace</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">removeRedundantAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">useShortDoctype</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">removeEmptyAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">removeStyleLinkTypeAttributes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">keepClosingSlash</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">minifyJS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">minifyCSS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                    <span style="color:#a6e22e">minifyURLs</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                    }
+                }
+                <span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>
+            )
+        ),
+]
+</code></pre></div><h2 id="heading2">路由重指向</h2>
+<p>在webpackDevServer.config.js下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#a6e22e">historyApiFallback</span><span style="color:#f92672">:</span> {
+      <span style="color:#75715e">// Paths with dots should still use the history fallback.
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// See https://github.com/facebook/create-react-app/issues/387.
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">disableDotRule</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+      <span style="color:#75715e">// pc开头全部指向pcJs.html
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">rewrites</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">from</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/^\/pc/</span>, <span style="color:#a6e22e">to</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/pcJs.html&#34;</span> }]
+    },
+</code></pre></div><p><strong>重定向时to的后面，不需要加build!</strong></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/webpack/">
+                    #webpack</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/" class="prev" rel="prev" title="无意间用了React Portals"><i class="iconfont icon-left"></i>&nbsp;无意间用了React Portals</a>
+         
+        
+        <a href="https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/" class="next" rel="next" title="Deno 初体验">Deno 初体验&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

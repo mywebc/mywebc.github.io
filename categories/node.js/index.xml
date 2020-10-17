@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/node.js/</link>
+    <description>Recent content in Node.js on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 26 Oct 2017 01:58:05 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/node.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nodejs中书写自己的require方法</title>
+      <link>https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 26 Oct 2017 01:58:05 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;p&gt;模块化是一种开发模式，模块化的开发有利于后期维护，提高效率，模块化的规范在服务器端是CommonJs，比如nodejs采用的就是这个，在浏览器端有AMD规范（比如RequireJs采用的），CMD规范（SeaJS采用的）。 SeaJS我看了一点，但是我又忘得差不多了o(╥﹏╥)o，我知道错了，所以我来做笔记了。 在SeaJs中它是用define定义模块的： [javascript] define(function(require,exports,module) { var a=1; exports.text=a; //或者module.exports={text:a}; }) [/javascript] 三个参数： require：用来加载模块的; exports：module 的别名，只能通过点语法加属性； module:是一个对象，里面有exports这个属性； 所以exports=module.exports;我们在使用中用exports或者module.exports暴露接口都可以。 具体的基本使用是这样的：
+（1）引入sea.js库；
+（2）用define定义模块，在里面向外面暴露接口；
+（3）也是在define中，用require加载定义的模块；
+（4）启动模块系统，seajs.use(),引入入口模块； 有点跑题了，本篇主要是书写nodejs中的require的方法的，nodejs中的模块的定义比seajs简单点，不需要define，一个js文件就是一个模块，同样用exports暴露接口，require加载模块。 下面我们自己重写requie函数： [javascript] //使用严格模式 &amp;lsquo;use strict&amp;rsquo; function myrequire(id) { //引入node内部模块fs和path const fs = require(&amp;lsquo;fs&amp;rsquo;); const path = require(&amp;lsquo;path&amp;rsquo;); //包含自身的完整路径 const filename = path.join(__dirname, id); // pathto/module1.js //不包含自身的路径 const dirname = path.dirname(filename); // pathto //为防止node把他丢到事件队列里，这里需要同步读取 let code = fs.readFileSync(filename, &amp;lsquo;utf8&amp;rsquo;); // 定义一个数据容器，用容器去装模块导出的成员 let module = { id: filename, exports: {} }; let exports = module.exports; // module.exports code =&lt;code&gt; (function(myrequire, module, exports, \_\_dirname, \_\_filename) { ${code} })(myrequire, module, exports, dirname, filename);&lt;/code&gt;; //转换成js代码 eval(code); return module.exports; } [/javascript] 再拓展解释一下上面的代码：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

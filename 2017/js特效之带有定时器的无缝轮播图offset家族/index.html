@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  
+  <link rel="next" href="https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           js特效之带有定时器的无缝轮播图（offset家族） | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="js特效之带有定时器的无缝轮播图（offset家族） | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "js特效之带有定时器的无缝轮播图（offset家族）",
+    "headline" : "js特效之带有定时器的无缝轮播图（offset家族）",
+    "description" : "1.了解offset家族，这里用到offsetLeft(盒子距离左侧的距离)，与style.left不同，style.left可被赋值且盒子要定位。动画原理：盒子本身的位置\x2b位长，用offsetLeft来获取值，style.left来赋值。以下是动画的简单封装。\nfunction animate(ele,target) { \/\/每次调用计时器时都要清除计时器  clearInterval(ele.timer); \/\/调用计时器  \/\/位长让它有正有负  var speed=target\x26gt;ele.offsetLeft ? 10:-10; ele.timer=setInterval(function () { var val=target-ele.offsetLeft; ele.style.left=ele.offsetLeft\x2bspeed\x2b\x26#34;px\x26#34;; if(Math.abs(val)\x26lt;=10){ ele.style.left=target\x2b\x26#34;px\x26#34;; clearInterval(ele.timer); } },30); } 2.思路：实现无缝滚动，先复制第一张图片到ul最后，当滚动到第六张时，将ul的offsetLeft值赋值为0（此时转到第一张），并将ul 的索引值赋值为1，切换到第二张，js代码如下： var all = document.getElementById(\x26#34;all\x26#34;); var screen = all.firstElementChild || all.firstChild;\/\/all元素的第一个元素的第一个子节点  var imgWidth = screen.offsetWidth; var ul = screen.firstElementChild || screen.firstChild; var div = screen.lastElementChild || screen.lastChild; var spanArr = div.children; var ol = screen.children\\[1\\]; \/\/2.复制第一张图片所在的li,添加到ul的最后面。  var ulNewLi = ul.children\\[0\\].cloneNode(true);\/\/复制ul中第一个节点  ul.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-05-21 02:42:52 \x2b0000 UTC",
+    "dateModified" : "2017-05-21 02:42:52 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F\/",
+    "wordCount" : "205",
+    "keywords" : [ "js", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">js特效之带有定时器的无缝轮播图（offset家族）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-05-21 itemprop="datePublished">May 21, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>1.了解offset家族，这里用到offsetLeft(盒子距离左侧的距离)，与style.left不同，style.left可被赋值且盒子要定位。动画原理：盒子本身的位置+位长，用offsetLeft来获取值，style.left来赋值。以下是动画的简单封装。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">animate</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">target</span>) {
+            <span style="color:#75715e">//每次调用计时器时都要清除计时器
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>);
+            <span style="color:#75715e">//调用计时器
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//位长让它有正有负
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">speed</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>;
+            <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span><span style="color:#f92672">=</span><span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span> () {
+                <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">val</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span>;
+                <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span><span style="color:#f92672">+</span><span style="color:#a6e22e">speed</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;px&#34;</span>;
+                <span style="color:#66d9ef">if</span>(Math.<span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">val</span>)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">10</span>){
+                    <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;px&#34;</span>;
+                    <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>);
+                }
+            },<span style="color:#ae81ff">30</span>);
+        }
+</code></pre></div><p>2.思路：实现无缝滚动，先复制第一张图片到ul最后，当滚动到第六张时，将ul的offsetLeft值赋值为0（此时转到第一张），并将ul 的索引值赋值为1，切换到第二张，js代码如下：  </p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">all</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;all&#34;</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">firstElementChild</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">firstChild</span>;<span style="color:#75715e">//all元素的第一个元素的第一个子节点
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imgWidth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">offsetWidth</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ul</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">firstElementChild</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">firstChild</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">lastElementChild</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">lastChild</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">spanArr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">children</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ol</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">children</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">\</span>];
+  <span style="color:#75715e">//2.复制第一张图片所在的li,添加到ul的最后面。
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ulNewLi</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ul</span>.<span style="color:#a6e22e">children</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">cloneNode</span>(<span style="color:#66d9ef">true</span>);<span style="color:#75715e">//复制ul中第一个节点
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ul</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">ulNewLi</span>);<span style="color:#75715e">//添加到ul的最后,现在有6个li
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//3.给ol中添加li，ul中的个数-1个，并点亮第一个按钮。
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ul</span>.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">olNewLi</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;li&#34;</span>);<span style="color:#75715e">//创建一个li列表
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">olNewLi</span>.<span style="color:#a6e22e">innerHTML</span><span style="color:#f92672">=</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;<span style="color:#75715e">//在li列表里写上数字，并且要减一，因为他是从0开始的
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ol</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">olNewLi</span>);<span style="color:#75715e">//再把这个li添加到ol中去
+</span><span style="color:#75715e"></span>            }
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">olLiArr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ol</span>.<span style="color:#a6e22e">children</span>;<span style="color:#75715e">//找到ol中所有子节点
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;current&#34;</span>;<span style="color:#75715e">//给第一个li添加一个类
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">//4.鼠标放到ol的li上切换图片
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+        <span style="color:#75715e">//排他思想
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span>;<span style="color:#75715e">//自定义属性，索引值绑定到index上
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">onmouseover</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+           <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">j</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">j</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span>;<span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>){ 
+<span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">j</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>; } <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;current&#34;</span>; <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#a6e22e">square</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">index</span>;
+<span style="color:#75715e">//要让定时器和索引值同步 animate(ul,-this.index*imgWidth); } }
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//5.添加定时器 var timer=setInterval(autoPlay,1000); var key=0;
+</span><span style="color:#75715e"></span><span style="color:#75715e">//定义两个定时器,都等于0 var square=0; function autoPlay() { key++; 
+</span><span style="color:#75715e"></span><span style="color:#75715e">//我们要对两个计时器进行约束 if(key&gt;olLiArr.length){
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">ul</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#75715e">//图片滑动到最后一张接下来跳转到第一张，然后在滑动到第二张
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+                }
+               <span style="color:#a6e22e">animate</span>(<span style="color:#a6e22e">ul</span>,<span style="color:#f92672">-</span><span style="color:#a6e22e">key</span><span style="color:#f92672">*</span><span style="color:#a6e22e">imgWidth</span>);
+               <span style="color:#a6e22e">square</span><span style="color:#f92672">++</span>;
+               <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">square</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>){
+                   <span style="color:#a6e22e">square</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+               }
+                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){<span style="color:#75715e">//用排他思想
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>;<span style="color:#75715e">//全都排除
+</span><span style="color:#75715e"></span>                }
+                <span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">square</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;current&#34;</span>;<span style="color:#75715e">//移到哪边，哪边就就有这个属性
+</span><span style="color:#75715e"></span>            }
+            <span style="color:#75715e">//鼠标放上去清除定时器，离开启动定时器
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">onmouseover</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () {
+                <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">timer</span>);
+            }
+            <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">onmouseout</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () {
+                <span style="color:#a6e22e">setInterval</span>(<span style="color:#a6e22e">autoPlay</span>,<span style="color:#ae81ff">1000</span>);
+            }
+            <span style="color:#75715e">//6.左右切换图片（鼠标放上去隐藏，移开显示）
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">onmouseover</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () {
+                <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;block&#34;</span>
+                <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">timer</span>);
+            }
+            <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">onmouseout</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () {
+                <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
+                <span style="color:#a6e22e">timer</span><span style="color:#f92672">=</span><span style="color:#a6e22e">setInterval</span>(<span style="color:#a6e22e">autoPlay</span>,<span style="color:#ae81ff">1000</span>);
+            }
+            <span style="color:#a6e22e">spanArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () {
+                <span style="color:#a6e22e">key</span><span style="color:#f92672">--</span>;
+                <span style="color:#75715e">//我们要对两个计时器进行约束
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">key</span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>){
+                    <span style="color:#a6e22e">ul</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#f92672">-</span><span style="color:#a6e22e">imgWidth</span><span style="color:#f92672">*</span>(<span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;px&#34;</span>;
+                    <span style="color:#75715e">//现在给他5个图片的移动距离且是负值，让它一下子跳到最后最后一张图片
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+                }
+                <span style="color:#a6e22e">animate</span>(<span style="color:#a6e22e">ul</span>,<span style="color:#f92672">-</span><span style="color:#a6e22e">key</span><span style="color:#f92672">*</span><span style="color:#a6e22e">imgWidth</span>);
+                <span style="color:#a6e22e">square</span><span style="color:#f92672">--</span>;
+                <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">square</span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>){
+                    <span style="color:#a6e22e">square</span><span style="color:#f92672">=</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+                }
+                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">olLiArr</span>.<span style="color:#a6e22e">length</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+               <span style="color:#75715e">//用排他思想 olLiArr\[i\].className=&#34;&#34;;//全都排除
+</span><span style="color:#75715e"></span> } 
+<span style="color:#a6e22e">olLiArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">square</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;current&#34;</span>; } <span style="color:#a6e22e">spanArr</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">\</span>].<span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span> () { <span style="color:#a6e22e">autoPlay</span>(); } 
+<span style="color:#75715e">//移动分装 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">animate</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">target</span>) { 
+      <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>); 
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">speed</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>;
+             <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span><span style="color:#f92672">=</span><span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span> () {
+             <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">val</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span>;
+             <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">offsetLeft</span><span style="color:#f92672">+</span><span style="color:#a6e22e">speed</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;px&#34;</span>;
+             <span style="color:#66d9ef">if</span>(Math.<span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">val</span>)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">10</span>){
+              <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span><span style="color:#f92672">=</span><span style="color:#a6e22e">target</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;px&#34;</span>;
+                 <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>);
+                    }
+                },<span style="color:#ae81ff">10</span>);
+            }
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js/">
+                    #js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/" class="next" rel="next" title="Js中的css样式">Js中的css样式&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

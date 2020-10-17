@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/css/</link>
+    <description>Recent content in CSS on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sat, 30 Sep 2017 11:05:40 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>canvas小案例：fly birds</title>
+      <link>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</link>
+      <pubDate>Sat, 30 Sep 2017 11:05:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</guid>
+      <description>我们可以看到这个游戏由背景蓝天，土地，小鸟，管道四部分组成，在开始游戏我们必须保证全部加载完所有图片资源，这里书写一个函数传进所有图片资源，再通过回调函数的方式返回加载好的图片资源
+ // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } } （1）绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下
+// 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.height=this.img.height; Sky.len++; this.</description>
+    </item>
+    
+    <item>
+      <title>canvas画图API整理</title>
+      <link>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 26 Sep 2017 07:51:10 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;canvas 是 HTML5 提供的一个用于展示绘图效果的标签.
+canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：
+（1）使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.
+（2）默认 canvas 的宽高为 300 和 150.
+（3）不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.
+（4）如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.
+（5）canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.
+（6）canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
+基本使用方法：
+（1）获得 canvas 对象.
+（2）调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.
+(3）该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.
+（4）使用 CanvasRenderingContext2D 对象提供的方法进行绘图.
+（5）基本绘图命令
+a)设置开始绘图的位置: context.moveTo( x, y ).
+b)设置直线到的位置: context.lineTo( x, y ).
+c)描边绘制: context.stroke().
+d)填充绘制: context.fill().
+e)闭合路径: context.closePath().&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>简述CSS3中的动画</title>
+      <link>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</link>
+      <pubDate>Sun, 17 Sep 2017 12:04:35 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</guid>
+      <description> 动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
+  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述 a、animation-name设置动画序列名称； b、animation-duration动画持续时间； c、animation-delay动画延时时间； d、animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； e、animation-play-state动画播放状态，running、paused; f、animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； g、animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； h、animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； i、steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后； 比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。 总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：  </description>
+    </item>
+    
+    <item>
+      <title>CSS3里的flexbox布局</title>
+      <link>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 14 Sep 2017 16:47:50 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</guid>
+      <description>&lt;p&gt;一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
+&lt;strong&gt;一、如何成为弹性盒子（flexbox）?&lt;/strong&gt;
+我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）：  在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>伪类和伪元素、clearfix、clear</title>
+      <link>https://chenxiaolani.com/2017/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</link>
+      <pubDate>Mon, 17 Jul 2017 14:36:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</guid>
+      <description>&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：
+伪元素：
+在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

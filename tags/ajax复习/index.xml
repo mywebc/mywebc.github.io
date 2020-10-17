@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ajax复习 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/ajax%E5%A4%8D%E4%B9%A0/</link>
+    <description>Recent content in ajax复习 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 24 Aug 2017 12:13:55 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/ajax%E5%A4%8D%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ajax复习</title>
+      <link>https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Thu, 24 Aug 2017 12:13:55 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/</guid>
+      <description>ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： （1）创建XMLHTTPRequest对象 所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。
+ 兼容性写法如下：
+var xmlhttp; if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari xmlhttp=new XMLHttpRequest(); } else { // code for IE6, IE5 xmlhttp=new ActiveXObject(&amp;#34;Microsoft.XMLHTTP&amp;#34;); } （2）向服务器发送请求 这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数： method：请求方式，有get和post两种； url:要请求页面的地址，相对地址或绝对地址 flag：true是异步，false是同步 注意点： （1）get和post的比较：get传输数据小且不安全，post传输数据大且安全； （2）使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：
+xmlhttp.open(&amp;#39;get&amp;#39;,&amp;#39;123.php&amp;#39;,true); xmlhttp.send(); 示例post请求：
+xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;#39;); //添加http请求头信息 xmlhttp.setRequestHeader(&amp;#34;Content-type&amp;#34;,&amp;#34;application/x-www-form-urlencoded&amp;#34;); xmlhttp.send(&amp;#34;name=lili&amp;amp;amp;age=10&amp;#34;); （3）服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。 （4）onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。 下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数； readyState属性，它有四种状态变化： 0: 请求未初始化 1: 服务器连接已建立 2: 请求已接收 3: 请求处理中 4: 请求已完成，且响应已就绪 status属性 200: &amp;ldquo;OK&amp;rdquo; 404: 未找到页面 所以当 readyState 等于 4 且状态为 200 时，表示响应已就绪： 示例：</description>
+    </item>
+    
+  </channel>
+</rss>

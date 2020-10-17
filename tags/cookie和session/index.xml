@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cookie和session on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/cookie%E5%92%8Csession/</link>
+    <description>Recent content in cookie和session on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sat, 02 Sep 2017 16:20:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/cookie%E5%92%8Csession/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于cookie和session的区别以及在PHP中的用法</title>
+      <link>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Sat, 02 Sep 2017 16:20:28 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
+      <description> 自学了5个月，我最近才听说cookie和session&amp;hellip;.之前做验证码接触了session,现在整理一下：
+ 二者定义： cookie：是服务器发送到客户端的一串文本数据，由客户端保存，每次请求时都会发送cookie，用于保持会话期间持久数据传递； session：session在服务器端，是通过cookie实现的，在发给浏览器的cookie中有唯一标识SESSONID,用于记录不同的用户的状态；
+整个过程是这样的： 客户端向服务器发送请求后，服务器会在响应头中返回cookie信息，其中包含唯一标识SESSIOND,客户端收到后就会存储起来，之后客户端的每次请求都会包含cookie信息，session会找到cookie中的sessionid，并且根据它找到对应的用户，及其存储在服务器的数据。
+二者区别：  cookie存储在浏览器中，session存储在服务器中； cookie并不安全，别人可以篡改你的cookie信息,单个cookie存储数据不超过4k,一个浏览器最多存储20-50个cookie； session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。 注意：浏览器是可以禁用cookie的，与此同时session也会失效，这是我们还有两种方法   URL重写，把SESSIONID加到URL后，即&#39;sid=XXX&#39;的形式； 表单隐藏：在HTML加一个隐藏表单如下：  &amp;lt;form name=&amp;#34;testform&amp;#34; action=&amp;#34;/xxx&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;hidden&amp;#34; name=&amp;#34;jsessionid&amp;#34; value=&amp;#34;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; 在PHP中cookie用法 setcookie（名称，值，失效时间，域，路径，安全标志） 第一个和第二个参数是必填，其他都是可选 一般我们都这样设置几个参数
+setcookie(&amp;#39;name&amp;#39;,&amp;#39;lili&amp;#39;,time()+3600) //创建或更新cookie setcookie（&amp;#39;name&amp;#39;,&amp;#39;&amp;#39;,time()-3600） //删除cookie，值设置为空，时间为负数 setcookie（&amp;#39;name&amp;#39;,null） //这样删除也可以 //用$_COOKIE[&amp;#39;name&amp;#39;]读取，在读取时，先要判断是否为空值 if(isset($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } //或者这样 If(!empty($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } 在PHP中session用法 在使用session前我们都要初始化session_start()（他会创建一个唯一SESSIONID）,在这之前不能有输出语句。
+$_SESSON[&amp;#39;name&amp;#39;]=&amp;#39;lili&amp;#39; //赋值 $Name=$_SESSION[&amp;#39;name&amp;#39;] //读取值 session_unset[&amp;#39;name&amp;#39;] //删除值（逐个） $_SESSION=array(); //整个删除 session_destroy(); //最后整个摧毁 session session_is_registered(); // 检查变量是否被登记为会话变量,如果是返回TRUE session_name(); //设置或获取当前session的名称 session_set_cookie_params(): //设置session的生存期，必须在session_start()之前调用; session_save_path() ; //设置session保存路径，必须在session_start()之前调用; </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http/浏览器 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/http/%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+    <description>Recent content in http/浏览器 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 04 Sep 2017 08:31:52 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/http/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>理解Websocket原理</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Mon, 04 Sep 2017 08:31:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</guid>
+      <description>一、websocket与http WebSocket是HTML5出的东西（协议），也就是说HTTP协议没有变化，或者说没关系，但HTTP是不支持持久连接的（长连接，循环连接的不算） 首先HTTP有 1.1 和 1.0 之说，也就是所谓的 keep-alive ，把多个HTTP请求合并为一个，但是 Websocket 其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充可以通过这样一张图理解 有交集，但是并不是全部。 另外html5是指的一系列新的API，或者说新规范，新技术。Http协议本身只有1.0和1.1，而且跟Html本身没有直接关系。。通俗来说，你可以用HTTP协议传输非Html数据，就是这样=。= 再简单来说，层级不一样。
+二、Websocket是什么样的协议，具体有什么优点 首先，Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。简单的举个例子吧，用目前应用比较广泛的PHP生命周期来解释。 HTTP的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0 中，这次HTTP请求就结束了。 在HTTP1.1中进行了改进，使得有一个keep-alive，也就是说，在一个HTTP连接中，可以发送多个Request，接收多个Response。但是请记住 Request = Response ， 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。 教练，你BB了这么多，跟Websocket有什么关系呢？_(:з」∠)_好吧，我正准备说Websocket呢。
+首先Websocket是基于HTTP协议的，或者说借用了同的服务所需要的协议。简单理解：今晚我要服务A，别搞错啦~ 最后， Sec-WebSocket-Version 是告诉服务器所使用的 Websocket Draft（协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水： 服务员，我要的是13岁的噢→_→ 然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
+ HTTP/1.1 101 Switching Protocols Upgrade: websocket Connection: Upgrade Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk= Sec-WebSocket-Protocol: chat 这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~ Upgrade: websocket Connection: Upgrade 依然是固定的，告诉客户端即将升级的是 Websocket 协议，而不是mozillasocket，lurnarsocket或者shitsocket。 然后， Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key 。 服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。 后面的， Sec-WebSocket-Protocol 则是表示最终使用的协议。 至此，HTTP已经完成它所有工作了，接下来就是完全按照Websocket协议进行了。具体的协议就不在这阐HTTP的协议来完成一部分握手。 首先我们来看个典型的 Websocket 握手（借用Wikipedia的。。）</description>
+    </item>
+    
+    <item>
+      <title>关于cookie和session的区别以及在PHP中的用法</title>
+      <link>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Sat, 02 Sep 2017 16:20:28 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
+      <description> 自学了5个月，我最近才听说cookie和session&amp;hellip;.之前做验证码接触了session,现在整理一下：
+ 二者定义： cookie：是服务器发送到客户端的一串文本数据，由客户端保存，每次请求时都会发送cookie，用于保持会话期间持久数据传递； session：session在服务器端，是通过cookie实现的，在发给浏览器的cookie中有唯一标识SESSONID,用于记录不同的用户的状态；
+整个过程是这样的： 客户端向服务器发送请求后，服务器会在响应头中返回cookie信息，其中包含唯一标识SESSIOND,客户端收到后就会存储起来，之后客户端的每次请求都会包含cookie信息，session会找到cookie中的sessionid，并且根据它找到对应的用户，及其存储在服务器的数据。
+二者区别：  cookie存储在浏览器中，session存储在服务器中； cookie并不安全，别人可以篡改你的cookie信息,单个cookie存储数据不超过4k,一个浏览器最多存储20-50个cookie； session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。 注意：浏览器是可以禁用cookie的，与此同时session也会失效，这是我们还有两种方法   URL重写，把SESSIONID加到URL后，即&#39;sid=XXX&#39;的形式； 表单隐藏：在HTML加一个隐藏表单如下：  &amp;lt;form name=&amp;#34;testform&amp;#34; action=&amp;#34;/xxx&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;hidden&amp;#34; name=&amp;#34;jsessionid&amp;#34; value=&amp;#34;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; 在PHP中cookie用法 setcookie（名称，值，失效时间，域，路径，安全标志） 第一个和第二个参数是必填，其他都是可选 一般我们都这样设置几个参数
+setcookie(&amp;#39;name&amp;#39;,&amp;#39;lili&amp;#39;,time()+3600) //创建或更新cookie setcookie（&amp;#39;name&amp;#39;,&amp;#39;&amp;#39;,time()-3600） //删除cookie，值设置为空，时间为负数 setcookie（&amp;#39;name&amp;#39;,null） //这样删除也可以 //用$_COOKIE[&amp;#39;name&amp;#39;]读取，在读取时，先要判断是否为空值 if(isset($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } //或者这样 If(!empty($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } 在PHP中session用法 在使用session前我们都要初始化session_start()（他会创建一个唯一SESSIONID）,在这之前不能有输出语句。
+$_SESSON[&amp;#39;name&amp;#39;]=&amp;#39;lili&amp;#39; //赋值 $Name=$_SESSION[&amp;#39;name&amp;#39;] //读取值 session_unset[&amp;#39;name&amp;#39;] //删除值（逐个） $_SESSION=array(); //整个删除 session_destroy(); //最后整个摧毁 session session_is_registered(); // 检查变量是否被登记为会话变量,如果是返回TRUE session_name(); //设置或获取当前session的名称 session_set_cookie_params(): //设置session的生存期，必须在session_start()之前调用; session_save_path() ; //设置session保存路径，必须在session_start()之前调用; </description>
+    </item>
+    
+    <item>
+      <title>理解http协议</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sat, 02 Sep 2017 08:46:43 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;http协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器的兼容写法</title>
+      <link>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</link>
+      <pubDate>Thu, 13 Jul 2017 13:48:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</guid>
+      <description> 浏览器的兼容性写法
+  -moz-对应 Firefox, -webkit-对应 Safari and Chrome -o- for Opera -ms- for Internet Explorer  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ajax on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/ajax/</link>
+    <description>Recent content in ajax on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 12 Dec 2017 14:20:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>原生js封装ajax</title>
+      <link>https://chenxiaolani.com/2017/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</link>
+      <pubDate>Tue, 12 Dec 2017 14:20:24 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;面试大概率会考到&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

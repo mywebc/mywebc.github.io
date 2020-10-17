@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/nginx/</link>
+    <description>Recent content in nginx on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Wed, 24 Jan 2018 23:34:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nginx常用命令总结</title>
+      <link>https://chenxiaolani.com/2018/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 24 Jan 2018 23:34:12 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</guid>
+      <description>查看nginx是否启动  ps -ef | grep nginx //用ps -ef列出进程列表，然后通过grep过滤。 ps -C nginx -o pid //直接查看进程id  nginx的启动，停止，与重载  nginx -s reload //修改配置文件后，可以重新热加载 nginx -s stop //快速停止，可能会丢失有关信息 nginx -s quit //有序停止 start nginx 或者 nginx开启nginx  </description>
+    </item>
+    
+  </channel>
+</rss>

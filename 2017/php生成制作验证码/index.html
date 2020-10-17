@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           php生成制作验证码 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="php生成制作验证码 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "php生成制作验证码",
+    "headline" : "php生成制作验证码",
+    "description" : "\x3cp\x3ePHP生成制作验证码 1.0　　首先先看代码\x3c\/p\x3e\n\x3cp\x3e好，现在结合以上代码，来分析分析以上用到的几个函数： ①　　imagecreatetruecolor(); imagecreatetruecolor — 新建一个真彩色图像（感觉哇，那么长，其实仔细一看挺好记的 image\/create\/true\/color，什么是真彩色图像？往下看） 1 resource imagecreatetruecolor ( int $width , int $height ) imagecreatetruecolor() 和 imagecreate()两个函数都能创建画布 1 resource imagecreate ( int $x_size , int $y_size ) imagecreatetruecolor()建立的是一幅大小为 x和 y的黑色图像(默认为黑色[即便叫法就是真彩色图像])，如想改变背景颜色则需要用填充颜色函数 imagefill($img,0,0,$color); imagecreate 新建一个空白图像资源，用imagecolorAllocate()添加背景色 上面两个函数只不过是一个功能的两种方法 ②　　imagecolorallocate(); imagecolorallocate — 为一幅图像分配颜色 1 int imagecolorallocate ( resource $image , int $red , int $green , int $blue ) 颜色分别用 红 绿 蓝三色组合，这些参数是 0 到 255 的整数或者十六进制的 0x00 到 0xFF。 ③　　mt_rand(); mt_rand — 生成更好的随机数 1 int mt_rand ( int $min , int $max ) $min 可选的、返回的最小值（默认：0）　　$max 可选的、返回的最大值（默认：mt_getrandmax()） 这里就是用来让他随机生成背景颜色，0-255随便取值。所以页面没刷新一次画布背景颜色就不一样。 效果图：2.0　　开始往里面做干扰线，干扰点。防止验证图像被秒识别\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-29 12:48:51 \x2b0000 UTC",
+    "dateModified" : "2017-08-29 12:48:51 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81\/",
+    "wordCount" : "239",
+    "keywords" : [ "php", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">php生成制作验证码</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-29 itemprop="datePublished">August 29, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/php/"> php </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>PHP生成制作验证码 1.0　　首先先看代码</p>
+<p>好，现在结合以上代码，来分析分析以上用到的几个函数： ①　　imagecreatetruecolor(); imagecreatetruecolor — 新建一个真彩色图像（感觉哇，那么长，其实仔细一看挺好记的 image/create/true/color，什么是真彩色图像？往下看） 1 resource imagecreatetruecolor ( int $width , int $height ) imagecreatetruecolor() 和 imagecreate()两个函数都能创建画布 1 resource imagecreate ( int $x_size , int $y_size ) imagecreatetruecolor()建立的是一幅大小为 x和 y的黑色图像(默认为黑色[即便叫法就是真彩色图像])，如想改变背景颜色则需要用填充颜色函数 imagefill($img,0,0,$color); imagecreate 新建一个空白图像资源，用imagecolorAllocate()添加背景色 上面两个函数只不过是一个功能的两种方法 ②　　imagecolorallocate(); imagecolorallocate — 为一幅图像分配颜色 1 int imagecolorallocate ( resource $image , int $red , int $green , int $blue ) 颜色分别用 红 绿 蓝三色组合，这些参数是 0 到 255 的整数或者十六进制的 0x00 到 0xFF。 ③　　mt_rand(); mt_rand — 生成更好的随机数 1 int mt_rand ( int $min , int $max ) $min 可选的、返回的最小值（默认：0）　　$max 可选的、返回的最大值（默认：mt_getrandmax()） 这里就是用来让他随机生成背景颜色，0-255随便取值。所以页面没刷新一次画布背景颜色就不一样。 效果图：2.0　　开始往里面做干扰线，干扰点。防止验证图像被秒识别</p>
+<p>函数分析： ①　　imageline(); imageline — 画一条线段 1 bool imageline ( resource $image , int $x1 , int $y1 , int $x2 , int $y2 , int $color ) imageline() 用 color 颜色在图像 image 中从坐标 x1，y1 到 x2，y2（图像左上角为 0, 0）画一条线段。 imageline($img, mt_rand(0,150), mt_rand(0,50), mt_rand(0,150), mt_rand(0,50), $linecolor); 这里意思就是 画布$img 中从坐标 x1，y1 到 x2，y2随机 ②　　imagesetpixel(); imagesetpixel— 画一个单一像素 1 bool imagesetpixel ( resource $image , int $x , int $y , int $color ) imagesetpixel() 在 image 图像中用 color 颜色在 x，y 坐标（图像左上角为 0，0）上画一个点。 imagesetpixel($img, mt_rand(0,150), mt_rand(0,60), $dotcolor); 具体含义同上 效果图：  3.0　　添加验证字母数字</p>
+<p>函数: imagettftext(); imagettftext — 用 TrueType 字体向图像写入文本 1 array imagettftext ( resource $image , float $size , float $angle , int $x , int $y , int $color , string $fontfile , string $text ) 分析下面的代码： imagettftext($img, 25, mt_rand(-15,15), $x_start, 50/2, $fontcolor, &ldquo;C:/Windows/Fonts/Verdana.TTF&rdquo;, $key); $img&mdash;&mdash;&mdash;&ndash;画布 25&mdash;&mdash;&mdash;&ndash;字体的尺寸。 mt_rand(-15,15)&mdash;&mdash;&mdash;-角度制表示的角度，0 度为从左向右读的文本。更高数值表示逆时针旋转。例如 90 度表示从下向上读的文本。(就是字体角度的问题,) $x_start&mdash;&mdash;&mdash;-通俗易懂的讲就是字符的X轴位置 50/2&mdash;&mdash;&mdash;-字符的高度 $fontcolor&mdash;&mdash;&mdash;-字符颜色 &ldquo;C:/Windows/Fonts/Verdana.TTF&rdquo;&mdash;&mdash;&mdash;-字符的字体样式路径 $key&mdash;&mdash;&mdash;&ndash;遍历出后的字符 效果： 转载：<a href="http://www.cnblogs.com/qiutianjia/p/5576366.html"><a href="http://www.cnblogs.com/qiutianjia/p/5576366.html">http://www.cnblogs.com/qiutianjia/p/5576366.html</a></a></p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/php/">
+                    #php</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" class="prev" rel="prev" title="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）"><i class="iconfont icon-left"></i>&nbsp;表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" class="next" rel="next" title="理解http协议">理解http协议&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

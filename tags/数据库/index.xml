@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 22 Jul 2019 00:30:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用JDBC对Mysql数据库的CRUD操作</title>
+      <link>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 22 Jul 2019 00:30:19 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/</guid>
+      <description>JDBC全称为JAVA Database Connectivity (java数据库连接),是SUN公司提供的一种数据库访问规则、规范, 由于数据库种类较多，并且java语言使用比较广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问规则。 我们的java程序只要使用sun公司提供的jdbc驱动即可。
+ JDBC驱动  首先我们需要去下载对应数据库的JDBC驱动，MySQL就是下载MySQL的JDBC驱动，Oracle就下载Oracle的JDBC驱动  新建数据库配置文件xxx.properties  在项目根目录下新建xxx.properties文件，这里的信息以key=value的形式书写，我们在连接数据库时就会从这里面读取配置信息；  driverClass=com.mysql.jdbc.Driver url=jdbc:mysql://localhost/student  name=root password=root 新建工具包，抽离出数据库连接语句  我们新建一个工具包比如com.chenxiaolani.util,在这下面我们新建一个JDBCUtil.java的文件，内容主要是使用JDBC抽离出数据库连接语句，还有一些释放资源的语句，以便复用；  package com.chenxiaolani.uitl; import java.io.FileInputStream; import java.io.InputStream; import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; import java.util.Properties; public class JDBCUtil { static String driverClass = null; static String url = null; static String name = null; static String password= null; static{ try { //1. 创建一个属性配置对象 	Properties properties = new Properties(); //2.</description>
+    </item>
+    
+    <item>
+      <title>MYSQL的CRUD操作之命令行</title>
+      <link>https://chenxiaolani.com/2019/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 13 Jul 2019 22:04:38 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</guid>
+      <description>数据库分为关系型数据库和非关系型数据库，作为前端，对于mongodb再熟悉不过了，mongodb就是非关系型数据库，除此之外还有常见的还有redis，这种数据库的特点就是以Key,value的形式存储的，关系型数据库就很多了，mysql,oracle,db2等，本片文章主要记录我在学习MySQL关于CRUD的命令行操作。
+ 登录数据库  -u为用户名， -p为密码，我都设为root；  // 注意-p后面不要有空格 mysql -uroot -proot 创建数据库  create database 数据库的名字; create database 数据库的名字 character set 字符集编码; create database 数据库的名字 character set 字符集编码 collate 比较规则; 注意要加分号  create database student; create database student character set utf8; create database student character set utf8 collate utf8_general_ci; 查看数据库  默认的数据库不要动它  show databases; show create database student; // 查看student数据库的定义语句 修改数据库  使用alter  alter database student character set gbk; 删除数据库  使用drop  drop database student; 其他数据库操作 use student; // 切换到student数据库 select database(); // 查看当前数据库 表的创建  create table 表名( 列名 列的类型 约束, );   create table employee (id int primary key auto_increment, name varchar(20) not null, birthday date, job varchar(30), salary double, ); 查看表 show tables; // 查看数据库内的所有表 show create table employee; // 查看employee的建表语句 desc employee; // 查看employee的表结构 修改表  添加列（add），修改列（modify）,修改列名(cahnge)，删除列(drop), 修改表明（rename）,修改表的字符集（character set）  // 添加 alter table student add address int not null; // 修改 alter table student modify address varchar(2); // 修改列名 alter table student change address gender varchar(2); // 删除 alter table student drop address; // 改表名 rename table student to student2; // 修改表的字符集 alter table student character set gbk; 删除表 drop table student; 表数据插入  insert into 表名(列名1,列名2)values(值1,值2); insert into 表名 values(值1,值2); // 上面的简单写法 insert into 表名values(值1,值2),(值1,值2),(值1,值2);// 批量插入  表数据删除  delete from 表名 [where 条件] truncate table 表名: 先删除表,再重建表 delete与truncate的区别   delete是将数据一条一条的删除，在数据量比较少的情况下效率高； truncate是先删除表,再重建表，由于更改了表结构，数据量大的情况下推荐；  表数据更新  update 表名 set 列名=值, 列名=值 [where 条件]  表数据查询 通用格式:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deno on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/deno/</link>
+    <description>Recent content in Deno on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 24 May 2020 16:48:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/deno/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deno 初体验</title>
+      <link>https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Sun, 24 May 2020 16:48:25 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <description>最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。
+ 安装  安装  curl -fsSL https://deno.land/x/install/install.sh | sh  编辑bash_profile文件  vi ~/.bash_profile  添加环境变量  export DENO_INSTALL=&amp;quot;/Users/yourName/.deno&amp;quot; export PATH=&amp;quot;$DENO_INSTALL/bin:$PATH&amp;quot;  执行  source ~/.bash_profile 体验  打印 Welcome to Deno 新建deno.ts  console.log(&amp;#34;Welcome to Deno&amp;#34;)  运行deno run deno.ts命令  deno run deno.ts  当然也可以直接运行  deno run https://deno.land/std/examples/welcome.ts 支持typescript const _name: string = &amp;#34;jack&amp;#34;; const _age: number = ((): number =&amp;gt; (Math.floor(Math.random() * 100)))() console.</description>
+    </item>
+    
+  </channel>
+</rss>

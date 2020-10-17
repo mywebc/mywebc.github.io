@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/" />
+  <link rel="next" href="https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用OAuth授权第三方网站 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="使用OAuth授权第三方网站 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "使用OAuth授权第三方网站",
+    "headline" : "使用OAuth授权第三方网站",
+    "description" : "OAuth是一种行业标准的授权方式，我们在登录一些网站时，其也可以使用第三方账号比如QQ或者微信登录， 都是使用OAuth授权的， 版本有1.x和2.x两个，目前主要使用2.x版本，2.X版本大概有六种模式，本文介绍最常用的也是最安全的一种模式Authorization Code；\n OAuth2支持授权的几种方式（官网）\n六种模式  Authorization Code (先申请Code,再申请Token，较安全) Refresh Token （token过期后，避免重复登录，可以刷新Token） Device Code (一般用于TV等设备端，不常用) Password (需要再第三方网站暴露授权网站的密码，不安全) Implicit (不需要获取code,直接获取token,不推荐) Client （可以使用Client id和Client sercert 去授权网站获取客户端相关的信息，与第三方用户无关，不常用）  获取Client Id和Client Secret 我们以Github为例，我们首先需要获取Client Id和Client Secret这两样东西，直接在Github个人设置里面develop settings选项，创建一个应用； 如何请求Code OAuth请求官网示例\n 请求链接  GET https:\/\/github.com\/login\/oauth\/authorize  请求参数 client_id（必填）：注册Github App时的client id； redirect_uri：请求成功后重定向的网址带有code； login: 登录特定账户； scope： 授权范围，比如scope=user; state: 随机字符串,防止跨站点请求伪造攻击; allow_signup: 默认为true,是否提供注册github选项；  请求access_token  请求链接  POST https:\/\/github.com\/login\/oauth\/access_token  请求参数 client_id（必填）：注册Github App时的client_id； client_secret（必填）：注册Github App时的client_secret； code（必填）：上一个请求返回的code; redirect_uri：同上； state：同上； code只能使用一次  访问用户信息  我们拿到了token就可以访问我们github上的信息了； 请求链接；  GET https:\/\/api.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-08 19:23:23 \x2b0000 UTC",
+    "dateModified" : "2019-08-08 19:23:23 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2019\/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99\/",
+    "wordCount" : "72",
+    "keywords" : [ "OAuth", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用OAuth授权第三方网站</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-08 itemprop="datePublished">August 8, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>OAuth是一种行业标准的授权方式，我们在登录一些网站时，其也可以使用第三方账号比如QQ或者微信登录， 都是使用OAuth授权的， 版本有1.x和2.x两个，目前主要使用2.x版本，2.X版本大概有六种模式，本文介绍最常用的也是最安全的一种模式Authorization Code；</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p><a href="https://oauth.net/2/grant-types/">OAuth2支持授权的几种方式（官网）</a></p>
+<h2 id="heading">六种模式</h2>
+<ul>
+<li>Authorization Code (先申请Code,再申请Token，较安全)</li>
+<li>Refresh Token （token过期后，避免重复登录，可以刷新Token）</li>
+<li>Device Code (一般用于TV等设备端，不常用)</li>
+<li>Password (需要再第三方网站暴露授权网站的密码，不安全)</li>
+<li>Implicit (不需要获取code,直接获取token,不推荐)</li>
+<li>Client （可以使用Client id和Client sercert 去授权网站获取客户端相关的信息，与第三方用户无关，不常用）</li>
+</ul>
+<h2 id="client-idclient-secret">获取Client Id和Client Secret</h2>
+<p>我们以Github为例，我们首先需要获取Client Id和Client Secret这两样东西，直接在Github个人设置里面develop settings选项，创建一个应用；
+<img src="/images/githubSettings.jpg" alt="githubSettings"></p>
+<h2 id="code">如何请求Code</h2>
+<p><a href="https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/">OAuth请求官网示例</a></p>
+<ul>
+<li>请求链接</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">GET</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//github.com/login/oauth/authorize
+</span></code></pre></div><ul>
+<li>请求参数
+client_id（必填）：注册Github App时的client id；
+redirect_uri：请求成功后重定向的网址带有code；
+login: 登录特定账户；
+scope： 授权范围，比如scope=user;
+state: 随机字符串,防止跨站点请求伪造攻击;
+allow_signup: 默认为true,是否提供注册github选项；</li>
+</ul>
+<h2 id="accesstoken">请求access_token</h2>
+<ul>
+<li>请求链接</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">POST</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//github.com/login/oauth/access_token
+</span></code></pre></div><ul>
+<li>请求参数
+client_id（必填）：注册Github App时的client_id；
+client_secret（必填）：注册Github App时的client_secret；
+code（必填）：上一个请求返回的code;
+redirect_uri：同上；
+state：同上；
+<strong>code只能使用一次</strong></li>
+</ul>
+<h2 id="heading1">访问用户信息</h2>
+<ul>
+<li>我们拿到了token就可以访问我们github上的信息了；</li>
+<li>请求链接；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">GET</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//api.github.com/user
+</span></code></pre></div><ul>
+<li>在headers里面增加一个字段</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Authorization</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">token</span> <span style="color:#a6e22e">你的token</span>
+</code></pre></div><h2 id="postman">postman请求返回示例</h2>
+<p><img src="/images/githubUser.png" alt="返回数据示例"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/oauth/">
+                    #OAuth</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/" class="prev" rel="prev" title="React Hooks实践"><i class="iconfont icon-left"></i>&nbsp;React Hooks实践</a>
+         
+        
+        <a href="https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/" class="next" rel="next" title="无意间用了React Portals">无意间用了React Portals&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

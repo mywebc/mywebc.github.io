@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/" />
+  <link rel="next" href="https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           redux快速入门 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="redux快速入门 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "redux快速入门",
+    "headline" : "redux快速入门",
+    "description" : "redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到所有组件最顶层，此篇文章是在看《深入浅出react与redux》以及实战React16.4开发简书项目后的总结。\n Redux的前身flux 在flux中，首先要引入Dispatcher（redux没有这个）， 用以派发action，action改变view层，view层同步model数据层；flux会为每一个组件单独建立一个store，在每一个组件中初始化store,如下：\nconst CounterStore = object.assign({}, EventEmitter.prototype, { getCounterValues: function() { return counterValues; }, emitChange: function(){ this.emit(CHANGE_EVENT); }, addChangeListener: function(){ this.on(CHANGE_EVENT, callback); }, removeChangeListener: fucntion(){ this.removeListener(CHANGE_EVENT, callback); } }) EventEmitter是node.js中event模块的一个对象，是监听事件的一个封装，不用太追究；上面扩展了EventEmitter.prototype，给当前组件的store绑定了几个事件；初始化store之后，还要与dispatcher做联系，这时候会用到dispatcher的一个register函数，接受参数为action；\nDispatcher是唯一的，如果有很多个组件，Dispatcher与他们每一个组件都要做联系，通过waitFor函数来决定各个store之间的执行顺序，但这就是flux最大的缺点，因为如果store很多的话，依赖关系会越来越复杂，逻辑关系会难以维护。\nRedux 在Redux中没有了Dispatcher的概念，store倒是有一个dispatch方法，用以来传递action给store 如图,解释一下流程\n 在组件内部会调用actionCreators，用于创建action对象，并且通过dispatch传送给store； store接受到后，会交给reducer（纯函数） 处理； reducer函数处理后会返回新的store状态； store里的数据发生变化会自动触发视图层变化，结束；  下面会一一解释store，reducer，action如何创建，并且如何走通。 首先创建一个store文件夹，下面会有四个js，分别是\n index.js \/\/ 作为入口，统一引入到这里 actionCreators.js \/\/ 用来统一创建对象 constants.js \/\/ 统一定义action的type,方便后期维护log reducer.js \/\/ 用来处理action的纯函数  关于action  分割action为actionCreators和contants,方便管理维护\n actionCreators.js\nimport * as constants from \x26#39;.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-08-29 23:34:46 \x2b0000 UTC",
+    "dateModified" : "2018-08-29 23:34:46 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8\/",
+    "wordCount" : "274",
+    "keywords" : [ "redux", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">redux快速入门</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-08-29 itemprop="datePublished">August 29, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/react/"> React </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到所有组件最顶层，此篇文章是在看《深入浅出react与redux》以及实战React16.4开发简书项目后的总结。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="reduxflux">Redux的前身flux</h2>
+<p>在flux中，首先要引入Dispatcher（redux没有这个）， 用以派发action，action改变view层，view层同步model数据层；flux会为每一个组件单独建立一个store，在每一个组件中初始化store,如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CounterStore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">EventEmitter</span>.<span style="color:#a6e22e">prototype</span>, {
+    <span style="color:#a6e22e">getCounterValues</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">counterValues</span>;
+    },
+    <span style="color:#a6e22e">emitChange</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#a6e22e">CHANGE_EVENT</span>);             
+    },
+    <span style="color:#a6e22e">addChangeListener</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">on</span>(<span style="color:#a6e22e">CHANGE_EVENT</span>, <span style="color:#a6e22e">callback</span>);     
+    },
+    <span style="color:#a6e22e">removeChangeListener</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fucntion</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">removeListener</span>(<span style="color:#a6e22e">CHANGE_EVENT</span>, <span style="color:#a6e22e">callback</span>);     
+    }
+})
+</code></pre></div><p>EventEmitter是node.js中event模块的一个对象，是监听事件的一个封装，不用太追究；上面扩展了EventEmitter.prototype，给当前组件的store绑定了几个事件；初始化store之后，还要与dispatcher做联系，这时候会用到dispatcher的一个register函数，接受参数为action；</p>
+<p>Dispatcher是唯一的，如果有很多个组件，Dispatcher与他们每一个组件都要做联系，通过waitFor函数来决定各个store之间的执行顺序，但这就是flux最大的缺点，因为如果store很多的话，依赖关系会越来越复杂，逻辑关系会难以维护。</p>
+<h2 id="redux">Redux</h2>
+<p>在Redux中没有了Dispatcher的概念，store倒是有一个dispatch方法，用以来传递action给store
+<img src="/images/reduxFlow.jpg" alt="reduxFlow">
+如图,解释一下流程</p>
+<ul>
+<li>在组件内部会调用actionCreators，用于创建action对象，并且通过dispatch传送给store；</li>
+<li>store接受到后，会交给reducer（纯函数） 处理；</li>
+<li>reducer函数处理后会返回新的store状态；</li>
+<li>store里的数据发生变化会自动触发视图层变化，结束；</li>
+</ul>
+<p>下面会一一解释store，reducer，action如何创建，并且如何走通。
+首先创建一个store文件夹，下面会有四个js，分别是</p>
+<ul>
+<li>index.js // 作为入口，统一引入到这里</li>
+<li>actionCreators.js // 用来统一创建对象</li>
+<li>constants.js // 统一定义action的type,方便后期维护log</li>
+<li>reducer.js // 用来处理action的纯函数</li>
+</ul>
+<h3 id="action">关于action</h3>
+<blockquote>
+<p>分割action为actionCreators和contants,方便管理维护</p>
+</blockquote>
+<p>actionCreators.js</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">constants</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./constants&#39;</span>
+<span style="color:#75715e">// type为常量，从constants中引入，方便log
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">text</span>) =&gt;({
+	<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">constants</span>.<span style="color:#a6e22e">SAY_HELLO</span><span style="color:#960050;background-color:#1e0010">，</span>
+        <span style="color:#a6e22e">text</span>
+})
+</code></pre></div><p>constants.js</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SAY_HELLO</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SAY_HELLO&#39;</span>
+</code></pre></div><p>这个其实还是跟vuex中action一样的，很好理解。</p>
+<h3 id="store">创建store</h3>
+<blockquote>
+<p>调用createStore创建store，参数传入处理函数reducer</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createStore</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;redux&#39;</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">reducer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./reducer.js&#39;</span>
+<span style="color:#75715e">// 调用createStore创建store，参数传入处理函数reducer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createStore</span>(<span style="color:#a6e22e">reducer</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">store</span>
+</code></pre></div><h3 id="reducer">编写reducer</h3>
+<blockquote>
+<p>reducer默认接受state初始状态，和action对象，更改后的state</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">constants</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./constants&#39;</span>
+<span style="color:#75715e">// 设置state初始值 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultState</span> <span style="color:#f92672">=</span>{
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+}
+<span style="color:#75715e">// 默认暴露一个纯函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> (<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultState</span>, <span style="color:#a6e22e">action</span>)=&gt; {
+    <span style="color:#66d9ef">switch</span>(<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">type</span>) {
+        <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">constants</span>.<span style="color:#a6e22e">SAY_HELLO</span><span style="color:#f92672">:</span>
+            <span style="color:#66d9ef">return</span> {...<span style="color:#a6e22e">state</span>,  <span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">text</span>}
+		<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> 
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>
+	}
+}
+</code></pre></div><blockquote>
+<p>改有的文件都已经创建好，现在就可以捋一遍</p>
+</blockquote>
+<p>首先在组件内部，我们想要改变store里的数据，首先要引入刚刚创建好的action，调用store的dispatch方法将action传递给store；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 引入store
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">store</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store&#39;</span>
+<span style="color:#75715e">// 引入action
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">actionCreators</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./actionCreators&#39;</span> 
+<span style="color:#75715e">// store.dispatch派发action
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#a6e22e">actionCreators</span>.<span style="color:#a6e22e">sayHello</span>(<span style="color:#e6db74">&#39;你好！&#39;</span>))
+</code></pre></div><p>store收到action后会自动交给reducer处理，reducer根据其actionType的不同做不同的操作，并且返回更改后的st ate；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> (<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultState</span>, <span style="color:#a6e22e">action</span>)=&gt; {
+    <span style="color:#66d9ef">switch</span>(<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">type</span>) {
+        <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">constants</span>.<span style="color:#a6e22e">SAY_HELLO</span><span style="color:#f92672">:</span>
+        <span style="color:#75715e">// 扩展运算符
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> {...<span style="color:#a6e22e">state</span>,  <span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">text</span>}
+		<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> 
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>
+	}
+}
+</code></pre></div><p>组件内部通过store.subscribe()的方法能够监听store的变化，store一旦变化就可以调用store.getState()替换当前组件的store；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#75715e">// store数据变化后触发 handleCHange函数
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">handleCHange</span>)
+    <span style="color:#75715e">// handleCHange函数 替换组件内部store数据
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">handleCHange</span>() {
+        <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">setState</span>({
+            <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">getState</span>()
+        })
+    }
+</code></pre></div><p>store里面的数据必须用setState更改，setState可以是一个对象，也可以是一个函数，return一个对象，后一种写法推荐，因为官网就是这么写的。
+数据更新那么视图层就会自动更新，结束。</p>
+<h2 id="reactredux">React-Redux</h2>
+<blockquote>
+<p>在react中有为react量身定做的react-redux库，其用法也有一些细微差别</p>
+</blockquote>
+<h3 id="reactreduxprovider">react-redux自带的provider组件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Provider</span> <span style="color:#a6e22e">store</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">store</span>}<span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Hello</span><span style="color:#f92672">/</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">P</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div><p>从组件根部传入store，在其所有子组件中都可以使用，具体如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mapStateProps</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">state</span>) =&gt;({
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">text</span>
+})
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mapDispathProps</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">dispath</span>) =&gt;{
+    <span style="color:#66d9ef">return</span> {
+       <span style="color:#a6e22e">changeText</span>() {
+            <span style="color:#75715e">//这里dispatch一个action
+</span><span style="color:#75715e"></span>        } 
+    }
+}
+<span style="color:#75715e">// 通过connect连接当前组件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">connect</span>(<span style="color:#a6e22e">mapStateProps</span>, <span style="color:#a6e22e">mapDispathProps</span>)(<span style="color:#a6e22e">Hello</span>)
+</code></pre></div><ul>
+<li>mapStateProps：顾名思义就是将state当作props传入当前组件；</li>
+<li>mapDispathProps：这个就是将Dispatch当作props传入组件；</li>
+<li>这两个需要在组件外定义，然后当作参数传入connect中；</li>
+</ul>
+<h3 id="combinereducers">combineReducers</h3>
+<p>一般一个组件都会定义一个store，那么多的store，里面有那么多的reducer.js,我们可以用combineReducer来合并；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">combineReducers</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;redux&#39;</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">reducer</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">homeReducer</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;../store&#39;</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reducer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">combineReducers</span>({
+	<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">homeReducer</span> <span style="color:#75715e">// 可以为每一个reducer取一个名字
+</span><span style="color:#75715e"></span>})
+</code></pre></div><p>那么我们在组件获取状态时也要加上名字,改成如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mapStateProps</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">state</span>) =&gt;({
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">header</span>.<span style="color:#a6e22e">text</span>
+})
+</code></pre></div><h2 id="heading">快速开始模板</h2>
+<p>Github: <a href="https://github.com/mywebc/react_start"><a href="https://github.com/mywebc/react_start">https://github.com/mywebc/react_start</a></a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/redux/">
+                    #redux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/" class="prev" rel="prev" title="vue中使用elementUI，表格的单选全选"><i class="iconfont icon-left"></i>&nbsp;vue中使用elementUI，表格的单选全选</a>
+         
+        
+        <a href="https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" class="next" rel="next" title="从头开始配置webpack4">从头开始配置webpack4&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

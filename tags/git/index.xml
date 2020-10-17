@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/git/</link>
+    <description>Recent content in Git on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 20 Aug 2017 08:32:07 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于Git的使用</title>
+      <link>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 20 Aug 2017 08:32:07 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>从学习前端开始就听说过Git，无奈初期并不需要了解，但是在以后的学习或工作中这是必须会的一项技能，这几天也看了一些资料，整理一下
+ 一、什么是Git？ Git是分布式版本控制系统，版本控制系统大致分为三类：
+ 本地版本控制系统：顾名思义，只能在本地进行修订存储的系统，缺点是不能多人协同开发； 集中式版本控制系统：有一个中央服务器，文件的版本信息，修订及其存储都在这上面，但是太依赖网络，一旦网络瘫痪，数据容易丢失； 分布式版本控制系统：每个人本地都有一个版本控制系统，会有一个共享服务器，弥补了前面两种系统的缺陷，是现在使用是最多的版本控制系统，其中最有代表的就是Git。  二Git的安装 https://git-scm.com/downloads
+三、Git的使用原理 Git是使用命令行方式运行的； Git有三个工作区域：
+ 工作目录：在这个区域你可以对你的项目进行开发修改； 暂存区域：开发或修改完成后可以将项目放在这里，之后一并提交； 仓库区域：这里会永久存储暂存区域上传的数据，这是Git最重要的部分，我们还原的数据时就是存储在这里的。  四、Git的使用
+ 配置用户及其邮箱一边我们记录开发者的信息： 找打我们开发项目的根目录： 右击Git Bash here，进入命令行窗口模式： 输入：git config &amp;ndash;global user.name &amp;lsquo;你的名字&amp;rsquo;，git config &amp;ndash;global user.email &amp;lsquo;你的邮箱&amp;rsquo; 初始化仓库： git init,这时我们根文件夹会出现一个隐藏文件夹.git 接下来我们就可以在工作目录中开发项目了，这里我在index.html中修改了一些内容，可以使用命令git status查看文件状态 可以看到这些在工作区的内容是红色的 使用命令git add 文件名（或者-A表示所有），将文件放到暂存区域内，再来查看状态，我们发现文件变成了绿色 如果我们想把暂存区的文件再返回到工作区，可以使用git checkout 文件名 之后我们觉得所有文件都没问题后，就可以提交了git commit -m &amp;lsquo;备注信息&amp;rsquo;,并且可以git log 来查看提交历史 时光倒流：我们可以使用 git reset &amp;ndash;hard 字符串（每一次提交历史后面的字符串），就返回到那个状态。 Git的分支：当我们第一次提交时，就已经默认创建了一个主分支master ，当我们开发不止一个项目或功能时，不可能三七二一都提交到这个分支上吧，所以我们会创建对应的功能分支或项目分支，主分支我们一般会来发布稳定版本，我们会创建一个developer平行分支，在这上面针对不同的功能再创建feature分支，开发完成后都提交到developer这个分支上，所有功能开发完成后，我们还需要创建一个发行分支release供测试使用，最后才发布稳定版本到主分支上。   git branch lazaer //创建分支 git checkout lazaer //切换分支 git merge &amp;lsquo;分支名称&amp;rsquo; //合并分支 git branch -d lazaer //删除分支  五、共享仓库 第四点主要讲了在本地如何使用Git，为了协同开发，和其他人共享代码，我们需要建一个共享仓库 Git要求共享仓库是一个以.</description>
+    </item>
+    
+  </channel>
+</rss>

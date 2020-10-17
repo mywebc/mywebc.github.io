@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <link rel="next" href="https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           从头开始配置webpack4 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="从头开始配置webpack4 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "从头开始配置webpack4",
+    "headline" : "从头开始配置webpack4",
+    "description" : "最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在 webapck4中也开始朝着这个方向发展，比如默认的入口为src,默认的打包输出为dist,新增了mode属性，有利于拆分生产环境和开发环境，默认为production，并且默认压缩js，还有一些其他的插件也不再适用，在此也没必要了解，最近就从头梳理了一下webpack4.\n  本片文章主要参考自董沅鑫的个人博客https:\/\/godbmw.com\n 环境 首先我们要全局安装webpack-cli和webpack,然后也要在项目中安装webpack和webpack-cli,这样我们才能使用。\n编译ES6 编译es6,我们需要以下loaders\n babel-loader babel转换器 babel-core babel转换时所调用的api(听名字就知道它是babel的核心) babel-preset-env 语法转换规则 babel-plugin-transform-runtime和Babel-runtime polyfill按需引入 babel-polyfill polyfill全局引入 注意：在babel7中所有前缀都变为@babel\/,注意版本的统一  新建webpack.config.js:\nconst path = require(\x26#34;path\x26#34;) \/\/ 使用babel编译ES6 module.exports = { entry: { app: \x26#34;.\/index.js\x26#34; \/\/ 以对象形式写推荐  }, output: { filename: \x26#34;bundle.js\x26#34;, \/\/ resolve解析为一个绝对路径  path: path.resolve(__dirname, \x26#34;dist\x26#34;) }, module: { rules: [ { test: \/\\.js$\/, \/\/ 正则匹配以js结尾的文件  use: { loader: \x26#34;babel-loader\x26#34; \/\/ option: { \/\/ babel-loader的具体配置信息写在根目录下的.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-09-09 23:25:12 \x2b0000 UTC",
+    "dateModified" : "2018-09-09 23:25:12 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4\/",
+    "wordCount" : "742",
+    "keywords" : [ "webpack", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">从头开始配置webpack4</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-09-09 itemprop="datePublished">September 9, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在
+webapck4中也开始朝着这个方向发展，比如默认的入口为src,默认的打包输出为dist,新增了mode属性，有利于拆分生产环境和开发环境，默认为production，并且默认压缩js，还有一些其他的插件也不再适用，在此也没必要了解，最近就从头梳理了一下webpack4.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>本片文章主要参考自董沅鑫的个人博客<a href="https://godbmw.com"><a href="https://godbmw.com">https://godbmw.com</a></a></p>
+</blockquote>
+<h2 id="heading">环境</h2>
+<p>首先我们要全局安装webpack-cli和webpack,然后也要在项目中安装webpack和webpack-cli,这样我们才能使用。</p>
+<h2 id="es6">编译ES6</h2>
+<p>编译es6,我们需要以下loaders</p>
+<ul>
+<li>babel-loader  <strong>babel转换器</strong></li>
+<li>babel-core    <strong>babel转换时所调用的api(听名字就知道它是babel的核心)</strong></li>
+<li>babel-preset-env <strong>语法转换规则</strong></li>
+<li>babel-plugin-transform-runtime和Babel-runtime <strong>polyfill按需引入</strong></li>
+<li>babel-polyfill <strong>polyfill全局引入</strong>
+<strong>注意：在babel7中所有前缀都变为@babel/,注意版本的统一</strong></li>
+</ul>
+<p>新建webpack.config.js:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#75715e">// 使用babel编译ES6
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./index.js&#34;</span> <span style="color:#75715e">// 以对象形式写推荐
+</span><span style="color:#75715e"></span>    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>,
+        <span style="color:#75715e">// resolve解析为一个绝对路径
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>)
+    },
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>, <span style="color:#75715e">// 正则匹配以js结尾的文件
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;babel-loader&#34;</span>
+                    <span style="color:#75715e">// option: { // babel-loader的具体配置信息写在根目录下的.babelrc中
+</span><span style="color:#75715e"></span>                    <span style="color:#75715e">// }
+</span><span style="color:#75715e"></span>                },
+                <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span> <span style="color:#75715e">// 排除依赖包
+</span><span style="color:#75715e"></span>            }
+        ]
+    }
+}
+</code></pre></div><p>babel的配置一般放在.babelrc中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+    <span style="color:#e6db74">&#34;presets&#34;</span><span style="color:#f92672">:</span> [
+        <span style="color:#e6db74">&#34;@babel/env&#34;</span>,{
+            <span style="color:#e6db74">&#34;targets&#34;</span><span style="color:#f92672">:</span> {
+               <span style="color:#e6db74">&#34;browsers&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;last 2 versions&#34;</span>] 
+            }
+        }
+    ],
+    <span style="color:#e6db74">&#34;plugins&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;@babel/plugin-transform-runtime&#34;</span>]
+}
+</code></pre></div><ul>
+<li>
+<p>presets配置中你可以具体指定，比如这里指定为浏览器上两个版本</p>
+</li>
+<li>
+<p>我们知道用babel来转换es6语法，语法规则根据presets（预设的规则来的），<strong>但却转换不了es6的一些方法比如promise，generator函数，所以我们需要polyfill(垫片)</strong></p>
+</li>
+<li>
+<p>上面用的是按需引入polyfill,@babel/plugin-transform-runtime这个插件会去@babel/runtime中自动引入，<strong>所以即使打包后我们也用到@babel/runtime，它应该安装在生产环境中的依赖包中</strong></p>
+</li>
+<li>
+<p>如果要使用babel-polyfill的话，安装@babel/polyfill,并且在webpack.config.js中最开头引入即可，或者在写在入口函数字符串数组第一个</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;@babel/polyfill&#39;</span>
+<span style="color:#75715e">// 或者
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+<span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;@babel/polyfill&#34;</span>,<span style="color:#e6db74">&#34;index.js&#34;</span>]
+}
+</code></pre></div><h2 id="js">提取公共JS</h2>
+<ul>
+<li>在配置中新增optimization属性</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#75715e">// 多页面打包，提取公共代码
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./a.js&#39;</span>,
+        <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./b.js&#39;</span>
+    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;[name].bundle.js&#39;</span>,
+        <span style="color:#a6e22e">chunkFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].chunk.js&#34;</span>, <span style="color:#75715e">// 非入口打包文件
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>)
+    },
+    <span style="color:#a6e22e">optimization</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">splitChunks</span><span style="color:#f92672">:</span> {
+          <span style="color:#a6e22e">cacheGroups</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">commons</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;common&#39;</span>, <span style="color:#75715e">// 提取公共chunk的名字
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">priority</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 缓存优先级
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;initial&#39;</span>, <span style="color:#75715e">// 作用范围
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">minChunks</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,<span style="color:#75715e">//最小引用2次
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">minSize</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e">// 只要超出0字节就生成一个新包
+</span><span style="color:#75715e"></span>              },
+              <span style="color:#a6e22e">vendor</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;vendor&#34;</span>,
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+                <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;initial&#34;</span>,
+                <span style="color:#a6e22e">priority</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>,
+                <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;all&#39;</span>
+              }
+          }
+        }
+      }
+}
+</code></pre></div><ul>
+<li>这里最重要的是priority属性，表示优先级的意思，上面我们就是先打包node_modules,打包后的名字为vendor,其次再打包Js,取名为common，</li>
+<li>输出的时候也要注意加上ChunkFilename,表示非入口打包文件，抽离出的公共部分就是非入口打包文件</li>
+<li>具体的其他属性，可以去官网去看看，这里只给出基本示例</li>
+</ul>
+<h2 id="heading1">代码分割与懒加载</h2>
+<p>在入口文件中使用import()或者require.ensure()方法，webpack.config.js并不需要配置
+示例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span>(<span style="color:#75715e">/* webpackChunkName: &#39;a&#39;*/</span> <span style="color:#e6db74">&#34;./a&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>);
+  });
+<span style="color:#66d9ef">import</span>(<span style="color:#75715e">/* webpackChunkName: &#39;b&#39;*/</span> <span style="color:#e6db74">&#34;b&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">b</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>));
+  });
+<span style="color:#75715e">// 或者
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">ensure</span>(
+  [<span style="color:#e6db74">&#34;./a.js&#34;</span>, <span style="color:#e6db74">&#34;./b.js&#34;</span>],
+  <span style="color:#66d9ef">function</span> () {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./a&#34;</span>);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./b&#34;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;加载完成&#34;</span>)
+  },
+  <span style="color:#e6db74">&#34;page&#34;</span>
+);
+</code></pre></div><ul>
+<li>我们在vue中使用路由懒加载就是使用import()</li>
+<li>我们在node中因为CommonJs规范为同步加载模块，我们使用的是require.ensure()来按需加载，其实这些方法我们以前就用过</li>
+</ul>
+<h2 id="css">处理CSS</h2>
+<h3 id="css1">解析CSS</h3>
+<p>需要用到的loaders</p>
+<ul>
+<li>style-loader</li>
+<li>css-loader</li>
+<li>sass-loader/node-sass(以sass为例)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./src/app.js&#39;</span>
+    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].bundle.js&#34;</span>,
+        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>)
+    },
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span><span style="color:#e6db74">/\.scss$/</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;style-loader&#34;</span>,<span style="color:#e6db74">&#34;css-loader&#34;</span>,<span style="color:#e6db74">&#34;sass-loader&#34;</span>]<span style="color:#75715e">// 如果每个loader有配置，可以以对象形式书写
+</span><span style="color:#75715e"></span>            }
+        ]
+    }
+}
+</code></pre></div><h3 id="css2">提取CSS</h3>
+<p>需要用到的loaders</p>
+<ul>
+<li>extract-text-webpack-plugin@next（注意后缀@next意为最新版）</li>
+<li>或者mini-css-extract-plugin</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ExtractTextPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;extract-text-webpack-plugin&#34;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./src/app.js&#39;</span>
+    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].bundle.js&#34;</span>, <span style="color:#75715e">// []表示占位符
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>)
+    },
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.scss$/</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ExtractTextPlugin</span>.<span style="color:#a6e22e">extract</span>({
+                    <span style="color:#a6e22e">fallback</span><span style="color:#f92672">:</span> {
+                        <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;style-loader&#34;</span> <span style="color:#75715e">// css编译后用什么来提取的loader
+</span><span style="color:#75715e"></span>                    },
+                    <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [
+                        {
+                            <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;css-loader&#34;</span>,
+                            <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                                <span style="color:#a6e22e">minimize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#75715e">// 是否压缩
+</span><span style="color:#75715e"></span>                            }
+                        },
+                        {
+                            <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sass-loader&#34;</span>
+                        }
+                    ]
+                })
+            }
+        ]
+    },
+    <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExtractTextPlugin</span>(<span style="color:#e6db74">&#34;[name].min.css&#34;</span>)
+        <span style="color:#75715e">// new ExtractTextPlugin({
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//     filename: &#34;[name].min.css&#34;, // 压缩后的名字
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// })
+</span><span style="color:#75715e"></span>    ]
+}
+</code></pre></div><h2 id="heading2">处理图片</h2>
+<ul>
+<li>通过CSS引入图片
+style-loader和css-loder解析CSS,用url-loader解析图片</li>
+<li>html标签插入图片（webpack不推荐这么引用） <strong>html-withimg-loader</strong></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">webpack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;webpack&#34;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ExtractTextPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;extract-text-webpack-plugin&#34;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app.js&#34;</span>
+    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app.[hash:8].bundle.js&#34;</span>,
+        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
+        <span style="color:#a6e22e">chunkFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].chunk.js&#34;</span>,
+        <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./&#34;</span>, <span style="color:#75715e">// 资源引用路径
+</span><span style="color:#75715e"></span>    },
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.css$/</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ExtractTextPlugin</span>.<span style="color:#a6e22e">extract</span>({
+                <span style="color:#a6e22e">fallback</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;style-loader&#34;</span>, <span style="color:#75715e">// 回调style注入
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">singleton</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                    }
+                },
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;css-loader&#34;</span>,<span style="color:#75715e">// 解析url()和@import
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">minimize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                    }
+                }
+                }) 
+            },
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(png|jpg|jpeg|gif)$/</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [
+                    {
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;url-loader&#34;</span>, <span style="color:#75715e">// 解析图片
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]-[hash:5].min.[ext]&#34;</span>,
+                        <span style="color:#a6e22e">limit</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10000</span>, <span style="color:#75715e">// size &lt;= 20KB
+</span><span style="color:#75715e"></span>                        <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;static/&#34;</span>,
+                        <span style="color:#a6e22e">outputPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;static/&#34;</span>
+                    }
+                    }
+                ]
+            },
+            <span style="color:#75715e">// 也可以对字体处理
+</span><span style="color:#75715e"></span>            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(eot|woff2?|ttf|svg)$/</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [
+                  {
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;url-loader&#34;</span>,
+                    <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]-[hash:5].min.[ext]&#34;</span>,
+                      <span style="color:#a6e22e">limit</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span>, <span style="color:#75715e">// fonts file size &lt;= 5KB, use &#39;base64&#39;; else, output svg file
+</span><span style="color:#75715e"></span>                      <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fonts/&#34;</span>,
+                      <span style="color:#a6e22e">outputPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fonts/&#34;</span>
+                    }
+                  }
+                ]
+              },
+              <span style="color:#75715e">// html标签方式插入图片
+</span><span style="color:#75715e"></span>              {    <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(htm|html)$/i</span>,
+                <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span>[ <span style="color:#e6db74">&#39;html-withimg-loader&#39;</span>] 
+           }
+        ]
+    },
+    <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+        <span style="color:#75715e">// 压缩后CSS的名字
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExtractTextPlugin</span>(<span style="color:#e6db74">&#34;app.[hash:8].min.css&#34;</span>),
+    ],
+}
+</code></pre></div><h2 id="tree-shaking">tree shaking</h2>
+<ul>
+<li>js tree shaking</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#75715e">// 设置为生产环境，自动调用插件
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>
+}
+</code></pre></div><ul>
+<li>css tree shaking
+需要用到的loaders</li>
+<li>purifycss-webpack <strong>shaking主要插件</strong></li>
+<li>glob-all <strong>帮助指示路径</strong></li>
+<li>extract-text-webpack-plugin <strong>提取分离CSS</strong></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PurifyCSS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;purifycss-webpack&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">glob</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;glob-all&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ExtractTextPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;extract-text-webpack-plugin&#34;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app.js&#34;</span>
+    },
+    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app.[hash:8].bundle.js&#34;</span>,
+        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
+        <span style="color:#a6e22e">chunkFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].chunk.js&#34;</span>,
+        <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/dist/&#34;</span>,
+    },
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+          {
+            <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.css$/</span>,
+            <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ExtractTextPlugin</span>.<span style="color:#a6e22e">extract</span>({
+              <span style="color:#a6e22e">fallback</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;style-loader&#34;</span>, <span style="color:#75715e">// 编译后使用style插入
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                  <span style="color:#a6e22e">singleton</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                }
+              },
+              <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;css-loader&#34;</span>,
+                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                  <span style="color:#a6e22e">minimize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                }
+              }
+            })
+          }
+        ]
+      },
+    <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExtractTextPlugin</span>(<span style="color:#e6db74">&#34;app.[hash:8].min.css&#34;</span>),
+        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PurifyCSS</span>({
+          <span style="color:#a6e22e">paths</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">glob</span>.<span style="color:#a6e22e">sync</span>([
+            <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;.html&#34;</span>),
+            <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;src/*.js&#34;</span>)
+          ])
+        }),
+    ],
+}
+}
+</code></pre></div><h2 id="html">自动生成html&amp;&amp;清除打包缓存</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CleanWebpackPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;clean-webpack-plugin&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">htmlWebpackPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;html-webpack-plugin&#39;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+        <span style="color:#75715e">// 字符串数组
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CleanWebpackPlugin</span>([<span style="color:#e6db74">&#39;dist&#39;</span>]),
+        <span style="color:#75715e">// 生成html,并且自动引入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">htmlWebpackPlugin</span>({
+            <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;index.html&#34;</span>,  <span style="color:#75715e">//打包后的文件名
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span> , <span style="color:#e6db74">&#34;./index.html&#34;</span>)  <span style="color:#75715e">// 可以指定模板，如果是自定义的模板需要下载对于loader
+</span><span style="color:#75715e"></span>        }),
+    ],
+}
+</code></pre></div><h2 id="js1">第三方js库</h2>
+<p>jquery为例
+npm install jquery &ndash;save
+npm i expose-loader &ndash;save</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+   <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+       {
+        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;jquery&#39;</span>),
+        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [{
+            <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;expose-loader&#39;</span>,
+            <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;jQuery&#39;</span>
+        },{
+            <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;expose-loader&#39;</span>,
+            <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;$&#39;</span>
+        }]
+    }
+   }
+}
+</code></pre></div><p>然后在组件中可以这样引用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;jquery&#39;</span>)
+<span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;jQuery第三方插件&#39;</span>)
+</code></pre></div><h2 id="webpackdevserver">webpack-dev-server</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">devServer</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">contentBase</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),  <span style="color:#75715e">//启动路径
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;localhost&#39;</span>,  <span style="color:#75715e">//域名
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8888</span>,  <span style="color:#75715e">//端口号
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">// 声明为热替换
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">hot</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+        <span style="color:#75715e">// 第一次打包时打开浏览器
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">open</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+        <span style="color:#a6e22e">compress</span><span style="color:#f92672">:</span><span style="color:#66d9ef">true</span>, <span style="color:#75715e">//压缩,
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">overlay</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#75715e">// 浏览器显示错误
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//请求到 /api/users 现在会被代理到请求 http://localhost:9000/api/users。
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// proxy: {
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//     &#34;/api&#34;: &#34;http://localhost:9000&#34;,
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// }
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><h2 id="heading3">生产环境和开发环境</h2>
+<p>我们可以把我们的webpack.config.js复制两份,使用mode属性来拆分成如下
+webapck.dev.config.js <strong>mode:&ldquo;development&rdquo;</strong>
+webapck.pro.config.js <strong>mode:&ldquo;production&rdquo;</strong>
+然后在package.json的书写脚本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+<span style="color:#e6db74">&#34;dev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;webpack --config webpack.dev.config.js&#34;</span>
+<span style="color:#e6db74">&#34;build&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;webpack --config webpack.pro.config.js&#34;</span>
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/webpack/">
+                    #webpack</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="redux快速入门"><i class="iconfont icon-left"></i>&nbsp;redux快速入门</a>
+         
+        
+        <a href="https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/" class="next" rel="next" title="TypeScript入门">TypeScript入门&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

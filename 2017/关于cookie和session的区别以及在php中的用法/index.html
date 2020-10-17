@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           关于cookie和session的区别以及在PHP中的用法 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="关于cookie和session的区别以及在PHP中的用法 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "关于cookie和session的区别以及在PHP中的用法",
+    "headline" : "关于cookie和session的区别以及在PHP中的用法",
+    "description" : " 自学了5个月，我最近才听说cookie和session\x26hellip;.之前做验证码接触了session,现在整理一下：\n 二者定义： cookie：是服务器发送到客户端的一串文本数据，由客户端保存，每次请求时都会发送cookie，用于保持会话期间持久数据传递； session：session在服务器端，是通过cookie实现的，在发给浏览器的cookie中有唯一标识SESSONID,用于记录不同的用户的状态；\n整个过程是这样的： 客户端向服务器发送请求后，服务器会在响应头中返回cookie信息，其中包含唯一标识SESSIOND,客户端收到后就会存储起来，之后客户端的每次请求都会包含cookie信息，session会找到cookie中的sessionid，并且根据它找到对应的用户，及其存储在服务器的数据。\n二者区别：  cookie存储在浏览器中，session存储在服务器中； cookie并不安全，别人可以篡改你的cookie信息,单个cookie存储数据不超过4k,一个浏览器最多存储20-50个cookie； session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。 注意：浏览器是可以禁用cookie的，与此同时session也会失效，这是我们还有两种方法   URL重写，把SESSIONID加到URL后，即\x27sid=XXX\x27的形式； 表单隐藏：在HTML加一个隐藏表单如下：  \x26lt;form name=\x26#34;testform\x26#34; action=\x26#34;\/xxx\x26#34;\x26gt; \x26lt;input type=\x26#34;hidden\x26#34; name=\x26#34;jsessionid\x26#34; value=\x26#34;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764\x26#34;\x26gt; \x26lt;input type=\x26#34;text\x26#34;\x26gt; \x26lt;\/form\x26gt; 在PHP中cookie用法 setcookie（名称，值，失效时间，域，路径，安全标志） 第一个和第二个参数是必填，其他都是可选 一般我们都这样设置几个参数\nsetcookie(\x26#39;name\x26#39;,\x26#39;lili\x26#39;,time()\x2b3600) \/\/创建或更新cookie setcookie（\x26#39;name\x26#39;,\x26#39;\x26#39;,time()-3600） \/\/删除cookie，值设置为空，时间为负数 setcookie（\x26#39;name\x26#39;,null） \/\/这样删除也可以 \/\/用$_COOKIE[\x26#39;name\x26#39;]读取，在读取时，先要判断是否为空值 if(isset($_COOKIE[\x26#39;name\x26#39;])){ $Name=$_COOKIE[\x26#39;name\x26#39;]; } \/\/或者这样 If(!empty($_COOKIE[\x26#39;name\x26#39;])){ $Name=$_COOKIE[\x26#39;name\x26#39;]; } 在PHP中session用法 在使用session前我们都要初始化session_start()（他会创建一个唯一SESSIONID）,在这之前不能有输出语句。\n$_SESSON[\x26#39;name\x26#39;]=\x26#39;lili\x26#39; \/\/赋值 $Name=$_SESSION[\x26#39;name\x26#39;] \/\/读取值 session_unset[\x26#39;name\x26#39;] \/\/删除值（逐个） $_SESSION=array(); \/\/整个删除 session_destroy(); \/\/最后整个摧毁 session session_is_registered(); \/\/ 检查变量是否被登记为会话变量,如果是返回TRUE session_name(); \/\/设置或获取当前session的名称 session_set_cookie_params(): \/\/设置session的生存期，必须在session_start()之前调用; session_save_path() ; \/\/设置session保存路径，必须在session_start()之前调用; ",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-09-02 16:20:28 \x2b0000 UTC",
+    "dateModified" : "2017-09-02 16:20:28 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95\/",
+    "wordCount" : "64",
+    "keywords" : [ "cookie和session", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">关于cookie和session的区别以及在PHP中的用法</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-09-02 itemprop="datePublished">September 2, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/http/%E6%B5%8F%E8%A7%88%E5%99%A8/"> http/浏览器 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>自学了5个月，我最近才听说cookie和session&hellip;.之前做验证码接触了session,现在整理一下：</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="heading">二者定义：</h2>
+<p>cookie：是服务器发送到客户端的一串文本数据，由客户端保存，每次请求时都会发送cookie，用于保持会话期间持久数据传递； session：session在服务器端，是通过cookie实现的，在发给浏览器的cookie中有唯一标识SESSONID,用于记录不同的用户的状态；</p>
+<h2 id="heading1">整个过程是这样的：</h2>
+<p>客户端向服务器发送请求后，服务器会在响应头中返回cookie信息，其中包含唯一标识SESSIOND,客户端收到后就会存储起来，之后客户端的每次请求都会包含cookie信息，session会找到cookie中的sessionid，并且根据它找到对应的用户，及其存储在服务器的数据。</p>
+<h2 id="heading2">二者区别：</h2>
+<ol>
+<li>cookie存储在浏览器中，session存储在服务器中；</li>
+<li>cookie并不安全，别人可以篡改你的cookie信息,单个cookie存储数据不超过4k,一个浏览器最多存储20-50个cookie；</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。 注意：浏览器是可以禁用cookie的，与此同时session也会失效，这是我们还有两种方法</li>
+</ol>
+<ul>
+<li>URL重写，把SESSIONID加到URL后，即'sid=XXX'的形式；</li>
+<li>表单隐藏：在HTML加一个隐藏表单如下：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;testform&#34;</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/xxx&#34;</span>&gt; 
+  &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hidden&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jsessionid&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764&#34;</span>&gt; &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>&gt; 
+&lt;/<span style="color:#f92672">form</span>&gt; 
+</code></pre></div><h2 id="phpcookie">在PHP中cookie用法</h2>
+<p>setcookie（名称，值，失效时间，域，路径，安全标志） 第一个和第二个参数是必填，其他都是可选 一般我们都这样设置几个参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">setcookie(&#39;name&#39;,&#39;lili&#39;,time()+3600)
+//创建或更新cookie 
+setcookie（&#39;name&#39;,&#39;&#39;,time()-3600）
+//删除cookie，值设置为空，时间为负数 
+setcookie（&#39;name&#39;,null）
+//这样删除也可以 //用$_COOKIE[&#39;name&#39;]读取，在读取时，先要判断是否为空值 
+if(isset($_COOKIE[&#39;name&#39;])){ $Name=$_COOKIE[&#39;name&#39;]; } 
+//或者这样 
+If(!empty($_COOKIE[&#39;name&#39;])){ $Name=$_COOKIE[&#39;name&#39;]; }
+</code></pre></div><h2 id="phpsession">在PHP中session用法</h2>
+<p>在使用session前我们都要初始化session_start()（他会创建一个唯一SESSIONID）,在这之前不能有输出语句。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$_SESSON[&#39;name&#39;]=&#39;lili&#39;
+//赋值 
+$Name=$_SESSION[&#39;name&#39;]
+//读取值 
+session_unset[&#39;name&#39;]
+//删除值（逐个） 
+$_SESSION=array();
+//整个删除 
+session_destroy();
+//最后整个摧毁
+session session_is_registered();
+// 检查变量是否被登记为会话变量,如果是返回TRUE 
+session_name();
+//设置或获取当前session的名称 
+session_set_cookie_params():
+//设置session的生存期，必须在session_start()之前调用; 
+session_save_path() ;
+//设置session保存路径，必须在session_start()之前调用; 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/cookie%E5%92%8Csession/">
+                    #cookie和session</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" class="prev" rel="prev" title="理解http协议"><i class="iconfont icon-left"></i>&nbsp;理解http协议</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/" class="next" rel="next" title="理解Websocket原理">理解Websocket原理&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

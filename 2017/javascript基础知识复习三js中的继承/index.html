@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           javascript基础知识复习（三）js中的继承 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="javascript基础知识复习（三）js中的继承 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "javascript基础知识复习（三）js中的继承",
+    "headline" : "javascript基础知识复习（三）js中的继承",
+    "description" : "\x3cp\x3ejs中共有6种继承\n\x3cstrong\x3e一、原型链\x3c\/strong\x3e\x3c\/p\x3e\n\x3cdiv class=\x22highlight\x22\x3e\x3cpre style=\x22color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\x22\x3e\x3ccode class=\x22language-javascript\x22 data-lang=\x22javascript\x22\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3eSuperType\x3c\/span\x3e(){\n    \x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3eprototype\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3etrue\x3c\/span\x3e;\n}\n\x3cspan style=\x22color:#a6e22e\x22\x3eSuperType\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3eprototype\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3egetSuperValue\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e(){\n    \x3cspan style=\x22color:#66d9ef\x22\x3ereturn\x3c\/span\x3e \x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3eproperty\x3c\/span\x3e\n}\n\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3eSubType\x3c\/span\x3e(){\n   \x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3esubPrototy\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efalse\x3c\/span\x3e;\n}\n\x3cspan style=\x22color:#75715e\x22\x3e\/\/继承了SuperType\n\x3c\/span\x3e\x3cspan style=\x22color:#75715e\x22\x3e\x3c\/span\x3e\x3cspan style=\x22color:#a6e22e\x22\x3eSubType\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3eprototype\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3enew\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3eSuperType\x3c\/span\x3e();\n\x3cspan style=\x22color:#a6e22e\x22\x3eSubType\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3eprototype\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3egetSubValue\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e(){\n    \x3cspan style=\x22color:#66d9ef\x22\x3ereturn\x3c\/span\x3e \x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3esubProperty\x3c\/span\x3e;\n}\n\x3cspan style=\x22color:#66d9ef\x22\x3evar\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3einstance\x3c\/span\x3e \x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e \x3cspan style=\x22color:#66d9ef\x22\x3enew\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3eSubType\x3c\/span\x3e();\n\x3cspan style=\x22color:#a6e22e\x22\x3econsole\x3c\/span\x3e,\x3cspan style=\x22color:#a6e22e\x22\x3elog\x3c\/span\x3e(\x3cspan style=\x22color:#a6e22e\x22\x3einstance\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3egetSuperValue\x3c\/span\x3e);\x3cspan style=\x22color:#75715e\x22\x3e\/\/true\n\x3c\/span\x3e\x3cspan style=\x22color:#75715e\x22\x3e\x3c\/span\x3e\x3cspan style=\x22color:#a6e22e\x22\x3econsole\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3elog\x3c\/span\x3e(\x3cspan style=\x22color:#a6e22e\x22\x3einstance\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3egetSubValue\x3c\/span\x3e);\x3cspan style=\x22color:#75715e\x22\x3e\/\/false\n\x3c\/span\x3e\x3c\/code\x3e\x3c\/pre\x3e\x3c\/div\x3e\x3cp\x3e以上代码我们可以看到定义两个构造函数，里面有属性，原型里面有方法，我们让SubType的原型等于SuperType的实例，通过替换了SubType的默认原型对象实现继承，我们可以看到SubType的实例成功调用SuperType里的方法，之后我们又为其手动添加了一个新的方法也是可以调用的。\n注意：继承原型后使用字面量添加方法，会使继承无效，因为已经替换了原型，我们在上一篇中介绍原型时已经讲过。\n缺点：（1）继承后的原型对应的构造函数它所有的实例都会共享原型中的方法。 （2）继承的子类和父类，子类是不能向父类传参数的。\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-07 15:37:44 \x2b0000 UTC",
+    "dateModified" : "2017-08-07 15:37:44 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF\/",
+    "wordCount" : "258",
+    "keywords" : [ "javascript基础知识复习", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">javascript基础知识复习（三）js中的继承</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-07 itemprop="datePublished">August 7, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>js中共有6种继承
+<strong>一、原型链</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperType</span>(){
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
+}
+<span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getSuperValue</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">property</span>
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubType</span>(){
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">subPrototy</span><span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>;
+}
+<span style="color:#75715e">//继承了SuperType
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">SubType</span>.<span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SuperType</span>();
+<span style="color:#a6e22e">SubType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getSubValue</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">subProperty</span>;
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>();
+<span style="color:#a6e22e">console</span>,<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getSuperValue</span>);<span style="color:#75715e">//true
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getSubValue</span>);<span style="color:#75715e">//false
+</span></code></pre></div><p>以上代码我们可以看到定义两个构造函数，里面有属性，原型里面有方法，我们让SubType的原型等于SuperType的实例，通过替换了SubType的默认原型对象实现继承，我们可以看到SubType的实例成功调用SuperType里的方法，之后我们又为其手动添加了一个新的方法也是可以调用的。
+注意：继承原型后使用字面量添加方法，会使继承无效，因为已经替换了原型，我们在上一篇中介绍原型时已经讲过。
+缺点：（1）继承后的原型对应的构造函数它所有的实例都会共享原型中的方法。 （2）继承的子类和父类，子类是不能向父类传参数的。</p>
+<p><strong>二、借用构造函数</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperType</span> (){
+       <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">colors</span><span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;red&#39;</span>,<span style="color:#e6db74">&#39;blue&#39;</span>];
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubType</span>(){
+<span style="color:#75715e">//用call或者apply将调用对象换成SuperType实现对SuperType函数的继承
+</span><span style="color:#75715e"></span><span style="color:#75715e">//this指向当前对象
+</span><span style="color:#75715e"></span>       <span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>);
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>();
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">colors</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#39;black&#39;</span>);
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>);<span style="color:#75715e">//red,blue,black
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o1</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>();
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o1</span>)<span style="color:#75715e">//red,blue
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//利用call()或apply()在子类函数中调用父类函数实现继承，我们可以看到SubType的实例并不共享属性；而且子类也是可以向父类传参的
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperType</span> (<span style="color:#a6e22e">name</span>){
+       <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubType</span>(){
+       <span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#e6db74">&#39;lili&#39;</span>);
+       <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>;
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>();
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span>)<span style="color:#75715e">//lili
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span>)<span style="color:#75715e">//12
+</span></code></pre></div><p>我们可以看到子类传入参数后，调用父类函数直接赋值给属性name。为了确保父类的属性不会覆盖子类，在调用父类函数后再添加新属性。 缺点：方法都在构造函数中定义，无法函数复用，父类的原型中的方法对于子类也是不可见的。
+<strong>三、组合继承（原型链和借用构造函数）</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperType</span>(){
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">colors</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#e6db74">&#39;red&#39;</span>,<span style="color:#e6db74">&#39;blue&#39;</span><span style="color:#960050;background-color:#1e0010">\</span>];
+}
+<span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubType</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+   <span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>,<span style="color:#a6e22e">name</span>);
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+}
+<span style="color:#a6e22e">SubType</span>.<span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SuperType</span>();
+<span style="color:#a6e22e">SubType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayAge</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span>);
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>(<span style="color:#e6db74">&#39;lili&#39;</span>,<span style="color:#e6db74">&#39;23&#39;</span>);
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">colors</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#39;black&#39;</span>);
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">color</span>);<span style="color:#75715e">//red,blue,black
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//lili
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span>);<span style="color:#75715e">//23
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o1</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubType</span>(<span style="color:#e6db74">&#39;hi&#39;</span>,<span style="color:#e6db74">&#39;21&#39;</span>);
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">o1</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//hi
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">o1</span>.<span style="color:#a6e22e">age</span>);<span style="color:#75715e">//21
+</span></code></pre></div><p>我们可以看到父类函数里有两个属性，原型里有一个方法，用原型链继承原型里的方法，这样他们的方法共享，借用构造函数的方法继承了父类函数里的属性，属性不共享，这样每个实例都有自己的属性，和使用相同的方法了。 组合继承避免了原型链和借用构造函数的缺陷，是JavaScript中最常用的继承模式。
+<strong>四、原型式继承</strong>
+《JavaScript语言精粹》作者克罗克福德提出了一个方式来实现继承</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">o</span>){
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">F</span>(){}
+            <span style="color:#a6e22e">F</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">o</span>;
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">F</span>();
+        }
+  
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Nicholas&#34;</span>,
+            <span style="color:#a6e22e">friends</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#e6db74">&#34;Shelby&#34;</span>, <span style="color:#e6db74">&#34;Court&#34;</span>, <span style="color:#e6db74">&#34;Van&#34;</span><span style="color:#960050;background-color:#1e0010">\</span>]
+        };
+        
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">anotherPerson</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">person</span>);
+        <span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Greg&#34;</span>;
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//Greg
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">friends</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;Rob&#34;</span>);
+        
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">yetAnotherPerson</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">person</span>);
+        <span style="color:#a6e22e">yetAnotherPerson</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Linda&#34;</span>;
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">yetAnotherPerson</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//Linda
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">yetAnotherPerson</span>.<span style="color:#a6e22e">friends</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;Barbie&#34;</span>);
+        
+        <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">friends</span>);   <span style="color:#75715e">//&#34;Shelby,Court,Van,Rob,Barbie&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//Nicholas，名字不会被修改
+</span></code></pre></div><p>我们可以看到object函数中创建了一个临时性的构造函数，将传入的参数等于构造函数的原型，最后返回这个构造函数的实例； 这种原型式继承要求必须要有一个对象作为另一个对象使用的基础。所以我们要先定义一个person对象，之后我们通过函数定义两个实例，并将参数person传入，两个实例成员都有对象person的属性，也可以修改。 ES5中推出了Object.create()规范了原型式继承，方法接受两个参数，第一个就是你准备的参数，第二个（可选）就是为一个新对象定义额外属性的对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Nicholas&#34;</span>,
+            <span style="color:#a6e22e">friends</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;Shelby&#34;</span>, <span style="color:#e6db74">&#34;Court&#34;</span>, <span style="color:#e6db74">&#34;Van&#34;</span>]
+        };
+        
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">anotherPerson</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">person</span>);
+        <span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Greg&#34;</span>;
+        <span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">friends</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;Rob&#34;</span>);
+        
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">yetAnotherPerson</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">person</span>);
+        <span style="color:#a6e22e">yetAnotherPerson</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Linda&#34;</span>;
+        <span style="color:#a6e22e">yetAnotherPerson</span>.<span style="color:#a6e22e">friends</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;Barbie&#34;</span>);
+        
+        <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">friends</span>);   <span style="color:#75715e">//&#34;Shelby,Court,Van,Rob,Barbie&#34;
+</span><span style="color:#75715e"></span>
+Object.<span style="color:#a6e22e">create</span>()<span style="color:#a6e22e">存在兼容性问题</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">因此不推荐使用</span>; <span style="color:#a6e22e">解决兼容性问题封装一个自定义函数</span><span style="color:#960050;background-color:#1e0010">：</span>
+
+ <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">obj</span>){
+            <span style="color:#66d9ef">if</span>(Object.<span style="color:#a6e22e">create</span>){
+                <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">obj</span>);
+            }<span style="color:#66d9ef">else</span>{
+                <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">F</span>() {
+                }
+                <span style="color:#a6e22e">F</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>;
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">F</span>();
+            }
+        }
+</code></pre></div><p><strong>五、寄生式继承</strong>
+寄生式继承也是克罗克福德提出的</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createAnother</span>(<span style="color:#a6e22e">original</span>){
+<span style="color:#75715e">//object函数不是必须的，任何能返回对象的函数都可以
+</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">clone</span><span style="color:#f92672">=</span><span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">original</span>);
+     <span style="color:#a6e22e">clone</span>.<span style="color:#a6e22e">sayHi</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+          <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hi&#39;</span>);
+};
+<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">clone</span>;
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person</span><span style="color:#f92672">=</span>{
+  <span style="color:#a6e22e">name</span> <span style="color:#f92672">:</span><span style="color:#e6db74">&#39;lili&#39;</span>;
+  <span style="color:#a6e22e">friends</span><span style="color:#f92672">:</span>[<span style="color:#e6db74">&#39;jack&#39;</span>,<span style="color:#e6db74">&#39;van&#39;</span>];
+};
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">anotherPerson</span><span style="color:#f92672">=</span><span style="color:#a6e22e">createAnother</span>(<span style="color:#a6e22e">person</span>);
+<span style="color:#a6e22e">anotherPerson</span>.<span style="color:#a6e22e">sayHi</span>();<span style="color:#75715e">//hi
+</span></code></pre></div><p>寄生式继承的思路跟工厂模式差不多，封装一个函数，函数接受一个参数，参数就是将要作为新对象基础的对象，然后把这对象传给object函数，返回值给clone，再为clone对象添加一个方法，最后返回clone对象。我们可以看到person返回了一个新对象- anotherPerson，新对象不仅有person 的所有属性和方法，还有自己的sayHi方法 缺点：还是函数不能复用的问题;
+<strong>六、寄生组合式继承</strong>
+我们之前说过Js的继承用的最多的是第三种组合继承，但是他也有缺点，他会调用两次超类型构造函数（父类函数），第一次调用会创建实例属性name和colors，第二次调用又会如此，这样就覆盖了原来的属性，所以寄生组合式继承是对第一次调用函数的优化，只需创建一个超类型函数的副本即可，这样子类就只调用一次超类型构造函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span>  <span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">subType</span>,<span style="color:#a6e22e">SuperType</span>){
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span>Object(<span style="color:#a6e22e">SuperType</span>. <span style="color:#a6e22e">prototype</span>);<span style="color:#75715e">//赋值一份父类的原型
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">subType</span>.<span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span><span style="color:#a6e22e">prototype</span>;<span style="color:#75715e">//将赋值的原型指向子类的原型
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">preototype</span>.<span style="color:#a6e22e">constructor</span><span style="color:#f92672">=</span><span style="color:#a6e22e">subType</span>;<span style="color:#75715e">//赋值的原型里的constructor失效需要重新指向
+</span><span style="color:#75715e"></span>}
+<span style="color:#75715e">//所以原来的组合继承可以这样改
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperType</span>(){
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">colors</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#e6db74">&#39;red&#39;</span>,<span style="color:#e6db74">&#39;blue&#39;</span><span style="color:#960050;background-color:#1e0010">\</span>];
+}
+<span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubType</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+   <span style="color:#a6e22e">SuperType</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>,<span style="color:#a6e22e">name</span>);
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+}
+<span style="color:#75715e">//SubType.prototype=new SuperType();//第一次调用父类函数
+</span><span style="color:#75715e"></span><span style="color:#75715e">//替换成这个
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">subType</span>,<span style="color:#a6e22e">SuperType</span>);
+<span style="color:#a6e22e">SubType</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayAge</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span>);
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+                    #javascript基础知识复习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="prev" rel="prev" title="javascript基础知识复习（二）面向对象"><i class="iconfont icon-left"></i>&nbsp;javascript基础知识复习（二）面向对象</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" class="next" rel="next" title="js中的作用域及变量提升">js中的作用域及变量提升&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

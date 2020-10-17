@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/java/</link>
+    <description>Recent content in java on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 09 Jul 2020 20:23:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java之多线程初步总结</title>
+      <link>https://chenxiaolani.com/2020/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 09 Jul 2020 20:23:29 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</guid>
+      <description>在java中，代码是阻塞同步执行的，为了更好的利用CPU资源，多线程的使用是十分有必要的，与之相关的，不得不提的还有一个进程，所谓进程即是代码在数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位。而线程是进程的一个执行路径，一个进程中至少有一个线程，进程中的多个线程共享进程资源；
+ 并发与并行  并行：多个cpu实例或者多台机器同时执行一段处理逻辑，是真正的同时。 并发：通过cpu调度算法，让用户看上去同时执行，实际上从cpu操作层面不是真正的同时。  线程创建  在 Java 中使用 Thread 类代表线程，所有的线程对象都必须是 Thread 类或者其子类的实例，Java 中创建线程主要有以下三种方式：  继承 Thread 类 public class CreateThreadByExtendsThread extends Thread { @Override public void run() { IntStream.rangeClosed(1, 10).forEach(i -&amp;gt; System.out.println(Thread.currentThread().getName() + &amp;#34; &amp;#34; + i)); } public static void main(String[] args) { CreateThreadByExtendsThread threadOne = new CreateThreadByExtendsThread(); threadOne.start(); } } 实现 Runnable 接口 public class RunableTest implements Runnable { @Override public void run() { while (true) { System.</description>
+    </item>
+    
+    <item>
+      <title>Map集合和Collection集合常用类的总结</title>
+      <link>https://chenxiaolani.com/2020/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 26 Jun 2020 18:04:47 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+      <description>Java中的数组有很多弊端，长度固定，不可增加删除操作，只能存储同一种数据类型，而且数组内元素的内存空间是连续分配的，对内存要求高点；而Java中的集合弥补了这一点，在Java中的集合可分为两大类collection和map,对此我们对集合有不同的需求，就产生了不同的实现；
+ Collection（单列集合） List  List接口是一个有序集合，允许有相同的元素。  ArrayList  最常用的实现类，线性结构，本质上就是一个数组，通过动态扩容实现添加元素（创建一个更大的空间。然后把原先的所有元素拷贝过去）；  LinkedList  底层为链表。特点即分配内存空间不是必须是连续的，插入、删除操作很快，只要修改前后指针就OK了，时间复杂度为O(1)；  ArrayList和LinkedList区别
+ ArrayList它支持以角标位置进行索引出对应的元素(随机访问)，而LinkedList则需要遍历整个链表来获取对应的元素。因此一般来说ArrayList的访问速度是要比LinkedList要快的 ArrayList由于是数组，对于删除和修改而言消耗是比较大(复制和移动数组实现)，LinkedList是双向链表删除和修改只需要修改对应的指针即可，消耗是很小的。因此一般来说LinkedList的增删速度是要比ArrayList要快的；  Vector（了解）  底层数据结构是数组。和ArrayList 很相似，但是两者是不同的： Vector 是同步访问的。 Vector 包含了许多传统的方法，这些方法不属于集合框架。  Set  Set没有顺序 Set不能包含重复元素  HashSet  最常用的实现，底层是哈希表(是一个元素为链表的数组)；  List.add(1); List.add(1); List.add(2); Set&amp;lt;Integer&amp;gt; newSet = HashSet&amp;lt;&amp;gt;(List); 注意此实现是无序的。
+LinkedHashSet  底层数据结构由哈希表和链表组成。 保证内部顺序和插入的顺序一样。  TreeSet  底层数据结构是红黑树（可以认为是左小右大的二叉树） 缺省是按照自然顺序进行排序，TreeSet中的元素要实现Comparable接口，或者有一个自定义的比较器Comparator。  Map（key-value集合）  Map即为映射，不能包含重复的键，可以包含重复的值；  HashMap  HashMap 采用一种所谓的“Hash 算法”来决定每个元素的存储位置。  HashMap&amp;lt;String , Integer&amp;gt; map = new HashMap&amp;lt;String , Integer&amp;gt;(); map.</description>
+    </item>
+    
+    <item>
+      <title>Java的包管理</title>
+      <link>https://chenxiaolani.com/2020/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 22 Jun 2020 22:41:12 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+      <description>java中的包就是一些第三方的类库，跟前端的npm包差不多，前端通过npm这个平台管理npm包，在java中通过maven来实现包管理。
+ maven的包管理  传递依赖的包的自动管理 依赖冲突的自动解决 - 就近原则 包的作用域（scope）  关于pom.xml （Project Object Model） pom.xml是maven用来管理包的配置文件，与前端使用npm包生成的package.json文件类似。
+ 一份简单的pom.xml配置  &amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;groupId&amp;gt;groupID&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;artifactId&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;...&amp;lt;/packaging&amp;gt; &amp;lt;name&amp;gt;...&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;...&amp;lt;/url&amp;gt; &amp;lt;properties&amp;gt;...&amp;lt;/properties&amp;gt; &amp;lt;!--依赖关系 --&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.0&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;jar&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;!--构建设置 --&amp;gt; &amp;lt;build&amp;gt;...&amp;lt;/build&amp;gt; &amp;lt;/project&amp;gt;  其中必须的三元素： 项目组( groupId )，项目名称( artifactId )及其版本( version )。 packaging:打包机制，如pom,jar,maven-plugin,ejb,war,ear,rar,par name:自定义名称 可选 url:自定义网站，可选 properties:是为pom定义一些常量。  关于dependencies
+ type：默认为jar类型，常用的类型有：jar,ejb-client,test-jar&amp;hellip;, scope：是用来指定当前包的依赖范围， optional:设置指依赖是否可选，默认为false,  包冲突的解决方案  包冲突的错误一般会报如下错误   AbstractMethodError NoClassDefFoundError ClassNotFoundException LinkageError  maven的自动处理</description>
+    </item>
+    
+    <item>
+      <title>java中解析XML</title>
+      <link>https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/</link>
+      <pubDate>Wed, 24 Jul 2019 13:57:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/</guid>
+      <description>xml文件一般有三种用途，1. 可以用来保存数据，2. 可以用来做配置文件，3. 数据传输载体，本篇文章主要记载java中如何解析XML文件。
+ XML解析方式 XML文件的定义以及标签的用法就不多说了，XML文件的约束主要有两种（DTD和Schema），现在最常见的XML的解析方式主要有两种，一个是DOM， 一个是SAX;两者区别如下
+ DOM方法是将XML文件读取到内存中去生成树状结构（对象），这样的话如果文件过大就可能会出现内存溢出； SAX（simple api for xml）方法则是事件驱动模式，读取一行解析一行；   针对这两种解析方式，市场上出现了很多的解决方案比如dom4j,jaxp,jdom等
+ Dom4j使用  首先需要用到Dom4j的jar包；  try { //1. 创建sax读取对象  SAXReader reader = new SAXReader(); //jdbc -- classloader  //2. 指定解析的xml源  Document document = reader.read(new File(&amp;#34;src/xml/stus.xml&amp;#34;)); //3. 得到元素、  //得到根元素  Element rootElement= document.getRootElement(); //获取根元素下面的子元素 age  //rootElement.element(&amp;#34;age&amp;#34;)  //System.out.println(rootElement.element(&amp;#34;stu&amp;#34;).element(&amp;#34;age&amp;#34;).getText());  //获取根元素下面的所有子元素 。 stu元素  List&amp;lt;Element&amp;gt; elements = rootElement.elements(); //遍历所有的stu元素  for (Element element : elements) { //获取stu元素下面的name元素  String name = element.</description>
+    </item>
+    
+  </channel>
+</rss>

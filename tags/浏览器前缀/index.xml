@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>浏览器前缀 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80/</link>
+    <description>Recent content in 浏览器前缀 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 13 Jul 2017 13:48:59 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>浏览器的兼容写法</title>
+      <link>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</link>
+      <pubDate>Thu, 13 Jul 2017 13:48:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</guid>
+      <description> 浏览器的兼容性写法
+  -moz-对应 Firefox, -webkit-对应 Safari and Chrome -o- for Opera -ms- for Internet Explorer  </description>
+    </item>
+    
+  </channel>
+</rss>

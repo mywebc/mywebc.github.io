@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           JavaScript基础知识复习（五）函数的四种调用模式 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="JavaScript基础知识复习（五）函数的四种调用模式 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "JavaScript基础知识复习（五）函数的四种调用模式",
+    "headline" : "JavaScript基础知识复习（五）函数的四种调用模式",
+    "description" : "\x3cp\x3e\x3cstrong\x3e一、函数模式\x3c\/strong\x3e\n这个我们再熟悉不过了。\x3c\/p\x3e\n\x3cdiv class=\x22highlight\x22\x3e\x3cpre style=\x22color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\x22\x3e\x3ccode class=\x22language-JavaScript\x22 data-lang=\x22JavaScript\x22\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3efoo\x3c\/span\x3e(){\n    \x3cspan style=\x22color:#a6e22e\x22\x3econsole\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3elog\x3c\/span\x3e(\x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e);\n}\n\x3cspan style=\x22color:#a6e22e\x22\x3efoo\x3c\/span\x3e()\x3cspan style=\x22color:#960050;background-color:#1e0010\x22\x3e；\x3c\/span\x3e\x3cspan style=\x22color:#75715e\x22\x3e\/\/这里函数名调用，就是函数模式\n\x3c\/span\x3e\x3c\/code\x3e\x3c\/pre\x3e\x3c\/div\x3e\x3cp\x3e注意：这里的this指的是window全局对象；\n\x3cstrong\x3e二、方法模式\x3c\/strong\x3e\n函数放在对象内，是对象的一个属性，我们调用函数，这就是方法模式。\x3c\/p\x3e\n\x3cdiv class=\x22highlight\x22\x3e\x3cpre style=\x22color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\x22\x3e\x3ccode class=\x22language-javascript\x22 data-lang=\x22javascript\x22\x3e\x3cspan style=\x22color:#66d9ef\x22\x3evar\x3c\/span\x3e \x3cspan style=\x22color:#a6e22e\x22\x3eobj\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e=\x3c\/span\x3e{\n  \x3cspan style=\x22color:#a6e22e\x22\x3efoo\x3c\/span\x3e\x3cspan style=\x22color:#f92672\x22\x3e:\x3c\/span\x3e\x3cspan style=\x22color:#66d9ef\x22\x3efunction\x3c\/span\x3e(){\n      \x3cspan style=\x22color:#a6e22e\x22\x3econsole\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3elog\x3c\/span\x3e(\x3cspan style=\x22color:#66d9ef\x22\x3ethis\x3c\/span\x3e);\n  }\n}\n\x3cspan style=\x22color:#a6e22e\x22\x3eobj\x3c\/span\x3e.\x3cspan style=\x22color:#a6e22e\x22\x3efoo\x3c\/span\x3e();\n\x3c\/code\x3e\x3c\/pre\x3e\x3c\/div\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-09 19:35:54 \x2b0000 UTC",
+    "dateModified" : "2017-08-09 19:35:54 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "53",
+    "keywords" : [ "javascript基础知识复习", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JavaScript基础知识复习（五）函数的四种调用模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-09 itemprop="datePublished">August 9, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><strong>一、函数模式</strong>
+这个我们再熟悉不过了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(){
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+}
+<span style="color:#a6e22e">foo</span>()<span style="color:#960050;background-color:#1e0010">；</span><span style="color:#75715e">//这里函数名调用，就是函数模式
+</span></code></pre></div><p>注意：这里的this指的是window全局对象；
+<strong>二、方法模式</strong>
+函数放在对象内，是对象的一个属性，我们调用函数，这就是方法模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span><span style="color:#f92672">=</span>{
+  <span style="color:#a6e22e">foo</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+  }
+}
+<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">foo</span>();
+</code></pre></div><p>注意：这里的this指的是调用这个方法的对象。
+<strong>三、构造函数模式</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+        }
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>();
+</code></pre></div><p>注意：这里的this指的是new创建出来的对象。
+<strong>四、上下文模式</strong>
+这里我们用apply()和call()来自定义this的指向；
+这两个方法在Function的原型中，所以任何函数都可以使用它们； 这里简单介绍一下这两个方法：
+call和apply的两个参数
+1.第一个参数都是要把this修改成的对象
+2.当函数需要参数的时候，那么apply是用数组进行参数的传递
+3.而call是使用单个的参数进行传递 call和apply使用
+1.call用于确定了函数的形参有多少个的时候使用
+2.apply用于函数的形参个数不确定的情况 比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">person</span>(){
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hi&#39;</span>);
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">student</span>(){
+   <span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>);
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">stu</span><span style="color:#f92672">=</span><span style="color:#a6e22e">student</span>();
+<span style="color:#a6e22e">stu</span>();
+</code></pre></div><p>这里的this指的是student，意思就是student这个对象来执行person里面的内容； 这样函数studengt里没有方法，却打印出了person里的语句，这里用apply或call一样的。</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+                    #javascript基础知识复习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/" class="prev" rel="prev" title="javascript基础知识复习（四）递归与闭包"><i class="iconfont icon-left"></i>&nbsp;javascript基础知识复习（四）递归与闭包</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/" class="next" rel="next" title="关于Git的使用">关于Git的使用&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/js/</link>
+    <description>Recent content in js on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 12 Dec 2017 11:36:40 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数组去重的三种方法</title>
+      <link>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 12 Dec 2017 11:36:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description> 一、利用indexOf方法剔除  var newArr = [] function removeArr (arr) { for (var i = 0;i &amp;lt; arr.length; i++){ // 如果等于-1的话，push进newArr  if(newArr.indexOf(arr[i] === -1)) { newArr.push(arr[i]) } } return newArr } 二、利用sort方法相邻比较 function removeArr(arr) { // 先排序，这样相同的值都是相邻的  arr.sort() // 先把第一个值放进新数组  var newArr = [arr[0]] for(var i = 1;i &amp;lt; arr.length;i++) { // 如果旧数组的值与新数组的值不一样就Push i  f(arr[1] !== newArr[newArr.length - 1]) { newArr.push(arr[i]) } } return newArr } 三、利用对象属性名是否重复 </description>
+    </item>
+    
+    <item>
+      <title>数组内元素随机排序的三种方法</title>
+      <link>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 11 Dec 2017 23:38:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>一、利用数组方法sort  // 数组的sort方法，如果a&amp;gt;b,则正序排，a 二、经典的洗牌算法 // 我们先定义一个随机函数,用于取到x-y区间的随机数 function getRandom(min, max) { // +1是为了取到上限，  return Math.floor(Math.random() * (max - min + 1) + min) } function shuffle(arr) { // for 循环，随机替换掉每一个数组元素  for(var i = 0; i &amp;lt; arr.length; i++) { // 取一个随机数  var j = getRandom(0,arr.length) var x = arr[j] arr[i] = arr[j] arr[j] = x } return arr } 三、push进新数组 // 递归思想，每执行一次，取一个数组索引的随机数，如此反复，直到数组长度为一，结束循环 function randomArr(arr, newArr) { if(arr.</description>
+    </item>
+    
+    <item>
+      <title>js中对数组的一些操作</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 11 Oct 2017 13:28:08 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;p&gt;对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。
+1.插入与删除
+push：末尾插入；
+pop:末尾删除；
+shift:开头删除；
+unshift:开头添加；
+2.map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：
+[code] var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val+3; }); [/code]
+3.reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如： [code] var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre+curr; },0); [/code] 4filter（过滤器） [code] var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val&amp;lt;6; }); [/code]
+5.sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列 [code] var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); [/code]
+6reverse 方法来翻转数组，无参数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>js中的作用域及变量提升</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+      <pubDate>Mon, 07 Aug 2017 21:35:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;一、作用域&lt;/strong&gt; 1.作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。 在 js 中词法作用域规则: （1）函数允许访问函数外的数据. （2）整个代码结构中只有函数可以限定作用域. （3）作用域规则首先使用提升规则分析 （4）如果当前作用规则中有名字了, 就不考虑外面的名字 2.作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用面向对象实现歌曲的增删改查</title>
+      <link>https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</link>
+      <pubDate>Sun, 06 Aug 2017 01:41:37 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;自定义构造函数，在其原型对象上书写增删改查函数，再调用拼接字符串到HTML页面即可； 构造函数如下：&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>js特效之三大家族、event事件</title>
+      <link>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Tue, 01 Aug 2017 20:30:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</guid>
+      <description>&lt;p&gt;老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 1、offset家族( 5个属性) （1）offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width+padding+border; offsetHeight=height+padding+border；
+（2）offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 （3）offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width/height/top/left的比较；
+a).offset家族只可以只读，而style系列可以读写；
+b).offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;
+c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>旋转轮播图</title>
+      <link>https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</link>
+      <pubDate>Mon, 31 Jul 2017 09:29:27 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;与一般轮播图不同，用缓动动画做，我们需要简单封装一个缓动框架&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>选项卡应用</title>
+      <link>https://chenxiaolani.com/2017/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Wed, 19 Jul 2017 15:34:36 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</guid>
+      <description> 很多时候我们需要用到选项卡应用，比如手机京东的商品分类； js代码：
+ window.onload=function(){ var tabLi=document.querySelectorAll(&amp;#39;.tab li&amp;#39;); var tabDiv=document.querySelectorAll(&amp;#39;.content Div&amp;#39;); for (var i = 0; i &amp;lt; tabLi.length; i++) { tbLi[i].index=i; tabLi[i].onclick=function(){ for (var i = 0; i &amp;lt; tabLi.length; i++) { tabLi[i].className=&amp;#39;&amp;#39;; tabDiv[i].style.display=&amp;#39;none&amp;#39;; } this.className=&amp;#39;current&amp;#39;; tabDiv[this.index].style.display=&amp;#39;block&amp;#39;; }; }; } </description>
+    </item>
+    
+    <item>
+      <title>js特效之带有定时器的无缝轮播图（offset家族）</title>
+      <link>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</link>
+      <pubDate>Sun, 21 May 2017 02:42:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</guid>
+      <description>1.了解offset家族，这里用到offsetLeft(盒子距离左侧的距离)，与style.left不同，style.left可被赋值且盒子要定位。动画原理：盒子本身的位置+位长，用offsetLeft来获取值，style.left来赋值。以下是动画的简单封装。
+function animate(ele,target) { //每次调用计时器时都要清除计时器  clearInterval(ele.timer); //调用计时器  //位长让它有正有负  var speed=target&amp;gt;ele.offsetLeft ? 10:-10; ele.timer=setInterval(function () { var val=target-ele.offsetLeft; ele.style.left=ele.offsetLeft+speed+&amp;#34;px&amp;#34;; if(Math.abs(val)&amp;lt;=10){ ele.style.left=target+&amp;#34;px&amp;#34;; clearInterval(ele.timer); } },30); } 2.思路：实现无缝滚动，先复制第一张图片到ul最后，当滚动到第六张时，将ul的offsetLeft值赋值为0（此时转到第一张），并将ul 的索引值赋值为1，切换到第二张，js代码如下： var all = document.getElementById(&amp;#34;all&amp;#34;); var screen = all.firstElementChild || all.firstChild;//all元素的第一个元素的第一个子节点  var imgWidth = screen.offsetWidth; var ul = screen.firstElementChild || screen.firstChild; var div = screen.lastElementChild || screen.lastChild; var spanArr = div.children; var ol = screen.children\[1\]; //2.复制第一张图片所在的li,添加到ul的最后面。  var ulNewLi = ul.children\[0\].cloneNode(true);//复制ul中第一个节点  ul.</description>
+    </item>
+    
+  </channel>
+</rss>

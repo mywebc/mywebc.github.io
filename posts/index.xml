@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/posts/</link>
+    <description>Recent content in Posts on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 09 Jul 2020 20:23:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java之多线程初步总结</title>
+      <link>https://chenxiaolani.com/2020/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 09 Jul 2020 20:23:29 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</guid>
+      <description>在java中，代码是阻塞同步执行的，为了更好的利用CPU资源，多线程的使用是十分有必要的，与之相关的，不得不提的还有一个进程，所谓进程即是代码在数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位。而线程是进程的一个执行路径，一个进程中至少有一个线程，进程中的多个线程共享进程资源；
+ 并发与并行  并行：多个cpu实例或者多台机器同时执行一段处理逻辑，是真正的同时。 并发：通过cpu调度算法，让用户看上去同时执行，实际上从cpu操作层面不是真正的同时。  线程创建  在 Java 中使用 Thread 类代表线程，所有的线程对象都必须是 Thread 类或者其子类的实例，Java 中创建线程主要有以下三种方式：  继承 Thread 类 public class CreateThreadByExtendsThread extends Thread { @Override public void run() { IntStream.rangeClosed(1, 10).forEach(i -&amp;gt; System.out.println(Thread.currentThread().getName() + &amp;#34; &amp;#34; + i)); } public static void main(String[] args) { CreateThreadByExtendsThread threadOne = new CreateThreadByExtendsThread(); threadOne.start(); } } 实现 Runnable 接口 public class RunableTest implements Runnable { @Override public void run() { while (true) { System.</description>
+    </item>
+    
+    <item>
+      <title>Map集合和Collection集合常用类的总结</title>
+      <link>https://chenxiaolani.com/2020/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 26 Jun 2020 18:04:47 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+      <description>Java中的数组有很多弊端，长度固定，不可增加删除操作，只能存储同一种数据类型，而且数组内元素的内存空间是连续分配的，对内存要求高点；而Java中的集合弥补了这一点，在Java中的集合可分为两大类collection和map,对此我们对集合有不同的需求，就产生了不同的实现；
+ Collection（单列集合） List  List接口是一个有序集合，允许有相同的元素。  ArrayList  最常用的实现类，线性结构，本质上就是一个数组，通过动态扩容实现添加元素（创建一个更大的空间。然后把原先的所有元素拷贝过去）；  LinkedList  底层为链表。特点即分配内存空间不是必须是连续的，插入、删除操作很快，只要修改前后指针就OK了，时间复杂度为O(1)；  ArrayList和LinkedList区别
+ ArrayList它支持以角标位置进行索引出对应的元素(随机访问)，而LinkedList则需要遍历整个链表来获取对应的元素。因此一般来说ArrayList的访问速度是要比LinkedList要快的 ArrayList由于是数组，对于删除和修改而言消耗是比较大(复制和移动数组实现)，LinkedList是双向链表删除和修改只需要修改对应的指针即可，消耗是很小的。因此一般来说LinkedList的增删速度是要比ArrayList要快的；  Vector（了解）  底层数据结构是数组。和ArrayList 很相似，但是两者是不同的： Vector 是同步访问的。 Vector 包含了许多传统的方法，这些方法不属于集合框架。  Set  Set没有顺序 Set不能包含重复元素  HashSet  最常用的实现，底层是哈希表(是一个元素为链表的数组)；  List.add(1); List.add(1); List.add(2); Set&amp;lt;Integer&amp;gt; newSet = HashSet&amp;lt;&amp;gt;(List); 注意此实现是无序的。
+LinkedHashSet  底层数据结构由哈希表和链表组成。 保证内部顺序和插入的顺序一样。  TreeSet  底层数据结构是红黑树（可以认为是左小右大的二叉树） 缺省是按照自然顺序进行排序，TreeSet中的元素要实现Comparable接口，或者有一个自定义的比较器Comparator。  Map（key-value集合）  Map即为映射，不能包含重复的键，可以包含重复的值；  HashMap  HashMap 采用一种所谓的“Hash 算法”来决定每个元素的存储位置。  HashMap&amp;lt;String , Integer&amp;gt; map = new HashMap&amp;lt;String , Integer&amp;gt;(); map.</description>
+    </item>
+    
+    <item>
+      <title>Java的包管理</title>
+      <link>https://chenxiaolani.com/2020/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 22 Jun 2020 22:41:12 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+      <description>java中的包就是一些第三方的类库，跟前端的npm包差不多，前端通过npm这个平台管理npm包，在java中通过maven来实现包管理。
+ maven的包管理  传递依赖的包的自动管理 依赖冲突的自动解决 - 就近原则 包的作用域（scope）  关于pom.xml （Project Object Model） pom.xml是maven用来管理包的配置文件，与前端使用npm包生成的package.json文件类似。
+ 一份简单的pom.xml配置  &amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;groupId&amp;gt;groupID&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;artifactId&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;...&amp;lt;/packaging&amp;gt; &amp;lt;name&amp;gt;...&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;...&amp;lt;/url&amp;gt; &amp;lt;properties&amp;gt;...&amp;lt;/properties&amp;gt; &amp;lt;!--依赖关系 --&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.0&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;jar&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;!--构建设置 --&amp;gt; &amp;lt;build&amp;gt;...&amp;lt;/build&amp;gt; &amp;lt;/project&amp;gt;  其中必须的三元素： 项目组( groupId )，项目名称( artifactId )及其版本( version )。 packaging:打包机制，如pom,jar,maven-plugin,ejb,war,ear,rar,par name:自定义名称 可选 url:自定义网站，可选 properties:是为pom定义一些常量。  关于dependencies
+ type：默认为jar类型，常用的类型有：jar,ejb-client,test-jar&amp;hellip;, scope：是用来指定当前包的依赖范围， optional:设置指依赖是否可选，默认为false,  包冲突的解决方案  包冲突的错误一般会报如下错误   AbstractMethodError NoClassDefFoundError ClassNotFoundException LinkageError  maven的自动处理</description>
+    </item>
+    
+    <item>
+      <title>hugo博客搭建</title>
+      <link>https://chenxiaolani.com/2020/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 19 Jun 2020 22:07:53 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description> 最近把博客从hexo搬到了hugo，感觉确实比hexo快了不少，尤其是在部署的时候，直接push就好了，关于hugo的教程网上有很多，本篇文章也是自己(mac)的一份总结。
+ hugo下载  mac系统,下载可能会很慢  brew install hugo 如果下载很慢，可以直接去GitHub下载 https://github.com/gohugoio/hugo/releases
+ 查看版本  hugo version 出现版本信息则安装成功。
+创建site  创建一个site,名称最好使用你的GitHub名称，比如yourGithubName.github.io  hugo new site yourGithubName.github.io  进入这个目录，创建一篇文章  hugo new posts/test.md 此时会在content目录下创建一个目录posts，下面创建一篇文章test.md。
+ test.md内会是这样,draft为true表示草稿状态，要发布时改为false即可  --- title: test.md date: xxxxxxxxx draft: true --- 关于主题  关于主题，我使用的是这个LeaveIt主题，具体使用GitHub上有详细的教程。  本地浏览  使用hugo server本地浏览  hugo server 发布到GitHub  删除原有hexo的仓库，重新创建一个新仓库格式仍然是 你的用户名.github.io。 执行hugo,这时候会在当前目录下生成public文件夹 cd到public文件夹，将此文件夹的所有内容push到刚刚创建的仓库即可。  </description>
+    </item>
+    
+    <item>
+      <title>Deno 初体验</title>
+      <link>https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Sun, 24 May 2020 16:48:25 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <description>最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。
+ 安装  安装  curl -fsSL https://deno.land/x/install/install.sh | sh  编辑bash_profile文件  vi ~/.bash_profile  添加环境变量  export DENO_INSTALL=&amp;quot;/Users/yourName/.deno&amp;quot; export PATH=&amp;quot;$DENO_INSTALL/bin:$PATH&amp;quot;  执行  source ~/.bash_profile 体验  打印 Welcome to Deno 新建deno.ts  console.log(&amp;#34;Welcome to Deno&amp;#34;)  运行deno run deno.ts命令  deno run deno.ts  当然也可以直接运行  deno run https://deno.land/std/examples/welcome.ts 支持typescript const _name: string = &amp;#34;jack&amp;#34;; const _age: number = ((): number =&amp;gt; (Math.floor(Math.random() * 100)))() console.</description>
+    </item>
+    
+    <item>
+      <title>webpack配置app和pc多入口</title>
+      <link>https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</link>
+      <pubDate>Sun, 08 Dec 2019 17:20:24 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</guid>
+      <description>需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。
+  原先页面为index.html,后面增加pcJs.html  更改路径 在paths.js里
+{ // 增加pc的html  pcIndexJs: resolveModule(resolveApp, &amp;#39;src/pc/index&amp;#39;), } 增加entry 在webpack.config.js下
+entry: { index: [ isEnvDevelopment &amp;amp;&amp;amp; require.resolve(&amp;#34;react-dev-utils/webpackHotDevClient&amp;#34;), paths.appIndexJs ].filter(Boolean), pcJs: [ isEnvDevelopment &amp;amp;&amp;amp; require.resolve(&amp;#34;react-dev-utils/webpackHotDevClient&amp;#34;), paths.pcIndexJs ].filter(Boolean) }, 动态生成文件名 在webpack.config.js下
+output: { filename: isEnvProduction ? &amp;#34;static/js/[name].[contenthash:8].js&amp;#34; : isEnvDevelopment &amp;amp;&amp;amp; &amp;#34;static/js/[name].bundle.js&amp;#34;, // TODO: remove this when upgrading to webpack 5  futureEmitAssets: true, // There are also additional JS chunk files if you use code splitting.</description>
+    </item>
+    
+    <item>
+      <title>无意间用了React Portals</title>
+      <link>https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/</link>
+      <pubDate>Sat, 28 Sep 2019 21:32:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/</guid>
+      <description> 不知哪天随手点开了一篇react portals的文章,眼前一亮,竟然还没有我听说过的react的特性,在看了大概之后,并没有觉得有什么用,不过最近在做开发时,还正好和需求对上了.
+ 什么是react portal  portal(入口)能够允许我们将自己的组件挂到一个另一个时空的指定节点去,这个节点跟我们当前的DOM树没有半毛钱关系;  ReactDOM.createPortal(child, container)  第一个参数即为自定义组件,第二个参数即为指定节点  portal出现的意义  如果在原有DOM树插入组件,影响DOM结构; 样式污染,组件所需数据流向混乱;  示例 export default class YourComponent extends Component&amp;lt;YourComponentProps,YourComponentState&amp;gt; { private portalNode: HTMLDivElement; constructor(props: YourComponentProps) { super(props); const doc = window.document; this.portalNode = doc.createElement(&amp;#39;div&amp;#39;); doc.body.appendChild(this.portalNode); } componentWillUnmount() { window.document.body.removeChild(this.portalNode); } render() { return createPortal( &amp;lt;div&amp;gt; // your code...  &amp;lt;/div&amp;gt;, this.portalNode ) } } 支持事件冒泡  虽然说portal传送的节点与原本的DOM树没关系,但是这个组件还是支持事件冒泡的,在原本的父节点上同样能够监听到组件的事件;具体示例可以直接看官网; react portals  总结  portal因为能跳出原来DOM节点,一般为用在弹框和提示框这种独立性强的组件上;  </description>
+    </item>
+    
+    <item>
+      <title>使用OAuth授权第三方网站</title>
+      <link>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Thu, 08 Aug 2019 19:23:23 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</guid>
+      <description>OAuth是一种行业标准的授权方式，我们在登录一些网站时，其也可以使用第三方账号比如QQ或者微信登录， 都是使用OAuth授权的， 版本有1.x和2.x两个，目前主要使用2.x版本，2.X版本大概有六种模式，本文介绍最常用的也是最安全的一种模式Authorization Code；
+ OAuth2支持授权的几种方式（官网）
+六种模式  Authorization Code (先申请Code,再申请Token，较安全) Refresh Token （token过期后，避免重复登录，可以刷新Token） Device Code (一般用于TV等设备端，不常用) Password (需要再第三方网站暴露授权网站的密码，不安全) Implicit (不需要获取code,直接获取token,不推荐) Client （可以使用Client id和Client sercert 去授权网站获取客户端相关的信息，与第三方用户无关，不常用）  获取Client Id和Client Secret 我们以Github为例，我们首先需要获取Client Id和Client Secret这两样东西，直接在Github个人设置里面develop settings选项，创建一个应用； 如何请求Code OAuth请求官网示例
+ 请求链接  GET https://github.com/login/oauth/authorize  请求参数 client_id（必填）：注册Github App时的client id； redirect_uri：请求成功后重定向的网址带有code； login: 登录特定账户； scope： 授权范围，比如scope=user; state: 随机字符串,防止跨站点请求伪造攻击; allow_signup: 默认为true,是否提供注册github选项；  请求access_token  请求链接  POST https://github.com/login/oauth/access_token  请求参数 client_id（必填）：注册Github App时的client_id； client_secret（必填）：注册Github App时的client_secret； code（必填）：上一个请求返回的code; redirect_uri：同上； state：同上； code只能使用一次  访问用户信息  我们拿到了token就可以访问我们github上的信息了； 请求链接；  GET https://api.</description>
+    </item>
+    
+    <item>
+      <title>React Hooks实践</title>
+      <link>https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Fri, 02 Aug 2019 21:51:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/</guid>
+      <description>React Hook 是React16.8提出来的一个新特性，其意义就在于我们可以让函数组件变得跟类组件一样有能力管理自己的状态，这意味着我们以后写的所有组件都可以是Function，对于初学者来说降低了学习成本（压根不用管this是个啥），而且我们可以自定义hook，能够提高状态逻辑的复用，从而也便于维护。
+ State Hooks useState  react为我们提供了useState这个函数，使用此函数就可以取代我们之前的每个组件的状态管理了；  import { useState } from &amp;#39;react&amp;#39; function count() { // useState函数为我们解构了一个变量num和一个setNum函数，并且将变量初始值赋值为“0”  const [num, setNum] = useState(&amp;#34;0&amp;#34;); // 我们在这里读取num的值， 并且每点击一次按钮都会使num+1  return &amp;lt;button onClick={() =&amp;gt; {setNum(num + 1)}}&amp;gt;{num}&amp;lt;/button&amp;gt; }  当我们每次改变num的值时，就会重新执行count函数，不过不用担心，num的初始化只会执行一次;  useReducer  其实useState也是基于useReducer的，用过redux的人对reducer不陌生，reducer是一个纯函数，会根据action中type的不同返回改变后新的状态;  import { useReducer } from &amp;#39;react&amp;#39; // 创建一个reducer function myReducer(state, action){ switch(action.type) { case &amp;#34;add&amp;#34;: return state + 1 case &amp;#34;minus&amp;#34;: return state -1 default: return state } } // 函数组件 function count() { // 传入reducer和初始值  const [num, dispatchNum] = useReducer(myReducer, &amp;#34;0&amp;#34;); return &amp;lt;button onClick={() =&amp;gt; {dispatchNum({type: &amp;#34;add&amp;#34;})}}&amp;gt;{num}&amp;lt;/button&amp;gt; } Effect Hook  Effect Hook可以看作是代替了一些生命周期函数  import { useState, useEffect } from &amp;#39;react&amp;#39; function count() { const [num, setNum] = useState(&amp;#34;0&amp;#34;); useEffect(() =&amp;gt; { const interval = setInterval(() =&amp;gt; { setNum(num + 1) }, 1000) // 最后要return一下，记得清除定时器  return () =&amp;gt; clearInterval(interval) }, [num]) return &amp;lt;button onClick={() =&amp;gt; {setNum(num + 1)}}&amp;gt;{num}&amp;lt;/button&amp;gt; }  useEffect函数中第一个参数为组件第一次渲染时执行的函数（最后return的是定时器卸载的函数，可以看作是componentWillUnMount生命周期内做的事），第二参数表示依赖的值，只有依赖的值变化时，useEffect才会重新执行；  Context Hook  顾名思义这是一个上下文hook  // 新建一个context文件myContext.</description>
+    </item>
+    
+    <item>
+      <title>java中解析XML</title>
+      <link>https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/</link>
+      <pubDate>Wed, 24 Jul 2019 13:57:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/</guid>
+      <description>xml文件一般有三种用途，1. 可以用来保存数据，2. 可以用来做配置文件，3. 数据传输载体，本篇文章主要记载java中如何解析XML文件。
+ XML解析方式 XML文件的定义以及标签的用法就不多说了，XML文件的约束主要有两种（DTD和Schema），现在最常见的XML的解析方式主要有两种，一个是DOM， 一个是SAX;两者区别如下
+ DOM方法是将XML文件读取到内存中去生成树状结构（对象），这样的话如果文件过大就可能会出现内存溢出； SAX（simple api for xml）方法则是事件驱动模式，读取一行解析一行；   针对这两种解析方式，市场上出现了很多的解决方案比如dom4j,jaxp,jdom等
+ Dom4j使用  首先需要用到Dom4j的jar包；  try { //1. 创建sax读取对象  SAXReader reader = new SAXReader(); //jdbc -- classloader  //2. 指定解析的xml源  Document document = reader.read(new File(&amp;#34;src/xml/stus.xml&amp;#34;)); //3. 得到元素、  //得到根元素  Element rootElement= document.getRootElement(); //获取根元素下面的子元素 age  //rootElement.element(&amp;#34;age&amp;#34;)  //System.out.println(rootElement.element(&amp;#34;stu&amp;#34;).element(&amp;#34;age&amp;#34;).getText());  //获取根元素下面的所有子元素 。 stu元素  List&amp;lt;Element&amp;gt; elements = rootElement.elements(); //遍历所有的stu元素  for (Element element : elements) { //获取stu元素下面的name元素  String name = element.</description>
+    </item>
+    
+    <item>
+      <title>使用JDBC对Mysql数据库的CRUD操作</title>
+      <link>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 22 Jul 2019 00:30:19 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/</guid>
+      <description>JDBC全称为JAVA Database Connectivity (java数据库连接),是SUN公司提供的一种数据库访问规则、规范, 由于数据库种类较多，并且java语言使用比较广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问规则。 我们的java程序只要使用sun公司提供的jdbc驱动即可。
+ JDBC驱动  首先我们需要去下载对应数据库的JDBC驱动，MySQL就是下载MySQL的JDBC驱动，Oracle就下载Oracle的JDBC驱动  新建数据库配置文件xxx.properties  在项目根目录下新建xxx.properties文件，这里的信息以key=value的形式书写，我们在连接数据库时就会从这里面读取配置信息；  driverClass=com.mysql.jdbc.Driver url=jdbc:mysql://localhost/student  name=root password=root 新建工具包，抽离出数据库连接语句  我们新建一个工具包比如com.chenxiaolani.util,在这下面我们新建一个JDBCUtil.java的文件，内容主要是使用JDBC抽离出数据库连接语句，还有一些释放资源的语句，以便复用；  package com.chenxiaolani.uitl; import java.io.FileInputStream; import java.io.InputStream; import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; import java.util.Properties; public class JDBCUtil { static String driverClass = null; static String url = null; static String name = null; static String password= null; static{ try { //1. 创建一个属性配置对象 	Properties properties = new Properties(); //2.</description>
+    </item>
+    
+    <item>
+      <title>MYSQL的CRUD操作之命令行</title>
+      <link>https://chenxiaolani.com/2019/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 13 Jul 2019 22:04:38 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</guid>
+      <description>数据库分为关系型数据库和非关系型数据库，作为前端，对于mongodb再熟悉不过了，mongodb就是非关系型数据库，除此之外还有常见的还有redis，这种数据库的特点就是以Key,value的形式存储的，关系型数据库就很多了，mysql,oracle,db2等，本片文章主要记录我在学习MySQL关于CRUD的命令行操作。
+ 登录数据库  -u为用户名， -p为密码，我都设为root；  // 注意-p后面不要有空格 mysql -uroot -proot 创建数据库  create database 数据库的名字; create database 数据库的名字 character set 字符集编码; create database 数据库的名字 character set 字符集编码 collate 比较规则; 注意要加分号  create database student; create database student character set utf8; create database student character set utf8 collate utf8_general_ci; 查看数据库  默认的数据库不要动它  show databases; show create database student; // 查看student数据库的定义语句 修改数据库  使用alter  alter database student character set gbk; 删除数据库  使用drop  drop database student; 其他数据库操作 use student; // 切换到student数据库 select database(); // 查看当前数据库 表的创建  create table 表名( 列名 列的类型 约束, );   create table employee (id int primary key auto_increment, name varchar(20) not null, birthday date, job varchar(30), salary double, ); 查看表 show tables; // 查看数据库内的所有表 show create table employee; // 查看employee的建表语句 desc employee; // 查看employee的表结构 修改表  添加列（add），修改列（modify）,修改列名(cahnge)，删除列(drop), 修改表明（rename）,修改表的字符集（character set）  // 添加 alter table student add address int not null; // 修改 alter table student modify address varchar(2); // 修改列名 alter table student change address gender varchar(2); // 删除 alter table student drop address; // 改表名 rename table student to student2; // 修改表的字符集 alter table student character set gbk; 删除表 drop table student; 表数据插入  insert into 表名(列名1,列名2)values(值1,值2); insert into 表名 values(值1,值2); // 上面的简单写法 insert into 表名values(值1,值2),(值1,值2),(值1,值2);// 批量插入  表数据删除  delete from 表名 [where 条件] truncate table 表名: 先删除表,再重建表 delete与truncate的区别   delete是将数据一条一条的删除，在数据量比较少的情况下效率高； truncate是先删除表,再重建表，由于更改了表结构，数据量大的情况下推荐；  表数据更新  update 表名 set 列名=值, 列名=值 [where 条件]  表数据查询 通用格式:</description>
+    </item>
+    
+    <item>
+      <title>antd design 中表格数据导出为excel(支持多表头)</title>
+      <link>https://chenxiaolani.com/2019/antd-design-%E4%B8%AD%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E4%B8%BAexcel-%E6%94%AF%E6%8C%81%E5%A4%9A%E8%A1%A8%E5%A4%B4/</link>
+      <pubDate>Tue, 02 Jul 2019 15:52:10 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/antd-design-%E4%B8%AD%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E4%B8%BAexcel-%E6%94%AF%E6%8C%81%E5%A4%9A%E8%A1%A8%E5%A4%B4/</guid>
+      <description>在之前的项目中遇到一个需求，需要支持将antd design 中表格数据（多表头）导出到excel,看了网上的例子很少，这里就记录一下。
+  主要用到了better-xlsx和file-saver两个库  import { File } from &amp;#39;better-xlsx&amp;#39;; import { saveAs } from &amp;#39;file-saver&amp;#39;; function ExportExcel(column, dataSource, fileName = &amp;#39;example&amp;#39;) { // 新建工作谱  const file = new File(); // 新建表  let sheet = file.addSheet(&amp;#39;sheet-test&amp;#39;); // 获取表头行数  let depth = getDepth(column); // 获取表头的列数  let columnNum = getColumns(column); // 新建表头行数  let rowArr = []; for (let k = 0; k &amp;lt; depth; k++) { rowArr.</description>
+    </item>
+    
+    <item>
+      <title>手动实现一个简单的promise</title>
+      <link>https://chenxiaolani.com/2019/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</link>
+      <pubDate>Sun, 06 Jan 2019 17:56:20 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</guid>
+      <description>一直在用promise，也想过自己能不能也实现一个简单的promise，但是一直没有时间；这不最近辞职了，时间就多起来了。当然也参考了网上很多人的实现方法。
+  本篇文章主要参考自https://github.com/ElemeFE/node-practice/blob/master/control/promise/README.md
+  promise的意义就是能够很好的控制异步流程，避免回调地狱；首先来看一下promise的基本用法
+ 基本实现效果 let p = new Promisee((resolve, reject) =&amp;gt; { setTimeout(() =&amp;gt; { resolve(&amp;#39;hello&amp;#39;) }, 0) }) p.then((val) =&amp;gt; { console.log(val) return &amp;#39;world&amp;#39; }) .then((val) =&amp;gt; { console.log(val) }) 基本书写 当我们想封装一个函数时，我们只关心两个东西，它需要输入什么以及它要输出什么。
+ 输入一个函数接受两个回调参数 输出一个对象，里面为then函数，函数参数为成功回调和失败回调  function Promisee(fn) { function resolve() { } function reject() { } fn(resolve, reject) // 返回一个对象  return { then: function(onResolve, onReject) { } } } 加入状态模式 promise内部使用了状态模式，根据不同的状态执行不同的逻辑</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之迭代器模式</title>
+      <link>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 06 Jan 2019 14:20:23 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。总结两点，第一顺序访问一个集合，第二使用者无需知道集合的内部（封装）。
+ 迭代器演示 class Iterator { constructor(container) { this.list = container.list this.index = 0 } next() { if(this.hasNext()) { return this.list[this.index++] } return null } hasNext() { if(this.index &amp;gt;= this.list.length) { return false } return true } } class Container { constructor(list) { this.list = list } // 生成遍历器  getIterator() { return new Iterator(this) } } // 测试 let arr = [1,2,3,4,5] let container = new Container(arr) // 生成遍历器 let iterator = container.</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之状态模式</title>
+      <link>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 02 Jan 2019 01:09:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
+      <description>状态模式往往会带来代码量的增加，但是它也许是解决某些需求场景的最好方法，状态模式的关键是区分事物内部的状态，事物内部的状态往往会带来事物行为的改变。
+ if/else/switch的情况 实际开发中，我们可能会遇到使用大量if/else/switch的情况，根据不同的状态，通过判断执行不同状态对应的逻辑操作，比如如下
+//执行动作 function doAction(state){ //state0 	if(state === &amp;#39;0&amp;#39;){ console.log(&amp;#39;执行0&amp;#39;); } //state1 	if(state === &amp;#39;1&amp;#39;){ console.log(&amp;#39;执行1&amp;#39;); } //state2 	if(state === &amp;#39;2&amp;#39;){ console.log(&amp;#39;执行2&amp;#39;); } } 状态变多即使用switch也会越来越繁琐，这时候就可以使用状态模式了。
+状态模式改善 状态模式，就是将每一种条件作为对象内部的一种状态，面对不同的判断结果，我们只需选择不同的状态便可.
+var ResultState = function(){ //各种情况的业务逻辑保存在内部状态中 	var states = { state1:function(){ console.log(&amp;#39;情况一的业务逻辑&amp;#39;); }, state2:function(){ console.log(&amp;#39;情况二的业务逻辑&amp;#39;); }, state3:function(){ console.log(&amp;#39;情况三的业务逻辑&amp;#39;); } } //获取某一状态的对应逻辑并执行 	function show(state){ states[state] &amp;amp;&amp;amp; states[state](); } return { doActionByState: show } }(); // 传入状态，即会执行状态所对应的业务逻辑。 ResultState.doActionByState(&amp;#39;state1&amp;#39;); promise es6中的promise内部就是一个状态机。</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之装饰者模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 24 Dec 2018 23:48:13 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <description>装饰者模式能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加指责，总结来说就是两点，第一为对象添加新功能，第二不改变原有的结构和功能。
+ 装饰函数 在javascript中，万物皆对象，函数则是一等对象，当我们想要为函数添加一些功能时，如果直接改写函数，就违背了开放-封闭原则，我们可以保留原有函数的引用，然后直接放到新函数内执行，比如
+let frank = function() { console.log(&amp;#34;i am frank&amp;#34;) } // 我们想为frank添加一个技能时，先用临时变量把原有函数存起来 let oldFrank = frank // 放到新的frank函数执行 frank = function() { oldFrank() console.log(&amp;#34;i am best&amp;#34;) } 此做法符合开放-封闭原则，在不改变原函数源代码的情况下为其添加新功能，但是每次添加一个新功能都必须维护一个中间变量（比如oldFrank）,长此以往，要维护的中间变量就会越来越多。
+用AOP装饰函数  AOP就是面向切面编程,把一些与核心业务逻辑无关的功能抽离出来 再通过“动态织入”方式掺入业务逻辑模块
+ 在这里我们需要两个方法，一个是前置装饰，一个是后置装饰
+Function.prototype.before = function(beforeFunc){ var that = this; return function(){ beforeFunc.apply(this, arguments); return that.apply(this, arguments); } } Function.prototype.after = function(afterFunc){ var that = this; return function(){ var ret = that.apply(this, arguments); afterFunc.apply(this, arguments); return ret; } } 为了避免污染原型，我们可以改写before和after方法如下</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之适配器模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 17 Dec 2018 00:12:11 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>适配器模式是一种简单设计模式，主要是用来解决老接口不兼容的问题，对于不兼容的老接口，我们没必要重写，只需创建一个适配器即可。
+ 获取城市接口例子 现在我们有一个接口用来获取广东省所有的城市，如下
+// 模拟接口，返回广东城市数据  let getGuanDongCity = function() { let guanDongCity = [ { name: &amp;#39;shenzhen&amp;#39;, id: 11 }, { name: &amp;#39;guangzhou&amp;#39;, id: 12 } ] return guanDongCity } // 定义渲染函数  let render = function(fn) { document.write(JSON.stringify(fn())) } // 渲染  render(getGuanDongCity) 然后我们发现这个接口显示的城市并不齐全，我们又找到了另外一个齐全的接口作为补充，这个接口返回的数据格式和原来返回的数据格式不一样，这时候我们要改写原来的接口吗，nono,我们只要为原来的接口包装一个适配函数即可。
+// 新的补充接口的数据格式  let guanDongCity = { shenzhen: 11, guangzhou: 12, zhuhai: 13 } 为原来接口编写适配函数
+let addressAdapter = function( oldAddressfn ) { let address = {} let oldAddress = oldAddressfn() oldAddress.</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之代理模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 05 Dec 2018 22:03:04 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
+      <description>代理模式的定义：为一个对象提供代用品或占位符，以便控制对它的访问；注意使用者无权访问目标对象的。
+  最常见的就是科学上网了  代理模式根据其目的，也有好多种代理
+ 保护代理（代理掉不必要的请求） 虚拟代理 （创建开销很大的对象时，可以先用一个小对象代替，等到真正使用时再创建） 缓存代理 （为一些开销大的运算提供暂时的存储，如果下次传的参数一致时，可以返回这个结果） 其他代理（在js中适用性不高）  保护代理 // 这个类外面是无权访问的 class ReadImg { constructor(fileName) { this.fileName = fileName this.loadFormDIsk() // 加载，模拟  } loadFormDIsk() { console.log(&amp;#39;loading...&amp;#39; + this.fileName) } display() { console.log(&amp;#39;display...&amp;#39; + this.fileName) } } // 定义代理函数 class ProxyImg { constructor(fileName) { this.realImg = new ReadImg(fileName) } display() { this.realImg.display() } } let proxyImg = new ProxyImg(&amp;#39;1.png&amp;#39;) e6中的proxy 明星经纪人案例
+let start = { name: &amp;#39;steven&amp;#39;, age: 24, phone: &amp;#39;12334445&amp;#39; } // 经纪人来代理 let agent = new Proxy(start, { get: function(target, key) { if(key === &amp;#39;phone&amp;#39;) { // 给经纪人自己的号码  return &amp;#39;111121111&amp;#39; } if(key === &amp;#39;price&amp;#39;) { // 经纪人来报价  return 1232333 } return target[key] }, set: function(target, key, val) { if(key === &amp;#39;customPrice&amp;#39;) { if(val &amp;lt; 10000) { throw new Error(&amp;#34;太低&amp;#34;) }else { target[key] = val return true } } } }) 虚拟代理 图片预加载</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之单例模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 04 Dec 2018 23:44:21 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>单例模式的定义: 保证一个类仅有一个实例，并且提供一个访问它的全局访问点。意义为减少内存开支，减少变量冲突。
+ 常见的应用场景  全局的window对象，Jquery中的$对象 vuex和redux中的state 系统间各种模式的通信协调上  模式实现 最简单的实现，对象字面量的方法
+let singleton = { age: 11, name: &amp;#34;frank&amp;#34; } 对象复杂的时候，就需要构造函数，简单的来说当new的时候先判断实例是否存在，如果存在直接返回，不存在就创建一个再返回，这样保证了返回的实例就是同一个。
+class Singleton { constructor() { this.instance = null; } // 定义一个静态方法，实例化只能通过静态方法。  static getInstance(name) { if(!this.instance) { this.instance = new Singleton(); } return this.instance; } } let a = Singleton.getInstance() let b = Singleton.getInstance() console.log(a === b) 模拟登陆框 class LoginForm { constructor { this.state = &amp;#39;hide&amp;#39; } show() { // 如果当前已经显示  if(this.</description>
+    </item>
+    
+    <item>
+      <title>总结一下JavaScript中的this</title>
+      <link>https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</link>
+      <pubDate>Tue, 16 Oct 2018 22:09:25 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</guid>
+      <description>有的时候我们总是被JavaScript中的this搞得晕头转向，因为它的不确定性，也被经常拿来当作考题，我们也经常听到网上最认同的说法：“谁调用this,this就指向谁”，那么this到底是什么呢，最近就this总结了一下。
+  本篇文章主要参考《你不知道的JavaScript》（上）
+  话说草稿老早就写了，好像忘发了。
+ 为什么要使用this？ 我们先要知道一个前提，在JavaScript中 万物皆对象，而函数在对象中又是 一等公民，对象与对象之间通过 原型联系，那对象和函数之间如何联系呢，答案就是 this
+首先如果没有this会是什么情况？ // 只要切换上下文对象，就可以复用此函数，不用针对每个对象写一遍函数 function sayName(context){ console.log(context.name) } var me = { name: &amp;#39;kyle&amp;#39; } var you = { name: &amp;#39;frank&amp;#39; } // 如果没有this，我们只能显示的传入对象 sayName(me) // 函数的上下文为对象的情况 var obj = { name: &amp;#39;frank&amp;#39; sayName: function(context) { console.log(context.name) } } // 如果没有this，我们只能显示的传入对象 obj.sayName(obj) 我们看到如果没有this，要想函数与对象产生关联，只能手动传入这个对象，那JavaScript的创始者想Java有个this，不如JavaScript也搞个this吧，干脆我就默认帮忙隐式传递这个对象得了！于是就发明了this这个关键字！ 所以结论是this关键字能够隐式的传递对象，当然了也提供了call,apply函数允许我们手动显式传递，上面的情况就可以这样写了。
+var obj = { name: &amp;#39;frank&amp;#39; sayName: function() { console.log(this.name) } } // 隐式传递了obj,等同于obj.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript入门</title>
+      <link>https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 17 Sep 2018 23:25:48 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/</guid>
+      <description>TypeScript主要提供了类型系统和对ES6的支持,对于一个需要长期维护的项目，使用TypeScript可以减少维护成本。使用VSCode编辑器，默认支持TypeScript，其次需要下载npm install -g typescript，因为我们需要tsc命令来将ts文件编译为js。
+  参考教程https://github.com/xcatliu/typescript-tutorial/blob/master/README.md
+ 基本数据类型 布尔值、数值、字符串、null、undefined Symbol Symbol是ES6中的基本数据类型，返回的值为唯一
+类型标注 我们声明变量可以如下声明
+let a: boolean = false let b: string = &amp;#39;11&amp;#39; let c: number = 11 let d: null = null let e: undefined = undefined 当然还有 void ,如果一个变量声明为void，那么你只能将它赋值给null和undefined
+let a: void = null let a: void = undefined 另外undefined 和 null 是所有类型的 子类型 ，所以你可以将它们赋值给所有类型,下面都不会报错的。
+let a: number = null let a: string = undefined let a: boolean = null 使用 any 指定任意类型</description>
+    </item>
+    
+    <item>
+      <title>从头开始配置webpack4</title>
+      <link>https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</link>
+      <pubDate>Sun, 09 Sep 2018 23:25:12 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</guid>
+      <description>最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在 webapck4中也开始朝着这个方向发展，比如默认的入口为src,默认的打包输出为dist,新增了mode属性，有利于拆分生产环境和开发环境，默认为production，并且默认压缩js，还有一些其他的插件也不再适用，在此也没必要了解，最近就从头梳理了一下webpack4.
+  本片文章主要参考自董沅鑫的个人博客https://godbmw.com
+ 环境 首先我们要全局安装webpack-cli和webpack,然后也要在项目中安装webpack和webpack-cli,这样我们才能使用。
+编译ES6 编译es6,我们需要以下loaders
+ babel-loader babel转换器 babel-core babel转换时所调用的api(听名字就知道它是babel的核心) babel-preset-env 语法转换规则 babel-plugin-transform-runtime和Babel-runtime polyfill按需引入 babel-polyfill polyfill全局引入 注意：在babel7中所有前缀都变为@babel/,注意版本的统一  新建webpack.config.js:
+const path = require(&amp;#34;path&amp;#34;) // 使用babel编译ES6 module.exports = { entry: { app: &amp;#34;./index.js&amp;#34; // 以对象形式写推荐  }, output: { filename: &amp;#34;bundle.js&amp;#34;, // resolve解析为一个绝对路径  path: path.resolve(__dirname, &amp;#34;dist&amp;#34;) }, module: { rules: [ { test: /\.js$/, // 正则匹配以js结尾的文件  use: { loader: &amp;#34;babel-loader&amp;#34; // option: { // babel-loader的具体配置信息写在根目录下的.</description>
+    </item>
+    
+    <item>
+      <title>redux快速入门</title>
+      <link>https://chenxiaolani.com/2018/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Wed, 29 Aug 2018 23:34:46 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到所有组件最顶层，此篇文章是在看《深入浅出react与redux》以及实战React16.4开发简书项目后的总结。
+ Redux的前身flux 在flux中，首先要引入Dispatcher（redux没有这个）， 用以派发action，action改变view层，view层同步model数据层；flux会为每一个组件单独建立一个store，在每一个组件中初始化store,如下：
+const CounterStore = object.assign({}, EventEmitter.prototype, { getCounterValues: function() { return counterValues; }, emitChange: function(){ this.emit(CHANGE_EVENT); }, addChangeListener: function(){ this.on(CHANGE_EVENT, callback); }, removeChangeListener: fucntion(){ this.removeListener(CHANGE_EVENT, callback); } }) EventEmitter是node.js中event模块的一个对象，是监听事件的一个封装，不用太追究；上面扩展了EventEmitter.prototype，给当前组件的store绑定了几个事件；初始化store之后，还要与dispatcher做联系，这时候会用到dispatcher的一个register函数，接受参数为action；
+Dispatcher是唯一的，如果有很多个组件，Dispatcher与他们每一个组件都要做联系，通过waitFor函数来决定各个store之间的执行顺序，但这就是flux最大的缺点，因为如果store很多的话，依赖关系会越来越复杂，逻辑关系会难以维护。
+Redux 在Redux中没有了Dispatcher的概念，store倒是有一个dispatch方法，用以来传递action给store 如图,解释一下流程
+ 在组件内部会调用actionCreators，用于创建action对象，并且通过dispatch传送给store； store接受到后，会交给reducer（纯函数） 处理； reducer函数处理后会返回新的store状态； store里的数据发生变化会自动触发视图层变化，结束；  下面会一一解释store，reducer，action如何创建，并且如何走通。 首先创建一个store文件夹，下面会有四个js，分别是
+ index.js // 作为入口，统一引入到这里 actionCreators.js // 用来统一创建对象 constants.js // 统一定义action的type,方便后期维护log reducer.js // 用来处理action的纯函数  关于action  分割action为actionCreators和contants,方便管理维护
+ actionCreators.js
+import * as constants from &amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>vue中使用elementUI，表格的单选全选</title>
+      <link>https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/</link>
+      <pubDate>Thu, 28 Jun 2018 23:41:46 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/</guid>
+      <description>&lt;p&gt;在vue中使用elementUI中时表格，如何拿到单选或者多选（全选）的值？先记下一笔。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（四）扩展对象的功能性</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</link>
+      <pubDate>Tue, 03 Apr 2018 16:17:56 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;对象的语法的扩展&lt;/h3&gt;
+&lt;h4 id=&#34;1&#34;&gt;(1)对象的属性或属性值可以直接传入变量&lt;/h4&gt;
+&lt;p&gt;[crayon] let id = 12; let value = 22; let obj = {id:value} [/crayon]&lt;/p&gt;
+&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
+&lt;p&gt;[crayon] //es5 let obj = { handle:function(){ //dosomething } } //es6 let obj = { handle(){ //dosomething } } [/crayon]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（三）函数</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 02 Apr 2018 11:31:08 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;函数参数的默认值&lt;/h3&gt;
+&lt;p&gt;以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。&lt;/p&gt;
+&lt;h3 id=&#34;reset&#34;&gt;reset参数&lt;/h3&gt;
+&lt;p&gt;[crayon] function say(a,b,&amp;hellip;items){ // dosomething&amp;hellip; } [/crayon] 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（二）字符串和正则表达式</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Fri, 30 Mar 2018 14:46:41 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>&lt;p&gt;字符串&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;字符串模板&lt;/h3&gt;
+&lt;p&gt;字符串模板用``来表示，示例如下: [crayon] let template = `&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;${变量1}&lt;/li&gt;
+&lt;li&gt;$(变量2)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};&lt;/p&gt;
+&lt;h3 id=&#34;heading1&#34;&gt;标签模板&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（一）块级作用域的绑定</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</link>
+      <pubDate>Fri, 30 Mar 2018 10:28:22 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;前言&lt;/h3&gt;
+&lt;p&gt;在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。&lt;/p&gt;
+&lt;p&gt;新的声明方式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue/node搭建简易博客</title>
+      <link>https://chenxiaolani.com/2018/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Thu, 22 Feb 2018 20:04:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;服务器&lt;/h2&gt;
+&lt;p&gt;阿里云学生豪华套餐（centos系统）&lt;/p&gt;
+&lt;h2 id=&#34;heading1&#34;&gt;前端&lt;/h2&gt;
+&lt;p&gt;vue-cli vue脚手架 vue-router 路由控制 vue-axios 发送请求 element-ui 饿了么图库 marked和highlight.js markdown语法 stylus css预处理 moment.js 一个时间格式库 lodash JavaScript工具库&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue/node聊天室</title>
+      <link>https://chenxiaolani.com/2018/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</link>
+      <pubDate>Tue, 20 Feb 2018 17:28:48 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</guid>
+      <description>介绍
+主要用到socket.io,前端用vue，后端用express转接消息
+GitHub
+https://github.com/mywebc/VUE-Chat</description>
+    </item>
+    
+    <item>
+      <title>iview-cli搭建，一个简单的todoList</title>
+      <link>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</link>
+      <pubDate>Sat, 10 Feb 2018 15:12:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</guid>
+      <description>打包注意点
+（1）在man.js中注释掉mode:history,这个只有在开启服务器下才有效； （2）在webpack.prod.config.js中把输出改为output:&#39;./dist&amp;rsquo;
+运行截图
+Github:https://github.com/mywebc/todoLIst</description>
+    </item>
+    
+    <item>
+      <title>nginx常用命令总结</title>
+      <link>https://chenxiaolani.com/2018/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 24 Jan 2018 23:34:12 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</guid>
+      <description>查看nginx是否启动  ps -ef | grep nginx //用ps -ef列出进程列表，然后通过grep过滤。 ps -C nginx -o pid //直接查看进程id  nginx的启动，停止，与重载  nginx -s reload //修改配置文件后，可以重新热加载 nginx -s stop //快速停止，可能会丢失有关信息 nginx -s quit //有序停止 start nginx 或者 nginx开启nginx  </description>
+    </item>
+    
+    <item>
+      <title>前后端分离小demo</title>
+      <link>https://chenxiaolani.com/2017/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%B0%8Fdemo/</link>
+      <pubDate>Mon, 18 Dec 2017 10:29:21 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%B0%8Fdemo/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;目的：前端请求后端，插入数据到数据库。 新建两个文件夹，vueServer和vueClient&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;vueServer&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>前后端为什么要分离？</title>
+      <link>https://chenxiaolani.com/2017/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%A6%BB/</link>
+      <pubDate>Thu, 14 Dec 2017 20:48:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%A6%BB/</guid>
+      <description>分享一下
+ http://2014.jsconf.cn/slides/herman-taobaoweb/#/</description>
+    </item>
+    
+    <item>
+      <title>原生js封装ajax</title>
+      <link>https://chenxiaolani.com/2017/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</link>
+      <pubDate>Tue, 12 Dec 2017 14:20:24 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;面试大概率会考到&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>数组去重的三种方法</title>
+      <link>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 12 Dec 2017 11:36:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description> 一、利用indexOf方法剔除  var newArr = [] function removeArr (arr) { for (var i = 0;i &amp;lt; arr.length; i++){ // 如果等于-1的话，push进newArr  if(newArr.indexOf(arr[i] === -1)) { newArr.push(arr[i]) } } return newArr } 二、利用sort方法相邻比较 function removeArr(arr) { // 先排序，这样相同的值都是相邻的  arr.sort() // 先把第一个值放进新数组  var newArr = [arr[0]] for(var i = 1;i &amp;lt; arr.length;i++) { // 如果旧数组的值与新数组的值不一样就Push i  f(arr[1] !== newArr[newArr.length - 1]) { newArr.push(arr[i]) } } return newArr } 三、利用对象属性名是否重复 </description>
+    </item>
+    
+    <item>
+      <title>数组内元素随机排序的三种方法</title>
+      <link>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 11 Dec 2017 23:38:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>一、利用数组方法sort  // 数组的sort方法，如果a&amp;gt;b,则正序排，a 二、经典的洗牌算法 // 我们先定义一个随机函数,用于取到x-y区间的随机数 function getRandom(min, max) { // +1是为了取到上限，  return Math.floor(Math.random() * (max - min + 1) + min) } function shuffle(arr) { // for 循环，随机替换掉每一个数组元素  for(var i = 0; i &amp;lt; arr.length; i++) { // 取一个随机数  var j = getRandom(0,arr.length) var x = arr[j] arr[i] = arr[j] arr[j] = x } return arr } 三、push进新数组 // 递归思想，每执行一次，取一个数组索引的随机数，如此反复，直到数组长度为一，结束循环 function randomArr(arr, newArr) { if(arr.</description>
+    </item>
+    
+    <item>
+      <title>慕课网项目：炸鸡音乐播放器</title>
+      <link>https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</link>
+      <pubDate>Mon, 11 Dec 2017 21:19:23 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
+      <description> 慕课网上的vue项目，跟着做了20几天了， 因为提供不了node服务，歌单和歌词暂时请求不了，
+  Github：https://github.com/mywebc/vuejs-music-player  </description>
+    </item>
+    
+    <item>
+      <title>mongo数据库增删改查方法总结</title>
+      <link>https://chenxiaolani.com/2017/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 02 Nov 2017 23:23:44 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>&lt;h4 id=&#34;1&#34;&gt;1.介绍&lt;/h4&gt;
+&lt;p&gt;mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
+mongo下载地址：&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;&lt;a href=&#34;https://www.mongodb.com/download-center?jmp=nav#community&#34;&gt;https://www.mongodb.com/download-center?jmp=nav#community&lt;/a&gt;&lt;/a&gt;
+mongoAPI文档：&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;&lt;a href=&#34;https://docs.mongodb.org/manual/&#34;&gt;https://docs.mongodb.org/manual/&lt;/a&gt;&lt;/a&gt;
+下载安装好后，添加mongo环境变量，在命令行里输入mongod &amp;ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，
+另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
+其它基础命令：
+show dbs:查看所有数据库
+db:查看当前数据库
+use student:切换到student数据库，如果没有则创建
+db.student.drop();删除student集合
+db.dropDatabase();删除当前所在数据库
+db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nodejs中书写自己的require方法</title>
+      <link>https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 26 Oct 2017 01:58:05 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;p&gt;模块化是一种开发模式，模块化的开发有利于后期维护，提高效率，模块化的规范在服务器端是CommonJs，比如nodejs采用的就是这个，在浏览器端有AMD规范（比如RequireJs采用的），CMD规范（SeaJS采用的）。 SeaJS我看了一点，但是我又忘得差不多了o(╥﹏╥)o，我知道错了，所以我来做笔记了。 在SeaJs中它是用define定义模块的： [javascript] define(function(require,exports,module) { var a=1; exports.text=a; //或者module.exports={text:a}; }) [/javascript] 三个参数： require：用来加载模块的; exports：module 的别名，只能通过点语法加属性； module:是一个对象，里面有exports这个属性； 所以exports=module.exports;我们在使用中用exports或者module.exports暴露接口都可以。 具体的基本使用是这样的：
+（1）引入sea.js库；
+（2）用define定义模块，在里面向外面暴露接口；
+（3）也是在define中，用require加载定义的模块；
+（4）启动模块系统，seajs.use(),引入入口模块； 有点跑题了，本篇主要是书写nodejs中的require的方法的，nodejs中的模块的定义比seajs简单点，不需要define，一个js文件就是一个模块，同样用exports暴露接口，require加载模块。 下面我们自己重写requie函数： [javascript] //使用严格模式 &amp;lsquo;use strict&amp;rsquo; function myrequire(id) { //引入node内部模块fs和path const fs = require(&amp;lsquo;fs&amp;rsquo;); const path = require(&amp;lsquo;path&amp;rsquo;); //包含自身的完整路径 const filename = path.join(__dirname, id); // pathto/module1.js //不包含自身的路径 const dirname = path.dirname(filename); // pathto //为防止node把他丢到事件队列里，这里需要同步读取 let code = fs.readFileSync(filename, &amp;lsquo;utf8&amp;rsquo;); // 定义一个数据容器，用容器去装模块导出的成员 let module = { id: filename, exports: {} }; let exports = module.exports; // module.exports code =&lt;code&gt; (function(myrequire, module, exports, \_\_dirname, \_\_filename) { ${code} })(myrequire, module, exports, dirname, filename);&lt;/code&gt;; //转换成js代码 eval(code); return module.exports; } [/javascript] 再拓展解释一下上面的代码：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>js中对数组的一些操作</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 11 Oct 2017 13:28:08 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;p&gt;对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个方法怕记不住，还是写下来吧。
+1.插入与删除
+push：末尾插入；
+pop:末尾删除；
+shift:开头删除；
+unshift:开头添加；
+2.map 迭代数组，在回调函数中处理相关逻辑，并且返回新数组，不会改变原来数组 比如：
+[code] var oldArray = [1,2,3,4,5]; var newArray = oldArray.map(function(val){ return val+3; }); [/code]
+3.reduce 迭代数组，作用将数组累加到一个值中，两个常用参数（总共4个），preValue和currValue; 比如： [code] var array = [4,5,6,7,8]; var singleVal = 0; singleVal = array.reduce(function(pre,curr){ return pre+curr; },0); [/code] 4filter（过滤器） [code] var oldArray = [1,2,3,4,5,6,7,8,9,10]; var newArray = oldArray.filter(function(val){ return val&amp;lt;6; }); [/code]
+5.sort 方法，你可以很容易的按字母顺序或数字顺序对数组中的元素进行排序。 比如：从小到大排列 [code] var array = [1, 12, 21, 2]; array.sort(function(a, b) { return a - b; }); [/code]
+6reverse 方法来翻转数组，无参数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6中的新特性</title>
+      <link>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Sun, 01 Oct 2017 17:17:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <description>&lt;p&gt;ES6中的常用新特性。转载自&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6_new_features.html&#34;&gt;&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6&#34;&gt;http://www.cnblogs.com/Wayou/p/es6&lt;/a&gt;_new_features.html&lt;/a&gt; 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;http://es6.ruanyifeng.com/#README&lt;/a&gt;&lt;/a&gt; &lt;strong&gt;1.箭头操作符&lt;/strong&gt; 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=&amp;gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=&amp;gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; //传统写法 array.forEach(function(v, i, a) { console.log(v); }); //ES6 array.forEach(v = &amp;gt; console.log(v)); [/code] &lt;strong&gt;2.类的支持&lt;/strong&gt; ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] //类的定义 class Animal { //ES6中新型构造器 constructor(name) { this.name = name; } //实例方法 sayName() { console.log(&amp;lsquo;My name is &amp;lsquo;+this.name); } } //类的继承 class Programmer extends Animal { constructor(name) { //直接调用父类构造器进行初始化 super(name); } program() { console.log(&amp;ldquo;I&#39;m coding&amp;hellip;&amp;quot;); } } //测试我们的类 var animal=new Animal(&amp;lsquo;dummy&amp;rsquo;), wayou=new Programmer(&amp;lsquo;wayou&amp;rsquo;); animal.sayName();//输出 ‘My name is dummy’ wayou.sayName();//输出 ‘My name is wayou’ wayou.program();//输出 ‘I&#39;m coding&amp;hellip;’ [/code]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>canvas小案例：fly birds</title>
+      <link>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</link>
+      <pubDate>Sat, 30 Sep 2017 11:05:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</guid>
+      <description>我们可以看到这个游戏由背景蓝天，土地，小鸟，管道四部分组成，在开始游戏我们必须保证全部加载完所有图片资源，这里书写一个函数传进所有图片资源，再通过回调函数的方式返回加载好的图片资源
+ // 思路： // （1）遍历imgUrl,统计imgUrl次数，创建img对象 // （2）调用img对象onload方法，所有加载完成后给fn function loadedImg(imgUrl,fn){ // 用来保存图片资源 	var imgObj={}; var tempImg,loaded=0,imgLenght=0; for(var key in imgUrl){ // 每循环一次加一下，统计次数 	imgLenght++; // 获取img对象 tempImg=new Image(); 	// 把所有图片资源依次循环赋值temImg.src 	tempImg.src=imgUrl\[key\]; // 然后再把这张图片依次存入imgObj imgObj\[key\]=tempImg; 	// 注册所有图片加载事件 tempImg.onload=function(){ 	// 统计加载的次数 	loaded++; // 如果加载的次数与之前循环的次数相同的话，说明所有图片加载完毕 	if(loaded=imgLenght){ // 把加载的资源给回调函数 	fn(imgObj); } }; } } （1）绘制背景 和轮播图差不多，准备两张相同的背景图，在计时器里调用上下文对象的drawImg（）方法不断的向左偏移重绘即可，其构造函数如下
+// 书写绘制背景函数 function Sky(ctx,img,speed){ this.ctx=ctx; this.img=img; this.width=this.img.width; this.height=this.img.height; Sky.len++; this.</description>
+    </item>
+    
+    <item>
+      <title>canvas画图API整理</title>
+      <link>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 26 Sep 2017 07:51:10 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;canvas 是 HTML5 提供的一个用于展示绘图效果的标签.
+canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：
+（1）使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.
+（2）默认 canvas 的宽高为 300 和 150.
+（3）不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.
+（4）如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.
+（5）canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.
+（6）canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
+基本使用方法：
+（1）获得 canvas 对象.
+（2）调用 getContext 方法, 提供字符串参数 &amp;lsquo;2d&amp;rsquo;.
+(3）该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.
+（4）使用 CanvasRenderingContext2D 对象提供的方法进行绘图.
+（5）基本绘图命令
+a)设置开始绘图的位置: context.moveTo( x, y ).
+b)设置直线到的位置: context.lineTo( x, y ).
+c)描边绘制: context.stroke().
+d)填充绘制: context.fill().
+e)闭合路径: context.closePath().&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>简述CSS3中的动画</title>
+      <link>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</link>
+      <pubDate>Sun, 17 Sep 2017 12:04:35 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</guid>
+      <description> 动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
+  在CSS3中的设置动画步骤： a、通过@keyframes指定动画序列； b、通过百分比将动画序列分割成多个节点； c、在各节点中分别定义各属性 d、通过animation将动画应用于相应元素； 示例：  //定义规则  @keyframes move{ //move为规则名称  from{ background-color:yellow; } to { background-color:red; } } //也可以以百分比的形式，设置多个节点  @keyframes move{ 0%{ background-color:yellow; } 50% { background-color:red; } 75% { background-color:green; } } //最后在animation属性里应用  .div { animation:move 1s; } animation 中的属性简述 a、animation-name设置动画序列名称； b、animation-duration动画持续时间； c、animation-delay动画延时时间； d、animation-timing-function动画执行速度，linear(平均)、ease（慢快慢）、ease-in（慢快）、ease-out（快慢）、cubic-bezier(自定义速度)； e、animation-play-state动画播放状态，running、paused; f、animation-direction动画逆播，normal（正常，动画结束回到第一帧），reverse（与normal相反），alternate（动画完成，在倒放逆播），alternate-reverse（与alternate相反）； g、animation-fill-mode动画执行完毕后状态，forwards（保持最后一帧的状态）、backwards（回到第一帧）； h、animation-iteration-count动画执行次数，可以是1、2、3&amp;hellip;inifinate表示无数次； i、steps(60) 这里表示动画分成60步完成,一帧一帧的进行，这是第一个参数，第二个参数（可选）为start或end，默认情况下为end; 关于start和end 的区别：他们都规定了动画时间变化点，start是在两帧跳换前，end是在两帧跳换后； 比如：分两步，0%-100%，盒子颜色变化从红色变到绿色 如果设置start，他在0%跳换前，动画就执行了，所以我们刷新页面一进去就看到绿色，设置end的话，我们会一直看到红色，0%前动画不会执行，跳到100%后动画结束，这是绿色状态不可见的，还会变成红色。 总之，如果3s的动画执行时间，start和end的区别就是，到底是在3s前就执行，还是在3s后执行的区别。 参数值的顺序： 关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意 最后2个小例子熟悉一下： CSS3设置帧动画达到钟表效果：  </description>
+    </item>
+    
+    <item>
+      <title>CSS3里的flexbox布局</title>
+      <link>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 14 Sep 2017 16:47:50 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</guid>
+      <description>&lt;p&gt;一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为布局而出现的解决方案；
+&lt;strong&gt;一、如何成为弹性盒子（flexbox）?&lt;/strong&gt;
+我们只要给父容器设置display:flex||inline-flex即可，这时候，父容器就是flex container（弹性容器）,里面的子元素就是flex item（弹性子元素）;还有一些其他名词我们也需要了解，如下图（图片资源来自于网络）：  在这个弹性容器中我们有两个轴main axis（主轴）从左到右，cross axis（侧轴）从上到下，axis就是轴的意思，来跟我念&amp;quot;阿克色死&amp;rdquo;，主轴开始的地方叫main start,结束的地方叫main end,侧轴同理也有cross start和cross end，在主轴中子元素所占据的空间叫main size，同理侧轴叫cross size。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>理解Websocket原理</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Mon, 04 Sep 2017 08:31:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</guid>
+      <description>一、websocket与http WebSocket是HTML5出的东西（协议），也就是说HTTP协议没有变化，或者说没关系，但HTTP是不支持持久连接的（长连接，循环连接的不算） 首先HTTP有 1.1 和 1.0 之说，也就是所谓的 keep-alive ，把多个HTTP请求合并为一个，但是 Websocket 其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充可以通过这样一张图理解 有交集，但是并不是全部。 另外html5是指的一系列新的API，或者说新规范，新技术。Http协议本身只有1.0和1.1，而且跟Html本身没有直接关系。。通俗来说，你可以用HTTP协议传输非Html数据，就是这样=。= 再简单来说，层级不一样。
+二、Websocket是什么样的协议，具体有什么优点 首先，Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。简单的举个例子吧，用目前应用比较广泛的PHP生命周期来解释。 HTTP的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0 中，这次HTTP请求就结束了。 在HTTP1.1中进行了改进，使得有一个keep-alive，也就是说，在一个HTTP连接中，可以发送多个Request，接收多个Response。但是请记住 Request = Response ， 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。 教练，你BB了这么多，跟Websocket有什么关系呢？_(:з」∠)_好吧，我正准备说Websocket呢。
+首先Websocket是基于HTTP协议的，或者说借用了同的服务所需要的协议。简单理解：今晚我要服务A，别搞错啦~ 最后， Sec-WebSocket-Version 是告诉服务器所使用的 Websocket Draft（协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水： 服务员，我要的是13岁的噢→_→ 然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
+ HTTP/1.1 101 Switching Protocols Upgrade: websocket Connection: Upgrade Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk= Sec-WebSocket-Protocol: chat 这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~ Upgrade: websocket Connection: Upgrade 依然是固定的，告诉客户端即将升级的是 Websocket 协议，而不是mozillasocket，lurnarsocket或者shitsocket。 然后， Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key 。 服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。 后面的， Sec-WebSocket-Protocol 则是表示最终使用的协议。 至此，HTTP已经完成它所有工作了，接下来就是完全按照Websocket协议进行了。具体的协议就不在这阐HTTP的协议来完成一部分握手。 首先我们来看个典型的 Websocket 握手（借用Wikipedia的。。）</description>
+    </item>
+    
+    <item>
+      <title>关于cookie和session的区别以及在PHP中的用法</title>
+      <link>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Sat, 02 Sep 2017 16:20:28 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
+      <description> 自学了5个月，我最近才听说cookie和session&amp;hellip;.之前做验证码接触了session,现在整理一下：
+ 二者定义： cookie：是服务器发送到客户端的一串文本数据，由客户端保存，每次请求时都会发送cookie，用于保持会话期间持久数据传递； session：session在服务器端，是通过cookie实现的，在发给浏览器的cookie中有唯一标识SESSONID,用于记录不同的用户的状态；
+整个过程是这样的： 客户端向服务器发送请求后，服务器会在响应头中返回cookie信息，其中包含唯一标识SESSIOND,客户端收到后就会存储起来，之后客户端的每次请求都会包含cookie信息，session会找到cookie中的sessionid，并且根据它找到对应的用户，及其存储在服务器的数据。
+二者区别：  cookie存储在浏览器中，session存储在服务器中； cookie并不安全，别人可以篡改你的cookie信息,单个cookie存储数据不超过4k,一个浏览器最多存储20-50个cookie； session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。 注意：浏览器是可以禁用cookie的，与此同时session也会失效，这是我们还有两种方法   URL重写，把SESSIONID加到URL后，即&#39;sid=XXX&#39;的形式； 表单隐藏：在HTML加一个隐藏表单如下：  &amp;lt;form name=&amp;#34;testform&amp;#34; action=&amp;#34;/xxx&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;hidden&amp;#34; name=&amp;#34;jsessionid&amp;#34; value=&amp;#34;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; 在PHP中cookie用法 setcookie（名称，值，失效时间，域，路径，安全标志） 第一个和第二个参数是必填，其他都是可选 一般我们都这样设置几个参数
+setcookie(&amp;#39;name&amp;#39;,&amp;#39;lili&amp;#39;,time()+3600) //创建或更新cookie setcookie（&amp;#39;name&amp;#39;,&amp;#39;&amp;#39;,time()-3600） //删除cookie，值设置为空，时间为负数 setcookie（&amp;#39;name&amp;#39;,null） //这样删除也可以 //用$_COOKIE[&amp;#39;name&amp;#39;]读取，在读取时，先要判断是否为空值 if(isset($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } //或者这样 If(!empty($_COOKIE[&amp;#39;name&amp;#39;])){ $Name=$_COOKIE[&amp;#39;name&amp;#39;]; } 在PHP中session用法 在使用session前我们都要初始化session_start()（他会创建一个唯一SESSIONID）,在这之前不能有输出语句。
+$_SESSON[&amp;#39;name&amp;#39;]=&amp;#39;lili&amp;#39; //赋值 $Name=$_SESSION[&amp;#39;name&amp;#39;] //读取值 session_unset[&amp;#39;name&amp;#39;] //删除值（逐个） $_SESSION=array(); //整个删除 session_destroy(); //最后整个摧毁 session session_is_registered(); // 检查变量是否被登记为会话变量,如果是返回TRUE session_name(); //设置或获取当前session的名称 session_set_cookie_params(): //设置session的生存期，必须在session_start()之前调用; session_save_path() ; //设置session保存路径，必须在session_start()之前调用; </description>
+    </item>
+    
+    <item>
+      <title>理解http协议</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sat, 02 Sep 2017 08:46:43 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;http协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>php生成制作验证码</title>
+      <link>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</link>
+      <pubDate>Tue, 29 Aug 2017 12:48:51 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</guid>
+      <description>&lt;p&gt;PHP生成制作验证码 1.0　　首先先看代码&lt;/p&gt;
+&lt;p&gt;好，现在结合以上代码，来分析分析以上用到的几个函数： ①　　imagecreatetruecolor(); imagecreatetruecolor — 新建一个真彩色图像（感觉哇，那么长，其实仔细一看挺好记的 image/create/true/color，什么是真彩色图像？往下看） 1 resource imagecreatetruecolor ( int $width , int $height ) imagecreatetruecolor() 和 imagecreate()两个函数都能创建画布 1 resource imagecreate ( int $x_size , int $y_size ) imagecreatetruecolor()建立的是一幅大小为 x和 y的黑色图像(默认为黑色[即便叫法就是真彩色图像])，如想改变背景颜色则需要用填充颜色函数 imagefill($img,0,0,$color); imagecreate 新建一个空白图像资源，用imagecolorAllocate()添加背景色 上面两个函数只不过是一个功能的两种方法 ②　　imagecolorallocate(); imagecolorallocate — 为一幅图像分配颜色 1 int imagecolorallocate ( resource $image , int $red , int $green , int $blue ) 颜色分别用 红 绿 蓝三色组合，这些参数是 0 到 255 的整数或者十六进制的 0x00 到 0xFF。 ③　　mt_rand(); mt_rand — 生成更好的随机数 1 int mt_rand ( int $min , int $max ) $min 可选的、返回的最小值（默认：0）　　$max 可选的、返回的最大值（默认：mt_getrandmax()） 这里就是用来让他随机生成背景颜色，0-255随便取值。所以页面没刷新一次画布背景颜色就不一样。 效果图：2.0　　开始往里面做干扰线，干扰点。防止验证图像被秒识别&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</title>
+      <link>https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</link>
+      <pubDate>Fri, 25 Aug 2017 14:42:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</guid>
+      <description>一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复
+ 一、浏览器端的验证我们可以用jQuery Validate这个插件  首先引入插件：  &amp;lt;script src=&amp;#39;libs/jquery-1.11.1.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt;/ //jquery插件 &amp;lt;script src=&amp;#39;libs/jquery.validate.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt; //jQuery validate插件 &amp;lt;script src=&amp;#39;libs/messages_zh.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt; //中文提示信息插件 具体使用看如下例子：   js部分  $(function(){ //指定要验证的表单  $(&amp;#39;#myform&amp;#39;).validate({ //这里是验证通过要书写回调函数  submitHandler:function(form){ //提交表单方式之一  form.submit(); } //这里定义规则  rules:{ username:{ requried:true, minlength:2 } } //这里写提示信息，如果不写，就会使用默认  messages:{ username:{ required:&amp;#34;请输入用户名！&amp;#34;, minlength:&amp;#34;长度不少于2位！&amp;#34; } } }) }) 更多的其他的指令规则：规则 描述   required:true 必须输入的字段。 remote:&amp;ldquo;check.php&amp;rdquo; 使用 ajax 方法调用 check.php 验证输入值。 email:true 必须输入正确格式的电子邮件。 url:true 必须输入正确格式的网址。 date:true 必须输入正确格式的日期。日期校验 ie6 出错，慎用。 dateISO:true 必须输入正确格式的日期（ISO），例如：2009-06-23，1998/01/22。只验证格式，不验证有效性。 number:true 必须输入合法的数字（负数，小数）。 digits:true 必须输入整数。 creditcard: 必须输入合法的信用卡号。 equalTo:&amp;quot;#field&amp;rdquo; 输入值必须和 #field 相同。 accept: 输入拥有合法后缀名的字符串（上传文件的后缀）。 maxlength:5 输入长度最多是 5 的字符串（汉字算一个字符）。 minlength:10 输入长度最小是 10 的字符串（汉字算一个字符）。 rangelength:[5,10] 输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。 range:[5,10] 输入值必须介于 5 和 10 之间。 max:5 输入值不能大于 5。 min:10 输入值不能小于 10。  小提示：可以使用label.</description>
+    </item>
+    
+    <item>
+      <title>angular  js 获取天气预报</title>
+      <link>https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/</link>
+      <pubDate>Thu, 24 Aug 2017 15:31:40 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/</guid>
+      <description>首先了解一下跨域：跨域就是从一个网站去请求另一个网站中的内容。 要想实现跨域，现在主流的做法是用jsonp。
+ 一、jsonp的原理 我们发现HTML标签是可以请求外网的内容的，  比如img的src设置为外网的图片地址，是可以读取到的，那么我们可以新建一个script标签，设置它的src属性就是外网的地址，那么我们就能读取到外网的内容，jsonp会用到ajax方法，但是其实它跟ajax是没有关系的，jsonp是get请求。  二、去百度拿天气数据 百度车联网API，  里面百度给我们提供了一个url: http://api.map.baidu.com/telematics/v3/weather?location=北京&amp;amp;output=json&amp;amp;ak=E4805d16520de693a3fe707cdc962045 其中ak指的是开发者密钥，这个我们需要注册一下百度账号，再点击获取密钥就可以了。  三、在angular js 中有很多的内建服务，比如$http、$log、$location等等，  在我们需要用他们的时候，就要在控制器内传入他们，如下：  weather.controller(&amp;#39;WeatherController&amp;#39;,[&amp;#39;$scope&amp;#39;,&amp;#39;$http&amp;#39;,&amp;#39;$log&amp;#39;,function($scope,$http,$log){ }  这里传入三个参数，$scope,$http,$log，告诉angular js我们需要他们，angularjs 就会以参数的形式传进来供我们使用，这里的$http就是供我们向服务端发送异步请求的，而$log里提供了一系列的打印方法。 完整代码如下：  &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;weather&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body ng-app=&amp;#39;weather&amp;#39;&amp;gt; &amp;lt;div ng-controller=&amp;#39;WeatherController&amp;#39;&amp;gt; &amp;lt;button ng-click=&amp;#39;get()&amp;#39;&amp;gt;获取南京的天气&amp;lt;/button&amp;gt; &amp;lt;table&amp;gt; &amp;lt;!--视图 --&amp;gt; &amp;lt;tr ng-repeat=&amp;#34;item in weatherData&amp;#34;&amp;gt; &amp;lt;td&amp;gt;{ {item.date}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;img ng-src=&amp;#34;{ {item.dayPictureUrl}}&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;img ng-src=&amp;#34;{ {item.nightPictureUrl}}&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.temperature}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.weather}}&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;{ {item.wind}}&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#39;libs/angular.</description>
+    </item>
+    
+    <item>
+      <title>ajax复习</title>
+      <link>https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Thu, 24 Aug 2017 12:13:55 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/</guid>
+      <description>ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： （1）创建XMLHTTPRequest对象 所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。
+ 兼容性写法如下：
+var xmlhttp; if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari xmlhttp=new XMLHttpRequest(); } else { // code for IE6, IE5 xmlhttp=new ActiveXObject(&amp;#34;Microsoft.XMLHTTP&amp;#34;); } （2）向服务器发送请求 这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数： method：请求方式，有get和post两种； url:要请求页面的地址，相对地址或绝对地址 flag：true是异步，false是同步 注意点： （1）get和post的比较：get传输数据小且不安全，post传输数据大且安全； （2）使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：
+xmlhttp.open(&amp;#39;get&amp;#39;,&amp;#39;123.php&amp;#39;,true); xmlhttp.send(); 示例post请求：
+xmlhttp.open(&amp;#39;post&amp;#39;,&amp;#39;123.php&amp;#39;,&amp;#39;true&amp;#39;); //添加http请求头信息 xmlhttp.setRequestHeader(&amp;#34;Content-type&amp;#34;,&amp;#34;application/x-www-form-urlencoded&amp;#34;); xmlhttp.send(&amp;#34;name=lili&amp;amp;amp;age=10&amp;#34;); （3）服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。 （4）onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。 下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数； readyState属性，它有四种状态变化： 0: 请求未初始化 1: 服务器连接已建立 2: 请求已接收 3: 请求处理中 4: 请求已完成，且响应已就绪 status属性 200: &amp;ldquo;OK&amp;rdquo; 404: 未找到页面 所以当 readyState 等于 4 且状态为 200 时，表示响应已就绪： 示例：</description>
+    </item>
+    
+    <item>
+      <title>初识angular js ,备忘录练习</title>
+      <link>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Tue, 22 Aug 2017 13:38:27 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;一个备忘录小练习，可以写入计划和删除计划。 进一步了解了一些指令的使用：&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识angular js，tab栏切换练习</title>
+      <link>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Tue, 22 Aug 2017 07:02:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/</guid>
+      <description>看到了angular js， angular js是一款MVC前端框架，以数据和逻辑作为驱动核心，有很多特性：模块化，双向数据绑定，语义化标签等，与之类似的还有VUE，REACT等框架。 MVC是一种开发模式，由模型（Model）、视图（View）、控制器（Controller）3部分构成。 基本用法：
+  首先script标签引入angular js 框架； 其次定义模板，第一个参数为模板名称，第二个参数为一个空数组,表示依赖的其他模块； 然后定义控制器，第一个参数为控制器名称，第二个参数除最后一个是函数外，其他都是字符串，表明此控制器的依赖关系， 控制器里书写逻辑数据； 最后绑定模板，绑定控制器； 具体示例代码如下：  &amp;lt;!-- 绑定模块 --&amp;gt; &amp;lt;body ng-app=&amp;#39;Tabs&amp;#39;&amp;gt; &amp;lt;!-- 绑定控制器 --&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34; ng-controller=&amp;#39;TabController&amp;#39;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;first&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;first&amp;#34;)&amp;#39;&amp;gt;tab1&amp;lt;/li&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;second&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;second&amp;#34;)&amp;#39;&amp;gt;tab2&amp;lt;/li&amp;gt; &amp;lt;li ng-class=&amp;#34;{current:type==&amp;#39;third&amp;#39;}&amp;#34; ng-click=&amp;#39;switch(&amp;#34;third&amp;#34;)&amp;#39;&amp;gt;tab3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;div ng-switch on=&amp;#39;type&amp;#39;&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;first&amp;#39;&amp;gt;这里是内容一哦&amp;lt;/div&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;second&amp;#39;&amp;gt;这里是内容二哦&amp;lt;/div&amp;gt; &amp;lt;div ng-switch-when=&amp;#39;third&amp;#39;&amp;gt;这里是内容三哦&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- 引入angularjs 框架 --&amp;gt; &amp;lt;script src=&amp;#34;../libs/angular.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;scripttype=&amp;#34;text/javascript&amp;#34;&amp;gt; // 定义模板  var Tabs = angular.module(&amp;#39;Tabs&amp;#39;,[]); // 定有控制器 Tabs.controller(&amp;#39;TabController&amp;#39;,[&amp;#39;$scope&amp;#39;,function($scope){  // 这个$scope就是空的对象，指的就是Model $scope.</description>
+    </item>
+    
+    <item>
+      <title>关于Git的使用</title>
+      <link>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 20 Aug 2017 08:32:07 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>从学习前端开始就听说过Git，无奈初期并不需要了解，但是在以后的学习或工作中这是必须会的一项技能，这几天也看了一些资料，整理一下
+ 一、什么是Git？ Git是分布式版本控制系统，版本控制系统大致分为三类：
+ 本地版本控制系统：顾名思义，只能在本地进行修订存储的系统，缺点是不能多人协同开发； 集中式版本控制系统：有一个中央服务器，文件的版本信息，修订及其存储都在这上面，但是太依赖网络，一旦网络瘫痪，数据容易丢失； 分布式版本控制系统：每个人本地都有一个版本控制系统，会有一个共享服务器，弥补了前面两种系统的缺陷，是现在使用是最多的版本控制系统，其中最有代表的就是Git。  二Git的安装 https://git-scm.com/downloads
+三、Git的使用原理 Git是使用命令行方式运行的； Git有三个工作区域：
+ 工作目录：在这个区域你可以对你的项目进行开发修改； 暂存区域：开发或修改完成后可以将项目放在这里，之后一并提交； 仓库区域：这里会永久存储暂存区域上传的数据，这是Git最重要的部分，我们还原的数据时就是存储在这里的。  四、Git的使用
+ 配置用户及其邮箱一边我们记录开发者的信息： 找打我们开发项目的根目录： 右击Git Bash here，进入命令行窗口模式： 输入：git config &amp;ndash;global user.name &amp;lsquo;你的名字&amp;rsquo;，git config &amp;ndash;global user.email &amp;lsquo;你的邮箱&amp;rsquo; 初始化仓库： git init,这时我们根文件夹会出现一个隐藏文件夹.git 接下来我们就可以在工作目录中开发项目了，这里我在index.html中修改了一些内容，可以使用命令git status查看文件状态 可以看到这些在工作区的内容是红色的 使用命令git add 文件名（或者-A表示所有），将文件放到暂存区域内，再来查看状态，我们发现文件变成了绿色 如果我们想把暂存区的文件再返回到工作区，可以使用git checkout 文件名 之后我们觉得所有文件都没问题后，就可以提交了git commit -m &amp;lsquo;备注信息&amp;rsquo;,并且可以git log 来查看提交历史 时光倒流：我们可以使用 git reset &amp;ndash;hard 字符串（每一次提交历史后面的字符串），就返回到那个状态。 Git的分支：当我们第一次提交时，就已经默认创建了一个主分支master ，当我们开发不止一个项目或功能时，不可能三七二一都提交到这个分支上吧，所以我们会创建对应的功能分支或项目分支，主分支我们一般会来发布稳定版本，我们会创建一个developer平行分支，在这上面针对不同的功能再创建feature分支，开发完成后都提交到developer这个分支上，所有功能开发完成后，我们还需要创建一个发行分支release供测试使用，最后才发布稳定版本到主分支上。   git branch lazaer //创建分支 git checkout lazaer //切换分支 git merge &amp;lsquo;分支名称&amp;rsquo; //合并分支 git branch -d lazaer //删除分支  五、共享仓库 第四点主要讲了在本地如何使用Git，为了协同开发，和其他人共享代码，我们需要建一个共享仓库 Git要求共享仓库是一个以.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript基础知识复习（五）函数的四种调用模式</title>
+      <link>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 09 Aug 2017 19:35:54 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;一、函数模式&lt;/strong&gt;
+这个我们再熟悉不过了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;(){
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+}
+&lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;()&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;；&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//这里函数名调用，就是函数模式
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意：这里的this指的是window全局对象；
+&lt;strong&gt;二、方法模式&lt;/strong&gt;
+函数放在对象内，是对象的一个属性，我们调用函数，这就是方法模式。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+  }
+}
+&lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript基础知识复习（四）递归与闭包</title>
+      <link>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/</link>
+      <pubDate>Wed, 09 Aug 2017 17:55:48 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/</guid>
+      <description>&lt;p&gt;##递归
+（1）递归概念：在函数内调用函数自己，就是递归。 注意：递归要有结束条件，没有递归结束条件的递归，就是死递归。
+（2）使用递归的方法：化归思想。化归思想是将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 例子：求1-100的和 利用划归思想：var sum=foo(100); 1.求foo（100）即求foo（99）+100； 2.求foo（99），即求foo（98）+99； 3.求foo（98），即求foo（97）+98； &amp;hellip; 最后求foo（1），就是1;//这就是约束条件 最后利用递归，函数就是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; ) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; ) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;( &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;利用递归可以解决很多问题，比如算出阶乘，算出斐波那契数列等；&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>js中的作用域及变量提升</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+      <pubDate>Mon, 07 Aug 2017 21:35:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;一、作用域&lt;/strong&gt; 1.作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可以访问{}里的变量的; 词法作用域：词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域.js中有词法作用域。 在 js 中词法作用域规则: （1）函数允许访问函数外的数据. （2）整个代码结构中只有函数可以限定作用域. （3）作用域规则首先使用提升规则分析 （4）如果当前作用规则中有名字了, 就不考虑外面的名字 2.作用域链 概念：只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。 将这样的所有的作用域列出来，可以有一个结构: 函数内指向函数外的链式结构。就称作作用域链。 如下代码:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript基础知识复习（三）js中的继承</title>
+      <link>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/</link>
+      <pubDate>Mon, 07 Aug 2017 15:37:44 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/</guid>
+      <description>&lt;p&gt;js中共有6种继承
+&lt;strong&gt;一、原型链&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+}
+&lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSuperValue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;property&lt;/span&gt;
+}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;(){
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;subPrototy&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+}
+&lt;span style=&#34;color:#75715e&#34;&gt;//继承了SuperType
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SuperType&lt;/span&gt;();
+&lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSubValue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;subProperty&lt;/span&gt;;
+}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SubType&lt;/span&gt;();
+&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSuperValue&lt;/span&gt;);&lt;span style=&#34;color:#75715e&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;instance&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSubValue&lt;/span&gt;);&lt;span style=&#34;color:#75715e&#34;&gt;//false
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码我们可以看到定义两个构造函数，里面有属性，原型里面有方法，我们让SubType的原型等于SuperType的实例，通过替换了SubType的默认原型对象实现继承，我们可以看到SubType的实例成功调用SuperType里的方法，之后我们又为其手动添加了一个新的方法也是可以调用的。
+注意：继承原型后使用字面量添加方法，会使继承无效，因为已经替换了原型，我们在上一篇中介绍原型时已经讲过。
+缺点：（1）继承后的原型对应的构造函数它所有的实例都会共享原型中的方法。 （2）继承的子类和父类，子类是不能向父类传参数的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript基础知识复习（二）面向对象</title>
+      <link>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Sun, 06 Aug 2017 18:36:39 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;一、什么是面向对象？与面向过程又有什么关系？&lt;/strong&gt;
+（1）面向对象是一种思维方式，解决的重点放在对象上；
+（2）面向过程也是一种思维方式，解决的重点放在详细的步骤上； 举个例子：如何去超市买东西？
+（a）从面向对象的角度出发，我们只需要一辆车，还有自己就好了；
+（b）从面向过程的角度出发，我们要先拿钱，打开门，开车，进超市； 一句话概括它们之间的关系就是：面向对象是面向过程的封装。
+&lt;strong&gt;二、js中的对象&lt;/strong&gt;
+js中键值对的集合就是对象。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript基础知识复习（一）基本概念</title>
+      <link>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Sun, 06 Aug 2017 16:50:11 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;一、js的组成&lt;/strong&gt;
+（1）ECMAScript：js的核心，规范了js的语法；
+（2）DOM：文档对象模型，提供了操作DOM元素的API；
+（3）BOM：浏览器对象模型，对浏览器对象API的操作；
+&lt;strong&gt;二、js的数据类型&lt;/strong&gt;
+（1）简单数据类型（也称基本数据类型）：Undefined,Null,Boolean,String,Number;
+（2）复杂数据类型：Object，本质由一组无序的名值对组成；&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用面向对象实现歌曲的增删改查</title>
+      <link>https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</link>
+      <pubDate>Sun, 06 Aug 2017 01:41:37 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;自定义构造函数，在其原型对象上书写增删改查函数，再调用拼接字符串到HTML页面即可； 构造函数如下：&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>js特效之三大家族、event事件</title>
+      <link>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Tue, 01 Aug 2017 20:30:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</guid>
+      <description>&lt;p&gt;老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 1、offset家族( 5个属性) （1）offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width+padding+border; offsetHeight=height+padding+border；
+（2）offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 （3）offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width/height/top/left的比较；
+a).offset家族只可以只读，而style系列可以读写；
+b).offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;
+c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>旋转轮播图</title>
+      <link>https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</link>
+      <pubDate>Mon, 31 Jul 2017 09:29:27 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;与一般轮播图不同，用缓动动画做，我们需要简单封装一个缓动框架&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>PC端JD首页</title>
+      <link>https://chenxiaolani.com/2017/pc%E7%AB%AFjd%E9%A6%96%E9%A1%B5/</link>
+      <pubDate>Wed, 26 Jul 2017 19:26:32 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/pc%E7%AB%AFjd%E9%A6%96%E9%A1%B5/</guid>
+      <description>&lt;p&gt;在做的过程中，遇到自己忘了的，或者要注意的，都记下来了；
+1.精灵图的定位的中心坐标是左上角；
+2.去掉点击input后的边框：input：focus{outline：none}；
+3.输入框和搜索框有间隙不对齐：可以给vertical-algin:middle,margin给负值；
+4.小三角可以用css3中的transparent来做，比如下拉： .arrow{ width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-top:20px solid #0066cc; } 也可以在父盒子里放一个菱形，让菱形偏移，父盒子截断； 5.顶栏中每个标签都有个小竖线，要用专门的li来放；&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fireworks 和Ps的常用操作</title>
+      <link>https://chenxiaolani.com/2017/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 24 Jul 2017 07:57:32 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description> Fireworks的常用快捷键： V：切换黑鼠标 U：画图 K：切片 I：吸色 Z：放大镜 空格：移动 shift：量尺寸 Photoshop的快捷键 z、alt：放大、缩小 空格：移动 u:矩形工具 ｉ：吸色 alt：切换辅助线 抠图：边框工具或者套索工具， Ctrl+c、Ctrl+v到新页面  </description>
+    </item>
+    
+    <item>
+      <title>微金所页面（响应式）</title>
+      <link>https://chenxiaolani.com/2017/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</link>
+      <pubDate>Sun, 23 Jul 2017 15:58:09 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</guid>
+      <description> bootstrap+less的页面，轮播图之前写的好烦， 而在bootstrap里面直接拿框架过来用，好方便的说。
+  传上来微金所的字体图标不显示了，我也不知道为啥/(ㄒoㄒ)/~~。 感受：很多的样式都可以在bootstrap里面都可以找到，直接拿过来用就好了，如果有一些不一样的，去bootstrap原样式里copy一份过来，类名为了不与原样式冲突改成自己的类名，然后自己在再根据具体情况修改就好了。   </description>
+    </item>
+    
+    <item>
+      <title>简单的使用less和koala编译工具</title>
+      <link>https://chenxiaolani.com/2017/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Thu, 20 Jul 2017 18:31:20 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</guid>
+      <description>LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、运算、函数等，更方便CSS的编写和维护。 LESSCSS可以在多种语言、环境中使用，包括浏览器端、桌面客户端、服务端。
+  在sublime中安装less插件（插件只是影响高亮效果）  （1）ctrl+shift+p&amp;gt;install Package&amp;gt;less&amp;gt;回车即可自动安装，开始我会出现下面这种提示：there is no package available,这时候只要去https://packagecontrol.io/installation#st2,下载 Package Control.sublime-package并且放到Sublime text安装目录下的Packages里面，重启即可。 （2）第二种安装方法是去网上下载好插件，然后放到sublime的插件文件夹里再重启即可；
+去官网下好koala后安装，设置里选择简体中文，然后测试koala工具； 在同一个文件夹下建立两个文件：index.css和index.less文件，然后拖到koala里 然后在sublime中打开文件，在查看中打开两个窗口，左边是less，右边是css，less写好后Ctrl+s就会自动编译成css文件，如图说明编译成功； less的语法 http://www.1024i.com/demo/less/index.html   最近又看到node js 了，一般来说是这样编译的，先安装node.js,之后再全局安装less，那么lessc就是编译less文件的意思 再sublime中我们要装LESS、lessc、Less2Css三个插件，这样sublime会调用lessc去帮我们编译，在webstorm下一般他会智能提示你的。正常来讲，这种编译方式也是很少用得到的，如通less文件很多，我们不可能一边写，一边编译，所以我们可以引入一个less.js的文件，让js帮我们去解析即可（注意在引入less时，link的rel标签要改成stylesheet/less）。</description>
+    </item>
+    
+    <item>
+      <title>手机JD商品列表</title>
+      <link>https://chenxiaolani.com/2017/%E6%89%8B%E6%9C%BAjd%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Wed, 19 Jul 2017 19:42:24 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%89%8B%E6%9C%BAjd%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8/</guid>
+      <description>基本功能都实现了，还是有瑕疵，先放这儿把，不想浪费时间了，以后有时间再看看吧。 </description>
+    </item>
+    
+    <item>
+      <title>做移动端的注意点</title>
+      <link>https://chenxiaolani.com/2017/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+      <pubDate>Wed, 19 Jul 2017 19:39:13 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+      <description> 做移动端的注意点
+  通栏中，不管多大的分辨率，左边和右边的距离都是不变的，我们可以将其input宽度设为100%，再在其父盒子中给出padding,父盒子不要给宽度； 很多时候样式都会被覆盖，在属性值后加上!important或者在前面加上其父级； sublime中alt+F3全局修改同一单词； 在浏览器中方向是从左往右，从上往下； 为了代码的通用性，动态获取dom元素，不能出现magicNumber; 用js设置自定义属性比如dataset[&amp;lsquo;index&amp;rsquo;]，读取是this.dataset.index，但是用读取的值进行算数运算时不准确; 在选择器中，.header div指父盒子header下所有div；.header&amp;gt;div指父盒子header的所有下一级div;  </description>
+    </item>
+    
+    <item>
+      <title>选项卡应用</title>
+      <link>https://chenxiaolani.com/2017/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Wed, 19 Jul 2017 15:34:36 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</guid>
+      <description> 很多时候我们需要用到选项卡应用，比如手机京东的商品分类； js代码：
+ window.onload=function(){ var tabLi=document.querySelectorAll(&amp;#39;.tab li&amp;#39;); var tabDiv=document.querySelectorAll(&amp;#39;.content Div&amp;#39;); for (var i = 0; i &amp;lt; tabLi.length; i++) { tbLi[i].index=i; tabLi[i].onclick=function(){ for (var i = 0; i &amp;lt; tabLi.length; i++) { tabLi[i].className=&amp;#39;&amp;#39;; tabDiv[i].style.display=&amp;#39;none&amp;#39;; } this.className=&amp;#39;current&amp;#39;; tabDiv[this.index].style.display=&amp;#39;block&amp;#39;; }; }; } </description>
+    </item>
+    
+    <item>
+      <title>伪类和伪元素、clearfix、clear</title>
+      <link>https://chenxiaolani.com/2017/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</link>
+      <pubDate>Mon, 17 Jul 2017 14:36:06 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</guid>
+      <description>&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类：
+伪元素：
+在CSS3中规定：伪类用一个冒号来表示，伪元素用两个冒号来表示。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>移动端京东首页</title>
+      <link>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</link>
+      <pubDate>Sun, 16 Jul 2017 08:19:03 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</guid>
+      <description> 基本的静态布局 js效果：轮播图、倒计时、通栏透明度。
+  从Wordpress迁移到hexo后地址失效啦！  </description>
+    </item>
+    
+    <item>
+      <title>移动端的touch事件</title>
+      <link>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Fri, 14 Jul 2017 08:43:38 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</guid>
+      <description> 移动端的touch主要用到一下三种：
+  touchstart://手指放到屏幕上时触发 touchmove:指在屏幕上滑动式触发 touchend://手指离开屏幕时触发 每个触摸事件被触发后，会生成一个event对象， event//手对象里额外包括以下三个触摸列表 touches: //当前屏幕上所有手指的列表 targetTouches: //当前dom元素上手指的列表，尽量使用这个代替touches changedTouches: //涉及当前事件的手指的列表，尽量使用这个代替touches 这些列表里的每次触摸由touch对象组成， touch对象里包含着触摸信息， 主要属性如下： clientX / clientY: //触摸点相对浏览器窗口的位置 pageX / pageY: //触摸点相对于页面的位置 screenX / screenY: //触摸点相对于屏幕的位置 小案列：   </description>
+    </item>
+    
+    <item>
+      <title>浏览器的兼容写法</title>
+      <link>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</link>
+      <pubDate>Thu, 13 Jul 2017 13:48:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</guid>
+      <description> 浏览器的兼容性写法
+  -moz-对应 Firefox, -webkit-对应 Safari and Chrome -o- for Opera -ms- for Internet Explorer  </description>
+    </item>
+    
+    <item>
+      <title>Js中的css样式</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</link>
+      <pubDate>Thu, 13 Jul 2017 13:45:17 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</guid>
+      <description>js中css样式的不同 1、 JavaScript使用驼峰命名法，而css不是。 比如css中的‘border-radius’，js中的‘borderRadius’； 2、 JavaScript的属性值用字符串表示，而css不是。 比如js中div.style.backgroundColor=&amp;rsquo;&#39;;css中div{}；</description>
+    </item>
+    
+    <item>
+      <title>js特效之带有定时器的无缝轮播图（offset家族）</title>
+      <link>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</link>
+      <pubDate>Sun, 21 May 2017 02:42:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</guid>
+      <description>1.了解offset家族，这里用到offsetLeft(盒子距离左侧的距离)，与style.left不同，style.left可被赋值且盒子要定位。动画原理：盒子本身的位置+位长，用offsetLeft来获取值，style.left来赋值。以下是动画的简单封装。
+function animate(ele,target) { //每次调用计时器时都要清除计时器  clearInterval(ele.timer); //调用计时器  //位长让它有正有负  var speed=target&amp;gt;ele.offsetLeft ? 10:-10; ele.timer=setInterval(function () { var val=target-ele.offsetLeft; ele.style.left=ele.offsetLeft+speed+&amp;#34;px&amp;#34;; if(Math.abs(val)&amp;lt;=10){ ele.style.left=target+&amp;#34;px&amp;#34;; clearInterval(ele.timer); } },30); } 2.思路：实现无缝滚动，先复制第一张图片到ul最后，当滚动到第六张时，将ul的offsetLeft值赋值为0（此时转到第一张），并将ul 的索引值赋值为1，切换到第二张，js代码如下： var all = document.getElementById(&amp;#34;all&amp;#34;); var screen = all.firstElementChild || all.firstChild;//all元素的第一个元素的第一个子节点  var imgWidth = screen.offsetWidth; var ul = screen.firstElementChild || screen.firstChild; var div = screen.lastElementChild || screen.lastChild; var spanArr = div.children; var ol = screen.children\[1\]; //2.复制第一张图片所在的li,添加到ul的最后面。  var ulNewLi = ul.children\[0\].cloneNode(true);//复制ul中第一个节点  ul.</description>
+    </item>
+    
+  </channel>
+</rss>

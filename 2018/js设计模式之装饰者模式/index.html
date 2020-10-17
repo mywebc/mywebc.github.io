@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           js设计模式之装饰者模式 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="js设计模式之装饰者模式 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "js设计模式之装饰者模式",
+    "headline" : "js设计模式之装饰者模式",
+    "description" : "装饰者模式能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加指责，总结来说就是两点，第一为对象添加新功能，第二不改变原有的结构和功能。\n 装饰函数 在javascript中，万物皆对象，函数则是一等对象，当我们想要为函数添加一些功能时，如果直接改写函数，就违背了开放-封闭原则，我们可以保留原有函数的引用，然后直接放到新函数内执行，比如\nlet frank = function() { console.log(\x26#34;i am frank\x26#34;) } \/\/ 我们想为frank添加一个技能时，先用临时变量把原有函数存起来 let oldFrank = frank \/\/ 放到新的frank函数执行 frank = function() { oldFrank() console.log(\x26#34;i am best\x26#34;) } 此做法符合开放-封闭原则，在不改变原函数源代码的情况下为其添加新功能，但是每次添加一个新功能都必须维护一个中间变量（比如oldFrank）,长此以往，要维护的中间变量就会越来越多。\n用AOP装饰函数  AOP就是面向切面编程,把一些与核心业务逻辑无关的功能抽离出来 再通过“动态织入”方式掺入业务逻辑模块\n 在这里我们需要两个方法，一个是前置装饰，一个是后置装饰\nFunction.prototype.before = function(beforeFunc){ var that = this; return function(){ beforeFunc.apply(this, arguments); return that.apply(this, arguments); } } Function.prototype.after = function(afterFunc){ var that = this; return function(){ var ret = that.apply(this, arguments); afterFunc.apply(this, arguments); return ret; } } 为了避免污染原型，我们可以改写before和after方法如下",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-12-24 23:48:13 \x2b0000 UTC",
+    "dateModified" : "2018-12-24 23:48:13 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "278",
+    "keywords" : [ "js设计模式", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">js设计模式之装饰者模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-12-24 itemprop="datePublished">December 24, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>装饰者模式能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加指责，总结来说就是两点，第一为对象添加新功能，第二不改变原有的结构和功能。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h3 id="heading">装饰函数</h3>
+<p>在javascript中，万物皆对象，函数则是一等对象，当我们想要为函数添加一些功能时，如果直接改写函数，就违背了开放-封闭原则，我们可以保留原有函数的引用，然后直接放到新函数内执行，比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">frank</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;i am frank&#34;</span>)
+}
+<span style="color:#75715e">// 我们想为frank添加一个技能时，先用临时变量把原有函数存起来
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">oldFrank</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">frank</span>
+<span style="color:#75715e">// 放到新的frank函数执行
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">frank</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">oldFrank</span>()
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;i am best&#34;</span>)
+}
+</code></pre></div><p>此做法符合开放-封闭原则，在不改变原函数源代码的情况下为其添加新功能，但是每次添加一个新功能都必须维护一个中间变量（比如oldFrank）,长此以往，要维护的中间变量就会越来越多。</p>
+<h3 id="aop">用AOP装饰函数</h3>
+<blockquote>
+<p>AOP就是面向切面编程,把一些与核心业务逻辑无关的功能抽离出来
+再通过“动态织入”方式掺入业务逻辑模块</p>
+</blockquote>
+<p>在这里我们需要两个方法，一个是前置装饰，一个是后置装饰</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Function.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">before</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">beforeFunc</span>){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">that</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#a6e22e">beforeFunc</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">that</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+    }
+}
+Function.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">after</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">afterFunc</span>){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">that</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">that</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#a6e22e">afterFunc</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ret</span>;
+    }
+}
+</code></pre></div><p>为了避免污染原型，我们可以改写before和after方法如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">before</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">fn</span>, <span style="color:#a6e22e">beforefn</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>() {
+        <span style="color:#a6e22e">beforefn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>)
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>)
+    }
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">after</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">fn</span>, <span style="color:#a6e22e">afterfn</span>){
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#a6e22e">afterfn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ret</span>;
+    }
+}
+</code></pre></div><p>以前置装饰为例，先执行新传入的函数，此函数就是新添加的功能，然后再执行原函数，后置装饰同理，这样我们就能在保证原函数不动的情况下，动态的为原函数添加功能。</p>
+<h4 id="aop1">AOP动态的添加函数参数</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">func</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">param</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">param</span>) 
+}
+<span style="color:#a6e22e">func</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">before</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">param</span>) {
+    <span style="color:#a6e22e">param</span>.<span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span>
+})
+<span style="color:#a6e22e">func</span>({<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>}) <span style="color:#75715e">// 输出{a: &#39;a&#39;, b: &#39;b&#39;}
+</span></code></pre></div><h3 id="es7">es7装饰器</h3>
+<ul>
+<li>装饰类</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 1. 装饰器 装饰类
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">testDec</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span> {
+
+}
+<span style="color:#75715e">// 装饰器是一个函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testDec</span>(<span style="color:#a6e22e">target</span>) {
+    <span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">isDec</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+}
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">Demo</span>.<span style="color:#a6e22e">isDec</span>)
+
+<span style="color:#75715e">// 原理
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">decorator</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {}
+<span style="color:#75715e">// 等同于
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {}
+<span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decorator</span>(<span style="color:#a6e22e">A</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">A</span>
+</code></pre></div><ul>
+<li>可以传参</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 可以传参, 需要返回一个函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">mixins</span>(...<span style="color:#a6e22e">list</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">target</span>) {
+        Object.<span style="color:#a6e22e">assign</span>(<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">prototype</span>, ...<span style="color:#a6e22e">list</span>)
+    }
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">foo</span>() {
+        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;foo&#34;</span>)
+    }
+}
+
+<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">mixins</span>(<span style="color:#a6e22e">Foo</span>)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
+
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyClass</span>()
+<span style="color:#75715e">// MyClass是没有foo函数的， 通过装饰器添加
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">foo</span>()
+</code></pre></div><ul>
+<li>装饰方法</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+    <span style="color:#a6e22e">constructor</span>() {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">first</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">last</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B&#39;</span>
+    }
+    <span style="color:#75715e">// 装饰这个方法，变成可读
+</span><span style="color:#75715e"></span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">readonly</span>
+    <span style="color:#a6e22e">name</span>() {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">first</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">last</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+    }
+}
+<span style="color:#75715e">// name 方法名字 descriptor方法值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readonly</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">descriptor</span>) {
+    <span style="color:#a6e22e">descriptor</span>.<span style="color:#a6e22e">writable</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">descriptor</span>
+}
+</code></pre></div><h3 id="-coredecorators">使用第三方库 core-decorators</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 只读
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">readonly</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;core-decorators&#39;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">readonly</span>
+    <span style="color:#a6e22e">name</span>() {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;11&#39;</span>
+    }
+}
+<span style="color:#75715e">// 废弃
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">deprecate</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;core-decorators&#39;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+    <span style="color:#75715e">// 如果这个方法即将废弃，可以使用这个装饰器提醒开发者
+</span><span style="color:#75715e"></span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">deprecate</span>(<span style="color:#e6db74">&#34;即将弃用&#34;</span>)
+    <span style="color:#a6e22e">facepalm</span>(){
+        ...
+    }
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                    #js设计模式</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="js设计模式之适配器模式"><i class="iconfont icon-left"></i>&nbsp;js设计模式之适配器模式</a>
+         
+        
+        <a href="https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="js设计模式之状态模式">js设计模式之状态模式&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

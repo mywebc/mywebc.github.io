@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/categories/php/</link>
+    <description>Recent content in php on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 29 Aug 2017 12:48:51 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>php生成制作验证码</title>
+      <link>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</link>
+      <pubDate>Tue, 29 Aug 2017 12:48:51 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/</guid>
+      <description>&lt;p&gt;PHP生成制作验证码 1.0　　首先先看代码&lt;/p&gt;
+&lt;p&gt;好，现在结合以上代码，来分析分析以上用到的几个函数： ①　　imagecreatetruecolor(); imagecreatetruecolor — 新建一个真彩色图像（感觉哇，那么长，其实仔细一看挺好记的 image/create/true/color，什么是真彩色图像？往下看） 1 resource imagecreatetruecolor ( int $width , int $height ) imagecreatetruecolor() 和 imagecreate()两个函数都能创建画布 1 resource imagecreate ( int $x_size , int $y_size ) imagecreatetruecolor()建立的是一幅大小为 x和 y的黑色图像(默认为黑色[即便叫法就是真彩色图像])，如想改变背景颜色则需要用填充颜色函数 imagefill($img,0,0,$color); imagecreate 新建一个空白图像资源，用imagecolorAllocate()添加背景色 上面两个函数只不过是一个功能的两种方法 ②　　imagecolorallocate(); imagecolorallocate — 为一幅图像分配颜色 1 int imagecolorallocate ( resource $image , int $red , int $green , int $blue ) 颜色分别用 红 绿 蓝三色组合，这些参数是 0 到 255 的整数或者十六进制的 0x00 到 0xFF。 ③　　mt_rand(); mt_rand — 生成更好的随机数 1 int mt_rand ( int $min , int $max ) $min 可选的、返回的最小值（默认：0）　　$max 可选的、返回的最大值（默认：mt_getrandmax()） 这里就是用来让他随机生成背景颜色，0-255随便取值。所以页面没刷新一次画布背景颜色就不一样。 效果图：2.0　　开始往里面做干扰线，干扰点。防止验证图像被秒识别&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

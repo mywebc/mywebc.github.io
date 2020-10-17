@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/" />
+  <link rel="next" href="https://chenxiaolani.com/2020/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2020/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Deno 初体验 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="Deno 初体验 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "Deno 初体验",
+    "headline" : "Deno 初体验",
+    "description" : "最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。\n 安装  安装  curl -fsSL https:\/\/deno.land\/x\/install\/install.sh | sh  编辑bash_profile文件  vi ~\/.bash_profile  添加环境变量  export DENO_INSTALL=\x26quot;\/Users\/yourName\/.deno\x26quot; export PATH=\x26quot;$DENO_INSTALL\/bin:$PATH\x26quot;  执行  source ~\/.bash_profile 体验  打印 Welcome to Deno 新建deno.ts  console.log(\x26#34;Welcome to Deno\x26#34;)  运行deno run deno.ts命令  deno run deno.ts  当然也可以直接运行  deno run https:\/\/deno.land\/std\/examples\/welcome.ts 支持typescript const _name: string = \x26#34;jack\x26#34;; const _age: number = ((): number =\x26gt; (Math.floor(Math.random() * 100)))() console.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-05-24 16:48:25 \x2b0000 UTC",
+    "dateModified" : "2020-05-24 16:48:25 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2020\/deno-%E5%88%9D%E4%BD%93%E9%AA%8C\/",
+    "wordCount" : "68",
+    "keywords" : [ "Deno", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Deno 初体验</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-05-24 itemprop="datePublished">May 24, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h3 id="heading">安装</h3>
+<ul>
+<li>安装</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">curl</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">fsSL</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//deno.land/x/install/install.sh | sh
+</span></code></pre></div><ul>
+<li>编辑bash_profile文件</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">vi</span> <span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">h</span><span style="color:#960050;background-color:#1e0010">_</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">e</span>
+</code></pre></div><ul>
+<li>添加环境变量</li>
+</ul>
+<pre><code>export DENO_INSTALL=&quot;/Users/yourName/.deno&quot;
+export PATH=&quot;$DENO_INSTALL/bin:$PATH&quot;
+</code></pre><ul>
+<li>执行</li>
+</ul>
+<pre><code>source ~/.bash_profile
+</code></pre><h3 id="heading1">体验</h3>
+<ul>
+<li>打印 Welcome to Deno</li>
+<li>新建deno.ts</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Welcome to Deno&#34;</span>)
+</code></pre></div><ul>
+<li>运行deno run deno.ts命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">deno</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">deno</span>.<span style="color:#a6e22e">ts</span>
+</code></pre></div><ul>
+<li>当然也可以直接运行</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">deno</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//deno.land/std/examples/welcome.ts
+</span></code></pre></div><h2 id="typescript">支持typescript</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">_name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jack&#34;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">_age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> (()<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> =&gt; (Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)))()
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">名字是</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">_name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">,年龄是</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">_age</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</code></pre></div><h2 id="heading2">模块引入与浏览器一致</h2>
+<ul>
+<li>原先Common.js模块变为ES模块</li>
+</ul>
+<h2 id="heading3">增加权限</h2>
+<ul>
+<li>增加一些权限</li>
+<li>比如运行一下文件需要加上&ndash;allow-net</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">deno</span> <span style="color:#a6e22e">run</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">net</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//deno.land/std/examples/echo_server.ts
+</span></code></pre></div><h2 id="heading4">自身内置测试打包工具</h2>
+<ul>
+<li>这个就不演示了，具体看官方文档中的examples</li>
+</ul>
+<h2 id="heading5">结尾</h2>
+<p><strong>deno还有很多的特性没列出来，本文只是简单的大致体验了下deno。</strong></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/deno/">
+                    #Deno</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/" class="prev" rel="prev" title="webpack配置app和pc多入口"><i class="iconfont icon-left"></i>&nbsp;webpack配置app和pc多入口</a>
+         
+        
+        <a href="https://chenxiaolani.com/2020/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="next" rel="next" title="hugo博客搭建">hugo博客搭建&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

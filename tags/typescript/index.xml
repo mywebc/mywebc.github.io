@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TypeScript on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/typescript/</link>
+    <description>Recent content in TypeScript on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 17 Sep 2018 23:25:48 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TypeScript入门</title>
+      <link>https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 17 Sep 2018 23:25:48 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/</guid>
+      <description>TypeScript主要提供了类型系统和对ES6的支持,对于一个需要长期维护的项目，使用TypeScript可以减少维护成本。使用VSCode编辑器，默认支持TypeScript，其次需要下载npm install -g typescript，因为我们需要tsc命令来将ts文件编译为js。
+  参考教程https://github.com/xcatliu/typescript-tutorial/blob/master/README.md
+ 基本数据类型 布尔值、数值、字符串、null、undefined Symbol Symbol是ES6中的基本数据类型，返回的值为唯一
+类型标注 我们声明变量可以如下声明
+let a: boolean = false let b: string = &amp;#39;11&amp;#39; let c: number = 11 let d: null = null let e: undefined = undefined 当然还有 void ,如果一个变量声明为void，那么你只能将它赋值给null和undefined
+let a: void = null let a: void = undefined 另外undefined 和 null 是所有类型的 子类型 ，所以你可以将它们赋值给所有类型,下面都不会报错的。
+let a: number = null let a: string = undefined let a: boolean = null 使用 any 指定任意类型</description>
+    </item>
+    
+  </channel>
+</rss>

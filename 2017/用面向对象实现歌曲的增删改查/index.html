@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           用面向对象实现歌曲的增删改查 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="用面向对象实现歌曲的增删改查 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "用面向对象实现歌曲的增删改查",
+    "headline" : "用面向对象实现歌曲的增删改查",
+    "description" : "\x3cblockquote\x3e\n\x3cp\x3e自定义构造函数，在其原型对象上书写增删改查函数，再调用拼接字符串到HTML页面即可； 构造函数如下：\x3c\/p\x3e\n\x3c\/blockquote\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-06 01:41:37 \x2b0000 UTC",
+    "dateModified" : "2017-08-06 01:41:37 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5\/",
+    "wordCount" : "133",
+    "keywords" : [ "js", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">用面向对象实现歌曲的增删改查</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-06 itemprop="datePublished">August 6, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>自定义构造函数，在其原型对象上书写增删改查函数，再调用拼接字符串到HTML页面即可； 构造函数如下：</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mp3</span> (<span style="color:#a6e22e">songs</span>){<span style="color:#75715e">//传入歌曲
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span><span style="color:#f92672">=</span><span style="color:#a6e22e">songs</span><span style="color:#f92672">||</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#960050;background-color:#1e0010">\</span>];<span style="color:#75715e">//如果传入了歌曲就让歌曲数组等于他，否则等于空数组
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 要初始化界面
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">init</span>();
+    	}
+    <span style="color:#75715e">/*在它的原型对象中书写增删改查方法*/</span>
+    <span style="color:#a6e22e">Mp3</span>.<span style="color:#a6e22e">prototype</span><span style="color:#f92672">=</span>{
+    <span style="color:#75715e">// 已经替换了原型对象用constructor会丢失，需要手动设置
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span><span style="color:#a6e22e">Mp3</span>,
+    <span style="color:#75715e">/*书写初始化函数，进来时如果有数组，就要把他们拼接好并且全部显示到界面上*/</span>
+    <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+    <span style="color:#75715e">// render就是渲染的意思，我们要为他写函数
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>();
+    	},
+    <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+    <span style="color:#75715e">// 把歌曲信息拼接好塞到父盒子里
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">listDiv</span><span style="color:#f92672">=</span>document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#c&#39;</span>);
+    <span style="color:#75715e">// 定义一个空数组用来装拼接的字符串
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">strArr</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#960050;background-color:#1e0010">\</span>];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">song</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">\</span>];
+    <span style="color:#75715e">//这里用push往数组里加这样一个字符串
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">strArr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>
+		<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">song</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>
+		<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">song</span>.<span style="color:#a6e22e">singer</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>
+		<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#39;</span>);
+    		}
+    <span style="color:#75715e">//join() 方法用于把数组中的所有元素放入一个字符串,如果省略参数以逗号为分隔符
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">str</span><span style="color:#f92672">=</span><span style="color:#a6e22e">strArr</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+    <span style="color:#a6e22e">listDiv</span>.<span style="color:#a6e22e">innerHTML</span><span style="color:#f92672">=</span><span style="color:#a6e22e">str</span>;
+    	},
+    <span style="color:#75715e">//增加
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">addSong</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">songName</span>,<span style="color:#a6e22e">singer</span>){
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">songName</span><span style="color:#f92672">||</span><span style="color:#f92672">!</span><span style="color:#a6e22e">singer</span>){
+    	<span style="color:#66d9ef">throw</span><span style="color:#e6db74">&#39;内容不能为空！&#39;</span>;
+    		};
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">temp</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span><span style="color:#a6e22e">songName</span>,<span style="color:#a6e22e">singer</span><span style="color:#f92672">:</span><span style="color:#a6e22e">singer</span>};
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">temp</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>();
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">temp</span>;
+    	},
+    <span style="color:#75715e">// 删除
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">removeSong</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">songName</span>){
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">song</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectSong</span>(<span style="color:#a6e22e">songName</span>);
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">song</span>);
+        <span style="color:#75715e">// 判断有没有找到
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">index</span><span style="color:#f92672">!=</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">index</span>,<span style="color:#ae81ff">1</span>);
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>();
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+       }<span style="color:#66d9ef">else</span> {
+    	    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+    	}
+    },
+    <span style="color:#75715e">// 改
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">updateSong</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">songName</span>,<span style="color:#a6e22e">singer</span>){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">song</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectSong</span>(<span style="color:#a6e22e">songName</span>);
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">song</span><span style="color:#f92672">==</span><span style="color:#66d9ef">null</span>){
+    	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+    	}<span style="color:#66d9ef">else</span> {
+    		<span style="color:#a6e22e">song</span>.<span style="color:#a6e22e">singer</span><span style="color:#f92672">=</span><span style="color:#a6e22e">singer</span>;
+    		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>();
+    		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">song</span>;
+    		}
+
+    	},
+    <span style="color:#75715e">// 查
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">selectSong</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">songName</span>){
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">song</span><span style="color:#f92672">=</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">songList</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">\</span>];
+    	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">song</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">==</span><span style="color:#a6e22e">songName</span>){
+    		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">song</span>;
+    			}
+    		}
+    	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+    	}
+    };
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js/">
+                    #js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/" class="prev" rel="prev" title="js特效之三大家族、event事件"><i class="iconfont icon-left"></i>&nbsp;js特效之三大家族、event事件</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="next" rel="next" title="javascript基础知识复习（一）基本概念">javascript基础知识复习（一）基本概念&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

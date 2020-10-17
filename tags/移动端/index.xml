@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>移动端 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/</link>
+    <description>Recent content in 移动端 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Wed, 19 Jul 2017 19:39:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>做移动端的注意点</title>
+      <link>https://chenxiaolani.com/2017/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+      <pubDate>Wed, 19 Jul 2017 19:39:13 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+      <description> 做移动端的注意点
+  通栏中，不管多大的分辨率，左边和右边的距离都是不变的，我们可以将其input宽度设为100%，再在其父盒子中给出padding,父盒子不要给宽度； 很多时候样式都会被覆盖，在属性值后加上!important或者在前面加上其父级； sublime中alt+F3全局修改同一单词； 在浏览器中方向是从左往右，从上往下； 为了代码的通用性，动态获取dom元素，不能出现magicNumber; 用js设置自定义属性比如dataset[&amp;lsquo;index&amp;rsquo;]，读取是this.dataset.index，但是用读取的值进行算数运算时不准确; 在选择器中，.header div指父盒子header下所有div；.header&amp;gt;div指父盒子header的所有下一级div;  </description>
+    </item>
+    
+    <item>
+      <title>移动端京东首页</title>
+      <link>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</link>
+      <pubDate>Sun, 16 Jul 2017 08:19:03 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</guid>
+      <description> 基本的静态布局 js效果：轮播图、倒计时、通栏透明度。
+  从Wordpress迁移到hexo后地址失效啦！  </description>
+    </item>
+    
+    <item>
+      <title>移动端的touch事件</title>
+      <link>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Fri, 14 Jul 2017 08:43:38 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</guid>
+      <description> 移动端的touch主要用到一下三种：
+  touchstart://手指放到屏幕上时触发 touchmove:指在屏幕上滑动式触发 touchend://手指离开屏幕时触发 每个触摸事件被触发后，会生成一个event对象， event//手对象里额外包括以下三个触摸列表 touches: //当前屏幕上所有手指的列表 targetTouches: //当前dom元素上手指的列表，尽量使用这个代替touches changedTouches: //涉及当前事件的手指的列表，尽量使用这个代替touches 这些列表里的每次触摸由touch对象组成， touch对象里包含着触摸信息， 主要属性如下： clientX / clientY: //触摸点相对浏览器窗口的位置 pageX / pageY: //触摸点相对于页面的位置 screenX / screenY: //触摸点相对于屏幕的位置 小案列：   </description>
+    </item>
+    
+  </channel>
+</rss>

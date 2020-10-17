@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           javascript基础知识复习（二）面向对象 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="javascript基础知识复习（二）面向对象 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "javascript基础知识复习（二）面向对象",
+    "headline" : "javascript基础知识复习（二）面向对象",
+    "description" : "\x3cp\x3e\x3cstrong\x3e一、什么是面向对象？与面向过程又有什么关系？\x3c\/strong\x3e\n（1）面向对象是一种思维方式，解决的重点放在对象上；\n（2）面向过程也是一种思维方式，解决的重点放在详细的步骤上； 举个例子：如何去超市买东西？\n（a）从面向对象的角度出发，我们只需要一辆车，还有自己就好了；\n（b）从面向过程的角度出发，我们要先拿钱，打开门，开车，进超市； 一句话概括它们之间的关系就是：面向对象是面向过程的封装。\n\x3cstrong\x3e二、js中的对象\x3c\/strong\x3e\njs中键值对的集合就是对象。\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-06 18:36:39 \x2b0000 UTC",
+    "dateModified" : "2017-08-06 18:36:39 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/",
+    "wordCount" : "242",
+    "keywords" : [ "javascript基础知识复习", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">javascript基础知识复习（二）面向对象</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-06 itemprop="datePublished">August 6, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><strong>一、什么是面向对象？与面向过程又有什么关系？</strong>
+（1）面向对象是一种思维方式，解决的重点放在对象上；
+（2）面向过程也是一种思维方式，解决的重点放在详细的步骤上； 举个例子：如何去超市买东西？
+（a）从面向对象的角度出发，我们只需要一辆车，还有自己就好了；
+（b）从面向过程的角度出发，我们要先拿钱，打开门，开车，进超市； 一句话概括它们之间的关系就是：面向对象是面向过程的封装。
+<strong>二、js中的对象</strong>
+js中键值对的集合就是对象。</p>
+<p><strong>三、创建对象的几种方法</strong>
+（1）使用字面量创建对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;lili&#39;</span>,<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;12&#39;</span>};
+</code></pre></div><p>这种方法会造成代码冗余，资源浪费；
+（2）使用内置构造函数创建对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Object();
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;lili&#39;</span>;
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;12&#39;</span>;
+</code></pre></div><p>创建的代码是空对象，需要为其手动添加对象属性；
+（3）工厂模式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createObj</span>(<span style="color:#a6e22e">age</span>,<span style="color:#a6e22e">name</span>){
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Object();
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">sayHi</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;你好&#39;</span>)<span style="color:#960050;background-color:#1e0010">；</span>
+   }<span style="color:#960050;background-color:#1e0010">；</span>
+<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o1</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">createObj</span>(){<span style="color:#e6db74">&#39;12&#39;</span>,<span style="color:#e6db74">&#39;lili&#39;</span>};
+</code></pre></div><p>每次调用时都会为这个函数在内存中开辟空间，浪费资源。
+（4）自定义构造函数，注意函数名要大写</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">MyObj</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayHi</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hi&#39;</span>);
+  };
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myobj</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyObj</span>(<span style="color:#e6db74">&#39;lili&#39;</span>,<span style="color:#e6db74">&#39;12&#39;</span>);
+</code></pre></div><p>this指的是new出来的对象（即调用者）,和工厂模式差不多，每次调用的时候都会为里面的函数开辟新的内存地址，但是函数的代码功能却是相同的，造成内存资源浪费。 （5）自定义构造函数模式原型模式组合 所以我们需要引入原型概念，将构造函数里的属性和方法分开，将方法放到原型里实现共享。
+原型概念：在构造函数创建出来的时候，系统会默认的帮构造函数创建并关联一个神秘的对象，这个对象就是原型，原型默认的是一个空的对象。
+原型中的属性和方法，都可以被使用该构造函数创建出来的对象使用。给原型添加属性和方法可以使用构造函数的prototype属性，所以第四种方法可以这样修改：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">MyObj</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+}
+<span style="color:#a6e22e">MyObj</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">saiHi</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hi&#39;</span>);
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myobj</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyObj</span>(<span style="color:#e6db74">&#39;lili&#39;</span>,<span style="color:#e6db74">&#39;12&#39;</span>);
+<span style="color:#a6e22e">myobj</span>.<span style="color:#a6e22e">sayHi</span>();<span style="color:#75715e">//可以调用
+</span></code></pre></div><p>这种模式是目前用的最多的,这里是通过构造函数的prototype属性访问原型，也可以对象的__proto__属性访问（主要调试用，不推荐这样使用）。
+(6) 动态的原型模式 调用函数前先判断是否需要用到原型，如果需要就初始化，不需要的话，这样比第五种就少了初始化这个步骤。用instanceof或者typeof来判断其类型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span> (<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>,<span style="color:#a6e22e">job</span>){
+<span style="color:#75715e">//属性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">job</span><span style="color:#f92672">=</span><span style="color:#a6e22e">job</span>;
+<span style="color:#75715e">//方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayName</span><span style="color:#f92672">!=</span><span style="color:#e6db74">&#39;function&#39;</span>){
+<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>(){
+   <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;this.name&#39;</span>);
+   }
+ }
+}
+</code></pre></div><p>（7）寄生构造函数模式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>, <span style="color:#a6e22e">job</span>){
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">job</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+                <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+            };    
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+        }
+        
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">friend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#34;Nicholas&#34;</span>, <span style="color:#ae81ff">29</span>, <span style="color:#e6db74">&#34;Software Engineer&#34;</span>);
+        <span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">sayName</span>();  <span style="color:#75715e">//&#34;Nicholas&#34;
+</span></code></pre></div><p>这个模式其实很少用，跟工厂模式差不多，只不过工厂模式没有通过new来生成对象。假设我们需要为对象添加一个额外的方法，可以使用这个模式。因为如果在构造函数中直接添加，会污染其他对象，如果在原型添加，会使所有的实例继承这个方法，没必要，所以我添加的这个方法是跟构造函数和其原型是没有任何关系的。下面我想为对象colors添加一个toPipedString方法就可以用这个模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>, <span style="color:#a6e22e">job</span>){
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">job</span>;
+            <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+                <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+            };    
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+        }
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">friend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#34;Nicholas&#34;</span>, <span style="color:#ae81ff">29</span>, <span style="color:#e6db74">&#34;Software Engineer&#34;</span>);
+        <span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">sayName</span>();  <span style="color:#75715e">//&#34;Nicholas&#34;
+</span></code></pre></div><p>（8）稳妥构造函数模式 稳妥构造函数采用的是与寄生构造函数模式相似的模式，除了下列两点不同：
+1.创建对象的实例方法不引用this；
+2.不使用new调用构造函数；,可以在一些安全环境下使用这个模式，函数里的私有属性是不可以被修改的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>, <span style="color:#a6e22e">job</span>) {
+   <span style="color:#75715e">//创建要返回的对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+    <span style="color:#75715e">//可以在这里定义私有变量和函数
+</span><span style="color:#75715e"></span>     <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name</span>;
+     <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">=</span><span style="color:#a6e22e">age</span>;
+    <span style="color:#75715e">//添加方法
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+        <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">name</span>);
+    }
+
+    <span style="color:#75715e">//返回对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+}
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">friend</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#39;Nicholas&#39;</span>, <span style="color:#ae81ff">29</span>, <span style="color:#e6db74">&#39;Software Engineer&#39;</span>);
+    <span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">sayName</span>(); <span style="color:#75715e">// Nicholas
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;lili&#39;</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//Nicholas,修改不了name
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">age</span>);<span style="color:#75715e">//29
+</span></code></pre></div><p><strong>五、关于原型其它方面</strong>
+（1）原型链：每个构造函数都有原型对象，每个对象都会有构造函数，每个构造函数的原型都是一个对象，那么这个原型对象也会有构造函数，那么这个原型对象的构造函数也会有原型对象，这样就会形成一个链式的结构，称为原型链。
+（2）属性搜索原则：
+1.当访问一个对象的成员的时候，会现在自身找有没有,如果找到直接使用，
+2.如果没有找到，则去当前对象的原型对象中去查找，如果找到了直接使用，
+3.如果没有找到，继续找原型对象的原型对象，如果找到了，直接使用，
+4.如果没有找到，则继续向上查找，直到Object.prototype，如果还是没有，就报错。
+（3）替换原型对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(){
+        }
+        <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;nice to meet you&#34;</span>);
+        }
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>();
+        <span style="color:#75715e">//下面这种格式（使用字面量的方式赋值）就是替换了原型对象
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+        };
+</code></pre></div><p>原型对象被替换后我们访问原来原型对象中的方法是访问不到的，原型对象中有一个constructor属性，指向构造函数，我们需要手动赋值，保证构造函数&mdash;原型&mdash;-对象之间这样的三角关系，格式  constructor  函数名
+（4）原型继承 原型继承：利用原型中的成员可以被和其相关的对象共享这一特性，可以实现继承这种 实现继承的方式，就叫做原型继承。（原型继承会在js中的继承中讲到） 最后给出原型链的完整图：</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+                    #javascript基础知识复习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="prev" rel="prev" title="javascript基础知识复习（一）基本概念"><i class="iconfont icon-left"></i>&nbsp;javascript基础知识复习（一）基本概念</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/" class="next" rel="next" title="javascript基础知识复习（三）js中的继承">javascript基础知识复习（三）js中的继承&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

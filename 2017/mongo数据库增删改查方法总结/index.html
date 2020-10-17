@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           mongo数据库增删改查方法总结 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="mongo数据库增删改查方法总结 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "mongo数据库增删改查方法总结",
+    "headline" : "mongo数据库增删改查方法总结",
+    "description" : "\x3ch4 id=\x221\x22\x3e1.介绍\x3c\/h4\x3e\n\x3cp\x3emongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。\nmongo下载地址：\x3ca href=\x22https:\/\/www.mongodb.com\/download-center?jmp=nav#community\x22\x3e\x3ca href=\x22https:\/\/www.mongodb.com\/download-center?jmp=nav#community\x22\x3ehttps:\/\/www.mongodb.com\/download-center?jmp=nav#community\x3c\/a\x3e\x3c\/a\x3e\nmongoAPI文档：\x3ca href=\x22https:\/\/docs.mongodb.org\/manual\/\x22\x3e\x3ca href=\x22https:\/\/docs.mongodb.org\/manual\/\x22\x3ehttps:\/\/docs.mongodb.org\/manual\/\x3c\/a\x3e\x3c\/a\x3e\n下载安装好后，添加mongo环境变量，在命令行里输入mongod \x26ndash;dbpath f:\\mongo,开启数据库，路径为f:\\mongo，\n另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。\n其它基础命令：\nshow dbs:查看所有数据库\ndb:查看当前数据库\nuse student:切换到student数据库，如果没有则创建\ndb.student.drop();删除student集合\ndb.dropDatabase();删除当前所在数据库\ndb.getCollectionNames();获取当前数据库下的所有文档 cls:清屏\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-11-02 23:23:44 \x2b0000 UTC",
+    "dateModified" : "2017-11-02 23:23:44 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93\/",
+    "wordCount" : "92",
+    "keywords" : [ "mongo", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">mongo数据库增删改查方法总结</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-11-02 itemprop="datePublished">November 2, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="1">1.介绍</h4>
+<p>mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，每个文档就是一个json。具体的看下图就知道了：  所有的操作都是在命令行里操作的，当然网上也有很多可视化的工具，比如mongo VUE。
+mongo下载地址：<a href="https://www.mongodb.com/download-center?jmp=nav#community"><a href="https://www.mongodb.com/download-center?jmp=nav#community">https://www.mongodb.com/download-center?jmp=nav#community</a></a>
+mongoAPI文档：<a href="https://docs.mongodb.org/manual/"><a href="https://docs.mongodb.org/manual/">https://docs.mongodb.org/manual/</a></a>
+下载安装好后，添加mongo环境变量，在命令行里输入mongod &ndash;dbpath f:\mongo,开启数据库，路径为f:\mongo，
+另起命令行窗口，输入mongo连接数据库，接下来就可以进行以下操作了。
+其它基础命令：
+show dbs:查看所有数据库
+db:查看当前数据库
+use student:切换到student数据库，如果没有则创建
+db.student.drop();删除student集合
+db.dropDatabase();删除当前所在数据库
+db.getCollectionNames();获取当前数据库下的所有文档 cls:清屏</p>
+<h4 id="2">2.插入</h4>
+<p>db.student.insert({&ldquo;name&rdquo;:&ldquo;小明&rdquo;});
+可以在外面写好json文件，使用命令导入：
+mongoimport &ndash;db test &ndash;collection restaurants &ndash;drop &ndash;file primer-dataset.json -db test 想往哪个数据库里面导入
+&ndash;collection restaurants 想往哪个集合中导入
+&ndash;drop 是否把集合清空
+&ndash;file primer-dataset.json 哪个文件</p>
+<h4 id="3">3.查找</h4>
+<p>db.restaurants.find()
+精确匹配： db.student.find({&ldquo;score.shuxue&rdquo;:70});
+多个条件： db.student.find({&ldquo;score.shuxue&rdquo;:70 , &ldquo;age&rdquo;:12})
+大于条件： db.student.find({&ldquo;score.yuwen&rdquo;:{$gt:50}});
+或者。寻找所有年龄是9岁，或者11岁的学生 db.student.find({$or:[{&ldquo;age&rdquo;:9},{&ldquo;age&rdquo;:11}]});
+查找完毕之后，打点调用sort，表示升降排序。 db.restaurants.find().sort( { &ldquo;borough&rdquo;: 1, &ldquo;address.zipcode&rdquo;: 1 } )</p>
+<h4 id="4">4.修改</h4>
+<p>先要找到再修改，使用$set db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{$set:{&ldquo;age&rdquo;:16}});
+查找数学成绩是70，把年龄更改为33岁： db.student.update({&ldquo;score.shuxue&rdquo;:70},{$set:{&ldquo;age&rdquo;:33}});
+更改所有匹配项目：添加multi: true： db.student.update({&ldquo;sex&rdquo;:&ldquo;男&rdquo;},{$set:{&ldquo;age&rdquo;:33}},{multi: true});
+完整替换，不出现$set关键字了： db.student.update({&ldquo;name&rdquo;:&ldquo;小明&rdquo;},{&ldquo;name&rdquo;:&ldquo;大明&rdquo;,&ldquo;age&rdquo;:16});</p>
+<h4 id="5">5.删除</h4>
+<p>db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Manhattan&rdquo; } ) 只删除一个：
+db.restaurants.remove( { &ldquo;borough&rdquo;: &ldquo;Queens&rdquo; }, { justOne: true } )</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/mongo/">
+                    #mongo</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/" class="prev" rel="prev" title="nodejs中书写自己的require方法"><i class="iconfont icon-left"></i>&nbsp;nodejs中书写自己的require方法</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" class="next" rel="next" title="慕课网项目：炸鸡音乐播放器">慕课网项目：炸鸡音乐播放器&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

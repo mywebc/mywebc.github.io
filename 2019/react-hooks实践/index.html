@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/" />
+  <link rel="next" href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2019/react-hooks%E5%AE%9E%E8%B7%B5/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           React Hooks实践 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="React Hooks实践 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "React Hooks实践",
+    "headline" : "React Hooks实践",
+    "description" : "React Hook 是React16.8提出来的一个新特性，其意义就在于我们可以让函数组件变得跟类组件一样有能力管理自己的状态，这意味着我们以后写的所有组件都可以是Function，对于初学者来说降低了学习成本（压根不用管this是个啥），而且我们可以自定义hook，能够提高状态逻辑的复用，从而也便于维护。\n State Hooks useState  react为我们提供了useState这个函数，使用此函数就可以取代我们之前的每个组件的状态管理了；  import { useState } from \x26#39;react\x26#39; function count() { \/\/ useState函数为我们解构了一个变量num和一个setNum函数，并且将变量初始值赋值为“0”  const [num, setNum] = useState(\x26#34;0\x26#34;); \/\/ 我们在这里读取num的值， 并且每点击一次按钮都会使num\x2b1  return \x26lt;button onClick={() =\x26gt; {setNum(num \x2b 1)}}\x26gt;{num}\x26lt;\/button\x26gt; }  当我们每次改变num的值时，就会重新执行count函数，不过不用担心，num的初始化只会执行一次;  useReducer  其实useState也是基于useReducer的，用过redux的人对reducer不陌生，reducer是一个纯函数，会根据action中type的不同返回改变后新的状态;  import { useReducer } from \x26#39;react\x26#39; \/\/ 创建一个reducer function myReducer(state, action){ switch(action.type) { case \x26#34;add\x26#34;: return state \x2b 1 case \x26#34;minus\x26#34;: return state -1 default: return state } } \/\/ 函数组件 function count() { \/\/ 传入reducer和初始值  const [num, dispatchNum] = useReducer(myReducer, \x26#34;0\x26#34;); return \x26lt;button onClick={() =\x26gt; {dispatchNum({type: \x26#34;add\x26#34;})}}\x26gt;{num}\x26lt;\/button\x26gt; } Effect Hook  Effect Hook可以看作是代替了一些生命周期函数  import { useState, useEffect } from \x26#39;react\x26#39; function count() { const [num, setNum] = useState(\x26#34;0\x26#34;); useEffect(() =\x26gt; { const interval = setInterval(() =\x26gt; { setNum(num \x2b 1) }, 1000) \/\/ 最后要return一下，记得清除定时器  return () =\x26gt; clearInterval(interval) }, [num]) return \x26lt;button onClick={() =\x26gt; {setNum(num \x2b 1)}}\x26gt;{num}\x26lt;\/button\x26gt; }  useEffect函数中第一个参数为组件第一次渲染时执行的函数（最后return的是定时器卸载的函数，可以看作是componentWillUnMount生命周期内做的事），第二参数表示依赖的值，只有依赖的值变化时，useEffect才会重新执行；  Context Hook  顾名思义这是一个上下文hook  \/\/ 新建一个context文件myContext.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-02 21:51:06 \x2b0000 UTC",
+    "dateModified" : "2019-08-02 21:51:06 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2019\/react-hooks%E5%AE%9E%E8%B7%B5\/",
+    "wordCount" : "242",
+    "keywords" : [ "react", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">React Hooks实践</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-02 itemprop="datePublished">August 2, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/react/"> React </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>React Hook 是React16.8提出来的一个新特性，其意义就在于我们可以让函数组件变得跟类组件一样有能力管理自己的状态，这意味着我们以后写的所有组件都可以是Function，对于初学者来说降低了学习成本（压根不用管this是个啥），而且我们可以自定义hook，能够提高状态逻辑的复用，从而也便于维护。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="state-hooks">State Hooks</h2>
+<h3 id="usestate">useState</h3>
+<ul>
+<li>react为我们提供了useState这个函数，使用此函数就可以取代我们之前的每个组件的状态管理了；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">count</span>() {
+    <span style="color:#75715e">// useState函数为我们解构了一个变量num和一个setNum函数，并且将变量初始值赋值为“0”
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">setNum</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#34;0&#34;</span>);
+    <span style="color:#75715e">// 我们在这里读取num的值， 并且每点击一次按钮都会使num+1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; {<span style="color:#a6e22e">setNum</span>(<span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)}}<span style="color:#f92672">&gt;</span>{<span style="color:#a6e22e">num</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+}
+</code></pre></div><ul>
+<li>当我们每次改变num的值时，就会重新执行count函数，不过不用担心，num的初始化只会执行一次;</li>
+</ul>
+<h3 id="usereducer">useReducer</h3>
+<ul>
+<li>其实useState也是基于useReducer的，用过redux的人对reducer不陌生，reducer是一个纯函数，会根据action中type的不同返回改变后新的状态;</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useReducer</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+<span style="color:#75715e">// 创建一个reducer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myReducer</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">action</span>){
+    <span style="color:#66d9ef">switch</span>(<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">type</span>) {
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;add&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;minus&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>
+    }
+}
+<span style="color:#75715e">// 函数组件 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">count</span>() {
+    <span style="color:#75715e">// 传入reducer和初始值
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">dispatchNum</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useReducer</span>(<span style="color:#a6e22e">myReducer</span>, <span style="color:#e6db74">&#34;0&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; {<span style="color:#a6e22e">dispatchNum</span>({<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;add&#34;</span>})}}<span style="color:#f92672">&gt;</span>{<span style="color:#a6e22e">num</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+}
+</code></pre></div><h2 id="effect-hook">Effect Hook</h2>
+<ul>
+<li>Effect Hook可以看作是代替了一些生命周期函数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">count</span>() {
+    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">setNum</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#34;0&#34;</span>);
+    <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>(() =&gt; {
+            <span style="color:#a6e22e">setNum</span>(<span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+        }, <span style="color:#ae81ff">1000</span>)
+        <span style="color:#75715e">// 最后要return一下，记得清除定时器
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">interval</span>)
+    }, [<span style="color:#a6e22e">num</span>])
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; {<span style="color:#a6e22e">setNum</span>(<span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)}}<span style="color:#f92672">&gt;</span>{<span style="color:#a6e22e">num</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+}
+</code></pre></div><ul>
+<li>useEffect函数中第一个参数为组件第一次渲染时执行的函数（最后return的是定时器卸载的函数，可以看作是componentWillUnMount生命周期内做的事），第二参数表示依赖的值，只有依赖的值变化时，useEffect才会重新执行；</li>
+</ul>
+<h2 id="context-hook">Context Hook</h2>
+<ul>
+<li>顾名思义这是一个上下文hook</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 新建一个context文件myContext.js
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">createContext</span>(<span style="color:#e6db74">&#34;&#34;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 在另一个文件中引入
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">MyContext</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./myContext&#39;</span>
+<span style="color:#75715e">// 通过MyContext.Provider 传值
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MyContext</span>.<span style="color:#a6e22e">Provider</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Component</span><span style="color:#f92672">/</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">M</span><span style="color:#960050;background-color:#1e0010">y</span><span style="color:#960050;background-color:#1e0010">C</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">x</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">P</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 在组件中使用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">useContext</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">MyContext</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./myContext&#39;</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contextValue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useContext</span>(<span style="color:#a6e22e">MyContext</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>{<span style="color:#a6e22e">contextValue</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+}
+</code></pre></div><h2 id="ref-hook">Ref Hook</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">useRef</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testRef</span>() {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputRef</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRef</span>()
+    <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">inputRef</span>)
+    })
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">input</span> <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">inputRef</span>}<span style="color:#f92672">&gt;</span><span style="color:#a6e22e">测试ref</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+}
+</code></pre></div><h2 id="hook">自定义Hook</h2>
+<ul>
+<li>hook其实就是一个函数，在这个函数里我们也可以使用其它hook,自定义的hook要以use开头,下面是官网上的例子，已经很好了；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">useFriendStatus</span>(<span style="color:#a6e22e">friendID</span>) {
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">isOnline</span>, <span style="color:#a6e22e">setIsOnline</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">null</span>);
+
+  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleStatusChange</span>(<span style="color:#a6e22e">status</span>) {
+      <span style="color:#a6e22e">setIsOnline</span>(<span style="color:#a6e22e">status</span>.<span style="color:#a6e22e">isOnline</span>);
+    }
+
+    <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">subscribeToFriendStatus</span>(<span style="color:#a6e22e">friendID</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+    <span style="color:#66d9ef">return</span> () =&gt; {
+      <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">unsubscribeFromFriendStatus</span>(<span style="color:#a6e22e">friendID</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+    };
+  });
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isOnline</span>;
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/react/">
+                    #react</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/java%E4%B8%AD%E8%A7%A3%E6%9E%90xml/" class="prev" rel="prev" title="java中解析XML"><i class="iconfont icon-left"></i>&nbsp;java中解析XML</a>
+         
+        
+        <a href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/" class="next" rel="next" title="使用OAuth授权第三方网站">使用OAuth授权第三方网站&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

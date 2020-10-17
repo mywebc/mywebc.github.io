@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           js特效之三大家族、event事件 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="js特效之三大家族、event事件 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "js特效之三大家族、event事件",
+    "headline" : "js特效之三大家族、event事件",
+    "description" : "\x3cp\x3e老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 1、offset家族( 5个属性) （1）offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width\x2bpadding\x2bborder; offsetHeight=height\x2bpadding\x2bborder；\n（2）offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 （3）offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width\/height\/top\/left的比较；\na).offset家族只可以只读，而style系列可以读写；\nb).offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;\nc).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。\x3c\/p\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-01 20:30:14 \x2b0000 UTC",
+    "dateModified" : "2017-08-01 20:30:14 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6\/",
+    "wordCount" : "85",
+    "keywords" : [ "js", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">js特效之三大家族、event事件</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-01 itemprop="datePublished">August 1, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 1、offset家族( 5个属性) （1）offsetWidth和offsetHeight：检测盒子自身的宽高； 注意：包含盒子的padding和border。 offsetWidth=width+padding+border; offsetHeight=height+padding+border；
+（2）offsetLeft和offsetTop：检测距离父盒子有定位的左侧和上面的距离； 注意：父盒子没有定位，往上找有定位的盒子，如果都没有以body为准，从父盒子的 padding开始算，border不算。 （3）offsetParent：用于获取该元素中有定位的最近父级元素； 注意：如果当前元素的父级元素都没有进行定位,那么offsetParent为body。 （4）与style.width/height/top/left的比较；
+a).offset家族只可以只读，而style系列可以读写；
+b).offset家族返回的是数值类型（四舍五入），style系列返回的是字符串（带px），特殊情况：在父盒子有定位的情况下，offsetLeft==style.left（没有 px）;
+c).offsetLeft 和 offsetTop 可以返回没有定位的元素的left值和top值,而style 不可以。</p>
+<p>2、scroll家族（4个属性） （1）scrollWidth和scrollHeight：检测内容的宽高； 注意：如果内容超出盒子，显示内容的高度，如果不超出盒子，IE567可以显示实际内 容宽高，IE8+火狐+谷歌显示盒子大小。 （2）scrollTop和scrollLeft（有兼容性问题）：网页被浏览器遮住的头部和左边的部 分； （3）处理兼容性问题： - 未声明 DTD（谷歌只认识他）（火狐IE9+认识他） document.body.scrollTop/scrollLeft - 已经声明DTD（IE678只认识他）(火狐IE9+认识他) document.documentElement.scrollTop/scrollLeft - 火狐/谷歌/ie9+以上支持的(不管DTD) window.pageYOffest/pageXOffest 兼容性写法： var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop||0; 封装scroll方法 function Scroll() { return { &ldquo;left&rdquo;: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft || 0, &ldquo;top&rdquo;: window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop || 0 }; } 用scroll().top或scroll().left来获取值。 3.client家族（6个属性） （1）.clientWidth和clientHeight：网页可视区内容宽高； 注意：盒子调用：指盒子本身宽高（包括padding），HTML/body调用指可视区域大 小。 （2）.clientX和clientY:鼠标距离可视区域左侧、上面的距离(event调用）； （3）.clinetTop和clientLeft:盒子的border宽高； event事件：在触发某个事件时都会产生对象event，里面包含了一些事件信息。 为了兼容ie678，可以这样写 event=event||window.event; 其中有6重要属性： （1）pageX和pageY：光标在网页中的位置(距离左侧和上侧)；//参照点为左上角，算滚动区域 （2）screenX和screenYY：光标在屏幕中的位置(距离左侧和上侧)；//相对于屏幕 （3）clientX和clientY:光标在浏览器中位置(距离左侧和上侧)；//参照点为左上角，不会算上滚动区域</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js/">
+                    #js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/" class="prev" rel="prev" title="旋转轮播图"><i class="iconfont icon-left"></i>&nbsp;旋转轮播图</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="next" rel="next" title="用面向对象实现歌曲的增删改查">用面向对象实现歌曲的增删改查&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

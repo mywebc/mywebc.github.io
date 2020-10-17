@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           理解http协议 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="理解http协议 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "理解http协议",
+    "headline" : "理解http协议",
+    "description" : "\x3cblockquote\x3e\n\x3cp\x3ehttp协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。\x3c\/p\x3e\n\x3c\/blockquote\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-09-02 08:46:43 \x2b0000 UTC",
+    "dateModified" : "2017-09-02 08:46:43 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE\/",
+    "wordCount" : "80",
+    "keywords" : [ "http", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">理解http协议</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-09-02 itemprop="datePublished">September 2, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/http/%E6%B5%8F%E8%A7%88%E5%99%A8/"> http/浏览器 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>http协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。</p>
+</blockquote>
+<h2 id="http">http请求由三部分组成，状态行、请求头、请求正文</h2>
+<p>我们以下图post方式为例：
+状态行：就是第一行，以空格隔开第一个是请求方式，第二个是请求路径，第三个是http协议版本； 请求头：就是第二行一直到最后，这里是一些浏览器环境的信息，比如浏览器所支持的语言，请求正文的长度等； 请求正文：这里没有，主要是放一些向服务器传送的数据，注意它是以空格和请求头隔开的。 http响应由三部分组成，状态行、响应头、响应正文
+状态行：和请求的状态行类似，第一个表示http协议版本，第二个是状态码200 OK表示客户端请求成功； 状态码是由三位组成的： 态码一般由3位构成：</p>
+<ul>
+<li>1xx : 表示请求已经接受了，继续处理。</li>
+<li>2xx : 表示请求已经处理掉了。</li>
+<li>3xx : 重定向。 4xx : 一般表示客户端有错误，请求无法实现。 5xx : 一般为服务器端的错误。 比如常见的状态码：
+200 OK 客户端请求成功。 301 Moved Permanently 请求永久重定向。
+302 Moved Temporarily 请求临时重定向。 304 Not Modified 文件未修改，可以直接使用缓存的文件。 400 Bad Request 由于客户端请求有语法错误，不能被服务器所理解。</li>
+<li>401 Unauthorized 请求未经授权，无法访问。 403 Forbidden 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因。
+404 Not Found 请求的资源不存在，比如输入了错误的URL。</li>
+<li>500 Internal Server Error 服务器发生不可预期的错误，导致无法完成客户端的请求。
+503 Service Unavailable 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常。 响应头：和请求头差不多，包含一些服务器有用的信息，
+例如服务器的类型，日期，长度等； 响应正文：这里是服务器返回的HTML文件。 现在当我们在地址栏输入badu.com后，我们就能知道发生了什么事了。 输入域名后，浏览器会找DNS解析域名（当然他先会转化成这种格式http://www.baidu.com/）</li>
+</ul>
+<ol>
+<li>首先他会在浏览器自身DNS缓存里找；</li>
+<li>找不到就回去操作系统（os）DNS缓存里找；</li>
+<li>找不到会到系统host文件里找，看对应的域名有没有映射IP；</li>
+<li>最后会到域名服务器找，找到后与服务器进行TCP三次握手进行连接；</li>
+<li>连接后，进行http请求；</li>
+<li>服务器收到请求后会返回状态行和响应信息（html）; 7浏览器开始解析HTML构建DOM树，如果没有后续请求，浏览器会向服务器发起TCP断开（四次挥手）。</li>
+</ol>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/http/">
+                    #http</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/php%E7%94%9F%E6%88%90%E5%88%B6%E4%BD%9C%E9%AA%8C%E8%AF%81%E7%A0%81/" class="prev" rel="prev" title="php生成制作验证码"><i class="iconfont icon-left"></i>&nbsp;php生成制作验证码</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Ecookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%9C%A8php%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95/" class="next" rel="next" title="关于cookie和session的区别以及在PHP中的用法">关于cookie和session的区别以及在PHP中的用法&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

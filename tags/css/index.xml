@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/css/</link>
+    <description>Recent content in CSS on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 13 Jul 2017 13:45:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Js中的css样式</title>
+      <link>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</link>
+      <pubDate>Thu, 13 Jul 2017 13:45:17 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</guid>
+      <description>js中css样式的不同 1、 JavaScript使用驼峰命名法，而css不是。 比如css中的‘border-radius’，js中的‘borderRadius’； 2、 JavaScript的属性值用字符串表示，而css不是。 比如js中div.style.backgroundColor=&amp;rsquo;&#39;;css中div{}；</description>
+    </item>
+    
+  </channel>
+</rss>

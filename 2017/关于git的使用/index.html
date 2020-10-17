@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           关于Git的使用 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="关于Git的使用 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "关于Git的使用",
+    "headline" : "关于Git的使用",
+    "description" : "从学习前端开始就听说过Git，无奈初期并不需要了解，但是在以后的学习或工作中这是必须会的一项技能，这几天也看了一些资料，整理一下\n 一、什么是Git？ Git是分布式版本控制系统，版本控制系统大致分为三类：\n 本地版本控制系统：顾名思义，只能在本地进行修订存储的系统，缺点是不能多人协同开发； 集中式版本控制系统：有一个中央服务器，文件的版本信息，修订及其存储都在这上面，但是太依赖网络，一旦网络瘫痪，数据容易丢失； 分布式版本控制系统：每个人本地都有一个版本控制系统，会有一个共享服务器，弥补了前面两种系统的缺陷，是现在使用是最多的版本控制系统，其中最有代表的就是Git。  二Git的安装 https:\/\/git-scm.com\/downloads\n三、Git的使用原理 Git是使用命令行方式运行的； Git有三个工作区域：\n 工作目录：在这个区域你可以对你的项目进行开发修改； 暂存区域：开发或修改完成后可以将项目放在这里，之后一并提交； 仓库区域：这里会永久存储暂存区域上传的数据，这是Git最重要的部分，我们还原的数据时就是存储在这里的。  四、Git的使用\n 配置用户及其邮箱一边我们记录开发者的信息： 找打我们开发项目的根目录： 右击Git Bash here，进入命令行窗口模式： 输入：git config \x26ndash;global user.name \x26lsquo;你的名字\x26rsquo;，git config \x26ndash;global user.email \x26lsquo;你的邮箱\x26rsquo; 初始化仓库： git init,这时我们根文件夹会出现一个隐藏文件夹.git 接下来我们就可以在工作目录中开发项目了，这里我在index.html中修改了一些内容，可以使用命令git status查看文件状态 可以看到这些在工作区的内容是红色的 使用命令git add 文件名（或者-A表示所有），将文件放到暂存区域内，再来查看状态，我们发现文件变成了绿色 如果我们想把暂存区的文件再返回到工作区，可以使用git checkout 文件名 之后我们觉得所有文件都没问题后，就可以提交了git commit -m \x26lsquo;备注信息\x26rsquo;,并且可以git log 来查看提交历史 时光倒流：我们可以使用 git reset \x26ndash;hard 字符串（每一次提交历史后面的字符串），就返回到那个状态。 Git的分支：当我们第一次提交时，就已经默认创建了一个主分支master ，当我们开发不止一个项目或功能时，不可能三七二一都提交到这个分支上吧，所以我们会创建对应的功能分支或项目分支，主分支我们一般会来发布稳定版本，我们会创建一个developer平行分支，在这上面针对不同的功能再创建feature分支，开发完成后都提交到developer这个分支上，所有功能开发完成后，我们还需要创建一个发行分支release供测试使用，最后才发布稳定版本到主分支上。   git branch lazaer \/\/创建分支 git checkout lazaer \/\/切换分支 git merge \x26lsquo;分支名称\x26rsquo; \/\/合并分支 git branch -d lazaer \/\/删除分支  五、共享仓库 第四点主要讲了在本地如何使用Git，为了协同开发，和其他人共享代码，我们需要建一个共享仓库 Git要求共享仓库是一个以.",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-20 08:32:07 \x2b0000 UTC",
+    "dateModified" : "2017-08-20 08:32:07 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8\/",
+    "wordCount" : "205",
+    "keywords" : [ "Git", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">关于Git的使用</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-20 itemprop="datePublished">August 20, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>从学习前端开始就听说过Git，无奈初期并不需要了解，但是在以后的学习或工作中这是必须会的一项技能，这几天也看了一些资料，整理一下</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p><strong>一、什么是Git？</strong>
+Git是分布式版本控制系统，版本控制系统大致分为三类：</p>
+<ol>
+<li>本地版本控制系统：顾名思义，只能在本地进行修订存储的系统，缺点是不能多人协同开发；</li>
+<li>集中式版本控制系统：有一个中央服务器，文件的版本信息，修订及其存储都在这上面，但是太依赖网络，一旦网络瘫痪，数据容易丢失；</li>
+<li>分布式版本控制系统：每个人本地都有一个版本控制系统，会有一个共享服务器，弥补了前面两种系统的缺陷，是现在使用是最多的版本控制系统，其中最有代表的就是Git。</li>
+</ol>
+<p><strong>二Git的安装</strong>
+<a href="https://git-scm.com/downloads"><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></a></p>
+<p><strong>三、Git的使用原理</strong>
+Git是使用命令行方式运行的；
+Git有三个工作区域：</p>
+<ol>
+<li>工作目录：在这个区域你可以对你的项目进行开发修改；</li>
+<li>暂存区域：开发或修改完成后可以将项目放在这里，之后一并提交；</li>
+<li>仓库区域：这里会永久存储暂存区域上传的数据，这是Git最重要的部分，我们还原的数据时就是存储在这里的。</li>
+</ol>
+<p><strong>四、Git的使用</strong></p>
+<ol>
+<li>配置用户及其邮箱一边我们记录开发者的信息： 找打我们开发项目的根目录：
+右击Git Bash here，进入命令行窗口模式： 输入：git config &ndash;global user.name &lsquo;你的名字&rsquo;，git config &ndash;global user.email &lsquo;你的邮箱&rsquo;</li>
+<li>初始化仓库： git init,这时我们根文件夹会出现一个隐藏文件夹.git</li>
+<li>接下来我们就可以在工作目录中开发项目了，这里我在index.html中修改了一些内容，可以使用命令git status查看文件状态  可以看到这些在工作区的内容是红色的</li>
+<li>使用命令git add 文件名（或者-A表示所有），将文件放到暂存区域内，再来查看状态，我们发现文件变成了绿色 如果我们想把暂存区的文件再返回到工作区，可以使用git checkout 文件名</li>
+<li>之后我们觉得所有文件都没问题后，就可以提交了git commit -m &lsquo;备注信息&rsquo;,并且可以git log 来查看提交历史</li>
+<li>时光倒流：我们可以使用 git reset &ndash;hard 字符串（每一次提交历史后面的字符串），就返回到那个状态。</li>
+<li>Git的分支：当我们第一次提交时，就已经默认创建了一个主分支master ，当我们开发不止一个项目或功能时，不可能三七二一都提交到这个分支上吧，所以我们会创建对应的功能分支或项目分支，主分支我们一般会来发布稳定版本，我们会创建一个developer平行分支，在这上面针对不同的功能再创建feature分支，开发完成后都提交到developer这个分支上，所有功能开发完成后，我们还需要创建一个发行分支release供测试使用，最后才发布稳定版本到主分支上。</li>
+</ol>
+<ul>
+<li>git branch lazaer //创建分支</li>
+<li>git checkout lazaer //切换分支</li>
+<li>git merge &lsquo;分支名称&rsquo; //合并分支</li>
+<li>git branch -d lazaer //删除分支</li>
+</ul>
+<p><strong>五、共享仓库</strong>
+第四点主要讲了在本地如何使用Git，为了协同开发，和其他人共享代码，我们需要建一个共享仓库 Git要求共享仓库是一个以.git结尾的目录。 mkdir repo.git 创建以.git结尾目录 cd repo.git 进入这个目录 git init &ndash;bare 初始化一个共享仓库，也叫裸仓库 注意选项&ndash;bare  这样就建好了一个空的仓库</p>
+<ol>
+<li>将本地仓库的内容提交到共享仓库 git push 路径 master（要同步的分支）</li>
+<li>将共享仓库的内容同步到本地仓库 git pull 路径 master（要同步的分支）</li>
+</ol>
+<p><strong>六、关于GitHub和Gitlab</strong>
+其实为了更好的管理我们的仓库，一些第三方机构开发出了Web版仓库管理程序，通过Web界面形式管理仓库。 这里主要介绍下GitHub，Gitlab差不多，主要区别就是Gitlab的私人仓库是免费，一般企业的项目会部署在这上面，而GitHub是要收费的。</p>
+<ol>
+<li>首先自行注册一个GitHub账号；</li>
+<li>创建一个仓库，随后进入到这个界面
+关于ssh我们要知道他是一个加密协议，用于连接两台计算机的，采用非对称加密，我们需要在本地生成两个密钥，一个公钥一个私钥，将公钥里的内容复制到GitHub上，这样我们每次从GitHub上存储或拿出数据时就不需要密码了。
+在命令行中敲下如下命令：
+ssh-keygen -t rsa,
+一路回车就会在当前用户生成一个.ssh的文件夹将id-rsa.pub里的内容复制到个人中心设置下，ssh密钥选项里
+这样我们向GitHub上push或pull就不需要密码了</li>
+<li>将本地仓库的内容提交到共享仓库 git push 路径 master（要同步的分支）这里的路径就是ssh地址</li>
+<li>将共享仓库的内容同步到本地仓库 git pull 路径 master（要同步的分支）这里的路径就是ssh地址
+这里的例子是push,pull也是一样的</li>
+</ol>
+<p><strong>七、最后关于Git的命令汇总</strong>
+git config配置本地仓库
+常用git config &ndash;global user.name、git config &ndash;global user.email git config &ndash;list查看配置详情
+git init 初始一个仓库，添加&ndash;bare可以初始化一个共享（裸）仓库
+git status 可以查看当前仓库的状态
+git add“文件” 将工作区中的文件添加到暂存区中，其中file可是一个单独的文件，也可以是一个目录、“*”、-A
+git commit -m &lsquo;备注信息&rsquo; 将暂存区的文件，提交到本地仓库 git log 可以查看本地仓库的提交历史
+git branch查看分支
+git branch“分支名称” 创建一个新的分支
+git checkout“分支名称” 切换分支
+git checkout -b deeveloper 创健并切到developer分支 git merge“分支名称” 合并分支 git branch -d “分支名称” 删除分支
+git clone “仓库地址”获取已有仓库的副本
+git push origin “本地分支名称:远程分支名称”将本地分支推送至远程仓库，
+git push origin hotfix（通常的写法）相当于
+git push origin hotfix:hotfix git push origin hotfix:newfeature 本地仓库分支名称和远程仓库分支名称一样的情况下可以简写成一个，即git push “仓库地址” “分支名称”，如果远程仓库没有对应分支，将会自动创建 git remote add “主机名称” “远程仓库地址”添加远程主机，即给远程主机起个别名，方便使用 git remote 可以查看已添加的远程主机 git remote show “主机名称”可以查看远程主机的信息</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/git/">
+                    #Git</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="JavaScript基础知识复习（五）函数的四种调用模式"><i class="iconfont icon-left"></i>&nbsp;JavaScript基础知识复习（五）函数的四种调用模式</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-jstab%E6%A0%8F%E5%88%87%E6%8D%A2%E7%BB%83%E4%B9%A0/" class="next" rel="next" title="初识angular js，tab栏切换练习">初识angular js，tab栏切换练习&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

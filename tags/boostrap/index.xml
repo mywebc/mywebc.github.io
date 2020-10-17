@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>boostrap on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/boostrap/</link>
+    <description>Recent content in boostrap on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 23 Jul 2017 15:58:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/boostrap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微金所页面（响应式）</title>
+      <link>https://chenxiaolani.com/2017/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</link>
+      <pubDate>Sun, 23 Jul 2017 15:58:09 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</guid>
+      <description> bootstrap+less的页面，轮播图之前写的好烦， 而在bootstrap里面直接拿框架过来用，好方便的说。
+  传上来微金所的字体图标不显示了，我也不知道为啥/(ㄒoㄒ)/~~。 感受：很多的样式都可以在bootstrap里面都可以找到，直接拿过来用就好了，如果有一些不一样的，去bootstrap原样式里copy一份过来，类名为了不与原样式冲突改成自己的类名，然后自己在再根据具体情况修改就好了。   </description>
+    </item>
+    
+  </channel>
+</rss>

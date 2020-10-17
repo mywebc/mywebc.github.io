@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/pc%E7%AB%AFjd%E9%A6%96%E9%A1%B5/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           旋转轮播图 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="旋转轮播图 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "旋转轮播图",
+    "headline" : "旋转轮播图",
+    "description" : "\x3cblockquote\x3e\n\x3cp\x3e与一般轮播图不同，用缓动动画做，我们需要简单封装一个缓动框架\x3c\/p\x3e\n\x3c\/blockquote\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-07-31 09:29:27 \x2b0000 UTC",
+    "dateModified" : "2017-07-31 09:29:27 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE\/",
+    "wordCount" : "115",
+    "keywords" : [ "js", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">旋转轮播图</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-07-31 itemprop="datePublished">July 31, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>与一般轮播图不同，用缓动动画做，我们需要简单封装一个缓动框架</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">animate</span> (<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">json</span>,<span style="color:#a6e22e">fn</span>){
+      <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>);
+      <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span> () {
+       <span style="color:#75715e">//开闭原则
+</span><span style="color:#75715e"></span>       <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+       <span style="color:#75715e">//遍历属性和值，分别单独处理json
+</span><span style="color:#75715e"></span>       <span style="color:#75715e">//attr == k(键)    target == json\[k\](值)
+</span><span style="color:#75715e"></span>       <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">json</span>){<span style="color:#75715e">//遍历Jason里面的属性k
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//四部
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//获取他的属性时就需要单独处理
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">leader</span>;
+        <span style="color:#75715e">//如果获取里面的属性是opacity时
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">k</span><span style="color:#f92672">===</span><span style="color:#e6db74">&#34;opacity&#34;</span>){
+            <span style="color:#a6e22e">leader</span><span style="color:#f92672">=</span><span style="color:#a6e22e">getStyle</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">k</span>)<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">||</span><span style="color:#ae81ff">1</span>;<span style="color:#75715e">//获取到的是小数0.3
+</span><span style="color:#75715e"></span>         }<span style="color:#66d9ef">else</span> {
+             <span style="color:#a6e22e">leader</span><span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">getStyle</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">k</span>)) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>;<span style="color:#75715e">//否则老样子
+</span><span style="color:#75715e"></span>                } <span style="color:#a6e22e">leader</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">step</span>;
+         <span style="color:#75715e">//3.赋值
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">//赋值时也要单独处理
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">k</span><span style="color:#f92672">===</span><span style="color:#e6db74">&#34;opacity&#34;</span>){
+              <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">k</span><span style="color:#960050;background-color:#1e0010">\</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">leader</span><span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>;<span style="color:#75715e">//这种火狐chromeIE9以上都 可以
+</span><span style="color:#75715e"></span>              <span style="color:#75715e">//兼容IE678
+</span><span style="color:#75715e"></span>              <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">filter</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alpha(opacity=&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">leader</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;)&#34;</span>;<span style="color:#75715e">//这时leader是乘100的在这里透明度是以百分比
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">//如果是层级，一次性赋值成功，不需要缓动赋值
+</span><span style="color:#75715e"></span>              }<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">k</span><span style="color:#f92672">===</span><span style="color:#e6db74">&#34;zIndex&#34;</span>){
+                   <span style="color:#a6e22e">ele</span>
+         <span style="color:#75715e">//1.获取步长
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">step</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">json</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">k</span><span style="color:#960050;background-color:#1e0010">\</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">leader</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>;
+         <span style="color:#75715e">//2.二次加工步长
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">step</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">step</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">?</span>Math.<span style="color:#a6e22e">ceil</span>(<span style="color:#a6e22e">step</span>)<span style="color:#f92672">:</span>Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">step</span>);
+         <span style="color:#a6e22e">leader</span> <span style="color:#f92672">=</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">zIndex</span><span style="color:#f92672">=</span><span style="color:#a6e22e">json</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">k</span><span style="color:#960050;background-color:#1e0010">\</span>];
+                    }
+                   <span style="color:#66d9ef">else</span> {
+                        <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">style</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">k</span><span style="color:#960050;background-color:#1e0010">\</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">leader</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;px&#34;</span>;
+                    }
+            <span style="color:#75715e">//4.清除定时器
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//判断: 目标值和当前值的差大于步长，就不能跳出循环
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//不考虑小数的情况：目标位置和当前位置不相等，就不能清除清除定时器。
+</span><span style="color:#75715e"></span>                 <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">json</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">k</span><span style="color:#960050;background-color:#1e0010">\</span>] <span style="color:#f92672">!==</span> <span style="color:#a6e22e">leader</span>){
+                     <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+                  }
+              }
+            <span style="color:#75715e">//只有所有的属性都到了指定位置，bool值才不会变成false；
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">bool</span>){
+                <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">timer</span>);
+                <span style="color:#75715e">//所有程序执行完毕了，现在可以执行回调函数了
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">//只有传递了回调函数，才能执行
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">fn</span>){
+                        <span style="color:#a6e22e">fn</span>();
+                    }
+                }
+            },<span style="color:#ae81ff">25</span>);
+	}
+</code></pre></div><ul>
+<li>兼容方法获取元素样式可以用这个</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getStyle</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#a6e22e">attr</span>){
+            <span style="color:#66d9ef">if</span>(window.<span style="color:#a6e22e">getComputedStyle</span>){
+                <span style="color:#66d9ef">return</span> window.<span style="color:#a6e22e">getComputedStyle</span>(<span style="color:#a6e22e">ele</span>,<span style="color:#66d9ef">null</span>)<span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">attr</span><span style="color:#960050;background-color:#1e0010">\</span>];
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ele</span>.<span style="color:#a6e22e">currentStyle</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#a6e22e">attr</span><span style="color:#960050;background-color:#1e0010">\</span>];
+        }
+</code></pre></div><ul>
+<li>另外js中四中操作数组的方法： json.push();//在最后添加 json.pop();//删除最后一位 json.unshift();//在最前面添加 json.shift();//删除第一位  </li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js/">
+                    #js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/pc%E7%AB%AFjd%E9%A6%96%E9%A1%B5/" class="prev" rel="prev" title="PC端JD首页"><i class="iconfont icon-left"></i>&nbsp;PC端JD首页</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/" class="next" rel="next" title="js特效之三大家族、event事件">js特效之三大家族、event事件&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

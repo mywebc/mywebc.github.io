@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>es6 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/es6/</link>
+    <description>Recent content in es6 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 03 Apr 2018 16:17:56 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/es6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ES6笔记（四）扩展对象的功能性</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</link>
+      <pubDate>Tue, 03 Apr 2018 16:17:56 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;对象的语法的扩展&lt;/h3&gt;
+&lt;h4 id=&#34;1&#34;&gt;(1)对象的属性或属性值可以直接传入变量&lt;/h4&gt;
+&lt;p&gt;[crayon] let id = 12; let value = 22; let obj = {id:value} [/crayon]&lt;/p&gt;
+&lt;h4 id=&#34;2&#34;&gt;(2)在对象中方法的简写&lt;/h4&gt;
+&lt;p&gt;[crayon] //es5 let obj = { handle:function(){ //dosomething } } //es6 let obj = { handle(){ //dosomething } } [/crayon]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（三）函数</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 02 Apr 2018 11:31:08 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;函数参数的默认值&lt;/h3&gt;
+&lt;p&gt;以前es5的做法是这样的： [crayon] function log(x) { x = x || 10; console.log(x) } [/crayon] 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在括号内写上默认值 [crayon] function log(x=10) { console.log(x) } [/crayon] 这种写法就没有上面那种问题，需要注意的是函数参数一般会放在arguments里，你用ES6这种方法的话，arguments里面是没有滴。&lt;/p&gt;
+&lt;h3 id=&#34;reset&#34;&gt;reset参数&lt;/h3&gt;
+&lt;p&gt;[crayon] function say(a,b,&amp;hellip;items){ // dosomething&amp;hellip; } [/crayon] 当我们不知道参数个数时，可以用展开运算符&amp;hellip;的形式，主义他只能放在最后一个参数的位置，而且他跟arguments不同，他是真数组，意味着你可以用Push，pop等方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（二）字符串和正则表达式</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Fri, 30 Mar 2018 14:46:41 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>&lt;p&gt;字符串&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;字符串模板&lt;/h3&gt;
+&lt;p&gt;字符串模板用``来表示，示例如下: [crayon] let template = `&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;${变量1}&lt;/li&gt;
+&lt;li&gt;$(变量2)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};&lt;/p&gt;
+&lt;h3 id=&#34;heading1&#34;&gt;标签模板&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6笔记（一）块级作用域的绑定</title>
+      <link>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</link>
+      <pubDate>Fri, 30 Mar 2018 10:28:22 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</guid>
+      <description>&lt;h3 id=&#34;heading&#34;&gt;前言&lt;/h3&gt;
+&lt;p&gt;在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在都2018了，再不好好看看就out了。&lt;/p&gt;
+&lt;p&gt;新的声明方式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6中的新特性</title>
+      <link>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Sun, 01 Oct 2017 17:17:02 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/es6%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <description>&lt;p&gt;ES6中的常用新特性。转载自&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6_new_features.html&#34;&gt;&lt;a href=&#34;http://www.cnblogs.com/Wayou/p/es6&#34;&gt;http://www.cnblogs.com/Wayou/p/es6&lt;/a&gt;_new_features.html&lt;/a&gt; 更加详细的请参考阮一峰大佬的ECMAScript 6 入门，链接地址：&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;&lt;a href=&#34;http://es6.ruanyifeng.com/#README&#34;&gt;http://es6.ruanyifeng.com/#README&lt;/a&gt;&lt;/a&gt; &lt;strong&gt;1.箭头操作符&lt;/strong&gt; 如果你会C#或者Java，你肯定知道lambda表达式，ES6中新增的箭头操作符=&amp;gt;便有异曲同工之妙。它简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值Inputs=&amp;gt;outputs。 我们知道在JS中回调是经常的事，而一般回调又以匿名函数的形式出现，每次都需要写一个function，甚是繁琐。当引入箭头操作符后可以方便地写回调了。请看下面的例子。 [code] var array = [1, 2, 3]; //传统写法 array.forEach(function(v, i, a) { console.log(v); }); //ES6 array.forEach(v = &amp;gt; console.log(v)); [/code] &lt;strong&gt;2.类的支持&lt;/strong&gt; ES6中添加了对类的支持，引入了class关键字（其实class在JavaScript中一直是保留字，目的就是考虑到可能在以后的新版本中会用到，现在终于派上用场了）。JS本身就是面向对象的，ES6中提供的类实际上只是JS原型模式的包装。现在提供原生的class支持后，对象的创建，继承更加直观了，并且父类方法的调用，实例化，静态方法和构造函数等概念都更加形象化。 [code] //类的定义 class Animal { //ES6中新型构造器 constructor(name) { this.name = name; } //实例方法 sayName() { console.log(&amp;lsquo;My name is &amp;lsquo;+this.name); } } //类的继承 class Programmer extends Animal { constructor(name) { //直接调用父类构造器进行初始化 super(name); } program() { console.log(&amp;ldquo;I&#39;m coding&amp;hellip;&amp;quot;); } } //测试我们的类 var animal=new Animal(&amp;lsquo;dummy&amp;rsquo;), wayou=new Programmer(&amp;lsquo;wayou&amp;rsquo;); animal.sayName();//输出 ‘My name is dummy’ wayou.sayName();//输出 ‘My name is wayou’ wayou.program();//输出 ‘I&#39;m coding&amp;hellip;’ [/code]&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

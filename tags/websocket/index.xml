@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>websocket on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/websocket/</link>
+    <description>Recent content in websocket on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 04 Sep 2017 08:31:52 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>理解Websocket原理</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Mon, 04 Sep 2017 08:31:52 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3websocket%E5%8E%9F%E7%90%86/</guid>
+      <description>一、websocket与http WebSocket是HTML5出的东西（协议），也就是说HTTP协议没有变化，或者说没关系，但HTTP是不支持持久连接的（长连接，循环连接的不算） 首先HTTP有 1.1 和 1.0 之说，也就是所谓的 keep-alive ，把多个HTTP请求合并为一个，但是 Websocket 其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充可以通过这样一张图理解 有交集，但是并不是全部。 另外html5是指的一系列新的API，或者说新规范，新技术。Http协议本身只有1.0和1.1，而且跟Html本身没有直接关系。。通俗来说，你可以用HTTP协议传输非Html数据，就是这样=。= 再简单来说，层级不一样。
+二、Websocket是什么样的协议，具体有什么优点 首先，Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。简单的举个例子吧，用目前应用比较广泛的PHP生命周期来解释。 HTTP的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0 中，这次HTTP请求就结束了。 在HTTP1.1中进行了改进，使得有一个keep-alive，也就是说，在一个HTTP连接中，可以发送多个Request，接收多个Response。但是请记住 Request = Response ， 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。 教练，你BB了这么多，跟Websocket有什么关系呢？_(:з」∠)_好吧，我正准备说Websocket呢。
+首先Websocket是基于HTTP协议的，或者说借用了同的服务所需要的协议。简单理解：今晚我要服务A，别搞错啦~ 最后， Sec-WebSocket-Version 是告诉服务器所使用的 Websocket Draft（协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水： 服务员，我要的是13岁的噢→_→ 然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
+ HTTP/1.1 101 Switching Protocols Upgrade: websocket Connection: Upgrade Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk= Sec-WebSocket-Protocol: chat 这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~ Upgrade: websocket Connection: Upgrade 依然是固定的，告诉客户端即将升级的是 Websocket 协议，而不是mozillasocket，lurnarsocket或者shitsocket。 然后， Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key 。 服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。 后面的， Sec-WebSocket-Protocol 则是表示最终使用的协议。 至此，HTTP已经完成它所有工作了，接下来就是完全按照Websocket协议进行了。具体的协议就不在这阐HTTP的协议来完成一部分握手。 首先我们来看个典型的 Websocket 握手（借用Wikipedia的。。）</description>
+    </item>
+    
+  </channel>
+</rss>

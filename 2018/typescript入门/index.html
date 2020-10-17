@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" />
+  <link rel="next" href="https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/typescript%E5%85%A5%E9%97%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           TypeScript入门 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="TypeScript入门 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "TypeScript入门",
+    "headline" : "TypeScript入门",
+    "description" : "TypeScript主要提供了类型系统和对ES6的支持,对于一个需要长期维护的项目，使用TypeScript可以减少维护成本。使用VSCode编辑器，默认支持TypeScript，其次需要下载npm install -g typescript，因为我们需要tsc命令来将ts文件编译为js。\n  参考教程https:\/\/github.com\/xcatliu\/typescript-tutorial\/blob\/master\/README.md\n 基本数据类型 布尔值、数值、字符串、null、undefined Symbol Symbol是ES6中的基本数据类型，返回的值为唯一\n类型标注 我们声明变量可以如下声明\nlet a: boolean = false let b: string = \x26#39;11\x26#39; let c: number = 11 let d: null = null let e: undefined = undefined 当然还有 void ,如果一个变量声明为void，那么你只能将它赋值给null和undefined\nlet a: void = null let a: void = undefined 另外undefined 和 null 是所有类型的 子类型 ，所以你可以将它们赋值给所有类型,下面都不会报错的。\nlet a: number = null let a: string = undefined let a: boolean = null 使用 any 指定任意类型",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-09-17 23:25:48 \x2b0000 UTC",
+    "dateModified" : "2018-09-17 23:25:48 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/typescript%E5%85%A5%E9%97%A8\/",
+    "wordCount" : "777",
+    "keywords" : [ "TypeScript", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">TypeScript入门</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-09-17 itemprop="datePublished">September 17, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>TypeScript主要提供了类型系统和对ES6的支持,对于一个需要长期维护的项目，使用TypeScript可以减少维护成本。使用VSCode编辑器，默认支持TypeScript，其次需要下载npm install -g typescript，因为我们需要tsc命令来将ts文件编译为js。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>参考教程<a href="https://github.com/xcatliu/typescript-tutorial/blob/master/README.md"><a href="https://github.com/xcatliu/typescript-tutorial/blob/master/README.md">https://github.com/xcatliu/typescript-tutorial/blob/master/README.md</a></a></p>
+</blockquote>
+<h2 id="heading">基本数据类型</h2>
+<p>布尔值、数值、字符串、null、undefined Symbol
+<strong>Symbol是ES6中的基本数据类型，返回的值为唯一</strong></p>
+<h2 id="heading1">类型标注</h2>
+<p>我们声明变量可以如下声明</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;11&#39;</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">e</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">undefined</span>
+</code></pre></div><p>当然还有 <strong>void</strong> ,如果一个变量声明为void，那么你只能将它赋值给null和undefined</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">undefined</span>
+</code></pre></div><p>另外undefined 和 null 是所有类型的 <strong>子类型</strong> ，所以你可以将它们赋值给所有类型,下面都不会报错的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">undefined</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</code></pre></div><p>使用 <strong>any</strong> 指定任意类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#75715e">// 因为是任意类型，可以随意赋值，一下不会报错
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</code></pre></div><p>如果声明变量时(不赋值)没有指定类型即为默认any</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span>
+<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#a6e22e">a</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="heading2">类型推论</h2>
+<p>类型推断顾名思义typescript会根据你在声明变量时的赋值，来推断变量的类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//会报错，因为ts已经推断变量a为字符类型
+</span></code></pre></div><h2 id="heading3">联合类型</h2>
+<p>联合类型表示取值可以为多种类型中的一种。使用 |</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">string</span>
+<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+</code></pre></div><p>以上表示a可以是number或者string</p>
+<h2 id="heading4">类型别名</h2>
+<p>类型别名就是给类型取一个新的名字，使用type定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">string</span>
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">number</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">b</span>
+</code></pre></div><h2 id="heading5">内置对象</h2>
+<p>ES里的内置对象
+Boolean、Error、Date、RegExp 等，我们可以在ts中将变量定义为这些类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> Boolean <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Boolean(<span style="color:#ae81ff">1</span>);
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">e</span><span style="color:#f92672">:</span> Error <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Error occurred&#39;</span>);
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">:</span> Date <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">r</span><span style="color:#f92672">:</span> RegExp <span style="color:#f92672">=</span> <span style="color:#e6db74">/[a-z]/</span>;
+</code></pre></div><p>DOM 和 BOM 的内置对象
+Document、HTMLElement、Event、NodeList 等。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">HTMLElement</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">body</span>;
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">allDiv</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">NodeList</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">MouseEvent</span>) {
+  <span style="color:#75715e">// Do something
+</span><span style="color:#75715e"></span>});
+</code></pre></div><h2 id="heading6">对象类型-接口</h2>
+<p>接口是对行为的抽象，一般用类去实现，我们也可以用来定义对象；
+对于对象来说，我们用接口来定义基本格式，那么对象必须满足这个格式，比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// typescript推荐所有接口以I开头
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ia</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+<span style="color:#75715e">// 定义对象，使用Ia格式
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ia</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+}
+<span style="color:#75715e">// 如果类型不符合会报错,比如
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ia</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11</span>,
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1&#39;</span>
+}
+</code></pre></div><h3 id="heading7">可选属性</h3>
+<p>有时我们希望不要完全匹配一个格式，那么可以用可选属性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ia</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+</code></pre></div><h3 id="heading8">任意属性</h3>
+<p>使用 [propName: string] 定义了任意属性取 string 类型的值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ia</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+    [<span style="color:#a6e22e">propName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>;
+}
+</code></pre></div><p>需要注意的是，<strong>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的子类型</strong>,也就是说name和age的类型必须这个任意属于类型的子类型，这么定义的any满足情况。</p>
+<h3 id="heading9">只读属性</h3>
+<p>我们只在刚刚创建的时候赋值，再修改就不可以了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ib</span> {
+    <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ib</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>};
+<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>; <span style="color:#75715e">// error!
+</span></code></pre></div><h2 id="heading10">数组类型</h2>
+<h3 id="heading11">类型+[]</h3>
+<p>最简单的方法是使用「类型 + 方括号」来表示数组：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 声明一个number数组，如果有其他类型则会报错
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>[] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
+</code></pre></div><h3 id="heading12">数组泛型</h3>
+<p>泛型之后会讲</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Array<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">number</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
+</code></pre></div><h3 id="heading13">用接口表示数组</h3>
+<p>我们之前说过，接口就是抽象+格式,既然可以定义对象，数组同样也可以</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">INumberArray</span> {
+    [<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">INumberArray</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">1</span>]
+</code></pre></div><h3 id="any">使用any</h3>
+<p>用any表示数组可以出现任意类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>[] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;2&#39;</span>,{<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;11&#39;</span>}]
+</code></pre></div><h3 id="heading14">类数组</h3>
+<p>我想就是伪数组，比如arguments</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">abc</span> () {
+    <span style="color:#75715e">// args 是伪数组
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">IArguments</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">args</span>)
+}
+</code></pre></div><p>IArguments是typescript内部已经定义好的，除此还有NodeList, HTMLCollection 等</p>
+<h3 id="heading15">元组</h3>
+<p>元组较为数组更加严格，你可以规定元组第一个必须为string，第二个必须为number，如果不是则报错,比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">number</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#ae81ff">1</span>]
+</code></pre></div><p>顺序是必须匹配的，当然你也可以只赋值一项</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">number</span>]
+<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12&#39;</span>
+</code></pre></div><p>如果你越界赋值，则赋值类型就是已知的联合类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">number</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#ae81ff">1</span>]
+<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#39;11&#39;</span>) <span style="color:#75715e">// correct
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">1</span>) <span style="color:#75715e">// correct
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">true</span>) <span style="color:#75715e">// error true不是字符也不是数值
+</span></code></pre></div><h2 id="heading16">函数类型</h2>
+<p>函数的输入和输出都要约束到，函数定义有两种方式，函数声明和函数表达式</p>
+<h3 id="heading17">函数声明</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 函数声明
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+</code></pre></div><h3 id="heading18">函数表达式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 函数表达式
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+</code></pre></div><p>上面的函数表达式的定义其实是不对的，虽然也能编译通过，因为它只是对右边进行了类型定义，左边只是通过赋值，typescript通过类型推论推断出来的，因此左边我们也要手动赋值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>) =&gt; <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+</code></pre></div><p>=&gt;不是将头函数，在typescript中表示函数的返回值</p>
+<h3 id="heading19">接口形式定义函数格式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ia</span> {
+    (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ia</span>;
+<span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div><h3 id="heading20">可选参数</h3>
+<p>同样使用?,可选参数必须在必须参数后面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">y</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span>
+    }
+}
+</code></pre></div><h3 id="heading21">参数默认值</h3>
+<p>y默认为1</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+</code></pre></div><h3 id="heading22">剩余参数</h3>
+<p>使用&hellip;rest，获取函数中剩余的参数, items是一个数组，我们定义为任何类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">array</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>[], ...<span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>[]) {
+    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>) {
+        <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">item</span>);
+    });
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [];
+<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">a</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>);
+</code></pre></div><h3 id="heading23">重载</h3>
+<p>重载就是函数名同名，我们根据参数类型不同来达到精确匹配。ts里面我们需要手动定义，最精确的写在前面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">string</span> {
+    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;number&#39;</span>) {
+        <span style="color:#66d9ef">return</span> Number(<span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">toString</span>().<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>));
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+    }
+}
+</code></pre></div><h2 id="heading24">类</h2>
+<p>除了ES6中类一样外，TypeScript 还可以使用三种访问修饰符，分别是 public、private 和 protected。</p>
+<ul>
+<li>public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的。</li>
+<li>private 修饰的属性或方法是私有的，不能在声明它的类的外部访问。</li>
+<li>protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的。
+比如下面，name是public，所以可以直接访问实例，如果不想被访问可以用private</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">name</span>;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">name</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+    }
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Animal</span>(<span style="color:#e6db74">&#39;Jack&#39;</span>);
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// Jack
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Tom&#39;</span>;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// Tom
+</span></code></pre></div><h3 id="heading25">抽象类</h3>
+<p>抽象类不允许被实例化，我们必须用子类继承它，并且如果抽象类里面定义了抽象方法，必须由子类实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">name</span>;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">name</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+    }
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">sayHi</span>();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Animal</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">sayHi</span>() {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">Meow, My name is </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    }
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cat</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Cat</span>(<span style="color:#e6db74">&#39;Tom&#39;</span>);
+</code></pre></div><h2 id="heading26">声明文件</h2>
+<p>如果我们想使用第三方库比如jquery怎么办，ts并不认识$或者Jqyery,所以我们需要声明，这里我们使用declare关键字来定义，我们一般会把声明文件单独放到一个文件中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// jQuery.d.ts
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">declare</span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jQuery</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">string</span>) =&gt; <span style="color:#a6e22e">any</span>;
+</code></pre></div><p>然后在使用到的文件的开头，用「三斜线指令」表示引用了声明文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/// &lt;reference path=&#34;./jQuery.d.ts&#34; /&gt;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">jQuery</span>(<span style="color:#e6db74">&#39;#foo&#39;</span>);
+</code></pre></div><p>现在已经有很多的库不需要我们自己写声明文件了，我们下载时会自带声明文件，只要加上@types前缀就好，比如jquery</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">types</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jquery</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">save</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dev</span>
+</code></pre></div><h2 id="heading27">声明合并</h2>
+<p>如果定义了两个相同名字的函数、接口或类，那么它们会合并成一个类型,当然类型必须一致
+以接口为例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Alarm</span> {
+    <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Alarm</span> {
+    <span style="color:#a6e22e">weight</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+</code></pre></div><p>相当于</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Alarm</span> {
+    <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+    <span style="color:#a6e22e">weight</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+</code></pre></div><h2 id="heading28">枚举</h2>
+<p>枚举使用enum关键字来定义，比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Days</span> {<span style="color:#a6e22e">Sun</span>, <span style="color:#a6e22e">Mon</span>, <span style="color:#a6e22e">Tue</span>, <span style="color:#a6e22e">Wed</span>, <span style="color:#a6e22e">Thu</span>, <span style="color:#a6e22e">Fri</span>, <span style="color:#a6e22e">Sat</span>};
+</code></pre></div><p>枚举的值可以是常数也可以是计算的值，没有初始化会被默认赋值为0，下面的枚举成员的值会一次+1，如果赋值了的话，会根据赋值的值一次+1</p>
+<h3 id="heading29">常数枚举</h3>
+<p>常数枚举是使用 const enum 定义的枚举类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Directions</span> {
+    <span style="color:#a6e22e">Up</span>,
+    <span style="color:#a6e22e">Down</span>,
+    <span style="color:#a6e22e">Left</span>,
+    <span style="color:#a6e22e">Right</span>
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">directions</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Up</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Down</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Right</span>];
+</code></pre></div><h3 id="heading30">外部枚举</h3>
+<p>外部枚举是使用 declare enum 定义的枚举类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">declare</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Directions</span> {
+    <span style="color:#a6e22e">Up</span>,
+    <span style="color:#a6e22e">Down</span>,
+    <span style="color:#a6e22e">Left</span>,
+    <span style="color:#a6e22e">Right</span>
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">directions</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Up</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Down</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">Directions</span>.<span style="color:#a6e22e">Right</span>];
+</code></pre></div><h2 id="heading31">泛型</h2>
+<p>泛型就是类型的变量，如果我们想输入什么类型，就要输出什么类型，就可以使用泛型，可能你会想到用any,但是这样其实失去了内部检查。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">identity</span>(<span style="color:#a6e22e">arg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>;
+}
+</code></pre></div><p>这时候我们可以用泛型，<!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">identity</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">arg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>;
+}
+</code></pre></div><p>我们输入的类型，那么T就是什么类型，输出就是这个类型。</p>
+<h3 id="heading32">约束泛型</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Lengthwise</span> {
+    <span style="color:#a6e22e">length</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">loggingIdentity</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">T</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Lengthwise</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">arg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span> {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>;
+}
+</code></pre></div><p>上例中，我们使用了 extends 约束了泛型 T 必须符合接口 Lengthwise 的形状，也就是必须包含 length 属性。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/typescript/">
+                    #TypeScript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" class="prev" rel="prev" title="从头开始配置webpack4"><i class="iconfont icon-left"></i>&nbsp;从头开始配置webpack4</a>
+         
+        
+        <a href="https://chenxiaolani.com/2018/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/" class="next" rel="next" title="总结一下JavaScript中的this">总结一下JavaScript中的this&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

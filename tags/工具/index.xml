@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 24 Jul 2017 07:57:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fireworks 和Ps的常用操作</title>
+      <link>https://chenxiaolani.com/2017/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 24 Jul 2017 07:57:32 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description> Fireworks的常用快捷键： V：切换黑鼠标 U：画图 K：切片 I：吸色 Z：放大镜 空格：移动 shift：量尺寸 Photoshop的快捷键 z、alt：放大、缩小 空格：移动 u:矩形工具 ｉ：吸色 alt：切换辅助线 抠图：边框工具或者套索工具， Ctrl+c、Ctrl+v到新页面  </description>
+    </item>
+    
+  </channel>
+</rss>

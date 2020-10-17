@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js设计模式 on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in js设计模式 on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 06 Jan 2019 14:20:23 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>js设计模式之迭代器模式</title>
+      <link>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 06 Jan 2019 14:20:23 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。总结两点，第一顺序访问一个集合，第二使用者无需知道集合的内部（封装）。
+ 迭代器演示 class Iterator { constructor(container) { this.list = container.list this.index = 0 } next() { if(this.hasNext()) { return this.list[this.index++] } return null } hasNext() { if(this.index &amp;gt;= this.list.length) { return false } return true } } class Container { constructor(list) { this.list = list } // 生成遍历器  getIterator() { return new Iterator(this) } } // 测试 let arr = [1,2,3,4,5] let container = new Container(arr) // 生成遍历器 let iterator = container.</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之状态模式</title>
+      <link>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 02 Jan 2019 01:09:14 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
+      <description>状态模式往往会带来代码量的增加，但是它也许是解决某些需求场景的最好方法，状态模式的关键是区分事物内部的状态，事物内部的状态往往会带来事物行为的改变。
+ if/else/switch的情况 实际开发中，我们可能会遇到使用大量if/else/switch的情况，根据不同的状态，通过判断执行不同状态对应的逻辑操作，比如如下
+//执行动作 function doAction(state){ //state0 	if(state === &amp;#39;0&amp;#39;){ console.log(&amp;#39;执行0&amp;#39;); } //state1 	if(state === &amp;#39;1&amp;#39;){ console.log(&amp;#39;执行1&amp;#39;); } //state2 	if(state === &amp;#39;2&amp;#39;){ console.log(&amp;#39;执行2&amp;#39;); } } 状态变多即使用switch也会越来越繁琐，这时候就可以使用状态模式了。
+状态模式改善 状态模式，就是将每一种条件作为对象内部的一种状态，面对不同的判断结果，我们只需选择不同的状态便可.
+var ResultState = function(){ //各种情况的业务逻辑保存在内部状态中 	var states = { state1:function(){ console.log(&amp;#39;情况一的业务逻辑&amp;#39;); }, state2:function(){ console.log(&amp;#39;情况二的业务逻辑&amp;#39;); }, state3:function(){ console.log(&amp;#39;情况三的业务逻辑&amp;#39;); } } //获取某一状态的对应逻辑并执行 	function show(state){ states[state] &amp;amp;&amp;amp; states[state](); } return { doActionByState: show } }(); // 传入状态，即会执行状态所对应的业务逻辑。 ResultState.doActionByState(&amp;#39;state1&amp;#39;); promise es6中的promise内部就是一个状态机。</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之装饰者模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 24 Dec 2018 23:48:13 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <description>装饰者模式能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加指责，总结来说就是两点，第一为对象添加新功能，第二不改变原有的结构和功能。
+ 装饰函数 在javascript中，万物皆对象，函数则是一等对象，当我们想要为函数添加一些功能时，如果直接改写函数，就违背了开放-封闭原则，我们可以保留原有函数的引用，然后直接放到新函数内执行，比如
+let frank = function() { console.log(&amp;#34;i am frank&amp;#34;) } // 我们想为frank添加一个技能时，先用临时变量把原有函数存起来 let oldFrank = frank // 放到新的frank函数执行 frank = function() { oldFrank() console.log(&amp;#34;i am best&amp;#34;) } 此做法符合开放-封闭原则，在不改变原函数源代码的情况下为其添加新功能，但是每次添加一个新功能都必须维护一个中间变量（比如oldFrank）,长此以往，要维护的中间变量就会越来越多。
+用AOP装饰函数  AOP就是面向切面编程,把一些与核心业务逻辑无关的功能抽离出来 再通过“动态织入”方式掺入业务逻辑模块
+ 在这里我们需要两个方法，一个是前置装饰，一个是后置装饰
+Function.prototype.before = function(beforeFunc){ var that = this; return function(){ beforeFunc.apply(this, arguments); return that.apply(this, arguments); } } Function.prototype.after = function(afterFunc){ var that = this; return function(){ var ret = that.apply(this, arguments); afterFunc.apply(this, arguments); return ret; } } 为了避免污染原型，我们可以改写before和after方法如下</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之适配器模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 17 Dec 2018 00:12:11 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>适配器模式是一种简单设计模式，主要是用来解决老接口不兼容的问题，对于不兼容的老接口，我们没必要重写，只需创建一个适配器即可。
+ 获取城市接口例子 现在我们有一个接口用来获取广东省所有的城市，如下
+// 模拟接口，返回广东城市数据  let getGuanDongCity = function() { let guanDongCity = [ { name: &amp;#39;shenzhen&amp;#39;, id: 11 }, { name: &amp;#39;guangzhou&amp;#39;, id: 12 } ] return guanDongCity } // 定义渲染函数  let render = function(fn) { document.write(JSON.stringify(fn())) } // 渲染  render(getGuanDongCity) 然后我们发现这个接口显示的城市并不齐全，我们又找到了另外一个齐全的接口作为补充，这个接口返回的数据格式和原来返回的数据格式不一样，这时候我们要改写原来的接口吗，nono,我们只要为原来的接口包装一个适配函数即可。
+// 新的补充接口的数据格式  let guanDongCity = { shenzhen: 11, guangzhou: 12, zhuhai: 13 } 为原来接口编写适配函数
+let addressAdapter = function( oldAddressfn ) { let address = {} let oldAddress = oldAddressfn() oldAddress.</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之代理模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 05 Dec 2018 22:03:04 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
+      <description>代理模式的定义：为一个对象提供代用品或占位符，以便控制对它的访问；注意使用者无权访问目标对象的。
+  最常见的就是科学上网了  代理模式根据其目的，也有好多种代理
+ 保护代理（代理掉不必要的请求） 虚拟代理 （创建开销很大的对象时，可以先用一个小对象代替，等到真正使用时再创建） 缓存代理 （为一些开销大的运算提供暂时的存储，如果下次传的参数一致时，可以返回这个结果） 其他代理（在js中适用性不高）  保护代理 // 这个类外面是无权访问的 class ReadImg { constructor(fileName) { this.fileName = fileName this.loadFormDIsk() // 加载，模拟  } loadFormDIsk() { console.log(&amp;#39;loading...&amp;#39; + this.fileName) } display() { console.log(&amp;#39;display...&amp;#39; + this.fileName) } } // 定义代理函数 class ProxyImg { constructor(fileName) { this.realImg = new ReadImg(fileName) } display() { this.realImg.display() } } let proxyImg = new ProxyImg(&amp;#39;1.png&amp;#39;) e6中的proxy 明星经纪人案例
+let start = { name: &amp;#39;steven&amp;#39;, age: 24, phone: &amp;#39;12334445&amp;#39; } // 经纪人来代理 let agent = new Proxy(start, { get: function(target, key) { if(key === &amp;#39;phone&amp;#39;) { // 给经纪人自己的号码  return &amp;#39;111121111&amp;#39; } if(key === &amp;#39;price&amp;#39;) { // 经纪人来报价  return 1232333 } return target[key] }, set: function(target, key, val) { if(key === &amp;#39;customPrice&amp;#39;) { if(val &amp;lt; 10000) { throw new Error(&amp;#34;太低&amp;#34;) }else { target[key] = val return true } } } }) 虚拟代理 图片预加载</description>
+    </item>
+    
+    <item>
+      <title>js设计模式之单例模式</title>
+      <link>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 04 Dec 2018 23:44:21 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>单例模式的定义: 保证一个类仅有一个实例，并且提供一个访问它的全局访问点。意义为减少内存开支，减少变量冲突。
+ 常见的应用场景  全局的window对象，Jquery中的$对象 vuex和redux中的state 系统间各种模式的通信协调上  模式实现 最简单的实现，对象字面量的方法
+let singleton = { age: 11, name: &amp;#34;frank&amp;#34; } 对象复杂的时候，就需要构造函数，简单的来说当new的时候先判断实例是否存在，如果存在直接返回，不存在就创建一个再返回，这样保证了返回的实例就是同一个。
+class Singleton { constructor() { this.instance = null; } // 定义一个静态方法，实例化只能通过静态方法。  static getInstance(name) { if(!this.instance) { this.instance = new Singleton(); } return this.instance; } } let a = Singleton.getInstance() let b = Singleton.getInstance() console.log(a === b) 模拟登陆框 class LoginForm { constructor { this.state = &amp;#39;hide&amp;#39; } show() { // 如果当前已经显示  if(this.</description>
+    </item>
+    
+  </channel>
+</rss>

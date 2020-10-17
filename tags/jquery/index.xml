@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jquery on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/jquery/</link>
+    <description>Recent content in jquery on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Fri, 25 Aug 2017 14:42:59 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</title>
+      <link>https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</link>
+      <pubDate>Fri, 25 Aug 2017 14:42:59 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</guid>
+      <description>一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复
+ 一、浏览器端的验证我们可以用jQuery Validate这个插件  首先引入插件：  &amp;lt;script src=&amp;#39;libs/jquery-1.11.1.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt;/ //jquery插件 &amp;lt;script src=&amp;#39;libs/jquery.validate.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt; //jQuery validate插件 &amp;lt;script src=&amp;#39;libs/messages_zh.min.js&amp;#39;&amp;gt;&amp;lt;/script&amp;gt; //中文提示信息插件 具体使用看如下例子：   js部分  $(function(){ //指定要验证的表单  $(&amp;#39;#myform&amp;#39;).validate({ //这里是验证通过要书写回调函数  submitHandler:function(form){ //提交表单方式之一  form.submit(); } //这里定义规则  rules:{ username:{ requried:true, minlength:2 } } //这里写提示信息，如果不写，就会使用默认  messages:{ username:{ required:&amp;#34;请输入用户名！&amp;#34;, minlength:&amp;#34;长度不少于2位！&amp;#34; } } }) }) 更多的其他的指令规则：规则 描述   required:true 必须输入的字段。 remote:&amp;ldquo;check.php&amp;rdquo; 使用 ajax 方法调用 check.php 验证输入值。 email:true 必须输入正确格式的电子邮件。 url:true 必须输入正确格式的网址。 date:true 必须输入正确格式的日期。日期校验 ie6 出错，慎用。 dateISO:true 必须输入正确格式的日期（ISO），例如：2009-06-23，1998/01/22。只验证格式，不验证有效性。 number:true 必须输入合法的数字（负数，小数）。 digits:true 必须输入整数。 creditcard: 必须输入合法的信用卡号。 equalTo:&amp;quot;#field&amp;rdquo; 输入值必须和 #field 相同。 accept: 输入拥有合法后缀名的字符串（上传文件的后缀）。 maxlength:5 输入长度最多是 5 的字符串（汉字算一个字符）。 minlength:10 输入长度最小是 10 的字符串（汉字算一个字符）。 rangelength:[5,10] 输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。 range:[5,10] 输入值必须介于 5 和 10 之间。 max:5 输入值不能大于 5。 min:10 输入值不能小于 10。  小提示：可以使用label.</description>
+    </item>
+    
+  </channel>
+</rss>

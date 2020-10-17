@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2019/antd-design-%E4%B8%AD%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E4%B8%BAexcel-%E6%94%AF%E6%8C%81%E5%A4%9A%E8%A1%A8%E5%A4%B4/" />
+  <link rel="next" href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2019/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           MYSQL的CRUD操作之命令行 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="MYSQL的CRUD操作之命令行 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "MYSQL的CRUD操作之命令行",
+    "headline" : "MYSQL的CRUD操作之命令行",
+    "description" : "数据库分为关系型数据库和非关系型数据库，作为前端，对于mongodb再熟悉不过了，mongodb就是非关系型数据库，除此之外还有常见的还有redis，这种数据库的特点就是以Key,value的形式存储的，关系型数据库就很多了，mysql,oracle,db2等，本片文章主要记录我在学习MySQL关于CRUD的命令行操作。\n 登录数据库  -u为用户名， -p为密码，我都设为root；  \/\/ 注意-p后面不要有空格 mysql -uroot -proot 创建数据库  create database 数据库的名字; create database 数据库的名字 character set 字符集编码; create database 数据库的名字 character set 字符集编码 collate 比较规则; 注意要加分号  create database student; create database student character set utf8; create database student character set utf8 collate utf8_general_ci; 查看数据库  默认的数据库不要动它  show databases; show create database student; \/\/ 查看student数据库的定义语句 修改数据库  使用alter  alter database student character set gbk; 删除数据库  使用drop  drop database student; 其他数据库操作 use student; \/\/ 切换到student数据库 select database(); \/\/ 查看当前数据库 表的创建  create table 表名( 列名 列的类型 约束, );   create table employee (id int primary key auto_increment, name varchar(20) not null, birthday date, job varchar(30), salary double, ); 查看表 show tables; \/\/ 查看数据库内的所有表 show create table employee; \/\/ 查看employee的建表语句 desc employee; \/\/ 查看employee的表结构 修改表  添加列（add），修改列（modify）,修改列名(cahnge)，删除列(drop), 修改表明（rename）,修改表的字符集（character set）  \/\/ 添加 alter table student add address int not null; \/\/ 修改 alter table student modify address varchar(2); \/\/ 修改列名 alter table student change address gender varchar(2); \/\/ 删除 alter table student drop address; \/\/ 改表名 rename table student to student2; \/\/ 修改表的字符集 alter table student character set gbk; 删除表 drop table student; 表数据插入  insert into 表名(列名1,列名2)values(值1,值2); insert into 表名 values(值1,值2); \/\/ 上面的简单写法 insert into 表名values(值1,值2),(值1,值2),(值1,值2);\/\/ 批量插入  表数据删除  delete from 表名 [where 条件] truncate table 表名: 先删除表,再重建表 delete与truncate的区别   delete是将数据一条一条的删除，在数据量比较少的情况下效率高； truncate是先删除表,再重建表，由于更改了表结构，数据量大的情况下推荐；  表数据更新  update 表名 set 列名=值, 列名=值 [where 条件]  表数据查询 通用格式:",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-07-13 22:04:38 \x2b0000 UTC",
+    "dateModified" : "2019-07-13 22:04:38 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2019\/mysql%E7%9A%84crud%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C\/",
+    "wordCount" : "229",
+    "keywords" : [ "数据库", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">MYSQL的CRUD操作之命令行</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-07-13 itemprop="datePublished">July 13, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>数据库分为关系型数据库和非关系型数据库，作为前端，对于mongodb再熟悉不过了，mongodb就是非关系型数据库，除此之外还有常见的还有redis，这种数据库的特点就是以Key,value的形式存储的，关系型数据库就很多了，mysql,oracle,db2等，本片文章主要记录我在学习MySQL关于CRUD的命令行操作。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="heading">登录数据库</h2>
+<ul>
+<li>-u为用户名， -p为密码，我都设为root；</li>
+</ul>
+<pre><code>// 注意-p后面不要有空格
+mysql -uroot -proot
+</code></pre><h2 id="heading1">创建数据库</h2>
+<ul>
+<li>create database 数据库的名字;</li>
+<li>create database 数据库的名字 character set 字符集编码;</li>
+<li>create database 数据库的名字 character set 字符集编码 collate 比较规则;
+<strong>注意要加分号</strong></li>
+</ul>
+<pre><code>create database student;
+create database student character set utf8;
+create database student character set utf8 collate utf8_general_ci;
+</code></pre><h2 id="heading2">查看数据库</h2>
+<ul>
+<li>默认的数据库不要动它</li>
+</ul>
+<pre><code>show databases;
+show create database student; // 查看student数据库的定义语句
+</code></pre><h2 id="heading3">修改数据库</h2>
+<ul>
+<li>使用alter</li>
+</ul>
+<pre><code>alter database student character set gbk;
+</code></pre><h2 id="heading4">删除数据库</h2>
+<ul>
+<li>使用drop</li>
+</ul>
+<pre><code>drop database student;
+</code></pre><h2 id="heading5">其他数据库操作</h2>
+<pre><code>use student; // 切换到student数据库
+select database(); // 查看当前数据库
+</code></pre><h2 id="heading6">表的创建</h2>
+<ul>
+<li>create table 表名(
+列名 列的类型 约束,
+);</li>
+</ul>
+<pre><code> create table employee (id int primary key auto_increment,
+    name varchar(20) not null,
+    birthday date,
+    job varchar(30),
+    salary double,
+ );
+</code></pre><h2 id="heading7">查看表</h2>
+<pre><code>show tables; // 查看数据库内的所有表
+show create table employee; // 查看employee的建表语句
+desc employee; // 查看employee的表结构
+</code></pre><h2 id="heading8">修改表</h2>
+<ul>
+<li>添加列（add），修改列（modify）,修改列名(cahnge)，删除列(drop), 修改表明（rename）,修改表的字符集（character set）</li>
+</ul>
+<pre><code>// 添加
+alter table student add address int not null;
+// 修改
+alter table student modify address varchar(2);
+// 修改列名
+alter table student change address gender varchar(2);
+// 删除
+alter table student drop address;
+// 改表名
+rename table student to student2;
+// 修改表的字符集
+alter table student character set gbk;
+</code></pre><h2 id="heading9">删除表</h2>
+<pre><code>drop table student;
+</code></pre><h2 id="heading10">表数据插入</h2>
+<ul>
+<li>insert into 表名(列名1,列名2)values(值1,值2);</li>
+<li>insert into 表名 values(值1,值2); // 上面的简单写法</li>
+<li>insert into 表名values(值1,值2),(值1,值2),(值1,值2);// 批量插入</li>
+</ul>
+<h2 id="heading11">表数据删除</h2>
+<ul>
+<li>delete from 表名 [where 条件]</li>
+<li>truncate table 表名: 先删除表,再重建表
+<strong>delete与truncate的区别</strong></li>
+</ul>
+<ol>
+<li>delete是将数据一条一条的删除，在数据量比较少的情况下效率高；</li>
+<li>truncate是先删除表,再重建表，由于更改了表结构，数据量大的情况下推荐；</li>
+</ol>
+<h2 id="heading12">表数据更新</h2>
+<ul>
+<li>update 表名 set 列名=值, 列名=值 [where 条件]</li>
+</ul>
+<h2 id="heading13">表数据查询</h2>
+<p>通用格式:</p>
+<ul>
+<li>select [distinct（去重）] [*] [列名1,列名2] from 表名 where 条件 group by ..having 条件过滤 order by 排序</li>
+</ul>
+<p><strong>如果插入数据乱码，需要去mysql中的配置文件中my.ini57行将编码改为gbk</strong></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                    #数据库</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2019/antd-design-%E4%B8%AD%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E4%B8%BAexcel-%E6%94%AF%E6%8C%81%E5%A4%9A%E8%A1%A8%E5%A4%B4/" class="prev" rel="prev" title="antd design 中表格数据导出为excel(支持多表头)"><i class="iconfont icon-left"></i>&nbsp;antd design 中表格数据导出为excel(支持多表头)</a>
+         
+        
+        <a href="https://chenxiaolani.com/2019/%E4%BD%BF%E7%94%A8jdbc%E5%AF%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84crud%E6%93%8D%E4%BD%9C/" class="next" rel="next" title="使用JDBC对Mysql数据库的CRUD操作">使用JDBC对Mysql数据库的CRUD操作&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

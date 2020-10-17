@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/" />
+  <link rel="next" href="https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2017/ajax%E5%A4%8D%E4%B9%A0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ajax复习 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="ajax复习 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "ajax复习",
+    "headline" : "ajax复习",
+    "description" : "ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： （1）创建XMLHTTPRequest对象 所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。\n 兼容性写法如下：\nvar xmlhttp; if (window.XMLHttpRequest) { \/\/ code for IE7\x2b, Firefox, Chrome, Opera, Safari xmlhttp=new XMLHttpRequest(); } else { \/\/ code for IE6, IE5 xmlhttp=new ActiveXObject(\x26#34;Microsoft.XMLHTTP\x26#34;); } （2）向服务器发送请求 这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数： method：请求方式，有get和post两种； url:要请求页面的地址，相对地址或绝对地址 flag：true是异步，false是同步 注意点： （1）get和post的比较：get传输数据小且不安全，post传输数据大且安全； （2）使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：\nxmlhttp.open(\x26#39;get\x26#39;,\x26#39;123.php\x26#39;,true); xmlhttp.send(); 示例post请求：\nxmlhttp.open(\x26#39;post\x26#39;,\x26#39;123.php\x26#39;,\x26#39;true\x26#39;); \/\/添加http请求头信息 xmlhttp.setRequestHeader(\x26#34;Content-type\x26#34;,\x26#34;application\/x-www-form-urlencoded\x26#34;); xmlhttp.send(\x26#34;name=lili\x26amp;amp;age=10\x26#34;); （3）服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。 （4）onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。 下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数； readyState属性，它有四种状态变化： 0: 请求未初始化 1: 服务器连接已建立 2: 请求已接收 3: 请求处理中 4: 请求已完成，且响应已就绪 status属性 200: \x26ldquo;OK\x26rdquo; 404: 未找到页面 所以当 readyState 等于 4 且状态为 200 时，表示响应已就绪： 示例：",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-08-24 12:13:55 \x2b0000 UTC",
+    "dateModified" : "2017-08-24 12:13:55 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2017\/ajax%E5%A4%8D%E4%B9%A0\/",
+    "wordCount" : "142",
+    "keywords" : [ "ajax复习", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ajax复习</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2017-08-24 itemprop="datePublished">August 24, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： <strong>（1）创建XMLHTTPRequest对象</strong> 所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>兼容性写法如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xmlhttp</span>; 
+<span style="color:#66d9ef">if</span> (window.<span style="color:#a6e22e">XMLHttpRequest</span>) {
+<span style="color:#75715e">// code for IE7+, Firefox, Chrome, Opera, Safari 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">xmlhttp</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>(); 
+} <span style="color:#66d9ef">else</span> {
+<span style="color:#75715e">// code for IE6, IE5 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">xmlhttp</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ActiveXObject</span>(<span style="color:#e6db74">&#34;Microsoft.XMLHTTP&#34;</span>);
+ } 
+</code></pre></div><p><strong>（2）向服务器发送请求</strong> 这里我们使用open()和send()方法 open(method，url,flag),open()方法中有三个参数： method：请求方式，有get和post两种；
+url:要请求页面的地址，相对地址或绝对地址
+flag：true是异步，false是同步
+注意点：
+（1）get和post的比较：get传输数据小且不安全，post传输数据大且安全；
+（2）使用post方式时，注意添加http请求头协议； send(string),send()中有一个参数，当使用GET方式请求时，里面没有参数，使用post方式时，里面写上传输的数据； 示例get请求：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;get&#39;</span>,<span style="color:#e6db74">&#39;123.php&#39;</span>,<span style="color:#66d9ef">true</span>); <span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">send</span>(); 
+</code></pre></div><p>示例post请求：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;post&#39;</span>,<span style="color:#e6db74">&#39;123.php&#39;</span>,<span style="color:#e6db74">&#39;true&#39;</span>); 
+<span style="color:#75715e">//添加http请求头信息 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">setRequestHeader</span>(<span style="color:#e6db74">&#34;Content-type&#34;</span>,<span style="color:#e6db74">&#34;application/x-www-form-urlencoded&#34;</span>); 
+<span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;name=lili&amp;amp;age=10&#34;</span>); 
+</code></pre></div><p>（3）服务器的响应 responseText 获得字符串形式的响应数据。 responseXML 获得 XML 形式的响应数据。
+（4）onreadystatechange 事件 当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件。 readyState 属性存有 XMLHttpRequest 的状态信息。 下面是 XMLHttpRequest 对象的三个重要的属性： onreadystatechange属性，每当readyState属性变化时就会调用该函数；
+readyState属性，它有四种状态变化：
+0: 请求未初始化
+1: 服务器连接已建立
+2: 请求已接收
+3: 请求处理中
+4: 请求已完成，且响应已就绪 status属性 200: &ldquo;OK&rdquo; 404: 未找到页面 所以当 readyState 等于 4 且状态为 200 时，表示响应已就绪：
+示例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">onreadystatechange</span><span style="color:#f92672">=</span><span style="color:#66d9ef">function</span>() { 
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">readyState</span><span style="color:#f92672">==</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">status</span><span style="color:#f92672">==</span><span style="color:#ae81ff">200</span>) { document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;myDiv&#34;</span>).<span style="color:#a6e22e">innerHTML</span><span style="color:#f92672">=</span><span style="color:#a6e22e">xmlhttp</span>.<span style="color:#a6e22e">responseText</span>; 
+} 
+} 
+</code></pre></div><ul>
+<li>*Query中的ajax 在jQuery中我们有$.get()、$.post()、$.ajax()方法来向服务器发送数据
+（1）$.get() $.get(url,data,success(),datatype) url:必填； data：可选，规定请求的同时发送的数据； success()：可选，请求成功时运行的函数； datatype：可选，服务器响应的数据类型，JQuery会只能判断；
+（2）$.post()方法差不多 url:必填； data：可选，规定请求的同时发送的数据； success()：可选，请求成功时运行的函数； datatype：可选，服务器响应的数据类型，JQuery会只能判断；
+（3）$.ajax()方法可以替换上面两种方法，定制自由度更高,以下是常用属性；
+$.ajax({ url:&lsquo;01.php&rsquo;,//请求地址
+data:&lsquo;name=fox&amp;age=18&rsquo;,//发送的数据 type:&lsquo;GET&rsquo;,//请求的方式
+success:function (argument) {},// 请求成功执行的方法
+beforeSend:function (argument) {},// 在发送请求之前调用,可以做一些验证之类的处理
+error:function (argument) {console.log(argument);},//请求失败调用 })</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/ajax%E5%A4%8D%E4%B9%A0/">
+                    #ajax复习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2017/%E5%88%9D%E8%AF%86angular-js-%E5%A4%87%E5%BF%98%E5%BD%95%E7%BB%83%E4%B9%A0/" class="prev" rel="prev" title="初识angular js ,备忘录练习"><i class="iconfont icon-left"></i>&nbsp;初识angular js ,备忘录练习</a>
+         
+        
+        <a href="https://chenxiaolani.com/2017/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" class="next" rel="next" title="angular  js 获取天气预报">angular  js 获取天气预报&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

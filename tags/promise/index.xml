@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>promise on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/promise/</link>
+    <description>Recent content in promise on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 06 Jan 2019 17:56:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/promise/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>手动实现一个简单的promise</title>
+      <link>https://chenxiaolani.com/2019/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</link>
+      <pubDate>Sun, 06 Jan 2019 17:56:20 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2019/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</guid>
+      <description>一直在用promise，也想过自己能不能也实现一个简单的promise，但是一直没有时间；这不最近辞职了，时间就多起来了。当然也参考了网上很多人的实现方法。
+  本篇文章主要参考自https://github.com/ElemeFE/node-practice/blob/master/control/promise/README.md
+  promise的意义就是能够很好的控制异步流程，避免回调地狱；首先来看一下promise的基本用法
+ 基本实现效果 let p = new Promisee((resolve, reject) =&amp;gt; { setTimeout(() =&amp;gt; { resolve(&amp;#39;hello&amp;#39;) }, 0) }) p.then((val) =&amp;gt; { console.log(val) return &amp;#39;world&amp;#39; }) .then((val) =&amp;gt; { console.log(val) }) 基本书写 当我们想封装一个函数时，我们只关心两个东西，它需要输入什么以及它要输出什么。
+ 输入一个函数接受两个回调参数 输出一个对象，里面为then函数，函数参数为成功回调和失败回调  function Promisee(fn) { function resolve() { } function reject() { } fn(resolve, reject) // 返回一个对象  return { then: function(onResolve, onReject) { } } } 加入状态模式 promise内部使用了状态模式，根据不同的状态执行不同的逻辑</description>
+    </item>
+    
+  </channel>
+</rss>

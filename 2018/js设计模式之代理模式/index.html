@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           js设计模式之代理模式 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="js设计模式之代理模式 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "js设计模式之代理模式",
+    "headline" : "js设计模式之代理模式",
+    "description" : "代理模式的定义：为一个对象提供代用品或占位符，以便控制对它的访问；注意使用者无权访问目标对象的。\n  最常见的就是科学上网了  代理模式根据其目的，也有好多种代理\n 保护代理（代理掉不必要的请求） 虚拟代理 （创建开销很大的对象时，可以先用一个小对象代替，等到真正使用时再创建） 缓存代理 （为一些开销大的运算提供暂时的存储，如果下次传的参数一致时，可以返回这个结果） 其他代理（在js中适用性不高）  保护代理 \/\/ 这个类外面是无权访问的 class ReadImg { constructor(fileName) { this.fileName = fileName this.loadFormDIsk() \/\/ 加载，模拟  } loadFormDIsk() { console.log(\x26#39;loading...\x26#39; \x2b this.fileName) } display() { console.log(\x26#39;display...\x26#39; \x2b this.fileName) } } \/\/ 定义代理函数 class ProxyImg { constructor(fileName) { this.realImg = new ReadImg(fileName) } display() { this.realImg.display() } } let proxyImg = new ProxyImg(\x26#39;1.png\x26#39;) e6中的proxy 明星经纪人案例\nlet start = { name: \x26#39;steven\x26#39;, age: 24, phone: \x26#39;12334445\x26#39; } \/\/ 经纪人来代理 let agent = new Proxy(start, { get: function(target, key) { if(key === \x26#39;phone\x26#39;) { \/\/ 给经纪人自己的号码  return \x26#39;111121111\x26#39; } if(key === \x26#39;price\x26#39;) { \/\/ 经纪人来报价  return 1232333 } return target[key] }, set: function(target, key, val) { if(key === \x26#39;customPrice\x26#39;) { if(val \x26lt; 10000) { throw new Error(\x26#34;太低\x26#34;) }else { target[key] = val return true } } } }) 虚拟代理 图片预加载",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-12-05 22:03:04 \x2b0000 UTC",
+    "dateModified" : "2018-12-05 22:03:04 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "187",
+    "keywords" : [ "js设计模式", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">js设计模式之代理模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-12-05 itemprop="datePublished">December 5, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>代理模式的定义：为一个对象提供代用品或占位符，以便控制对它的访问；注意使用者无权访问目标对象的。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<ul>
+<li>最常见的就是科学上网了</li>
+</ul>
+<p>代理模式根据其目的，也有好多种代理</p>
+<ol>
+<li>保护代理（代理掉不必要的请求）</li>
+<li>虚拟代理 （创建开销很大的对象时，可以先用一个小对象代替，等到真正使用时再创建）</li>
+<li>缓存代理 （为一些开销大的运算提供暂时的存储，如果下次传的参数一致时，可以返回这个结果）</li>
+<li>其他代理（在js中适用性不高）</li>
+</ol>
+<h3 id="heading">保护代理</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 这个类外面是无权访问的
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReadImg</span> {
+    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">fileName</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fileName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fileName</span>
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loadFormDIsk</span>() <span style="color:#75715e">// 加载，模拟
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#a6e22e">loadFormDIsk</span>() {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;loading...&#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fileName</span>)
+    }
+    <span style="color:#a6e22e">display</span>() {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;display...&#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fileName</span>)
+    }
+}
+
+<span style="color:#75715e">// 定义代理函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProxyImg</span> {
+    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">fileName</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">realImg</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ReadImg</span>(<span style="color:#a6e22e">fileName</span>)
+    }
+    <span style="color:#a6e22e">display</span>() {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">realImg</span>.<span style="color:#a6e22e">display</span>()
+    }
+}
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">proxyImg</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ProxyImg</span>(<span style="color:#e6db74">&#39;1.png&#39;</span>)
+</code></pre></div><h4 id="e6proxy">e6中的proxy</h4>
+<p>明星经纪人案例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;steven&#39;</span>,
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">24</span>,
+    <span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;12334445&#39;</span>
+}
+
+<span style="color:#75715e">// 经纪人来代理
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">agent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Proxy(<span style="color:#a6e22e">start</span>, {
+    <span style="color:#a6e22e">get</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) {
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;phone&#39;</span>) {
+            <span style="color:#75715e">// 给经纪人自己的号码
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;111121111&#39;</span>
+        }
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;price&#39;</span>) {
+            <span style="color:#75715e">// 经纪人来报价
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1232333</span>
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">key</span>]
+    },
+    <span style="color:#a6e22e">set</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">val</span>) {
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;customPrice&#39;</span>) {
+            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10000</span>) {
+                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;太低&#34;</span>)
+            }<span style="color:#66d9ef">else</span> {
+                <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+            }
+        }
+    }
+})
+</code></pre></div><h3 id="heading1">虚拟代理</h3>
+<p>图片预加载</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myImage</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imgNode</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;img&#34;</span>)
+    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">imgNode</span>)
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">setSrc</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">src</span>) {
+            <span style="color:#a6e22e">imgNode</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>
+        }
+    }
+})()
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">proxyImage</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>
+    <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#a6e22e">myImage</span>.<span style="color:#a6e22e">setSrc</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">src</span>)
+    }
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">setSrc</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">src</span>) {
+            <span style="color:#75715e">// 占位图片
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">myImage</span>.<span style="color:#a6e22e">setSrc</span>(<span style="color:#e6db74">&#34;http://123.png&#34;</span>)
+            <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>
+        }
+    }
+})()
+<span style="color:#75715e">// 通过代理设置图片地址，在onload之前会出现占位图片
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">proxyImage</span>.<span style="color:#a6e22e">setSrc</span>(<span style="color:#e6db74">&#34;http://pic.jpg&#34;</span>)
+</code></pre></div><h3 id="heading2">缓存代理</h3>
+<p>比如vue中的计算属性computed,它和methods的区别就是可以缓存数据</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                    #js设计模式</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="js设计模式之单例模式"><i class="iconfont icon-left"></i>&nbsp;js设计模式之单例模式</a>
+         
+        
+        <a href="https://chenxiaolani.com/2018/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="js设计模式之适配器模式">js设计模式之适配器模式&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

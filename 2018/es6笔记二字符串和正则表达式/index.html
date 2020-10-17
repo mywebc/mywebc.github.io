@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="陈晓拉尼">
+  
+  
+  
+  <link rel="prev" href="https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/" />
+  <link rel="next" href="https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/" />
+  <link rel="canonical" href="https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ES6笔记（二）字符串和正则表达式 | 陈晓拉尼
+       
+  </title>
+  <meta name="title" content="ES6笔记（二）字符串和正则表达式 | 陈晓拉尼">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/chenxiaolani.com\/"
+    },
+    "articleSection" : "posts",
+    "name" : "ES6笔记（二）字符串和正则表达式",
+    "headline" : "ES6笔记（二）字符串和正则表达式",
+    "description" : "\x3cp\x3e字符串\x3c\/p\x3e\n\x3ch3 id=\x22heading\x22\x3e字符串模板\x3c\/h3\x3e\n\x3cp\x3e字符串模板用``来表示，示例如下: [crayon] let template = `\x3c\/p\x3e\n\x3cul\x3e\n\x3cli\x3e${变量1}\x3c\/li\x3e\n\x3cli\x3e$(变量2)\x3c\/li\x3e\n\x3c\/ul\x3e\n\x3cp\x3e` [\/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要\x2b来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1\x2b1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};\x3c\/p\x3e\n\x3ch3 id=\x22heading1\x22\x3e标签模板\x3c\/h3\x3e",
+    "inLanguage" : "zh-Hans",
+    "author" : "陈晓拉尼",
+    "creator" : "陈晓拉尼",
+    "publisher": "陈晓拉尼",
+    "accountablePerson" : "陈晓拉尼",
+    "copyrightHolder" : "陈晓拉尼",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-03-30 14:46:41 \x2b0000 UTC",
+    "dateModified" : "2018-03-30 14:46:41 \x2b0000 UTC",
+    "url" : "https:\/\/chenxiaolani.com\/2018\/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F\/",
+    "wordCount" : "74",
+    "keywords" : [ "es6", "陈晓拉尼"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://chenxiaolani.com/">陈晓拉尼</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/link/" title="">Link</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ES6笔记（二）字符串和正则表达式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://chenxiaolani.com/" rel="author">陈晓拉尼</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-03-30 itemprop="datePublished">March 30, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://chenxiaolani.com/categories/javascript/"> JavaScript </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>字符串</p>
+<h3 id="heading">字符串模板</h3>
+<p>字符串模板用``来表示，示例如下: [crayon] let template = `</p>
+<ul>
+<li>${变量1}</li>
+<li>$(变量2)</li>
+</ul>
+<p>` [/crayon] 可以看到字符串模板主要有两个特点 （1）字符串换行不再需要+来拼接，里面的空格换行都会保留； （2）字符串里可以用${}的形式来表示变量，当然这里也可以写一些简单的表达式如${1+1}或是三元表达式${a=1?true:false},还可以调用函数${fn()};</p>
+<h3 id="heading1">标签模板</h3>
+<p>标签模板的意思就是可以用函数来调用字符串模板，当然这个函数的参数有规定的。示例如下： [crayon] //先定义这个函数 function tag (arr, &hellip;arg){//&hellip;表示不确定参数个数 console.log(arr); console.log(&hellip;arg); } // 准备一个变量 let world = 20; let sayHi= 66; // 函数调用 tag `hello ${ world },${sayHi}` // 打印结果 // 第一个参数打印出来是一个数组[&lsquo;hello&rsquo;,',',''] // 第二个参数打印出来是20 66 [/crayon] 从上面看出，这个函数的规则就是第一个参数是一个数组，里面放的是普通的字符串，而第二个参数就是${}里面的变量，一般用标签模板来过滤HTML字符串，了解即可，用的多的还是字符串模板。</p>
+<h3 id="heading2">关于字符串编码</h3>
+<p>（1）我们经常听到utf-8，它是一种通用的字符编码格式，但其实js里面对于字符串采用的是utf-16来处理的； （2）不管是utf-8还是utf-16都是Unicode码的一种实现，什么是Unicode码呢？不需要了解太多，你只要知道这是一个能代表任何字符的大集合就好了； （3）在js里字符的表示形式是这样的\uxxxx,xxxx叫做码点，对于码点大于0XFFFF的字符来讲，ES5是不能正确处理的，ES6对此完善，并提供了一些API如下： [crayon] codePointAt(index)//传入索引值，返回其对于位置的码点 String.fromCodePoint()//传入码点，返回对应字符串 at(index)//返回给定位置的字符 normalize()//顾名思义格式化，了解即可 [/crayon]</p>
+<h3 id="heading3">关于字符串的一些方法</h3>
+<p>有个印象就好，废话不多说上API: [crayon] includes(str, index)//如果在字符串中检测到指定文本，返回true，否则false。 startsWith(str, index)//如果在字符串起始部分检测到指定文本，返回true，否则返回false。 endsWith(str, index)//如果在字符串的结束部分检测到指定文本，返回true，否则返回false。 str.repeat(n)//表示将字符串str重复n次 [/crayon]</p>
+<p>正则表达式</p>
+<p>正则表达式主要增加了几个修饰符，几个属性，先不看，就是这么任性，因为看了也白看，而且现在用的也不多。以后有机会有精力再看吧。</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>陈晓拉尼 </span>
+                </p>
+            
+           
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://chenxiaolani.com/tags/es6/">
+                    #es6</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://chenxiaolani.com/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/" class="prev" rel="prev" title="ES6笔记（一）块级作用域的绑定"><i class="iconfont icon-left"></i>&nbsp;ES6笔记（一）块级作用域的绑定</a>
+         
+        
+        <a href="https://chenxiaolani.com/2018/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/" class="next" rel="next" title="ES6笔记（三）函数">ES6笔记（三）函数&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                 
+             <div id="vcomments"></div>
+             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+             <script type="text/javascript">
+                 new Valine({
+                     el: '#vcomments' ,
+                     appId: '82GG6nXa3qWLssQbz7FlW8si-gzGzoHsz',
+                     appKey: 'LerWAhRBn4yg3fJGNfxp4t7J',
+                     notify:  false ,
+                     verify:  false ,
+                     avatar:'mp',
+                     placeholder: '说点什么吧...',
+                     visitor:  true 
+                 });
+             </script>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://chenxiaolani.com/">陈晓拉尼</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

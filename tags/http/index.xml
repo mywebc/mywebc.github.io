@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/http/</link>
+    <description>Recent content in http on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sat, 02 Sep 2017 08:46:43 +0000</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>理解http协议</title>
+      <link>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sat, 02 Sep 2017 08:46:43 +0000</pubDate>
+      
+      <guid>https://chenxiaolani.com/2017/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;http协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
