@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RollupJs on 陈晓拉尼</title>
+    <link>https://chenxiaolani.com/tags/rollupjs/</link>
+    <description>Recent content in RollupJs on 陈晓拉尼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 29 Nov 2020 23:39:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://chenxiaolani.com/tags/rollupjs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Rollup打包Vue或React组件库并发布到npm</title>
+      <link>https://chenxiaolani.com/2020/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</link>
+      <pubDate>Sun, 29 Nov 2020 23:39:46 +0800</pubDate>
+      
+      <guid>https://chenxiaolani.com/2020/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</guid>
+      <description>最近在写一些Vue和React相关的组件库，涉及到打包文件发布npm这一块，在对比了webpack和rollup两种打包工具之后，决定使用rollup来打包，在此总结一下，希望可以给其他人参考。如果嫌我啰嗦，可以直接看代码，😊。
+ Rollup Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码，常用于打包类库，其配置项也非常的简洁,跟webpack其实差不多，一个最基本的配置格式大体如下：
+export default { // 入口  input: &amp;#34;&amp;#34;, // 输出  output: [], // 排除项  external: [], // 全局模块  globals: {}, // 插件  plugins: [], } 与webpack区别 Rollup  简洁的API，易上手; 天生的Tree-shaking，自动删除冗余代码; 支持多模块导出; 能快速打出体积更小的bundle; 适合打包类、库；  webpack  丰富的插件系统; 代码分割和静态资源导入; 热模块更新; 适合项目级应用;  React react 打包配置如下，大家可以根据自己的项目稍微修改下即可。
+import resolve from &amp;#39;rollup-plugin-node-resolve&amp;#39;; import postcss from &amp;#39;rollup-plugin-postcss&amp;#39;; import commonjs from &amp;#39;rollup-plugin-commonjs&amp;#39;; import babel from &amp;#39;rollup-plugin-babel&amp;#39;; import typescript from &amp;#39;@rollup/plugin-typescript&amp;#39;; const extensions = [&amp;#39;.</description>
+    </item>
+    
+  </channel>
+</rss>
