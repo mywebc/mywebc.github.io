@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>浏览器前缀 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80/</link>
+        <description>浏览器前缀 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 13 Jul 2017 13:48:59 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80/" rel="self" type="application/rss+xml" /><item>
+    <title>浏览器的兼容写法</title>
+    <link>http://example.org/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</link>
+    <pubDate>Thu, 13 Jul 2017 13:48:59 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95/</guid>
+    <description><![CDATA[浏览器的兼容性写法 -moz-对应 Firefox, -webkit-对应 Safari and Chrome -o- for Opera -ms- for Internet Explorer]]></description>
+</item>
+</channel>
+</rss>

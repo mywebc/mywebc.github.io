@@ -1,0 +1,90 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Asher&#39;s blog</title>
+        <link>http://example.org/</link>
+        <description>自由自在,热爱生活</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 17 Oct 2021 21:22:27 &#43;0800</lastBuildDate>
+            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>springboot如何快速入门</title>
+    <link>http://example.org/springboot%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Sun, 17 Oct 2021 21:22:27 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/springboot%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[前一段时间一直在看Java，一直没有总结，今天总结下spring boot如何快速入门。 前置条件 学习Java，环境当然要装，以下几个直接无脑装]]></description>
+</item>
+<item>
+    <title>使用Rollup打包Vue或React组件库并发布到npm</title>
+    <link>http://example.org/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</link>
+    <pubDate>Sun, 29 Nov 2020 23:39:46 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</guid>
+    <description><![CDATA[最近在写一些Vue和React相关的组件库，涉及到打包文件发布npm这一块，在对比了webpack和rollup两种打包工具之后，决定使用r]]></description>
+</item>
+<item>
+    <title>Java之多线程初步总结</title>
+    <link>http://example.org/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Thu, 09 Jul 2020 20:23:29 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/java%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9D%E6%AD%A5%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[在java中，代码是阻塞同步执行的，为了更好的利用CPU资源，多线程的使用是十分有必要的，与之相关的，不得不提的还有一个进程，所谓进程即是代]]></description>
+</item>
+<item>
+    <title>Map集合和Collection集合常用类的总结</title>
+    <link>http://example.org/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Fri, 26 Jun 2020 18:04:47 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/map%E9%9B%86%E5%90%88%E5%92%8Ccollection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[Java中的数组有很多弊端，长度固定，不可增加删除操作，只能存储同一种数据类型，而且数组内元素的内存空间是连续分配的，对内存要求高点；而Ja]]></description>
+</item>
+<item>
+    <title>Java的包管理</title>
+    <link>http://example.org/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Mon, 22 Jun 2020 22:41:12 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/java%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[java中的包就是一些第三方的类库，跟前端的npm包差不多，前端通过npm这个平台管理npm包，在java中通过maven来实现包管理。 ma]]></description>
+</item>
+<item>
+    <title>hugo博客搭建</title>
+    <link>http://example.org/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Fri, 19 Jun 2020 22:07:53 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[最近把博客从hexo搬到了hugo，感觉确实比hexo快了不少，尤其是在部署的时候，直接push就好了，关于hugo的教程网上有很多，本篇文]]></description>
+</item>
+<item>
+    <title>Deno 初体验</title>
+    <link>http://example.org/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+    <pubDate>Sun, 24 May 2020 16:48:25 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+    <description><![CDATA[最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。 安装 安装 1 curl -fsSL]]></description>
+</item>
+<item>
+    <title>webpack配置app和pc多入口</title>
+    <link>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</link>
+    <pubDate>Sun, 08 Dec 2019 17:20:24 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</guid>
+    <description><![CDATA[需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。 原先页面为index.html,后面增加pcJs.]]></description>
+</item>
+<item>
+    <title>无意间用了React Portals</title>
+    <link>http://example.org/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/</link>
+    <pubDate>Sat, 28 Sep 2019 21:32:59 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%97%A0%E6%84%8F%E9%97%B4%E7%94%A8%E4%BA%86react-portals/</guid>
+    <description><![CDATA[不知哪天随手点开了一篇react portals的文章,眼前一亮,竟然还没有我听说过的react的特性,在看了大概之后,并没有觉得有什么用,不]]></description>
+</item>
+<item>
+    <title>使用OAuth授权第三方网站</title>
+    <link>http://example.org/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</link>
+    <pubDate>Thu, 08 Aug 2019 19:23:23 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</guid>
+    <description><![CDATA[OAuth是一种行业标准的授权方式，我们在登录一些网站时，其也可以使用第三方账号比如QQ或者微信登录， 都是使用OAuth授权的， 版本有1.x]]></description>
+</item>
+</channel>
+</rss>

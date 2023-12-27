@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>promise - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/promise/</link>
+        <description>promise - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 06 Jan 2019 17:56:20 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/promise/" rel="self" type="application/rss+xml" /><item>
+    <title>手动实现一个简单的promise</title>
+    <link>http://example.org/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</link>
+    <pubDate>Sun, 06 Jan 2019 17:56:20 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/</guid>
+    <description><![CDATA[一直在用promise，也想过自己能不能也实现一个简单的promise，但是一直没有时间；这不最近辞职了，时间就多起来了。当然也参考了网上很]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>hugo - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/hugo/</link>
+        <description>hugo - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Fri, 19 Jun 2020 22:07:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>hugo博客搭建</title>
+    <link>http://example.org/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Fri, 19 Jun 2020 22:07:53 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[最近把博客从hexo搬到了hugo，感觉确实比hexo快了不少，尤其是在部署的时候，直接push就好了，关于hugo的教程网上有很多，本篇文]]></description>
+</item>
+</channel>
+</rss>

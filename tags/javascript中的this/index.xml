@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>JavaScript中的this - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/javascript%E4%B8%AD%E7%9A%84this/</link>
+        <description>JavaScript中的this - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Tue, 16 Oct 2018 22:09:25 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/javascript%E4%B8%AD%E7%9A%84this/" rel="self" type="application/rss+xml" /><item>
+    <title>总结一下JavaScript中的this</title>
+    <link>http://example.org/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</link>
+    <pubDate>Tue, 16 Oct 2018 22:09:25 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E8%B0%88%E4%B8%80%E8%B0%88javascript%E4%B8%AD%E7%9A%84this/</guid>
+    <description><![CDATA[有的时候我们总是被JavaScript中的this搞得晕头转向，因为它的不确定性，也被经常拿来当作考题，我们也经常听到网上最认同的说法：“谁]]></description>
+</item>
+</channel>
+</rss>

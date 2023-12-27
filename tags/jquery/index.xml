@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jquery - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/jquery/</link>
+        <description>jquery - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Fri, 25 Aug 2017 14:42:59 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/jquery/" rel="self" type="application/rss+xml" /><item>
+    <title>表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）</title>
+    <link>http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</link>
+    <pubDate>Fri, 25 Aug 2017 14:42:59 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/</guid>
+    <description><![CDATA[一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复 一、浏览器端的验证我们可以用jQuery Vali]]></description>
+</item>
+</channel>
+</rss>

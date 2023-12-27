@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>http - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/http/</link>
+        <description>http - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sat, 02 Sep 2017 08:46:43 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/http/" rel="self" type="application/rss+xml" /><item>
+    <title>理解http协议</title>
+    <link>http://example.org/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Sat, 02 Sep 2017 08:46:43 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/</guid>
+    <description><![CDATA[<blockquote>
+<p>http协议全称超文本传输协议，它是无连接无状态的，默认端口为80，学习前端呢，我们也需要对其请求到响应也要有一个熟悉过程。 无连接：就是每次连接只能处理一次请求； 无状态：就是没有记忆能力，每次连接都会重复传数据，上次已经请求了的话。 http协议与服务器的交互主要有4种方式GET,POST,PUT,DLETE,分别对应着查询、修改、增添、删除操作。</p>
+</blockquote>]]></description>
+</item>
+</channel>
+</rss>

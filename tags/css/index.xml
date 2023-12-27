@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>CSS - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/css/</link>
+        <description>CSS - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 13 Jul 2017 13:45:17 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/css/" rel="self" type="application/rss+xml" /><item>
+    <title>Js中的css样式</title>
+    <link>http://example.org/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</link>
+    <pubDate>Thu, 13 Jul 2017 13:45:17 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E4%B8%AD%E7%9A%84css%E6%A0%B7%E5%BC%8F/</guid>
+    <description><![CDATA[js中css样式的不同 1、 JavaScript使用驼峰命名法，而css不是。 比如css中的‘border-radius’，js中的‘bord]]></description>
+</item>
+</channel>
+</rss>

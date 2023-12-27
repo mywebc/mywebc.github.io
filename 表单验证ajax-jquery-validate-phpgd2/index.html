@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>表单验证（ajax&#43;jQuery Validate&#43;PHPgd2） - Asher&#39;s blog</title><meta name="Description" content="自由自在,热爱生活"><meta property="og:title" content="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）" />
+<meta property="og:description" content="一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复 一、浏览器端的验证我们可以用jQuery Vali" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" /><meta property="og:image" content="http://example.org/images/me/haha.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-08-25T14:42:59&#43;00:00" />
+<meta property="article:modified_time" content="2017-08-25T14:42:59&#43;00:00" /><meta property="og:site_name" content="我的网站" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/images/me/haha.jpeg"/>
+
+<meta name="twitter:title" content="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）"/>
+<meta name="twitter:description" content="一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复 一、浏览器端的验证我们可以用jQuery Vali"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" /><link rel="prev" href="http://example.org/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" /><link rel="next" href="http://example.org/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "表单验证（ajax+jQuery Validate+PHPgd2）",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2\/"
+        },"genre": "posts","keywords": "jquery","wordcount":  1307 ,
+        "url": "http:\/\/example.org\/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2\/","datePublished": "2017-08-25T14:42:59+00:00","dateModified": "2017-08-25T14:42:59+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "陈晓拉尼-Asher"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Asher&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/link/"> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Asher&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/link/" title="">友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">表单验证（ajax+jQuery Validate+PHPgd2）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>陈晓拉尼-Asher</a></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>JavaScript</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2017-08-25">2017-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1307 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一浏览器端的验证我们可以用jquery-validate这个插件">一、浏览器端的验证我们可以用jQuery Validate这个插件</a></li>
+    <li><a href="#二关于验证码-要用到phpgd库里面提供的一些api使用前注意开启phpgd2-具体示例">二、关于验证码 要用到PHPgd库里面提供的一些api,使用前注意开启PHPgd2 具体示例：</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>一般在我们浏览器端负责输入数据格式的验证，在服务器端利用ajax技术查询验证输入数据是否重复</p>
+</blockquote>
+<!-- more -->
+<h2 id="一浏览器端的验证我们可以用jquery-validate这个插件">一、浏览器端的验证我们可以用jQuery Validate这个插件</h2>
+<ol>
+<li>首先引入插件：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;libs/jquery-1.11.1.min.js&#39;</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;/</span>
+<span class="c1">//jquery插件 
+</span><span class="c1"></span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;libs/jquery.validate.min.js&#39;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="c1">//jQuery validate插件 
+</span><span class="c1"></span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;libs/messages_zh.min.js&#39;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="c1">//中文提示信息插件
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>具体使用看如下例子：</li>
+</ol>
+<ul>
+<li>js部分</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"> <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> 
+   <span class="c1">//指定要验证的表单 
+</span><span class="c1"></span>   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myform&#39;</span><span class="p">).</span><span class="nx">validate</span><span class="p">({</span> 
+     <span class="c1">//这里是验证通过要书写回调函数 
+</span><span class="c1"></span>     <span class="nx">submitHandler</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">form</span><span class="p">){</span>
+        <span class="c1">//提交表单方式之一 
+</span><span class="c1"></span>        <span class="nx">form</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span> 
+      <span class="p">}</span> 
+      <span class="c1">//这里定义规则 
+</span><span class="c1"></span>      <span class="nx">rules</span><span class="o">:</span><span class="p">{</span> <span class="nx">username</span><span class="o">:</span><span class="p">{</span> <span class="nx">requried</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span> <span class="nx">minlength</span><span class="o">:</span><span class="mi">2</span> <span class="p">}</span> <span class="p">}</span> 
+      <span class="c1">//这里写提示信息，如果不写，就会使用默认 
+</span><span class="c1"></span>      <span class="nx">messages</span><span class="o">:</span><span class="p">{</span> 
+        <span class="nx">username</span><span class="o">:</span><span class="p">{</span> 
+          <span class="nx">required</span><span class="o">:</span><span class="s2">&#34;请输入用户名！&#34;</span><span class="p">,</span> <span class="nx">minlength</span><span class="o">:</span><span class="s2">&#34;长度不少于2位！&#34;</span> <span class="p">}</span> <span class="p">}</span> 
+      <span class="p">})</span> 
+    <span class="p">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>更多的其他的指令规则：规则 描述</li>
+</ol>
+<ul>
+<li>required:true 必须输入的字段。</li>
+<li>remote:&ldquo;check.php&rdquo; 使用 ajax 方法调用 check.php 验证输入值。</li>
+<li>email:true 必须输入正确格式的电子邮件。</li>
+<li>url:true 必须输入正确格式的网址。</li>
+<li>date:true 必须输入正确格式的日期。日期校验 ie6 出错，慎用。</li>
+<li>dateISO:true 必须输入正确格式的日期（ISO），例如：2009-06-23，1998/01/22。只验证格式，不验证有效性。</li>
+<li>number:true 必须输入合法的数字（负数，小数）。</li>
+<li>digits:true 必须输入整数。</li>
+<li>creditcard: 必须输入合法的信用卡号。</li>
+<li>equalTo:&quot;#field&quot; 输入值必须和 #field 相同。</li>
+<li>accept: 输入拥有合法后缀名的字符串（上传文件的后缀）。</li>
+<li>maxlength:5 输入长度最多是 5 的字符串（汉字算一个字符）。</li>
+<li>minlength:10 输入长度最小是 10 的字符串（汉字算一个字符）。</li>
+<li>rangelength:[5,10] 输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。</li>
+<li>range:[5,10] 输入值必须介于 5 和 10 之间。</li>
+<li>max:5 输入值不能大于 5。</li>
+<li>min:10 输入值不能小于 10。</li>
+</ul>
+<ol start="4">
+<li>小提示：可以使用label.error自定义错误信息提示样式;</li>
+</ol>
+<h2 id="二关于验证码-要用到phpgd库里面提供的一些api使用前注意开启phpgd2-具体示例">二、关于验证码 要用到PHPgd库里面提供的一些api,使用前注意开启PHPgd2 具体示例：</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="c1">// 创建画布 
+</span><span class="c1"></span>  <span class="nx">$img</span><span class="o">=</span><span class="nx">imagecreate</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">35</span><span class="p">);</span> 
+  <span class="c1">// 给画布分配背景颜色，mt_rand()就是返回随机整数 
+</span><span class="c1"></span>  <span class="nx">$bgcolor</span><span class="o">=</span><span class="nx">imagecolorallocate</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">));</span> 
+  <span class="c1">// 添加干扰线，用for循环，随机画三条 
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="nx">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">$i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="c1">// 为干扰线添加随机颜色 
+</span><span class="c1"></span>    <span class="nx">$linecolor</span><span class="o">=</span><span class="nx">imagecolorallocate</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">));</span> 
+    <span class="c1">// 开始画干扰线 
+</span><span class="c1"></span>    <span class="nx">imageline</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span><span class="nx">$linecolor</span><span class="p">);</span> <span class="p">}</span> 
+    <span class="c1">// 添加干扰点,for循环，随机添加25个点 
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="nx">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">$i</span> <span class="o">&lt;</span><span class="mi">25</span> <span class="p">;</span> <span class="nx">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="c1">//为点添加随机颜色 
+</span><span class="c1"></span>      <span class="nx">$diancolor</span><span class="o">=</span><span class="nx">imagecolorallocate</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">));</span> 
+      <span class="c1">// 开始画点 
+</span><span class="c1"></span>      <span class="nx">imagesetpixel</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span><span class="nx">$diancolor</span><span class="p">);</span> 
+      <span class="p">}</span> 
+    <span class="c1">// 准备一个字符串 
+</span><span class="c1"></span>    <span class="nx">$rand_str</span><span class="o">=</span><span class="s1">&#39;qwertyuiopasdfghjklzxcvbnm1234567890&#39;</span><span class="p">;</span> 
+    <span class="c1">// 准备一个空数组 
+</span><span class="c1"></span>    <span class="nx">$str_arr</span><span class="o">=</span><span class="nx">array</span><span class="p">();</span> 
+    <span class="c1">// 循环四次返回4个随机字母或数字 
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="nx">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">$i</span> <span class="o">&lt;</span><span class="mi">4</span> <span class="p">;</span> <span class="nx">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="c1">// 随机取从0到字符串长度的下标 
+</span><span class="c1"></span>      <span class="nx">$pos</span><span class="o">=</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">strlen</span><span class="p">(</span><span class="nx">$rand_str</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> 
+      <span class="c1">// 一一放到数组里 
+</span><span class="c1"></span>      <span class="nx">$str_arr</span><span class="p">[]</span><span class="o">=</span><span class="nx">$rand_str</span><span class="p">[</span><span class="nx">$pos</span><span class="p">];</span>
+    <span class="p">}</span> 
+    <span class="c1">// 开启sesson,把这四个数据放进session里 
+</span><span class="c1"></span>    <span class="nx">session_start</span><span class="p">();</span> <span class="nx">$_SESSION</span><span class="p">[</span><span class="s1">&#39;info&#39;</span><span class="p">]</span><span class="o">=</span><span class="nx">$str_arr</span><span class="p">;</span> 
+    <span class="c1">// 准备绘制，可以用imagestring(不支持中文)或者imagettftext(支持中文但需要下载字体) 
+</span><span class="c1"></span>    <span class="c1">//用imagesttftext绘制 
+</span><span class="c1"></span>    <span class="nx">$x_start</span><span class="o">=</span><span class="mi">100</span><span class="o">/</span><span class="mi">5</span><span class="p">;</span> 
+    <span class="c1">// foreach用于遍历输出数组，不知道循环次数 
+</span><span class="c1"></span>    <span class="nx">foreach</span> <span class="p">(</span><span class="nx">$str_arr</span> <span class="nx">as</span> <span class="nx">$key</span><span class="p">)</span> <span class="p">{</span> <span class="nx">$fontcolor</span> <span class="o">=</span> <span class="nx">imagecolorallocate</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">));</span> <span class="nx">imagettftext</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">mt_rand</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="nx">$x_start</span><span class="p">,</span> <span class="mi">50</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">$fontcolor</span><span class="p">,</span> <span class="s2">&#34;C:/Windows/Fonts/Verdana.TTF&#34;</span><span class="p">,</span> <span class="nx">$key</span><span class="p">);</span> <span class="nx">$x_start</span> <span class="o">+=</span><span class="mi">20</span><span class="p">;</span>
+    <span class="c1">//遍历后单个字符沿X轴 
+</span><span class="c1"></span>    <span class="o">+</span><span class="mi">20</span> 
+    <span class="p">}</span> 
+    <span class="c1">// 填充 
+</span><span class="c1"></span>    <span class="nx">imagefill</span><span class="p">(</span><span class="nx">$img</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">$imgcolor</span><span class="p">);</span> <span class="nx">ob_clean</span><span class="p">();</span> 
+    <span class="c1">// 输出图像格式 
+</span><span class="c1"></span>    <span class="nx">header</span><span class="p">(</span><span class="s1">&#39;content-type:image/jpeg&#39;</span><span class="p">);</span> 
+    <span class="c1">// 输出图像 
+</span><span class="c1"></span>    <span class="nx">imagejpeg</span><span class="p">(</span><span class="nx">$img</span><span class="p">);</span> 
+    <span class="c1">// 摧毁图像 
+</span><span class="c1"></span>    <span class="nx">imagedestroy</span><span class="p">(</span><span class="nx">$img</span><span class="p">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>我们在HTML中创建一个img,src属性指向这个PHP页面即可显示出来，如：src=data.php  点击图片刷新属性：</li>
+<li>验证验证码是否正确，利用ajax传送到后端，后端如下判断：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">  <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">header</span><span class="p">(</span><span class="s1">&#39;content-type:text/html;charset= utf-8&#39;</span><span class="p">);</span> 
+  <span class="c1">// 接受验证码 
+</span><span class="c1"></span>  <span class="nv">$yzm</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">];</span> <span class="nx">session_start</span><span class="p">();</span> 
+  <span class="c1">// 把数组里的数据都取出来 
+</span><span class="c1"></span>  <span class="nv">$data</span><span class="o">=</span><span class="nx">implode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;info&#39;</span><span class="p">]);</span> 
+  <span class="k">if</span><span class="p">(</span><span class="nv">$yzm</span><span class="o">==</span><span class="nv">$data</span><span class="p">){</span> <span class="k">echo</span><span class="s1">&#39;1&#39;</span><span class="p">;</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="err"> 
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意：我也不知道为什么，一开始老是验证不了，最后是需要再单独建一个PHP，再在里面写上验证代码就好了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2017-08-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" data-title="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）" data-hashtags="jquery"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" data-hashtag="jquery"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" data-title="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" data-title="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81ajax-jquery-validate-phpgd2/" data-title="表单验证（ajax&#43;jQuery Validate&#43;PHPgd2）"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/jquery/">jquery</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/angular-js-%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" class="prev" rel="prev" title="angular  js 获取天气预报"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>angular  js 获取天气预报</a>
+            <a href="/%E7%90%86%E8%A7%A3http%E5%8D%8F%E8%AE%AE/" class="next" rel="next" title="理解http协议">理解http协议<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">陈晓拉尼-Asher</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKwsBjM4CbKFB","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"en","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"mywebc/blog-comments","repoId":"R_kgDOKwsBjA"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Asher's blog","id-2":"Asher's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

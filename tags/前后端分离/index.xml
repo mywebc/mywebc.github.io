@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>前后端分离 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</link>
+        <description>前后端分离 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Mon, 18 Dec 2017 10:29:21 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="self" type="application/rss+xml" /><item>
+    <title>前后端分离小demo</title>
+    <link>http://example.org/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%B0%8Fdemo/</link>
+    <pubDate>Mon, 18 Dec 2017 10:29:21 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%B0%8Fdemo/</guid>
+    <description><![CDATA[<blockquote>
+<p>目的：前端请求后端，插入数据到数据库。 新建两个文件夹，vueServer和vueClient</p>
+</blockquote>
+<p>vueServer</p>]]></description>
+</item>
+<item>
+    <title>前后端为什么要分离？</title>
+    <link>http://example.org/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%A6%BB/</link>
+    <pubDate>Thu, 14 Dec 2017 20:48:52 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%A6%BB/</guid>
+    <description><![CDATA[分享一下 http://2014.jsconf.cn/slides/herman-taobaoweb/#/]]></description>
+</item>
+</channel>
+</rss>

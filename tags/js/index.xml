@@ -1,0 +1,84 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>js - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/js/</link>
+        <description>js - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Tue, 12 Dec 2017 11:36:40 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/js/" rel="self" type="application/rss+xml" /><item>
+    <title>数组去重的三种方法</title>
+    <link>http://example.org/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Tue, 12 Dec 2017 11:36:40 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[一、利用indexOf方法剔除 1 2 3 4 5 6 7 8 9 10 var newArr = [] function removeArr (arr) { for (var i = 0;i &lt; arr.length; i++){ // 如果等于-1的话，push进newArr if(newArr.indexOf(arr[i] === -1)) { newArr.push(arr[i]) } } return]]></description>
+</item>
+<item>
+    <title>数组内元素随机排序的三种方法</title>
+    <link>http://example.org/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Mon, 11 Dec 2017 23:38:06 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[一、利用数组方法sort 1 // 数组的sort方法，如果a&gt;b,则正序排，a 二、经典的洗牌算法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 // 我们先定义]]></description>
+</item>
+<item>
+    <title>js中对数组的一些操作</title>
+    <link>http://example.org/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</link>
+    <pubDate>Wed, 11 Oct 2017 13:28:08 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E4%B8%AD%E5%AF%B9%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</guid>
+    <description><![CDATA[对于angular，还是先放放，国庆期间看了点VUe.js,最近这两天在FCC（free code camp）刷题，以前学的知识又忘了，看到数组的几个]]></description>
+</item>
+<item>
+    <title>js中的作用域及变量提升</title>
+    <link>http://example.org/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+    <pubDate>Mon, 07 Aug 2017 21:35:02 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+    <description><![CDATA[一、作用域 作用域有：块级作用域和词法作用域； 块级作用域：使用{}包裹起来的，里面的变量外面是不可以访问的，js没有块级作用域，js里外面是可]]></description>
+</item>
+<item>
+    <title>用面向对象实现歌曲的增删改查</title>
+    <link>http://example.org/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</link>
+    <pubDate>Sun, 06 Aug 2017 01:41:37 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%AD%8C%E6%9B%B2%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</guid>
+    <description><![CDATA[<blockquote>
+<p>自定义构造函数，在其原型对象上书写增删改查函数，再调用拼接字符串到HTML页面即可； 构造函数如下：</p>
+</blockquote>]]></description>
+</item>
+<item>
+    <title>js特效之三大家族、event事件</title>
+    <link>http://example.org/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</link>
+    <pubDate>Tue, 01 Aug 2017 20:30:14 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E7%89%B9%E6%95%88%E4%B9%8B%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8Fevent%E4%BA%8B%E4%BB%B6/</guid>
+    <description><![CDATA[老是忘，好好整理一下。 三大家族：offset（位移）、scroll（卷页）、client（可视区）。 offset家族( 5个属性) offset]]></description>
+</item>
+<item>
+    <title>旋转轮播图</title>
+    <link>http://example.org/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</link>
+    <pubDate>Mon, 31 Jul 2017 09:29:27 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%97%8B%E8%BD%AC%E8%BD%AE%E6%92%AD%E5%9B%BE/</guid>
+    <description><![CDATA[<blockquote>
+<p>与一般轮播图不同，用缓动动画做，我们需要简单封装一个缓动框架</p>
+</blockquote>]]></description>
+</item>
+<item>
+    <title>选项卡应用</title>
+    <link>http://example.org/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</link>
+    <pubDate>Wed, 19 Jul 2017 15:34:36 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%BA%94%E7%94%A8/</guid>
+    <description><![CDATA[很多时候我们需要用到选项卡应用，比如手机京东的商品分类； js代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 window.onload=function(){ var tabLi=document.querySelectorAll(&#39;.tab li&#39;); var tabDiv=document.querySelectorAll(&#39;.content Div&#39;); for (var i = 0; i &lt; tabLi.length; i++) { tbLi[i].index=i; tabLi[i].onclick=function(){ for (var i]]></description>
+</item>
+<item>
+    <title>js特效之带有定时器的无缝轮播图（offset家族）</title>
+    <link>http://example.org/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</link>
+    <pubDate>Sun, 21 May 2017 02:42:52 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E7%89%B9%E6%95%88%E4%B9%8B%E5%B8%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E6%97%A0%E7%BC%9D%E8%BD%AE%E6%92%AD%E5%9B%BEoffset%E5%AE%B6%E6%97%8F/</guid>
+    <description><![CDATA[1.了解offset家族，这里用到offsetLeft(盒子距离左侧的距离)，与style.left不同，style.left可被赋值且盒子]]></description>
+</item>
+</channel>
+</rss>

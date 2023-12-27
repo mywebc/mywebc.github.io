@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工具 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/%E5%B7%A5%E5%85%B7/</link>
+        <description>工具 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Mon, 24 Jul 2017 07:57:32 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+    <title>Fireworks 和Ps的常用操作</title>
+    <link>http://example.org/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+    <pubDate>Mon, 24 Jul 2017 07:57:32 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+    <description><![CDATA[Fireworks的常用快捷键： V：切换黑鼠标 U：画图 K：切片 I：吸色 Z：放大镜 空格：移动 shift：量尺寸 Photoshop的快捷键 z、a]]></description>
+</item>
+</channel>
+</rss>

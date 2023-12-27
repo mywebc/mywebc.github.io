@@ -1,0 +1,73 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>CSS - Category - Asher&#39;s blog</title>
+        <link>http://example.org/categories/css/</link>
+        <description>CSS - Category - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sat, 30 Sep 2017 11:05:40 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/css/" rel="self" type="application/rss+xml" /><item>
+    <title>canvas小案例：fly birds</title>
+    <link>http://example.org/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</link>
+    <pubDate>Sat, 30 Sep 2017 11:05:40 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/canvas%E5%B0%8F%E6%A1%88%E4%BE%8Bfly-birds/</guid>
+    <description><![CDATA[我们可以看到这个游戏由背景蓝天，土地，小鸟，管道四部分组成，在开始游戏我们必须保证全部加载完所有图片资源，这里书写一个函数传进所有图片资源，]]></description>
+</item>
+<item>
+    <title>canvas画图API整理</title>
+    <link>http://example.org/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</link>
+    <pubDate>Tue, 26 Sep 2017 07:51:10 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/canvas%E7%94%BB%E5%9B%BEapi%E6%95%B4%E7%90%86/</guid>
+    <description><![CDATA[<blockquote>
+<p>canvas 是 HTML5 提供的一个用于展示绘图效果的标签.
+canvas 原意画布, 帆布. 在 HTML 页面中用于展示绘图效果. 基本语法：</p>
+</blockquote>
+<ol>
+<li>使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.</li>
+<li>默认 canvas 的宽高为 300 和 150.</li>
+<li>不要使用 CSS 的方式设置宽高, 应该使用 HTML 属性.</li>
+<li>如果浏览器不支持 canvas 标签, 那么就会将其解释为 div 标签. 因此常常在 canvas 中嵌入文本, 以提示用户浏览器的能力.</li>
+<li>canvas 的兼容性非常强, 只要支持该标签的, 基本功能都一样, 因此不用考虑兼容性问题.</li>
+<li>canvas 本身不能绘图. 是使用 JavaScript 来完成绘图. canvas 对象提供了各种绘图用的 api.
+基本使用方法：</li>
+<li>获得 canvas 对象.</li>
+<li>调用 getContext 方法, 提供字符串参数 &lsquo;2d&rsquo;.</li>
+<li>该方法返回 CanvasRenderingContext2D 类型的对象. 该对象提供基本的绘图命令.</li>
+<li>使用 CanvasRenderingContext2D 对象提供的方法进行绘图.</li>
+<li>基本绘图命令
+<ul>
+<li>设置开始绘图的位置: context.moveTo( x, y ).</li>
+<li>设置直线到的位置: context.lineTo( x, y ).</li>
+<li>描边绘制: context.stroke().</li>
+<li>填充绘制: context.fill().</li>
+<li>闭合路径: context.closePath().</li>
+</ul>
+</li>
+</ol>]]></description>
+</item>
+<item>
+    <title>简述CSS3中的动画</title>
+    <link>http://example.org/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</link>
+    <pubDate>Sun, 17 Sep 2017 12:04:35 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%AE%80%E8%BF%B0css3%E4%B8%AD%E7%9A%84%E5%8A%A8%E7%94%BB/</guid>
+    <description><![CDATA[动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。 在CSS3中的设置动画步骤： a、]]></description>
+</item>
+<item>
+    <title>CSS3里的flexbox布局</title>
+    <link>http://example.org/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</link>
+    <pubDate>Thu, 14 Sep 2017 16:47:50 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/css3%E9%87%8C%E7%9A%84flexbox%E5%B8%83%E5%B1%80/</guid>
+    <description><![CDATA[一般我们在页面中的布局都用浮动或是定位来解决，但是浮动的初衷是解决文字环绕图片的问题，但是现在CSS3中出现了flexbox布局，一个真正为]]></description>
+</item>
+<item>
+    <title>伪类和伪元素、clearfix、clear</title>
+    <link>http://example.org/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</link>
+    <pubDate>Mon, 17 Jul 2017 14:36:06 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0clearfixclear/</guid>
+    <description><![CDATA[伪类是给选择器添加效果；伪元素是给将特殊效果添加到选择器。 伪类的效果等同于伪造一个类，伪元素的效果等同于伪造一个元素 伪类： 伪元素： 在CSS3]]></description>
+</item>
+</channel>
+</rss>

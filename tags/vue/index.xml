@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>vue - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/vue/</link>
+        <description>vue - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 22 Feb 2018 20:04:14 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/vue/" rel="self" type="application/rss+xml" /><item>
+    <title>vue/node搭建简易博客</title>
+    <link>http://example.org/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</link>
+    <pubDate>Thu, 22 Feb 2018 20:04:14 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/node%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2/</guid>
+    <description><![CDATA[<h2 id="服务器">服务器</h2>
+<p>阿里云学生豪华套餐（centos系统）</p>
+<h2 id="前端">前端</h2>
+<p>vue-cli vue脚手架 vue-router 路由控制 vue-axios 发送请求 element-ui 饿了么图库 marked和highlight.js markdown语法 stylus css预处理 moment.js 一个时间格式库 lodash JavaScript工具库</p>]]></description>
+</item>
+<item>
+    <title>vue/node聊天室</title>
+    <link>http://example.org/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</link>
+    <pubDate>Tue, 20 Feb 2018 17:28:48 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/node%E8%81%8A%E5%A4%A9%E5%AE%A4/</guid>
+    <description><![CDATA[介绍 主要用到socket.io,前端用vue，后端用express转接消息 GitHub https://github.com/mywebc/VUE-Chat]]></description>
+</item>
+<item>
+    <title>iview-cli搭建，一个简单的todoList</title>
+    <link>http://example.org/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</link>
+    <pubDate>Sat, 10 Feb 2018 15:12:02 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/iview-cli%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist/</guid>
+    <description><![CDATA[打包注意点 在man.js中注释掉mode:history,这个只有在开启服务器下才有效； 在webpack.prod.config.js中把输]]></description>
+</item>
+<item>
+    <title>慕课网项目：炸鸡音乐播放器</title>
+    <link>http://example.org/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</link>
+    <pubDate>Mon, 11 Dec 2017 21:19:23 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E6%85%95%E8%AF%BE%E7%BD%91%E9%A1%B9%E7%9B%AE%E7%82%B8%E9%B8%A1%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
+    <description><![CDATA[慕课网上的vue项目，跟着做了20几天了， 因为提供不了node服务，歌单和歌词暂时请求不了， Github：https://github.co]]></description>
+</item>
+</channel>
+</rss>

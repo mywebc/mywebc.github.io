@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ajax - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/ajax/</link>
+        <description>ajax - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Tue, 12 Dec 2017 14:20:24 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/ajax/" rel="self" type="application/rss+xml" /><item>
+    <title>原生js封装ajax</title>
+    <link>http://example.org/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</link>
+    <pubDate>Tue, 12 Dec 2017 14:20:24 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%8E%9F%E7%94%9Fjs%E5%B0%81%E8%A3%85ajax/</guid>
+    <description><![CDATA[<blockquote>
+<p>面试大概率会考到</p>
+</blockquote>]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,81 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>es6 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/es6/</link>
+        <description>es6 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Tue, 03 Apr 2018 16:17:56 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/es6/" rel="self" type="application/rss+xml" /><item>
+    <title>ES6笔记（四）扩展对象的功能性</title>
+    <link>http://example.org/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</link>
+    <pubDate>Tue, 03 Apr 2018 16:17:56 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/es6%E7%AC%94%E8%AE%B0%E5%9B%9B%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7/</guid>
+    <description><![CDATA[<h3 id="对象的语法的扩展">对象的语法的扩展</h3>
+<h4 id="1对象的属性或属性值可以直接传入变量">(1)对象的属性或属性值可以直接传入变量</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">id</span>:<span class="kt">value</span><span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2在对象中方法的简写">(2)在对象中方法的简写</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">//es5 
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="nx">handle</span>:<span class="kt">function</span><span class="p">(){</span> 
+        <span class="c1">//dosomething 
+</span><span class="c1"></span>        <span class="p">}</span> 
+    <span class="p">}</span> 
+<span class="c1">//es6 
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="nx">handle</span><span class="p">(){</span> 
+        <span class="c1">//dosomething 
+</span><span class="c1"></span>        <span class="p">}</span> 
+    <span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+<item>
+    <title>ES6笔记（三）函数</title>
+    <link>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</link>
+    <pubDate>Mon, 02 Apr 2018 11:31:08 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%B8%89%E5%87%BD%E6%95%B0/</guid>
+    <description><![CDATA[函数参数的默认值 以前es5的做法是这样的： 1 function log(x) { x = x || 10; console.log(x) } 这样做的坏处是有的时候我想传一个空字符，也会被修改为默认值 es6的做法直接在]]></description>
+</item>
+<item>
+    <title>ES6笔记（二）字符串和正则表达式</title>
+    <link>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+    <pubDate>Fri, 30 Mar 2018 14:46:41 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+    <description><![CDATA[字符串 字符串模板 字符串模板用``来表示，示例如下: 1 let template = `${变量1}` 可以看到字符串模板主要有两个特点 字符串换行不再需要+来拼接，里面的]]></description>
+</item>
+<item>
+    <title>ES6笔记（一）块级作用域的绑定</title>
+    <link>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</link>
+    <pubDate>Fri, 30 Mar 2018 10:28:22 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/es6%E7%AC%94%E8%AE%B0%E4%B8%80%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E7%BB%91%E5%AE%9A/</guid>
+    <description><![CDATA[前言 在学习的过程中也用过不少ES6语法，比如箭头函数，promise，class等，但从来没有好好的从头捋一遍，es6是2015年出的，现在]]></description>
+</item>
+</channel>
+</rss>

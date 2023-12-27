@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>node.js - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/node.js/</link>
+        <description>node.js - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 26 Oct 2017 01:58:05 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/node.js/" rel="self" type="application/rss+xml" /><item>
+    <title>nodejs中书写自己的require方法</title>
+    <link>http://example.org/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Thu, 26 Oct 2017 01:58:05 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/nodejs%E4%B8%AD%E4%B9%A6%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84require%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[模块化是一种开发模式，模块化的开发有利于后期维护，提高效率，模块化的规范在服务器端是CommonJs，比如nodejs采用的就是这个，在浏览]]></description>
+</item>
+</channel>
+</rss>

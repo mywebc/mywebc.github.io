@@ -1,0 +1,64 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工具 - Category - Asher&#39;s blog</title>
+        <link>http://example.org/categories/%E5%B7%A5%E5%85%B7/</link>
+        <description>工具 - Category - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 29 Nov 2020 23:39:46 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+    <title>使用Rollup打包Vue或React组件库并发布到npm</title>
+    <link>http://example.org/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</link>
+    <pubDate>Sun, 29 Nov 2020 23:39:46 &#43;0800</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BD%BF%E7%94%A8rollup%E6%89%93%E5%8C%85vue%E6%88%96react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0npm/</guid>
+    <description><![CDATA[最近在写一些Vue和React相关的组件库，涉及到打包文件发布npm这一块，在对比了webpack和rollup两种打包工具之后，决定使用r]]></description>
+</item>
+<item>
+    <title>webpack配置app和pc多入口</title>
+    <link>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</link>
+    <pubDate>Sun, 08 Dec 2019 17:20:24 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</guid>
+    <description><![CDATA[需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。 原先页面为index.html,后面增加pcJs.]]></description>
+</item>
+<item>
+    <title>从头开始配置webpack4</title>
+    <link>http://example.org/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</link>
+    <pubDate>Sun, 09 Sep 2018 23:25:12 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</guid>
+    <description><![CDATA[最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在 webapck4中也开始朝着这个方向发展，比如默认的入口为sr]]></description>
+</item>
+<item>
+    <title>nginx常用命令总结</title>
+    <link>http://example.org/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Wed, 24 Jan 2018 23:34:12 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[查看nginx是否启动 ps -ef | grep nginx //用ps -ef列出进程列表，然后通过grep过滤。 ps -C nginx -o pid //直接查看进程id nginx的启动，停止，与]]></description>
+</item>
+<item>
+    <title>关于Git的使用</title>
+    <link>http://example.org/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Sun, 20 Aug 2017 08:32:07 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[从学习前端开始就听说过Git，无奈初期并不需要了解，但是在以后的学习或工作中这是必须会的一项技能，这几天也看了一些资料，整理一下 一、什么是G]]></description>
+</item>
+<item>
+    <title>Fireworks 和Ps的常用操作</title>
+    <link>http://example.org/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+    <pubDate>Mon, 24 Jul 2017 07:57:32 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/fireworks-%E5%92%8Cps%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+    <description><![CDATA[Fireworks的常用快捷键： V：切换黑鼠标 U：画图 K：切片 I：吸色 Z：放大镜 空格：移动 shift：量尺寸 Photoshop的快捷键 z、a]]></description>
+</item>
+<item>
+    <title>简单的使用less和koala编译工具</title>
+    <link>http://example.org/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Thu, 20 Jul 2017 18:31:20 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、运算、函]]></description>
+</item>
+</channel>
+</rss>

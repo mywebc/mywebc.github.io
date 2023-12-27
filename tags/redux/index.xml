@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>redux - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/redux/</link>
+        <description>redux - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Wed, 29 Aug 2018 23:34:46 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/redux/" rel="self" type="application/rss+xml" /><item>
+    <title>redux快速入门</title>
+    <link>http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Wed, 29 Aug 2018 23:34:46 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到]]></description>
+</item>
+</channel>
+</rss>

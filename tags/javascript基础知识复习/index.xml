@@ -1,0 +1,105 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>javascript基础知识复习 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/</link>
+        <description>javascript基础知识复习 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Wed, 09 Aug 2017 19:35:54 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript基础知识复习（五）函数的四种调用模式</title>
+    <link>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Wed, 09 Aug 2017 19:35:54 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[<p><strong>一、函数模式</strong>
+这个我们再熟悉不过了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">()</span><span class="err">；</span><span class="c1">//这里函数名调用，就是函数模式
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意：这里的this指的是window全局对象；
+<strong>二、方法模式</strong>
+函数放在对象内，是对象的一个属性，我们调用函数，这就是方法模式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">obj</span><span class="o">=</span><span class="p">{</span>
+  <span class="nx">foo</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+<item>
+    <title>javascript基础知识复习（四）递归与闭包</title>
+    <link>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/</link>
+    <pubDate>Wed, 09 Aug 2017 17:55:48 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E5%9B%9B%E9%80%92%E5%BD%92%E4%B8%8E%E9%97%AD%E5%8C%85/</guid>
+    <description><![CDATA[<h2 id="递归">递归</h2>
+<ol>
+<li>递归概念：在函数内调用函数自己，就是递归。 注意：递归要有结束条件，没有递归结束条件的递归，就是死递归。</li>
+<li>使用递归的方法：化归思想。化归思想是将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+例子：求1-100的和 利用划归思想：var sum=foo(100); 1.求foo（100）即求foo（99）+100； 2.求foo（99），即求foo（98）+99； 3.求foo（98），即求foo（97）+98； &hellip; 最后求foo（1），就是1;//这就是约束条件 最后利用递归，函数就是：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span> <span class="nx">n</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">(</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>利用递归可以解决很多问题，比如算出阶乘，算出斐波那契数列等；</p>]]></description>
+</item>
+<item>
+    <title>javascript基础知识复习（三）js中的继承</title>
+    <link>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/</link>
+    <pubDate>Mon, 07 Aug 2017 15:37:44 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%89js%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/</guid>
+    <description><![CDATA[js中共有6种继承 一、原型链 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 function SuperType(){ this.prototype=true; } SuperType.prototype.getSuperValue=function(){ return this.property } function SubType(){ this.subPrototy=false; } //继承了SuperType SubType.prototype=new SuperType(); SubType.prototype.getSubValue=function(){ return this.subProperty; } var instance = new SubType(); console,log(instance.getSuperValue);//true console.log(instance.getSubValue);//false]]></description>
+</item>
+<item>
+    <title>javascript基础知识复习（二）面向对象</title>
+    <link>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+    <pubDate>Sun, 06 Aug 2017 18:36:39 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+    <description><![CDATA[一、什么是面向对象？与面向过程又有什么关系？ 面向对象是一种思维方式，解决的重点放在对象上； 面向过程也是一种思维方式，解决的重点放在详细的步骤]]></description>
+</item>
+<item>
+    <title>javascript基础知识复习（一）基本概念</title>
+    <link>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+    <pubDate>Sun, 06 Aug 2017 16:50:11 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/javascript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+    <description><![CDATA[一、js的组成 ECMAScript：js的核心，规范了js的语法； DOM：文档对象模型，提供了操作DOM元素的API； BOM：浏览器对象模型]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>redux快速入门 - Asher&#39;s blog</title><meta name="Description" content="自由自在,热爱生活"><meta property="og:title" content="redux快速入门" />
+<meta property="og:description" content="redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" /><meta property="og:image" content="http://example.org/images/me/haha.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-08-29T23:34:46&#43;00:00" />
+<meta property="article:modified_time" content="2018-08-29T23:34:46&#43;00:00" /><meta property="og:site_name" content="我的网站" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/images/me/haha.jpeg"/>
+
+<meta name="twitter:title" content="redux快速入门"/>
+<meta name="twitter:description" content="redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" /><link rel="prev" href="http://example.org/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/" /><link rel="next" href="http://example.org/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "redux快速入门",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8\/"
+        },"genre": "posts","keywords": "redux","wordcount":  2310 ,
+        "url": "http:\/\/example.org\/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8\/","datePublished": "2018-08-29T23:34:46+00:00","dateModified": "2018-08-29T23:34:46+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "陈晓拉尼-Asher"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Asher&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/link/"> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Asher&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/link/" title="">友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">redux快速入门</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>陈晓拉尼-Asher</a></span>&nbsp;<span class="post-category">included in <a href="/categories/react/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>react</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-08-29">2018-08-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2310 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#redux的前身flux">Redux的前身flux</a></li>
+    <li><a href="#redux">Redux</a>
+      <ul>
+        <li><a href="#关于action">关于action</a></li>
+        <li><a href="#创建store">创建store</a></li>
+        <li><a href="#编写reducer">编写reducer</a></li>
+      </ul>
+    </li>
+    <li><a href="#react-redux">React-Redux</a>
+      <ul>
+        <li><a href="#react-redux自带的provider组件">react-redux自带的provider组件</a></li>
+        <li><a href="#combinereducers">combineReducers</a></li>
+      </ul>
+    </li>
+    <li><a href="#快速开始模板">快速开始模板</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>redux和vuex一样，当项目数据复杂时，都是用来集中管理数据的，不过redux是单向数据流绑定,这就使得redux中的store必须放到所有组件最顶层，此篇文章是在看《深入浅出react与redux》以及实战React16.4开发简书项目后的总结。</p>
+</blockquote>
+<!-- more -->
+<h2 id="redux的前身flux">Redux的前身flux</h2>
+<p>在flux中，首先要引入Dispatcher（redux没有这个）， 用以派发action，action改变view层，view层同步model数据层；flux会为每一个组件单独建立一个store，在每一个组件中初始化store,如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">CounterStore</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">EventEmitter</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">getCounterValues</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">counterValues</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">emitChange</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">CHANGE_EVENT</span><span class="p">);</span>             
+    <span class="p">},</span>
+    <span class="nx">addChangeListener</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">CHANGE_EVENT</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>     
+    <span class="p">},</span>
+    <span class="nx">removeChangeListener</span><span class="o">:</span> <span class="nx">fucntion</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeListener</span><span class="p">(</span><span class="nx">CHANGE_EVENT</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>     
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>EventEmitter是node.js中event模块的一个对象，是监听事件的一个封装，不用太追究；上面扩展了EventEmitter.prototype，给当前组件的store绑定了几个事件；初始化store之后，还要与dispatcher做联系，这时候会用到dispatcher的一个register函数，接受参数为action；</p>
+<p>Dispatcher是唯一的，如果有很多个组件，Dispatcher与他们每一个组件都要做联系，通过waitFor函数来决定各个store之间的执行顺序，但这就是flux最大的缺点，因为如果store很多的话，依赖关系会越来越复杂，逻辑关系会难以维护。</p>
+<h2 id="redux">Redux</h2>
+<p>在Redux中没有了Dispatcher的概念，store倒是有一个dispatch方法，用以来传递action给store
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/reduxFlow.jpg"
+        data-srcset="/images/reduxFlow.jpg, /images/reduxFlow.jpg 1.5x, /images/reduxFlow.jpg 2x"
+        data-sizes="auto"
+        alt="/images/reduxFlow.jpg"
+        title="reduxFlow" />
+如图,解释一下流程</p>
+<ul>
+<li>在组件内部会调用actionCreators，用于创建action对象，并且通过dispatch传送给store；</li>
+<li>store接受到后，会交给reducer（纯函数） 处理；</li>
+<li>reducer函数处理后会返回新的store状态；</li>
+<li>store里的数据发生变化会自动触发视图层变化，结束；</li>
+</ul>
+<p>下面会一一解释store，reducer，action如何创建，并且如何走通。
+首先创建一个store文件夹，下面会有四个js，分别是</p>
+<ul>
+<li>index.js // 作为入口，统一引入到这里</li>
+<li>actionCreators.js // 用来统一创建对象</li>
+<li>constants.js // 统一定义action的type,方便后期维护log</li>
+<li>reducer.js // 用来处理action的纯函数</li>
+</ul>
+<h3 id="关于action">关于action</h3>
+<blockquote>
+<p>分割action为actionCreators和contants,方便管理维护</p>
+</blockquote>
+<p>actionCreators.js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">constants</span> <span class="nx">from</span> <span class="s1">&#39;./constants&#39;</span>
+<span class="c1">// type为常量，从constants中引入，方便log
+</span><span class="c1"></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">sayHello</span> <span class="o">=</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">=&gt;({</span>
+	<span class="nx">type</span><span class="o">:</span> <span class="nx">constants</span><span class="p">.</span><span class="nx">SAY_HELLO</span><span class="err">，</span>
+        <span class="nx">text</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>constants.js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">SAY_HELLO</span> <span class="o">=</span> <span class="s1">&#39;SAY_HELLO&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个其实还是跟vuex中action一样的，很好理解。</p>
+<h3 id="创建store">创建store</h3>
+<blockquote>
+<p>调用createStore创建store，参数传入处理函数reducer</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span>
+<span class="kr">import</span> <span class="nx">reducer</span> <span class="nx">from</span> <span class="s1">&#39;./reducer.js&#39;</span>
+<span class="c1">// 调用createStore创建store，参数传入处理函数reducer
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">);</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">store</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="编写reducer">编写reducer</h3>
+<blockquote>
+<p>reducer默认接受state初始状态，和action对象，更改后的state</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">constants</span> <span class="nx">from</span> <span class="s1">&#39;./constants&#39;</span>
+<span class="c1">// 设置state初始值 
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">defaultState</span> <span class="o">=</span><span class="p">{</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+<span class="p">}</span>
+<span class="c1">// 默认暴露一个纯函数
+</span><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">defaultState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)=&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">constants</span><span class="p">.</span><span class="nx">SAY_HELLO</span><span class="o">:</span>
+            <span class="k">return</span> <span class="p">{...</span><span class="nx">state</span><span class="p">,</span>  <span class="nx">action</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+		<span class="k">default</span><span class="o">:</span> 
+			<span class="k">return</span> <span class="nx">state</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>改有的文件都已经创建好，现在就可以捋一遍</p>
+</blockquote>
+<p>首先在组件内部，我们想要改变store里的数据，首先要引入刚刚创建好的action，调用store的dispatch方法将action传递给store；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 引入store
+</span><span class="c1"></span><span class="kr">import</span> <span class="nx">store</span> <span class="nx">from</span> <span class="s1">&#39;./store&#39;</span>
+<span class="c1">// 引入action
+</span><span class="c1"></span><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">actionCreators</span> <span class="nx">from</span> <span class="s1">&#39;./actionCreators&#39;</span> 
+<span class="c1">// store.dispatch派发action
+</span><span class="c1"></span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">actionCreators</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">(</span><span class="s1">&#39;你好！&#39;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>store收到action后会自动交给reducer处理，reducer根据其actionType的不同做不同的操作，并且返回更改后的st ate；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="k">default</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">defaultState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)=&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">constants</span><span class="p">.</span><span class="nx">SAY_HELLO</span><span class="o">:</span>
+        <span class="c1">// 扩展运算符
+</span><span class="c1"></span>            <span class="k">return</span> <span class="p">{...</span><span class="nx">state</span><span class="p">,</span>  <span class="nx">action</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+		<span class="k">default</span><span class="o">:</span> 
+			<span class="k">return</span> <span class="nx">state</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>组件内部通过store.subscribe()的方法能够监听store的变化，store一旦变化就可以调用store.getState()替换当前组件的store；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// store数据变化后触发 handleCHange函数
+</span><span class="c1"></span>    <span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleCHange</span><span class="p">)</span>
+    <span class="c1">// handleCHange函数 替换组件内部store数据
+</span><span class="c1"></span>    <span class="nx">handleCHange</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">store</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+            <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>store里面的数据必须用setState更改，setState可以是一个对象，也可以是一个函数，return一个对象，后一种写法推荐，因为官网就是这么写的。
+数据更新那么视图层就会自动更新，结束。</p>
+<h2 id="react-redux">React-Redux</h2>
+<blockquote>
+<p>在react中有为react量身定做的react-redux库，其用法也有一些细微差别</p>
+</blockquote>
+<h3 id="react-redux自带的provider组件">react-redux自带的provider组件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Hello</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="err">/Provider&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从组件根部传入store，在其所有子组件中都可以使用，具体如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">mapStateProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">=&gt;({</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">text</span>
+<span class="p">})</span>
+<span class="kr">const</span> <span class="nx">mapDispathProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispath</span><span class="p">)</span> <span class="p">=&gt;{</span>
+    <span class="k">return</span> <span class="p">{</span>
+       <span class="nx">changeText</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">//这里dispatch一个action
+</span><span class="c1"></span>        <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 通过connect连接当前组件
+</span><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateProps</span><span class="p">,</span> <span class="nx">mapDispathProps</span><span class="p">)(</span><span class="nx">Hello</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>mapStateProps：顾名思义就是将state当作props传入当前组件；</li>
+<li>mapDispathProps：这个就是将Dispatch当作props传入组件；</li>
+<li>这两个需要在组件外定义，然后当作参数传入connect中；</li>
+</ul>
+<h3 id="combinereducers">combineReducers</h3>
+<p>一般一个组件都会定义一个store，那么多的store，里面有那么多的reducer.js,我们可以用combineReducer来合并；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">reducer</span> <span class="nx">as</span> <span class="nx">homeReducer</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../store&#39;</span>
+<span class="kr">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
+	<span class="nx">header</span><span class="o">:</span> <span class="nx">homeReducer</span> <span class="c1">// 可以为每一个reducer取一个名字
+</span><span class="c1"></span><span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么我们在组件获取状态时也要加上名字,改成如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">mapStateProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">=&gt;({</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">text</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="快速开始模板">快速开始模板</h2>
+<p>Github: <a href="https://github.com/mywebc/react_start" target="_blank" rel="noopener noreffer ">https://github.com/mywebc/react_start</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-08-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-title="redux快速入门" data-hashtags="redux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-hashtag="redux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-title="redux快速入门"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-title="redux快速入门"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/redux%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-title="redux快速入门"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/redux/">redux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/vue%E4%B8%AD%E4%BD%BF%E7%94%A8elementui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%8D%95%E9%80%89%E5%85%A8%E9%80%89/" class="prev" rel="prev" title="vue中使用elementUI，表格的单选全选"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>vue中使用elementUI，表格的单选全选</a>
+            <a href="/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/" class="next" rel="next" title="从头开始配置webpack4">从头开始配置webpack4<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">陈晓拉尼-Asher</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKwsBjM4CbKFB","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"en","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"mywebc/blog-comments","repoId":"R_kgDOKwsBjA"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Asher's blog","id-2":"Asher's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

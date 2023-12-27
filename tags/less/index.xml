@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>less - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/less/</link>
+        <description>less - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 20 Jul 2017 18:31:20 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/less/" rel="self" type="application/rss+xml" /><item>
+    <title>简单的使用less和koala编译工具</title>
+    <link>http://example.org/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Thu, 20 Jul 2017 18:31:20 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8less%E5%92%8Ckoala%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、运算、函]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>OAuth - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/oauth/</link>
+        <description>OAuth - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 08 Aug 2019 19:23:23 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/oauth/" rel="self" type="application/rss+xml" /><item>
+    <title>使用OAuth授权第三方网站</title>
+    <link>http://example.org/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</link>
+    <pubDate>Thu, 08 Aug 2019 19:23:23 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BD%BF%E7%94%A8oauth%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%AB%99/</guid>
+    <description><![CDATA[OAuth是一种行业标准的授权方式，我们在登录一些网站时，其也可以使用第三方账号比如QQ或者微信登录， 都是使用OAuth授权的， 版本有1.x]]></description>
+</item>
+</channel>
+</rss>

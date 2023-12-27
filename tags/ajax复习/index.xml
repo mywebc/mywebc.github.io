@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ajax复习 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/ajax%E5%A4%8D%E4%B9%A0/</link>
+        <description>ajax复习 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 24 Aug 2017 12:13:55 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/ajax%E5%A4%8D%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+    <title>ajax复习</title>
+    <link>http://example.org/ajax%E5%A4%8D%E4%B9%A0/</link>
+    <pubDate>Thu, 24 Aug 2017 12:13:55 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/ajax%E5%A4%8D%E4%B9%A0/</guid>
+    <description><![CDATA[ajax是一种在不刷新页面的情况下，局部更新数据的一种技术，XMLHTTPRequest对象是ajax的基础。 使用ajax有以下4个步骤： （]]></description>
+</item>
+</channel>
+</rss>

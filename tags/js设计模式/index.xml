@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>js设计模式 - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+        <description>js设计模式 - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 06 Jan 2019 14:20:23 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>js设计模式之迭代器模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 06 Jan 2019 14:20:23 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。总结两点，第一顺序访问一个集合，第二使用者无需知]]></description>
+</item>
+<item>
+    <title>js设计模式之状态模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Wed, 02 Jan 2019 01:09:14 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[状态模式往往会带来代码量的增加，但是它也许是解决某些需求场景的最好方法，状态模式的关键是区分事物内部的状态，事物内部的状态往往会带来事物行为]]></description>
+</item>
+<item>
+    <title>js设计模式之装饰者模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Mon, 24 Dec 2018 23:48:13 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[装饰者模式能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加指责，总结来说就是两点，第一为对象添加新功能，第二不改变原有的结构和功]]></description>
+</item>
+<item>
+    <title>js设计模式之适配器模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Mon, 17 Dec 2018 00:12:11 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[适配器模式是一种简单设计模式，主要是用来解决老接口不兼容的问题，对于不兼容的老接口，我们没必要重写，只需创建一个适配器即可。 获取城市接口例子]]></description>
+</item>
+<item>
+    <title>js设计模式之代理模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Wed, 05 Dec 2018 22:03:04 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[代理模式的定义：为一个对象提供代用品或占位符，以便控制对它的访问；注意使用者无权访问目标对象的。 最常见的就是科学上网了 代理模式根据其目的，也]]></description>
+</item>
+<item>
+    <title>js设计模式之单例模式</title>
+    <link>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Tue, 04 Dec 2018 23:44:21 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[单例模式的定义: 保证一个类仅有一个实例，并且提供一个访问它的全局访问点。意义为减少内存开支，减少变量冲突。 常见的应用场景 全局的window对]]></description>
+</item>
+</channel>
+</rss>

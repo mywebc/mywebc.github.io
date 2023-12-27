@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>boostrap - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/boostrap/</link>
+        <description>boostrap - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 23 Jul 2017 15:58:09 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/boostrap/" rel="self" type="application/rss+xml" /><item>
+    <title>微金所页面（响应式）</title>
+    <link>http://example.org/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</link>
+    <pubDate>Sun, 23 Jul 2017 15:58:09 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%BE%AE%E9%87%91%E6%89%80%E9%A1%B5%E9%9D%A2%E5%93%8D%E5%BA%94%E5%BC%8F/</guid>
+    <description><![CDATA[bootstrap+less的页面，轮播图之前写的好烦， 而在bootstrap里面直接拿框架过来用，好方便的说。 传上来微金所的字体图标不显示]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mobile - Category - Asher&#39;s blog</title>
+        <link>http://example.org/categories/mobile/</link>
+        <description>mobile - Category - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Wed, 19 Jul 2017 19:39:13 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/mobile/" rel="self" type="application/rss+xml" /><item>
+    <title>做移动端的注意点</title>
+    <link>http://example.org/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+    <pubDate>Wed, 19 Jul 2017 19:39:13 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E5%81%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+    <description><![CDATA[做移动端的注意点 通栏中，不管多大的分辨率，左边和右边的距离都是不变的，我们可以将其input宽度设为100%，再在其父盒子中给出paddin]]></description>
+</item>
+<item>
+    <title>移动端京东首页</title>
+    <link>http://example.org/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</link>
+    <pubDate>Sun, 16 Jul 2017 08:19:03 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%AC%E4%B8%9C%E9%A6%96%E9%A1%B5/</guid>
+    <description><![CDATA[基本的静态布局 js效果：轮播图、倒计时、通栏透明度。 从Wordpress迁移到hexo后地址失效啦！]]></description>
+</item>
+<item>
+    <title>移动端的touch事件</title>
+    <link>http://example.org/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</link>
+    <pubDate>Fri, 14 Jul 2017 08:43:38 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84touch%E4%BA%8B%E4%BB%B6/</guid>
+    <description><![CDATA[移动端的touch主要用到一下三种： touchstart://手指放到屏幕上时触发 touchmove:指在屏幕上滑动式触发 touchend:]]></description>
+</item>
+</channel>
+</rss>

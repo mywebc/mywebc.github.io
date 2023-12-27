@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>webpack - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/webpack/</link>
+        <description>webpack - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 08 Dec 2019 17:20:24 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/webpack/" rel="self" type="application/rss+xml" /><item>
+    <title>webpack配置app和pc多入口</title>
+    <link>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</link>
+    <pubDate>Sun, 08 Dec 2019 17:20:24 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/webpack%E9%85%8D%E7%BD%AEapp%E5%92%8Cpc%E5%A4%9A%E5%85%A5%E5%8F%A3/</guid>
+    <description><![CDATA[需求：原先做的app端又增加了pc端，现在把他们放在同一个项目下，就需要我们配置多入口了。 原先页面为index.html,后面增加pcJs.]]></description>
+</item>
+<item>
+    <title>从头开始配置webpack4</title>
+    <link>http://example.org/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</link>
+    <pubDate>Sun, 09 Sep 2018 23:25:12 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEwebpack4/</guid>
+    <description><![CDATA[最近好像流行零配置，parcel的开箱即用的概念，也影响了webpack4,在 webapck4中也开始朝着这个方向发展，比如默认的入口为sr]]></description>
+</item>
+</channel>
+</rss>

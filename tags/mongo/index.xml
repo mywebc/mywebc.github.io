@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mongo - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/mongo/</link>
+        <description>mongo - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Thu, 02 Nov 2017 23:23:44 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/mongo/" rel="self" type="application/rss+xml" /><item>
+    <title>mongo数据库增删改查方法总结</title>
+    <link>http://example.org/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Thu, 02 Nov 2017 23:23:44 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[介绍 mongo数据库是nosql（非结构性数据库）的一种，存储格式不是传统的表、行、字段，它的数据库是由多个集合组成，每个集合包含很多文档，]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Deno - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/deno/</link>
+        <description>Deno - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Sun, 24 May 2020 16:48:25 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/deno/" rel="self" type="application/rss+xml" /><item>
+    <title>Deno 初体验</title>
+    <link>http://example.org/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+    <pubDate>Sun, 24 May 2020 16:48:25 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/deno-%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+    <description><![CDATA[最近node.js之父又搞了个Deno.js，同样是基于V8引擎，据说对比node.js改进了不少，周末有时间就来体验了一下。 安装 安装 1 curl -fsSL]]></description>
+</item>
+</channel>
+</rss>

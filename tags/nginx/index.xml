@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>nginx - Tag - Asher&#39;s blog</title>
+        <link>http://example.org/tags/nginx/</link>
+        <description>nginx - Tag - Asher&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2524729719@qq.com (陈晓拉尼-Asher)</managingEditor>
+            <webMaster>2524729719@qq.com (陈晓拉尼-Asher)</webMaster><lastBuildDate>Wed, 24 Jan 2018 23:34:12 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>nginx常用命令总结</title>
+    <link>http://example.org/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Wed, 24 Jan 2018 23:34:12 &#43;0000</pubDate>
+    <author>陈晓拉尼-Asher</author>
+    <guid>http://example.org/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[查看nginx是否启动 ps -ef | grep nginx //用ps -ef列出进程列表，然后通过grep过滤。 ps -C nginx -o pid //直接查看进程id nginx的启动，停止，与]]></description>
+</item>
+</channel>
+</rss>
